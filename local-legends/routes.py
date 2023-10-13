@@ -1,5 +1,5 @@
 from flask import render_template
-from local-legends import app, db
+from local_legends import app, db
 
 
 @app.route("/")
