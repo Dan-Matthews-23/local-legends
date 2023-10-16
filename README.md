@@ -1,39 +1,31 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+Photo by Michelle Riach: <https://www.pexels.com/photo/clear-glass-plates-with-vegetable-dish-995743/>
 
-Welcome,
+Photo by Helena Lopes: <https://www.pexels.com/photo/wine-in-clear-glass-near-food-on-plate-on-table-1861785/>
 
-This is the Code Institute student template for Codeanywhere. If you are using Gitpod then you need [this template](https://github.com/Code-Institute-Org/gitpod-full-template) instead.  We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+Photo by Ksenia Chernaya: <https://www.pexels.com/photo/interior-of-stylish-contemporary-restaurant-with-big-windows-4450334/>
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **August 30th, 2023**
+Photo by Lina Kivaka: <https://www.pexels.com/photo/number-1-table-with-dinnerware-ste-1741285/>
 
-## Codeanywhere Reminders
+Photo by Rachel Claire: <https://www.pexels.com/photo/food-on-top-of-a-wooden-table-5865071/>
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
+Photo by Athena: <https://www.pexels.com/photo/close-up-photo-of-table-setting-set-2961968/>
 
-`python3 -m http.server`
+<https://coolors.co/d6dcce-b3b396-74551f-e8eeea-140702>
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+CSS VARIABLES: <https://www.w3schools.com/Css/css3_variables.asp>
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
+ICONS font awesome: <https://fontawesome.com/icons/utensils?f=classic&s=solid&sz=2xl&pc=%23000000>
 
-`http_server`
+Mentor meeting:
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+When designing just remember the basic criterea (what do you need to pass). Add the Profile and Filter options if you have time. Just focus on
+Consider cutting down the user table and only add the stars given etc if you add the Profile section
+Pop-uo modal for "Are you sure you want to delete that post", not for sign-in/register. Seperate page for this
+When clicking on a restatrunt on index, have the page link to restataunt.html and pass the restaurant_id through. The fields will fill based on that ID (think of the excel tool you made for Kickstart and drop-down menu)
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+HAMBURGER BAR - <https://www.w3schools.com/howto/howto_js_mobile_navbar.asp>
 
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+Learned how to install and configure flask on VS code
+<https://code.visualstudio.com/docs/python/tutorial-flask>
 
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
-
----
-
-Happy coding!
+16/10/2023 - decided to scrap colour plaett so that I could use Materialize colour pla instead. Original colours not present in new col range
