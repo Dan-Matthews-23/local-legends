@@ -1,7 +1,6 @@
 import os
 from local_legends import app
 
-
 if __name__ == "__main__":
     app.run(
         host=os.environ.get("IP"),
