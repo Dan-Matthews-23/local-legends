@@ -33,7 +33,6 @@
           <a data-target="mobile-demo" class="sidenav-trigger" href="#">
             <i class="fas fa-bars"></i
           ></a>
-
           <ul class="right hide-on-med-and-down">
             <!--CHANGE THIS IN STYLE-->
             <li><a href="{{ url_for('home') }}">Home</a></li>
@@ -42,7 +41,6 @@
           </ul>
         </div>
       </nav>
-
       <!--Nav bar for screens 992px and under-->
       <ul class="sidenav" id="mobile-demo">
         <li><a href="{{ url_for('home') }}">Home</a></li>
@@ -50,18 +48,20 @@
         <li><a href="{{ url_for('home') }}">Home</a></li>
       </ul>
     </header>
-
     <main class="container">{% block content %} {% endblock %}</main>
+    <br />
+    <br />
+    <br />
+    <footer>
+      <div class="footer-container align-center">
+        <div class="row align-center">
+          <div class="align-center footer-head">Contact us on:</div>
+        </div>
 
-    <footer class="footer">
-      <div class="container">
-        <div class="align-center">
-          <div class="footer-head footer-title-font align-center">
-            Contact us on:
-          </div>
-          <ul class="footer-links">
+        <div class="col align-center">
+          <ul class="footer-links align-center">
             <!--EXTERNAL LINKS-->
-            <li>
+            <li class="align-center">
               <a
                 href="https://facebook.com"
                 aria-label="Contact Us On Facebook"
@@ -70,7 +70,7 @@
                 <i class="fa-brands fa-square-facebook"></i
               ></a>
             </li>
-            <li>
+            <li class="align-center">
               <a
                 href="https://github.com/Dan-Matthews-23"
                 aria-label="Check out our Git Hub"
@@ -79,7 +79,7 @@
                 <i class="fa-brands fa-github"></i
               ></a>
             </li>
-            <li>
+            <li class="align-center">
               <a
                 href="https://www.linkedin.com/"
                 aria-label="Contact us on Linked In"
@@ -88,7 +88,7 @@
                 <i class="fa-brands fa-linkedin"></i
               ></a>
             </li>
-            <li>
+            <li class="align-center">
               <a
                 href="https://www.twitter.com/"
                 aria-label="Contact Us On Twitter"

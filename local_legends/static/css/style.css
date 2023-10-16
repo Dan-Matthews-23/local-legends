@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+
+.align-center {
+    text-align: center;
+    margin: auto;
+}
+
+/*<!-----------------------FOOTER------------------------------------>*/
+.footer-head {
+    font-weight: bold;
+    padding: 5px;
+    letter-spacing: 2px;
+}
+
+.footer-container {
+    background-color: #efebe9;
+    text-align: center;
+    margin: auto;
+}
+
+
+.footer-links li {
+    display: inline-block;
+    text-align: center;
+    padding: 10px;
+
+
+}
+
+.footer-links i {
+    font-size: 180%;
+
+
+}
