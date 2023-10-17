@@ -1,6 +1,6 @@
 {
     "[css]": {
-        "editor.defaultFormatter": "vscode.css-language-features"
+        "editor.defaultFormatter": "davidanson.vscode-markdownlint"
     },
     "[markdown]": {
         "editor.defaultFormatter": "davidanson.vscode-markdownlint"

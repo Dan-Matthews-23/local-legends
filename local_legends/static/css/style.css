@@ -1,4 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+/*@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");*/
+
+/*---------- ROOT VARIABLES ----------*/
+:root {
+
+    /*---Font Colour---*/
+    --brown-darken-1: #6d4c41;
+}
 
 .align-center {
     text-align: center;
@@ -10,12 +17,14 @@
     font-weight: bold;
     padding: 5px;
     letter-spacing: 2px;
+    color: var(--brown-darken-1);
 }
 
 .footer-container {
     background-color: #efebe9;
     text-align: center;
     margin: auto;
+    color: var(--brown-darken-1);
 }
 
 
@@ -23,12 +32,15 @@
     display: inline-block;
     text-align: center;
     padding: 10px;
-
-
+    color: var(--brown-darken-1);
 }
 
 .footer-links i {
     font-size: 180%;
+    color: var(--brown-darken-1);
+}
 
-
+.header-links {
+    color: var(--brown-darken-1);
+    
 }

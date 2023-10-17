@@ -21,10 +21,9 @@ The project was built using Google Chrome and tested through Chrome Developer To
 
 | Test Number         |      Page         |   Browser           |   Feature (by class/ ID / name)       | Result     |  Comments |  
 |------------         | ------------      | ------------        | ------------                          |------------| ------------             |
-| 001                 |  style.css        | Chrome              |  Media Query / user-screen title      | Fail       | The title font size did not reduce with screen size. Tested on two viewports: 1500px and 480px. However, all media query tests failed despite several attempts |
+| 001                 |  base.html/stylr..css        | Chrome              |  .header-links      | Fail       | Changing all header links to a header-links class resulted in the fa fa bars icon to appear premeturely.  |
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
 | ![001](/assets/testing/testing-images/test-one-a.webp)        | ![001](/assets/testing/testing-images/test-one-b.webp) | N/A            | N/A| N/A| N/A|
-
 
   - - -
 
@@ -36,13 +35,13 @@ The project was built using Google Chrome and tested through Chrome Developer To
 
 #### HTML and CSS
 
-I used W3 School's Jigsaw Validator for my CSS. 
+I used W3 School's Jigsaw Validator for my CSS.
 
 I also used Jigsaw for my HTML
 
 #### JavaScript
 
-For my JavaScript validation, I used JsHint. 
+For my JavaScript validation, I used JsHint.
 
 #### Lighthouse Report
 
@@ -56,11 +55,8 @@ I've used [Formatter.com](https://www.freeformatter.com/html-formatter.html) to 
 
 ### Testing User Stories
 
-
-
 | The User    | User Stories                                             | Has this been achieved?     |   How?                                      |  
 |---          | ----                                                     | ----                        |  ----                                       |
-
 
   - - -
 
@@ -71,7 +67,3 @@ Please view the testing table for a list of all solved bugs.
   - - -
 
 ### Known Bugs
-
-
-
-  - - -
