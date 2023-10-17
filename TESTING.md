@@ -21,9 +21,13 @@ The project was built using Google Chrome and tested through Chrome Developer To
 
 | Test Number         |      Page         |   Browser           |   Feature (by class/ ID / name)       | Result     |  Comments |  
 |------------         | ------------      | ------------        | ------------                          |------------| ------------             |
-| 001                 |  base.html/stylr..css        | Chrome              |  .header-links      | Fail       | Changing all header links to a header-links class resulted in the fa fa bars icon to appear premeturely.  |
+| 002                 |  base.html/style.css        | Chrome              |  .header-links      | Fail       | Changing all header links to a header-links class resulted in the fa fa bars icon to appear premeturely.  |
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
-| ![001](/assets/testing/testing-images/test-one-a.webp)        | ![001](/assets/testing/testing-images/test-one-b.webp) | N/A            | N/A| N/A| N/A|
+| ![001](/assets/testing/testing-images/test-two-a.webp)        | ![001](/assets/testing/testing-images/test-two-b.webp) | N/A            | N/A| N/A| N/A|
+| 003                 |  base.html/style.css        | Chrome              |  .header-links      | Pass       | I realised that the error in Test 002 was because I was changing the class of the fa fa icon to be visible, when it should be hidden on larger viewports. I have removed the class on this icon. Tests passed |
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+| ![001](/assets/testing/testing-images/test-three-a.webp)        | ![001](/assets/testing/testing-images/test-three-b.webp) | N/A            | N/A| N/A| N/A|
+
 
   - - -
 

@@ -7,10 +7,78 @@
     --brown-darken-1: #6d4c41;
 }
 
+/*<!-----------------------HEADER------------------------------------>*/
+/*<!-----------------------END OF HEADER------------------------------------>*/
+
+
+/*<!-----------------------NAV BAR------------------------------------>*/
+/*<!-----------------------END OF NAV BAR------------------------------------>*/
+
+/*<!-----------------------WELCOME BANNER------------------------------------>*/
+#welcome-banner {
+
+    padding: 80px 0px 80px 0px;
+    margin: auto;
+    vertical-align: middle;
+   
+}
+
+#welcome-banner-central-div {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: 80px;
+    width: 80%;
+    background-color: #efebe9;
+    margin: auto;
+    vertical-align: middle;
+  }
+
+#welcome-banner-left-div {
+ border-radius: 80% 0% 0% 80%;
+height: 80px;
+width: 10%;
+background-color: #efebe9;
+margin: auto;
+vertical-align: middle;
+}
+
+#welcome-banner-right-div {
+border-radius: 0% 80% 80% 0%;
+height: 80px;
+width: 10%;
+background-color: #efebe9;
+margin: auto;
+vertical-align: middle;
+}
+/*<!-----------------------END OF WELCOME BANNER------------------------------------>*/
+
+
+
+
+
+
+
+
+
+
 .align-center {
     text-align: center;
     margin: auto;
 }
+
+.with-borders {
+    border-style: solid;
+    border-color: black;
+}
+
+
+
+
+
+.top-nav-wrapper {
+    border-bottom: 1px solid black;
+ }
+
 
 /*<!-----------------------FOOTER------------------------------------>*/
 .footer-head {
@@ -25,6 +93,8 @@
     text-align: center;
     margin: auto;
     color: var(--brown-darken-1);
+    border-top: 1px solid black;
+    
 }
 
 
