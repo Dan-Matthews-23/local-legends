@@ -1,31 +1,80 @@
-< {% extends "base.html" %} {% block content %} 
+ {% extends "base.html" %} {% block content %} 
 
-<div class="container align-center" id="login-container">
-    <div class="row">
-        <div class="col with-borders align-center">Login</div>
-    </div>
-    <div class="row">
-        <div class="col s12 m6 l3 with-borders">Email Address:</div>
-        <div class="col s12 m6 l3 with-borders">
-            <input type="email" id="email" name="email" class="login-email" placeholder="enter email address" required>  
-        </div>      
-    </div>
-    <div class="row">
-        <div class="col s12 m6 l3 with-borders">Password:</div>
-        <div class="col s12 m6 l3 with-borders">
-            <input type="password" id="password" name="password" class="login-password" placeholder="enter password" required>
+<!--USER FORM FOR GET INVOLVED-->
+<section class="login">
+    <form action="index.html">
+        <div class="container align-center login-container ">
+            <div class="row sign-up-row  align-center ">
+                <div class="col-sign-up align-center lg-padding ">
+                    <h3>Sign in</h3>
+                </div>
+            </div>
+            <div class="row sign-up-row  align-center ">
+                <div class="col-sign-up  align-right  ">
+                    <label for="email">Email Address:</label>
+                </div>
+                <div class="col-sign-up  align-left ">
+                    <input type="email" class="sign-up" name="email_login" id="email_login" placeholder="Enter your email address" required>
+                </div>
+            </div>
+            <div class="row sign-up-row  align-center  ">
+                <div class="col-sign-up align-right lg-padding ">
+                    <label for="name">Password:</label>
+                </div>
+                <div class="col-sign-up  align-left ">
+                    <input type="password" class="sign-up" name="password_login" id="password_login" placeholder="Enter your password" required>
+                </div>
+            </div>
+            
+            <div class="row sign-up-row  align-center">
+                <div class="col-sign-up align-center ">
+                    <input type="submit" class="submit-btn" name="submit_login" id="submit_login" value="Sign In">
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col s12 m6 l3 with-borders align-center">
-            <input type="submit" id="login" name="login" class="login-btn" value="Login" required>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col s12 m6 l3 with-borders align-center"><a href="forgot-password">Forgot Password</a></div>
-    </div>
-</div>
+    </form>
+</section>
 
+<!--USER FORM FOR GET INVOLVED-->
+<section class="register">
+    <form action="index.html">
+        <div class="container align-center login-container">
+            <div class="row sign-up-row  align-center ">
+                <div class="col-sign-up align-center lg-padding">
+                    <h3>Register</h3>
+                </div>
+            </div>
+            <div class="row sign-up-row  align-center">
+                <div class="col-sign-up  align-right ">
+                    <label for="email">Email Address:</label>
+                </div>
+                <div class="col-sign-up  align-left">
+                    <input type="email" class="sign-up" name="email_register" id="email_register" placeholder="Email Address" required>
+                </div>
+            </div>
+            <div class="row sign-up-row  align-center">
+                <div class="col-sign-up align-right lg-padding">
+                    <label for="name">Password:</label>
+                </div>
+                <div class="col-sign-up  align-left">
+                    <input type="password" class="sign-up" name="password_register" id="password_register" placeholder="Choose a password" required>
+                </div>
+            </div>
+            <div class="row sign-up-row align-center">
+                <div class="col sign-up-over-one align-center ">
+                    <input type="checkbox" class="sign-up" name="agree" id="agree" required>
+                    I have read and understood the Terms and Conditions:
+                    
+                </div>
+            </div>
+            <div class="row sign-up-row align-center">
+                <div class="col-sign-up  align-center">
+                    <input type="submit" class="submit-btn" name="submit_register" id="submit_register" value="Register">
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
     
 
 

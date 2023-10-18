@@ -54,24 +54,55 @@ vertical-align: middle;
 
 /*<!-----------------------REGISTER/LOGIN PAGE------------------------------------>*/
 
-#login-container {
-    margin: auto;
-    }
-
-.login-email, 
-.login-password {
-margin: auto;
-text-align: center;
-height: 100px;
+.login-container{ 
+    margin:auto;
+    border-style: solid;
+    border-color: black;
 }
 
+.sign-up-row-header,
+.sign-up-row {
+
+    width: 90%;
+    letter-spacing: 2px;
+    font-size: inherit;
+    font-weight: bold;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin: auto;
+    text-align: center;
+}
+
+.col-sign-up {
+    width: 50%;
+    font-weight: bold;
+    padding: 4px;
+    margin: auto;
+    text-align: center;
+}
+
+.sign-up-over-one {
+    width: 100%;
+    font-weight: inherit;
+    padding: inherit;
+    text-align: center;
+}
+
+.text-area {
+    max-width: 100%;
+}
+
+.submit-btn {
+    margin: auto;
+    text-align: center;
+}
 /*<!-----------------------END OF REGISTER.LOGIN PAGE------------------------------------>*/
 
-
-
-
-
-
+.lg-padding {
+    padding: 16px;
+}
 
 
 .align-center {
