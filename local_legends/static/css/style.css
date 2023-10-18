@@ -52,7 +52,20 @@ vertical-align: middle;
 }
 /*<!-----------------------END OF WELCOME BANNER------------------------------------>*/
 
+/*<!-----------------------REGISTER/LOGIN PAGE------------------------------------>*/
 
+#login-container {
+    margin: auto;
+    }
+
+.login-email, 
+.login-password {
+margin: auto;
+text-align: center;
+height: 100px;
+}
+
+/*<!-----------------------END OF REGISTER.LOGIN PAGE------------------------------------>*/
 
 
 
