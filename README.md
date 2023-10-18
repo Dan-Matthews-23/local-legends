@@ -264,15 +264,43 @@ The Register / Login page will be in two sections. For ease, I will be importing
 
 Homepage Design: ![Homepage Design](/assets/images/stage-three-design-b)
 
-
 #### Profile
+
+The Profile page will allow the users to carry out Update and Delete functions from the CRUD design. At this stage, none of the codebehind the buttons or data validation work, and I would later like to add a small table for stats on how many stars and reviews the user has left. I've left this out of Stage Three design as this is something I will add only if I get time.
+
+Homepage Design: ![Homepage Design](/assets/images/stage-three-design-d)
+
 
 #### Restaurants
 
 I have replicated index.html for restaurants.html at Stage Three, simply because Restaurants will be an extention of index.html. I intend on displaying all restaurants on this page, and only a random selection of four on index. 
 
+Homepage Design: ![Homepage Design](/assets/images/stage-three-design-c)
 
-### Stage Four
+
+### Stage Four - Creating the database structure
+
+#### PostgreSQL
+
+I will be using PostgreSQL to create the structure and of the database and tables. My database structure, tables, columns and keys have all been approved by my mentor. I will be using commandline interface to perform these tasks. 
+
+I created the database which was sucessful on the second attempt (see testing).
+
+Creating DB using PostgeSQL Design: ![Create DB](/assets/images/stage-three-design-b)
+
+Then using the [PostgreSQL documentation](https://www.postgresql.org/docs/current/tutorial-table.html) to ensure I my SQL statement was correct, I created the users table
+
+![Create users table](/assets/images/stage-three-design-c)
+
+I did try to enter the database to make sure the table was create sucessfully, however nothing has shown. I will attempt to inset data into the table and then try to pull the data, which will show if it has worked or not. After several attempts this worked
+
+![Pulling row from users table](/assets/images/stage-three-design-c)
+
+
+
+
+
+
 
 ### Stage Five
 
