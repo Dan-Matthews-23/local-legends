@@ -260,6 +260,15 @@ Homepage Design: ![Homepage Design](/assets/images/stage-three-design-a)
 
 #### Register / login (register.html)
 
+The Register / Login page will be in two sections. For ease, I will be importing code from my first project as a placeholder, although I may choose to replicate the form completley. There is no code attached to the subit buttons below, only placeholder text, although data validation and formatting are present only because I imported code that I'd already written for Project One. 
+
+Homepage Design: ![Homepage Design](/assets/images/stage-three-design-b)
+
+
+#### Profile
+
+
+#### Restaurants
 
 
 ### Stage Four
