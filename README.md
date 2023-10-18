@@ -267,8 +267,9 @@ Homepage Design: ![Homepage Design](/assets/images/stage-three-design-b)
 
 #### Profile
 
-
 #### Restaurants
+
+I have replicated index.html for restaurants.html at Stage Three, simply because Restaurants will be an extention of index.html. I intend on displaying all restaurants on this page, and only a random selection of four on index. 
 
 
 ### Stage Four
