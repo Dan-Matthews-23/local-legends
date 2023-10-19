@@ -294,19 +294,27 @@ Then using the [PostgreSQL documentation](https://www.postgresql.org/docs/curren
 
 I did try to enter the database to make sure the table was create sucessfully, however nothing has shown. I will attempt to inset data into the table and then try to pull the data, which will show if it has worked or not. After several attempts this worked
 
-![Pulling row from users table](/assets/images/stage-three-design-c)
+![Pulling row from users table](/assets/images/stage-three-design-d)
 
+I used the same method to create the restaurants table
 
+![Create restaurants table](/assets/images/stage-three-design-f)
 
+You may have noticed some errors with the queries I've used so far. It was at this point I realised that I'd set all of my tables up incorrectly. I decided to drop my database and start again using carefulyl formulated SQL queries and the PostgreSQL documentation. These were my final queries, where I created the tables, inserted a test row then pulled the data from it to make ture everything (in particular the auto-increment for primary keys) were working fine:
 
+![Create restaurants table](/assets/images/stage-three-design-g)
 
+![Create users table](/assets/images/stage-three-design-h)
 
+![Create reviews table](/assets/images/stage-three-design-i)
 
-### Stage Five
+That completes Stage Four
+
+### Stage Five - Inititlsing SQL Alchemy
+
+This stage will focus on using SQL Alchemy to insert placeholder data into the local_legends database with Python to ensure that everything works as expected
 
 ### Stage Six
-
-
 
 ## Features
 

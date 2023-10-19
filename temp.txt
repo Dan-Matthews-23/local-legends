@@ -1,0 +1,48 @@
+CREATE TABLE restaurants (
+restaurant_id SERIAL,
+restaurant_name varchar(255) NOT NULL,
+restaurant_address_one varchar(255) NOT NULL,
+restaurant_address_two varchar(255),
+restaurant_address_three varchar(255),
+restaurant_address_four varchar(255),
+restaurant_address_postcode varchar(255) NOT NULL,
+restaurant_average_taste_stars int,
+restaurant_average_presentation_stars int,
+restaurant_average_friendliness_stars int,
+restaurant_average_price_stars int,
+restaurant_average_ambience_stars int,
+restaurant_average_overall_stars int,
+PRIMARY KEY (restaurant_id)
+);
+
+INSERT INTO restaurants (restaurant_name, restaurant_address_one, restaurant_address_postcode) VALUES ('TEST_NAME', 'TEST_STREET', 'TEST_POSTCODE');
+SELECT * FROM restaurants;
+
+CREATE TABLE users (
+user_id SERIAL,
+email_address varchar (255) NOT NULL,
+username varchar(255) NOT NULL,
+password varchar(255) NOT NULL,
+PRIMARY KEY (user_id)
+);
+
+INSERT INTO users (email_address, username, password) VALUES ('TEST_EMAIL', 'TEST_USERNAME', 'TEST_PASSWORD');
+SELECT * FROM users;
+
+CREATE TABLE reviews (
+review_id SERIAL,
+user_id int NOT NULL,
+restaurant_id int NOT NULL,
+taste_stars int NOT NULL,
+presentation_stars int NOT NULL,
+friendliness_stars int NOT NULL,
+price_stars int NOT NULL,
+ambience_stars int NOT NULL,
+overall_stars int NOT NULL,
+written_review_title varchar (255),
+written_review varchar (250),
+PRIMARY KEY (review_id)
+);
+
+INSERT INTO reviews (user_id, restaurant_id, taste_stars, presentation_stars, friendliness_stars, price_stars, ambience_stars, overall_stars) VALUES (1, 1, 5, 5, 5, 5, 5, 5);
+SELECT * FROM reviews;
