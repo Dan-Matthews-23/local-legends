@@ -325,11 +325,6 @@ I have done this using the models.py script, although this code was based on the
 ![Modals.py](/assets/images/stage-three-design-l)
 
 
-
-
-
-
-
 ### Stage Five - Inititlsing SQL Alchemy
 
 This stage will focus on using SQL Alchemy to insert placeholder data into the local_legends database with Python to ensure that everything works as expected
