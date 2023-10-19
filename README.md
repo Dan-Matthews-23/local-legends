@@ -308,7 +308,27 @@ You may have noticed some errors with the queries I've used so far. It was at th
 
 ![Create reviews table](/assets/images/stage-three-design-i)
 
+
 That completes Stage Four
+
+
+EDIT: I have made the mistake here of waiting until Stage Five before learning how to use SQL Alchemy. Had I learned this before Stage Four, I'd have known that creating the schema using SQL (PSQL command line) was a mistake. I should have used an SQL Alchemy model. I have therefore dropped the previous tables and started again using a models.py file, then initialised the schema through the command line as shown below
+
+![Models DB import](/assets/images/stage-three-design-j)
+
+Then I checked to make sure the tables were set up correctly. 
+
+![Checking tables set up](/assets/images/stage-three-design-k)
+
+I have done this using the models.py script, although this code was based on the examples given in Lesson 18: Creating the database on the Code Institute walkthrough tutorial. It wasn't possible to completley write my own code here as the syntax for this particluar function is more or less identical across the spectrum. 
+
+![Modals.py](/assets/images/stage-three-design-l)
+
+
+
+
+
+
 
 ### Stage Five - Inititlsing SQL Alchemy
 
