@@ -1,45 +1,22 @@
-< {% extends "base.html" %} {% block content %} <div class="container" id="get-started-header">
-    <div class="row">
-        <div class="col with-borders align-center">Restaurants you may like</div>
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="light-blue-text text-darken-4 center-align">Restaurants</h3>
+
+<div class="row">
+    {% for restaurants in restaurants %}
+    <div class="col s12 m6 l3">
+        <div class="card light-blue darken-4 center-align">
+            <div class="card-content white-text">
+                <span class="card-title">{{ restaurants.restaurant_name }}</span>
+            </div>
+            <div class="card-action">
+                <a href="{{ url_for('edit_review', restaurant_id=restaurants.id) }}" class="btn green accent-4">Edit</a>
+                <a href="{{ url_for('delete_category', restaurant_id=restaurants.id) }}" class="btn red">Delete</a>
+            </div>
+        </div>
     </div>
-    <div class="row">
-        <div class="col s12 m6 l3 with-borders">Restaurant Title Placeholder</div>
-        <div class="col s12 m6 l3 with-borders">Restaurant Title Placeholder</div>
-        <div class="col s12 m6 l3 with-borders">Restaurant Title Placeholder</div>
-        <div class="col s12 m6 l3 with-borders">Restaurant Title Placeholder</div>
-    </div>
-    <div class="row">
-        <div class="col s12 m6 l3 with-borders">Image Placeholder</div>
-        <div class="col s12 m6 l3 with-borders">Image Placeholder</div>
-        <div class="col s12 m6 l3 with-borders">Image Placeholder</div>
-        <div class="col s12 m6 l3 with-borders">Image Placeholder</div>
-    </div>
-    <div class="row">
-        <div class="col s12 m6 l3 with-borders">Description Placeholder</div>
-        <div class="col s12 m6 l3 with-borders">Description Placeholder</div>
-        <div class="col s12 m6 l3 with-borders">Description Placeholder</div>
-        <div class="col s12 m6 l3 with-borders">Description Placeholder</div>
-    </div>
-    <div class="row">
-        <a href="register.html">
-            <div class="col s12 m6 l3 with-borders"><input type="submit" id="placeholder" name="placeholder"
-                    value="placeholder"></div>
-        </a>
-        <div class="col s12 m6 l3 with-borders"><input type="submit" id="placeholder" name="placeholder"
-                value="placeholder"></div>
-        <div class="col s12 m6 l3 with-borders"><input type="submit" id="placeholder" name="placeholder"
-                value="placeholder"></div>
-        <div class="col s12 m6 l3 with-borders"><input type="submit" id="placeholder" name="placeholder"
-                value="placeholder"></div>
-    </div>
+    {% endfor %}
+</div>
 
-    </div>
-
-
-
-
-
-
-
-
-    {% endblock %}
+{% endblock %}
