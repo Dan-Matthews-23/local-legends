@@ -46,3 +46,30 @@ PRIMARY KEY (review_id)
 
 INSERT INTO reviews (user_id, restaurant_id, taste_stars, presentation_stars, friendliness_stars, price_stars, ambience_stars, overall_stars) VALUES (1, 1, 5, 5, 5, 5, 5, 5);
 SELECT * FROM reviews;
+
+
+
+
+
+
+ORIIGNAL ROUTES
+from flask import render_template, request, redirect, url_for
+from local_legends import app, db
+from local_legends.models import Users, Reviews, Restaurants
+
+
+@app.route("/")
+def home():
+    return render_template("register.html")
+
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "POST":
+        username = Users(username=request.form.get("username_register"))
+        email = Users(email=request.form.get("email_register"))
+        password = Users(password=request.form.get("password_register"))
+        db.session.add(username, email, password)
+        db.session.commit()
+        return redirect(url_for("home"))
+    return render_template("index.html")

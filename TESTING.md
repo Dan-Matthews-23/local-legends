@@ -27,6 +27,25 @@ The project was built using Google Chrome and tested through Chrome Developer To
 | 003                 |  base.html/style.css        | Chrome              |  .header-links      | Pass       | I realised that the error in Test 002 was because I was changing the class of the fa fa icon to be visible, when it should be hidden on larger viewports. I have removed the class on this icon. Tests passed |
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
 | ![001](/assets/testing/testing-images/test-three-a.webp)        | ![001](/assets/testing/testing-images/test-three-b.webp) | N/A            | N/A| N/A| N/A|
+| 004                 |  routes.py        | Chrome              |  register      | Fail       | When trying to pass data through Register.html, SQL Alchemy gave me na error |
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+| ![001](/assets/testing/testing-images/stage-five-design-a)        |  | N/A            | N/A| N/A| N/A|
+| 005                 |  routes.py        | Chrome              |  register      | Fail       | When trying to pass data through Register.html, SQL Alchemy gave me na error. The values of email and password are not being passed through |
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+| ![001](/assets/testing/testing-images/stage-five-design-b)        |  | N/A            | N/A| N/A| N/A|
+| 005                 |  routes.py        | Chrome              |  register      | Fail       | I've commented out email and password handling in routes.py to see if username was passed through. It was. Test  failed but I know username is working  |
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+| ![001](/assets/testing/testing-images/stage-five-design-c)        |  | N/A            | N/A| N/A| N/A|
+| 005                 |  routes.py        | Chrome              |  register      | Fail       | I've done the same for email. It worked which means email is also being passed through  |
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+| ![001](/assets/testing/testing-images/stage-five-design-d)        |  | N/A            | N/A| N/A| N/A|
+| 005                 |  routes.py        | Chrome              |  register      | Fail       | Now I can see password being passed through, there should be no reason all three should not be passed together. However tests failed. Only username was passed through. I've changed the order of these so that password was first. As I suspected only password was being passed through. This means that the script is only passing through the first value  |
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+| ![001](/assets/testing/testing-images/stage-five-design-e)        |  | N/A            | N/A| N/A| N/A|
+| 005                 |  routes.py        | Chrome              |  register      | Pass       | I contacted Tutor Support to aid me with this error. They suggested that I pass the three bits of data as one argument. I have made those changes with support from suggested code. I was redireced back to register.html which is what I expedted since I have not specified what should happen. I then opened up POSTGRESQL terminal to test to see if the data was submitted. It had been.   |
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+| ![001](/assets/testing/testing-images/stage-five-design-f)        |  | N/A            | N/A| N/A| N/A|
+
 
 
   - - -

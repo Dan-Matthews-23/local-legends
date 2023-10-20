@@ -37,7 +37,7 @@
 
 <!--USER FORM FOR GET INVOLVED-->
 <section class="register">
-    <form action="index.html">
+    <form method="POST" action="{{ url_for('register') }}">
         <div class="container align-center login-container">
             <div class="row sign-up-row  align-center ">
                 <div class="col-sign-up align-center lg-padding">
@@ -53,6 +53,15 @@
                 </div>
             </div>
             <div class="row sign-up-row  align-center">
+                <div class="col-sign-up  align-right ">
+                    <label for="email">Username:</label>
+                </div>
+                <div class="col-sign-up  align-left">
+                    <input type="text" class="sign-up" name="username_register" id="username_register" placeholder="Choose a username"
+                        required>
+                </div>
+            </div>
+            <div class="row sign-up-row  align-center">
                 <div class="col-sign-up align-right lg-padding">
                     <label for="name">Password:</label>
                 </div>
@@ -60,13 +69,13 @@
                     <input type="password" class="sign-up" name="password_register" id="password_register" placeholder="Choose a password" required>
                 </div>
             </div>
-            <div class="row sign-up-row align-center">
+            <!--<div class="row sign-up-row align-center">
                 <div class="col sign-up-over-one align-center ">
                     <input type="checkbox" class="sign-up" name="agree" id="agree" required>
                     I have read and understood the Terms and Conditions:
                     
                 </div>
-            </div>
+            </div>-->
             <div class="row sign-up-row align-center">
                 <div class="col-sign-up  align-center">
                     <input type="submit" class="submit-btn" name="submit_register" id="submit_register" value="Register">
