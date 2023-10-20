@@ -324,13 +324,28 @@ I have done this using the models.py script, although this code was based on the
 
 ![Modals.py](/assets/images/stage-three-design-l)
 
-### Stage Five - Inititlsing SQL Alchemy
+### Stage Five: [u]C[/U]RUD
+
+#### Register account
 
 This stage will focus on using SQL Alchemy to insert placeholder data into the local_legends database with Python to ensure that everything works as expected. For this stage I have set the main route as Register, which means every time I make the python server live I will be testing with Register.html.
 
-#### Making the connection
+The first 15 tests all failed (see tests 004 to 009 in testing readme). I had to request support from Tutor Support having exhausted the documentation and attempts to use AI. However the connection is now working:
 
-The first test failed (see #Testing). 
+![Adding values to database](/assets/images/stage-five-design-g)
+
+#### Create a review
+
+This section will focus on leaving only one review for only one restaurant. But to do that I first need to create a record in the Restaurants table so I can build the visual aspects of restaurants.html around that. I will document this as I go. For ease, I am going to use command line controls to populate the restaurants table with one row:
+
+![Adding a row to restaurants using command line](/assets/images/stage-five-design-h)
+
+Now I can start to build the page. 
+
+
+
+
+
 
 ### Stage Six
 

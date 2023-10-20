@@ -1,7 +1,6 @@
-from flask import render_template, request, redirect, url_for
+from flask import render_template, flash, request, redirect, url_for
 from local_legends import app, db
 from local_legends.models import Users, Reviews, Restaurants
-
 
 @app.route("/")
 def home():
@@ -17,10 +16,6 @@ def register():
         new_user = Users(username=username, email=email, password=password)
         db.session.add(new_user)
         db.session.commit()
+        flash('Registration successful!')
         return redirect(url_for("home"))
     return render_template("index.html")
-
-  
-
-
-
