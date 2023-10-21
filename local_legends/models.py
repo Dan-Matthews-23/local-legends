@@ -7,8 +7,7 @@ class Users(db.Model):
     username = db.Column(db.String(25), unique=True, nullable=False)
     email = db.Column(db.String(25), nullable=False)
     password = db.Column(db.String(25), nullable=False)
-    reviews = db.relationship("Reviews", backref="users", cascade="all, delete", lazy=True)
-    restaurants = db.relationship("Restaurants", backref="users", cascade="all, delete", lazy=True)
+    
 
     def __repr__(self):
         return self.username
@@ -16,7 +15,7 @@ class Users(db.Model):
 
 class Restaurants(db.Model):
     """Schema for the Restaurants model."""
-    restaurant_id = db.Column(db.Integer, primary_key=True)
+    restaurant_id = db.Column(db.Integer, db.ForeignKey("reviews.review_id", ondelete="CASCADE"), primary_key=True)
     restaurant_name = db.Column(db.String(25), nullable=False)
     restaurant_address_one = db.Column(db.String(25), nullable=False)
     restaurant_address_two = db.Column(db.String(25))
@@ -29,7 +28,7 @@ class Restaurants(db.Model):
     restaurant_average_price_stars = db.Column(db.Float)
     restaurant_average_ambience_stars = db.Column(db.Float)
     restaurant_average_overall_stars = db.Column(db.Float)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id", ondelete="CASCADE"), nullable=False)
+    
 
     def __repr__(self):
         return "#{0} - Task: {1} | Urgent: {2}".format(self.restaurant_id, self.restaurant_name, self.restaurant_address_postcode)

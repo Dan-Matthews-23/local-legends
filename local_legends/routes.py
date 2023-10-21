@@ -4,13 +4,14 @@ from local_legends.models import Users, Reviews, Restaurants
 
 @app.route("/")
 def home():
-    return render_template("restaurants.html")
+    return render_template("index.html")
 
 
 @app.route("/restaurants")
 def restaurants():
-    restaurants = list(Restaurants.query.order_by(Restaurants.restaurant_id).all())
+    restaurants = list(Restaurants.query.order_by(Restaurants.restaurant_name).all())
     return render_template("restaurants.html", restaurants=restaurants)
+
 
 
 

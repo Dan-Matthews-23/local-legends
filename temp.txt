@@ -75,3 +75,42 @@ def register():
         db.session.commit()
         return redirect(url_for("home"))
     return render_template("index.html")
+
+
+ORIIGNAL RESTAURAUNTS
+
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="light-blue-text text-darken-4 center-align">Restaurant List</h3>
+
+<div class="row align-center with-borders">
+    {% for restaurants in restaurants %}
+    <div class="col s12 m6 l3">
+        <div class="align-center with-borders col">
+            <div class="align-center with-borders col">
+                <span class="card-title">{{ restaurants.restaurant_name }}</span>
+            </div>
+            <div class="align-center with-borders col"><input type="submit" claass="submit-btn" name="leaveReview"
+                    id="leaveReview" value="Leave Review"></div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+INSERT INTO restaurants (restaurant_name, restaurant_address_one, restaurant_address_two, restaurant_address_three, restaurant_address_four, restaurant_address_postcode,  restaurant_average_taste_stars, restaurant_average_presentation_stars, 
+restaurant_average_friendliness_stars, restaurant_average_price_stars, restaurant_average_ambience_stars, restaurant_average_overall_stars) VALUES ('Monster Munch', 'Ingleside Street', 'None', 'None', 'None', 'SR1 1UL', 3, 3, 2, 3, 5, 6);
