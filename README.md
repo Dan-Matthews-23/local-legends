@@ -340,7 +340,13 @@ This section will focus on leaving only one review for only one restaurant. But 
 
 ![Adding a row to restaurants using command line](/assets/images/stage-five-design-h)
 
-Now I can start to build the page. 
+The restaurants page is now complete, and I can see a list of everything in the Restaurants database
+
+![Adding a row to restaurants using command line](/assets/images/stage-five-design-i)
+
+![Adding a row to restaurants using command line](/assets/images/stage-five-design-j)
+
+The Reading of CRUD is now complete. 
 
 
 
