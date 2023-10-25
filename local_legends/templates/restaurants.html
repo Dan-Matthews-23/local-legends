@@ -13,17 +13,21 @@
         <div class="card-content">
             <span class="card-title activator grey-text text-darken-4">{{ restaurants.restaurant_name }}<i
                     class="material-icons right">See Stars</i></span>
-            <p><a href="#">Leave a review</a></p>
+            
         </div>
         <div class="card-reveal">
             <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-            <p>{{ restaurants.taste_stars }}.</p>
-            <p>{{ restaurants.presentation_stars }}.</p>
-            <p>{{ restaurants.friendliness_stars }}.</p>
-            <p>{{ restaurants.ambience_stars }}.</p>
-            <p>{{ restaurants.overall_stars }}.</p>
+                <p>{{ restaurants.average_taste_stars }}.</p>
+                <p>{{ restaurants.average_presentation_stars }}.</p>
+                <p>{{ restaurants.average_friendliness_stars }}.</p>
+                <p>{{ restaurants.average_ambience_stars }}.</p>
+                <p>{{ restaurants.average_overall_stars }}.</p>
         </div>
-        </div>
+    </div>
+    <div class="card-action">
+        <a href="{{ url_for('leave_review', restaurant_id=restaurants.restaurant_id) }}">Leave a review</a>
+        
+    </div>
         {% endfor %}
    
 

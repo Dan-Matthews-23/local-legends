@@ -12,6 +12,37 @@ def restaurants():
     restaurants = list(Restaurants.query.order_by(Restaurants.restaurant_name).all())
     return render_template("restaurants.html", restaurants=restaurants)
 
+@app.route("/leave_review/<int:restaurant_id>", methods=["GET", "POST"])
+def leave_review(restaurant_id):
+    restaurant = Restaurants.query.get_or_404(restaurant_id)
+    if request.method == "POST":
+        #restaurant.restaurant_name = request.form.get("restaurant_name")
+        db.session.commit()
+        return redirect(url_for("restaurants"))
+    return render_template("leave_review.html", restaurant=restaurant)
+
+
+@app.route("/leave_review/<int:restaurant_id>", methods=["GET", "POST"])
+def handle_leave_review():
+    if request.method == "POST":
+        written_review = request.form.get("written_review")
+        add_review = Reviews(taste_stars=1, presentation_stars=1, 
+        friendliness_stars=1, price_stars=1, ambience_stars=1, 
+        overall_stars=1, written_review_title="Test", 
+        written_review="BLAH", restaurant_id=1, user_id=1)
+        db.session.add(add_review)
+        db.session.commit()
+        flash('Registration successful!')
+        return redirect(url_for("leave_review"))
+        return render_template("leave_review/<int:restaurant_id>")
+
+
+
+
+
+
+
+
 
 
 
@@ -27,6 +58,11 @@ def register():
         flash('Registration successful!')
         return redirect(url_for("home"))
     return render_template("index.html")
+
+
+
+
+
 
 
 @app.route("/profile", methods=["GET", "POST"])

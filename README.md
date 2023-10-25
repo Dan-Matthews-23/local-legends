@@ -324,7 +324,7 @@ I have done this using the models.py script, although this code was based on the
 
 ![Modals.py](/assets/images/stage-three-design-l)
 
-### Stage Five: [u]C[/U]RUD
+### Stage Five: [u]CR[/u]UD
 
 #### Register account
 
@@ -346,14 +346,17 @@ The restaurants page is now complete, and I can see a list of everything in the 
 
 ![Adding a row to restaurants using command line](/assets/images/stage-five-design-j)
 
-The Reading of CRUD is now complete. 
+The Creating and Reading of CRUD is now complete. 
 
+### Stage Six - CR[u]U[/u]D
 
+There will be two ways to update details in this project; user details and review edits. 
 
+I did start this stage by creating routes for user details, but realised that I would first need to create the session. To update user details, it's essential the user is able to log in. However it's not essential for the user to be logged in to leave a review, at least not in this stage (it will be at a later stage). For now I need to do the minimum to ensure this project meets CRUD design. 
 
+#### Reviews
 
-
-### Stage Six
+At this stage I will allow a 'guest' to leave a review just so we can pass the Update aspect of CRUD. This is possible with the new Restaurants page. I will add a button to each restaurant section and attempt to pass the restaurant ID through the URL. 
 
 ## Features
 

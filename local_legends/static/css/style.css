@@ -100,6 +100,33 @@ vertical-align: middle;
 }
 /*<!-----------------------END OF REGISTER.LOGIN PAGE------------------------------------>*/
 
+/* To override the Materialize radio button opacity class */
+#taste_one,
+#taste_two,
+#taste_three,
+#taste_four,
+#taste_five
+ {
+    opacity: 1;
+    border: black;
+    border-color: black;
+    border-style: solid;
+    color: black;
+    padding: 5px;
+    position: relative;
+    box-sizing: content-box;
+    background-color: black;
+    
+
+}
+
+
+
+
+
+
+
+
 .lg-padding {
     padding: 16px;
 }

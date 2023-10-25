@@ -1,0 +1,51 @@
+
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="light-blue-text text-darken-4 center-align">Leave a review</h3>
+
+<div class="row card-panel grey lighten-5">
+    <form class="col s12" method="POST" action="{{ url_for('handle_leave_review', restaurant_id=restaurant.restaurant_id) }}">
+        <!-- restaurant name -->
+        <div class="row">
+            <div class="col">{{ restaurant.restaurant_name }}</div>
+        </div>
+        <!--<div class="row">
+            <div class="col">
+                <fieldset>
+                    <legend>How many stars would you rate the taste?</legend>
+                        <input type="radio" id="taste_one" name="taste" value="1">
+                        <label for="taste_one">1 star</label><br>
+                        <input type="radio" id="taste_two" name="taste" value="2">
+                        <label for="taste_two">2 stars</label><br>
+                        <input type="radio" id="taste_three" name="taste" value="3">
+                        <label for="taste_three">3 stars</label><br>
+                        <input type="radio" id="taste_four" name="taste" value="4">
+                        <label for="taste_four">4 stars</label><br>
+                        <input type="radio" id="taste_five" name="taste" value="5">
+                        <label for="taste_five">5 stars</label><br>
+                </fieldset>                
+            </div>
+        </div>-->
+        <div class="row">
+            <div class="col">
+                    <input type="text" id="written_review" name="written_review" value="Enter your review here">
+                    <label for="written_review">Leave a review</label><br>                   
+               
+            </div>
+        </div>
+        
+    
+        <div class="row">
+            <div class="col s12 center-align">
+                <button type="submit" class="btn-large light-blue darken-1">Leave Review<i class="fas fa-edit right"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+{% endblock %}
