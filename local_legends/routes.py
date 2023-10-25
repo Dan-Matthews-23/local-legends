@@ -27,3 +27,17 @@ def register():
         flash('Registration successful!')
         return redirect(url_for("home"))
     return render_template("index.html")
+
+
+@app.route("/profile", methods=["GET", "POST"])
+def profile():
+    if request.method == "POST":
+        new_pass = request.form.get("password_change")
+        confirm_new_pass = request.form.get("confirm_password_change")
+        #password = request.form.get("password_register")
+        update_user_password = Users(password=password)
+        db.session.update(update_user_password)
+        db.session.commit()
+        flash('Password Updated!')
+        return redirect(url_for("profile"))
+    return render_template("profile.html")
