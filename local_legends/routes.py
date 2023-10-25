@@ -16,6 +16,7 @@ def restaurants():
 @app.route("/restaurant_profile/<int:restaurant_id>", methods=["GET", "POST"])
 def restaurant_profile(restaurant_id):
     restaurant = Restaurants.query.get_or_404(restaurant_id)
+    #reviews = Reviews.query.get_or_404(restaurant_id)
     if request.method == "POST":
         # restaurant.restaurant_name = request.form.get("restaurant_name")
         db.session.commit()
@@ -23,19 +24,7 @@ def restaurant_profile(restaurant_id):
     return render_template("restaurant_profile.html", restaurant=restaurant)
 
 
-#@app.route("/restaurant_profile/<int:restaurant_id>", methods=["POST"])
-#def handle_leave_review(restaurant_id):
-#    if request.method == "POST":
-#        written_review = request.form.get("written_review")
-#        add_review = Reviews(taste_stars=1, presentation_stars=1,
- #                            friendliness_stars=1, price_stars=1, ambience_stars=1,
- #                            overall_stars=1, written_review_title="Test",
- #                            written_review="BLAH", restaurant_id=16, user_id=1)
- #       db.session.add(add_review)
- #       db.session.commit()
-        # Redirect to the restaurants page if the review is successfully added to the database
-#        return redirect(url_for("restaurant_profile", restaurant_id=restaurant_id))
-#    return render_template("restaurants.html")
+
 
 @app.route("/restaurant_profile/<int:restaurant_id>/leave_review", methods=["POST"])
 def handle_leave_review(restaurant_id):
@@ -53,10 +42,7 @@ def handle_leave_review(restaurant_id):
 
     # commit the changes to the database
     db.session.commit()
-
-    flash("Review added")
-
-
+   
     # redirect the user to the restaurant profile page
     return redirect(url_for("restaurant_profile", restaurant_id=restaurant_id))
 
