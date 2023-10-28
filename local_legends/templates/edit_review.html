@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container with-borders align-center card-panel grey lighten-5">
+    
+    <div class="row with-borders">
+        <!--<div class="col with-borders">-->
+        <div class="row card-panel grey lighten-5">
+            <form action="{{ url_for('handle_edit_review', review_id=reviews.review_id) }}" method="POST">
+                <!-- restaurant name -->
+
+                <div class="row ">
+                    <div class="col">
+                        <h3>Edit Review {{ reviews.review_id }}</h3>
+                    </div>
+                </div>
+                <!--<div class="row with-borders review-stars-row ">
+                    <div class="col with-borders review-stars-div">
+                        <h4 class="review-heading">Taste:</h4>
+                    </div>
+                    <div class="col review-stars-div">
+                        <span><i class="fa-regular fa-star fa-2xl" style="color: #ede607;"></i></span>
+                        <span><i class="fa-regular fa-star fa-2xl" style="color: #ede607;"></i></span>
+                        <span><i class="fa-regular fa-star fa-2xl" style="color: #ede607;"></i></span>
+                        <span><i class="fa-regular fa-star fa-2xl" style="color: #ede607;"></i></span>
+                        <span><i class="fa-regular fa-star fa-2xl" style="color: #ede607;"></i></span>
+                    </div>
+                </div>-->
+                <div class="row">
+                    <div class="col">
+                        <input type="text" id="written_review" name="written_review" value="Enter your review here">
+                        <label for="written_review">Leave a review</label><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <button type="submit" class="btn-large light-blue darken-1">Submit Review<i
+                                class="fas fa-edit right"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--</div>-->
+    </div>
+</div>
+
+
+   
+</div>
+{% endblock %}

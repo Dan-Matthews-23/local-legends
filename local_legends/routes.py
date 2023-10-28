@@ -20,8 +20,10 @@ def restaurants():
 @app.route("/restaurant_profile/<int:restaurant_id>", methods=["GET", "POST"])
 def restaurant_profile(restaurant_id):
     restaurant = Restaurants.query.get_or_404(restaurant_id)
-    reviews = list(Reviews.query.order_by(Reviews.review_id).all())
-    #reviews = Reviews.query.get_or_404(restaurant_id)
+    #reviews = list(Reviews.query.order_by(Reviews.review_id).all())
+    reviews = Reviews.query.filter_by(
+        restaurant_id=restaurant_id).order_by(Reviews.review_id).all()
+  #reviews = Reviews.query.get_or_404(restaurant_id)
     if request.method == "POST":
         # restaurant.restaurant_name = request.form.get("restaurant_name")
         db.session.commit()
@@ -33,24 +35,57 @@ def restaurant_profile(restaurant_id):
 
 @app.route("/restaurant_profile/<int:restaurant_id>/leave_review", methods=["POST"])
 def handle_leave_review(restaurant_id):
-
     written_review = request.form.get("written_review")
-
-    # create a new review object
     review = Reviews(taste_stars=1, presentation_stars=1,friendliness_stars=1, 
     price_stars=1, ambience_stars=1, overall_stars=1, 
-    written_review_title="Test", written_review="BLAH", 
-    restaurant_id=16, user_id=1)
-
-    # add the review to the database
+                     written_review_title="Test", written_review=written_review,
+                     restaurant_id=restaurant_id, user_id=1)
     db.session.add(review)
-
-    # commit the changes to the database
     db.session.commit()
-   
-    # redirect the user to the restaurant profile page
     return redirect(url_for("restaurant_profile", restaurant_id=restaurant_id))
 
+
+@app.route("/edit_review/<int:review_id>", methods=["GET", "POST"])
+def handle_edit_review(review_id):
+    reviews = Reviews.query.get_or_404(review_id)
+    review_id = reviews.review_id
+   
+    # reviews = list(Reviews.query.order_by(Reviews.review_id).all())
+    #reviews = Reviews.query.filter_by(
+       # review_id=review_id).order_by(Reviews.review_id).all()
+       
+    if request.method == "POST":
+        # restaurant.restaurant_name = request.form.get("restaurant_name")
+        db.session.commit()
+        return redirect(url_for("edit_review", review_id=reviews.review_id))
+    return render_template("edit_review.html", reviews=reviews)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@app.route("/edit_review/<int:review_id>", methods=["GET", "POST"])
+def edit_review(review_id):
+    reviews = Reviews.query.get_or_404(review_id)    
+    if request.method == "POST":
+        db.session.commit()
+        return redirect(url_for("edit_review", review_id=reviews.review_id))
+    return render_template("edit_review.html", review_id=reviews.review_id)
 
 
 
