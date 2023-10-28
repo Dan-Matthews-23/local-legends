@@ -13,15 +13,20 @@ def restaurants():
     return render_template("restaurants.html", restaurants=restaurants)
 
 
+
+    
+
+
 @app.route("/restaurant_profile/<int:restaurant_id>", methods=["GET", "POST"])
 def restaurant_profile(restaurant_id):
     restaurant = Restaurants.query.get_or_404(restaurant_id)
+    reviews = list(Reviews.query.order_by(Reviews.review_id).all())
     #reviews = Reviews.query.get_or_404(restaurant_id)
     if request.method == "POST":
         # restaurant.restaurant_name = request.form.get("restaurant_name")
         db.session.commit()
         return redirect(url_for("restaurant_profile", restaurant_id=restaurant.restaurant_id))
-    return render_template("restaurant_profile.html", restaurant=restaurant)
+    return render_template("restaurant_profile.html", restaurant=restaurant, reviews=reviews)
 
 
 

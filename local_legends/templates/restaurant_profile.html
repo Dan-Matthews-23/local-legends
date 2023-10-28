@@ -35,6 +35,32 @@
                
             </div>
         </div>
+
+
+        <h3 class="light-blue-text text-darken-4 center-align">Current Reviews</h3>
+        {% for reviews in reviews %}
+        
+        <div class="row align-center with-borders"></div>
+        <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="https://en.wikipedia.org/wiki/File:Barbieri_-_ViaSophia25668.jpg">
+            </div>
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">{{ reviews.written_review }}<i
+                        class="material-icons right">See Stars</i></span>
+        
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                <p>{{ reviews.taste_stars }}.</p>
+                <p>{{ reviews.friendliness_stars }}.</p>
+                <p>{{ reviews.friendliness_stars }}.</p>
+                <p>{{ reviews.ambience_stars }}.</p>
+                <p>{{ reviews.overall_stars }}.</p>
+            </div>
+        </div>
+        
+        {% endfor %}
         
     
         <div class="row">
