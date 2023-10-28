@@ -47,8 +47,8 @@ def handle_leave_review(restaurant_id):
 
 @app.route("/edit_review/<int:review_id>", methods=["GET", "POST"])
 def handle_edit_review(review_id):
+    #reviews = Reviews.query.get_or_404(review_id)
     reviews = Reviews.query.get_or_404(review_id)
-    review_id = reviews.review_id
    
     # reviews = list(Reviews.query.order_by(Reviews.review_id).all())
     #reviews = Reviews.query.filter_by(
@@ -59,22 +59,6 @@ def handle_edit_review(review_id):
         db.session.commit()
         return redirect(url_for("edit_review", review_id=reviews.review_id))
     return render_template("edit_review.html", reviews=reviews)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
