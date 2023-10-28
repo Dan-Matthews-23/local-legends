@@ -58,6 +58,8 @@
     </div>
     {% for reviews in reviews %}
     <form action="{{ url_for('edit_review', review_id=reviews.review_id) }}" method="POST">
+        <input type="hidden" name="review_id" value="{{ reviews.review_id|int }}">
+        
        
     <div class="row with-borders">
         <div class="col with-borders">
@@ -80,8 +82,8 @@
         <div class="col with-borders">
             
                 
-                <button type="submit" class="btn-large light-blue darken-1">Edit Review {{ reviews.review_id }}<i class="fas fa-edit right"></i>
-                </button>
+                
+                <button type="submit" class="btn-large light-blue darken-1">Edit Review {{ reviews.review_id }}<i class="fas fa-edit right"></i></button>
 
         </div>
     </div>

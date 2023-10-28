@@ -47,6 +47,9 @@ The project was built using Google Chrome and tested through Chrome Developer To
 | ![001](/assets/testing/testing-images/stage-five-design-f)        |  | N/A            | N/A| N/A| N/A|| 005                 |  routes.py        | Chrome              |  register      | Pass       |I've made several tests to make sure the ocde begind the button is now working. Passed all tests   |
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
 | ![001](/assets/testing/testing-images/stage-five-design-f)        |  | N/A            | N/A| N/A| N/A|
+| 010                 |  routes.py        | Chrome              |  def edit_review      | Fail       | The value of review_id is being passed as a string anc causing the SQL error below.    |
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+| ![001](/assets/testing/testing-images/stage-six-design-a)        |  | N/A            | N/A| N/A| N/A|| 005                 |  routes.py        |
 
 
 

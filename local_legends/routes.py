@@ -61,15 +61,22 @@ def handle_edit_review(review_id):
     return render_template("edit_review.html", reviews=reviews)
 
 
+@app.route("/edit_review", methods=["GET", "POST"])
+def edit_review():
+   # review_id = request.form.get("review_id")
+    review_id = 38;
+    reviews = Reviews.query.get_or_404(review_id)
 
-
-@app.route("/edit_review/<int:review_id>", methods=["GET", "POST"])
-def edit_review(review_id):
-    reviews = Reviews.query.get_or_404(review_id)    
     if request.method == "POST":
         db.session.commit()
-        return redirect(url_for("edit_review", review_id=reviews.review_id))
-    return render_template("edit_review.html", review_id=reviews.review_id)
+        #review_id = reviews.review_id
+        return redirect(url_for("edit_review", review_id=review_id))
+
+    return render_template("edit_review.html", review_id=review_id, reviews=reviews)
+
+
+
+
 
 
 
