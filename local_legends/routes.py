@@ -70,8 +70,10 @@ def handle_edit_review(review_id):
         written_review=edit_written_review, 
         restaurant_id=restaurant_id, 
         user_id=1)
+    
     db.session.update(review)
     db.session.commit()
+
     return redirect(url_for("edit_review", review_id=review_id))
     
 
