@@ -31,48 +31,107 @@ def restaurant_profile(restaurant_id):
     return render_template("restaurant_profile.html", restaurant=restaurant, reviews=reviews)
 
 
+@app.route("/edit_review/<int:review_id>", methods=["GET", "POST"])
+def edit_review(review_id):
+    review = Reviews.query.get_or_404(review_id)
+    # reviews = list(Reviews.query.order_by(Reviews.review_id).all())
+    reviews = Reviews.query.filter_by(
+        review_id=review_id).order_by(Reviews.review_id).all()
+  # reviews = Reviews.query.get_or_404(restaurant_id)
+    if request.method == "POST":
+        # restaurant.restaurant_name = request.form.get("restaurant_name")
+        db.session.commit()
+        return redirect(url_for("edit_review", review_id=review.review_id))
+    return render_template("edit_review.html", reviews=reviews)
+
+
+
+
+
+
+@app.route("/edit_review/<int:review_id>", methods=["GET", "POST"])
+def handle_edit_review(review_id):
+    edit_review_title = request.form.get("edit_review_title")
+    edit_written_review = request.form.get("edit_written_review")
+    edit_taste_stars = request.form.get("edit_taste_stars")
+    edit_presentation_stars = request.form.get("edit_presentation_stars")
+    edit_friendliness_stars = request.form.get("edit_friendliness_stars")
+    edit_price_stars = request.form.get("edit_price_stars")
+    edit_ambience_stars = request.form.get("edit_ambience_stars")
+
+    review = Reviews(
+        taste_stars=edit_taste_stars, 
+        presentation_stars=edit_presentation_stars, 
+        friendliness_stars=edit_friendliness_stars, 
+        price_stars=edit_price_stars, 
+        ambience_stars=edit_ambience_stars, 
+        overall_stars=1,
+        written_review_title=edit_review_title, 
+        written_review=edit_written_review, 
+        restaurant_id=restaurant_id, 
+        user_id=1)
+    db.session.update(review)
+    db.session.commit()
+    return redirect(url_for("edit_review", review_id=review_id))
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @app.route("/restaurant_profile/<int:restaurant_id>/leave_review", methods=["POST"])
 def handle_leave_review(restaurant_id):
-    written_review = request.form.get("written_review")
-    review = Reviews(taste_stars=1, presentation_stars=1,friendliness_stars=1, 
-    price_stars=1, ambience_stars=1, overall_stars=1, 
-                     written_review_title="Test", written_review=written_review,
+    edit_review_title = request.form.get("edit_review_title")
+    edit_written_review = request.form.get("edit_written_review")
+    edit_taste_stars = request.form.get("edit_taste_stars")
+    edit_presentation_stars = request.form.get("edit_presentation_stars")
+    edit_friendliness_stars = request.form.get("edit_friendliness_stars")
+    edit_price_stars = request.form.get("edit_price_stars")
+    edit_ambience_stars = request.form.get("edit_ambience_stars")
+
+    review = Reviews(taste_stars=edit_taste_stars, presentation_stars=edit_presentation_stars, friendliness_stars=edit_friendliness_stars,
+                     price_stars=edit_price_stars, ambience_stars=edit_ambience_stars, overall_stars=1,
+                     written_review_title=edit_review_title, written_review=edit_written_review,
                      restaurant_id=restaurant_id, user_id=1)
     db.session.add(review)
     db.session.commit()
     return redirect(url_for("restaurant_profile", restaurant_id=restaurant_id))
 
 
-@app.route("/edit_review/<int:review_id>", methods=["GET", "POST"])
-def handle_edit_review(review_id):
-    #reviews = Reviews.query.get_or_404(review_id)
-    reviews = Reviews.query.get_or_404(review_id)
-   
-    # reviews = list(Reviews.query.order_by(Reviews.review_id).all())
-    #reviews = Reviews.query.filter_by(
-       # review_id=review_id).order_by(Reviews.review_id).all()
-       
-    if request.method == "POST":
-        # restaurant.restaurant_name = request.form.get("restaurant_name")
-        db.session.commit()
-        return redirect(url_for("edit_review", review_id=reviews.review_id))
-    return render_template("edit_review.html", reviews=reviews)
 
 
-@app.route("/edit_review", methods=["GET", "POST"])
-def edit_review():
-   # review_id = request.form.get("review_id")
-    review_id = 38;
-    reviews = Reviews.query.get_or_404(review_id)
 
-    if request.method == "POST":
-        db.session.commit()
-        #review_id = reviews.review_id
-        return redirect(url_for("edit_review", review_id=review_id))
 
-    return render_template("edit_review.html", review_id=review_id, reviews=reviews)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

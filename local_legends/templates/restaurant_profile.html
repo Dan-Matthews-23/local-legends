@@ -18,7 +18,7 @@
                             <h3>How would you rate your experience?</h3>
                         </div>
                     </div>
-                    <div class="row with-borders review-stars-row ">
+                    <!--<div class="row with-borders review-stars-row ">
                         <div class="col with-borders review-stars-div">
                             <h4 class="review-heading">Taste:</h4>
                         </div>
@@ -29,13 +29,63 @@
                             <span><i class="fa-regular fa-star fa-2xl" style="color: #ede607;"></i></span>
                             <span><i class="fa-regular fa-star fa-2xl" style="color: #ede607;"></i></span>
                         </div>
-                    </div>
-                    <div class="row">
+                    </div>-->
+
+                    <div class="row ">
                         <div class="col">
-                            <input type="text" id="written_review" name="written_review" value="Enter your review here">
-                            <label for="written_review">Leave a review</label><br>
+                            <h4><label for="edit_review_title">Review Title {{ reviews.review_id }}</label></h4>
+                        </div>
+                        <div class="col"><input type="text" name="edit_review_title" id="edit_review_title"
+                                value="{{ reviews.written_review_title }}"></div>
+                    </div>
+                    <div class="row ">
+                        <div class="col">
+                            <h4><label for="edit_written_review">Written Review {{ reviews.review_id }}</label></h4>
+                        </div>
+                        <div class="col"><input type="text" name="edit_written_review" id="edit_written_review"
+                                value="{{ reviews.written_review }}"></div>
+                    </div>
+                    <div class="row ">
+                        <div class="col">
+                            <h4><label for="edit_taste_stars">How would you rate the taste?{{ reviews.taste_stars }}</label></h4>
+                        </div>
+                        <div class="col"><input type="text" name="edit_taste_stars" id="edit_taste_stars" value="{{ reviews.taste_stars }}">
                         </div>
                     </div>
+                    <div class="row ">
+                        <div class="col">
+                            <h4><label for="edit_presentation_stars">How would you rate the presentation?{{ reviews.presentation }}</label>
+                            </h4>
+                        </div>
+                        <div class="col"><input type="text" name="edit_presentation_stars" id="edit_presentation_stars"
+                                value="{{ reviews.presentation }}"></div>
+                    </div>
+                    <div class="row ">
+                        <div class="col">
+                            <h4><label for="edit_friendliness_stars">How would you rate the friendliness?{{ reviews.friendliness }}</label>
+                            </h4>
+                        </div>
+                        <div class="col"><input type="text" name="edit_friendliness_stars" id="edit_friendliness_stars"
+                                value="{{ reviews.friendliness }}"></div>
+                    </div>
+                    <div class="row ">
+                        <div class="col">
+                            <h4><label for="edit_price_stars">How would you rate the price?{{ reviews.price }}</label></h4>
+                        </div>
+                        <div class="col"><input type="text" name="edit_price_stars" id="edit_price_stars" value="{{ reviews.price }}"></div>
+                    </div>
+                    <div class="row ">
+                        <div class="col">
+                            <h4><label for="edit_ambience_stars">How would you rate the ambience?{{ reviews.ambience_stars }}</label></h4>
+                        </div>
+                        <div class="col"><input type="text" name="edit_ambience_stars" id="edit_ambience_stars"
+                                value="{{ reviews.ambience_stars }}"></div>
+                    </div>
+                    
+
+
+
+
                     <div class="row">
                         <div class="col s12 center-align">
                             <button type="submit" class="btn-large light-blue darken-1">Submit Review<i
@@ -50,43 +100,29 @@
 </div>
 
 
-<div class="container with-borders align-center">
-    <div class="row with-borders">
-        <div class="col with-borders">
-            <h3 class="light-blue-text text-darken-4 center-align">Current Reviews</h3>
-        </div>
+<h3 class="light-blue-text text-darken-4 center-align">Review List</h3>
+{% for reviews in reviews %}
+<div class="row align-center with-borders"></div>
+<div class="card">
+    <div class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src="https://en.wikipedia.org/wiki/File:Barbieri_-_ViaSophia25668.jpg">
     </div>
-    {% for reviews in reviews %}
-    <form action="{{ url_for('edit_review', review_id=reviews.review_id) }}" method="POST">
-        <input type="hidden" name="review_id" value="{{ reviews.review_id|int }}">
-        
-       
-    <div class="row with-borders">
-        <div class="col with-borders">
-            <div class="card">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src="https://en.wikipedia.org/wiki/File:Barbieri_-_ViaSophia25668.jpg">
-                </div>
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">{{ reviews.written_review }}<i
-                            class="material-icons right">See Stars</i></span>
-                </div>
-                <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Card Title<i
-                            class="material-icons right">close</i></span>
-                    <p>ID: {{ reviews.review_id }}.</p>
-                    
-                </div>
-            </div>
-        </div>
-        <div class="col with-borders">
-            
-                
-                
-                <button type="submit" class="btn-large light-blue darken-1">Edit Review {{ reviews.review_id }}<i class="fas fa-edit right"></i></button>
+    <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4">{{ reviews.written_review_title }}<i
+                class="material-icons right">See more</i></span>
 
-        </div>
     </div>
-    {% endfor %}
+    <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">{{ reviews.written_review }}<i class="material-icons right">close</i></span>
+        <p>{{ reviews.review_id }}.</p>
+        <p>{{ reviews.written_review }}.</p>
+       
+    </div>
+</div>
+<div class="card-action">
+    <a href="{{ url_for('edit_review', review_id=reviews.review_id) }}">See More</a>
+
+</div>
+{% endfor %}
 </div>
 {% endblock %}
