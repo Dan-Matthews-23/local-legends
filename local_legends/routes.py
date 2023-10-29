@@ -45,10 +45,6 @@ def edit_review(review_id):
     return render_template("edit_review.html", reviews=reviews)
 
 
-
-
-
-
 @app.route("/edit_review/<int:review_id>", methods=["GET", "POST"])
 def handle_edit_review(review_id):
     edit_review_title = request.form.get("edit_review_title")
@@ -59,23 +55,23 @@ def handle_edit_review(review_id):
     edit_price_stars = request.form.get("edit_price_stars")
     edit_ambience_stars = request.form.get("edit_ambience_stars")
 
-    review = Reviews(
-        taste_stars=edit_taste_stars, 
-        presentation_stars=edit_presentation_stars, 
-        friendliness_stars=edit_friendliness_stars, 
-        price_stars=edit_price_stars, 
-        ambience_stars=edit_ambience_stars, 
-        overall_stars=1,
-        written_review_title=edit_review_title, 
-        written_review=edit_written_review, 
-        restaurant_id=restaurant_id, 
-        user_id=1)
-    
+    review = Reviews.query.get_or_404(review_id)
+
+    review.taste_stars = edit_taste_stars
+    review.presentation_stars = edit_presentation_stars
+    review.friendliness_stars = edit_friendliness_stars
+    review.price_stars = edit_price_stars
+    review.ambience_stars = edit_ambience_stars
+    review.overall_stars = 1
+    review.written_review_title = edit_review_title
+    review.written_review = edit_written_review
+
     db.session.update(review)
     db.session.commit()
 
     return redirect(url_for("edit_review", review_id=review_id))
-    
+
+
 
 
 
