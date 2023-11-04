@@ -369,6 +369,31 @@ This script is now operational. Observe the first review available:
 ![Adding a row to restaurants using command line](/assets/images/stage-six-design-d)
 
 
+### Stage Seven - CRU[u]D[/u]
+
+Stage Seven will focus on the last aspect of CRUD design, and will allow a guest to delete from the database. In this example I will be using edit_review.html so that the user can delete a review. At this stage I have not yet created a login system, so I will need to allow anyone to delete a review. The function will not check requests against a user ID at this stage
+
+#### Delete Review
+
+In this example I will delete the firt review in the table assigned to Monster Munch.
+
+Here, ee can see the rvview in the list
+
+![Adding a row to restaurants using command line](/assets/images/stage-seven-design-a)
+
+We click 'Edit Review' to enter the edit screen
+
+Then we click 'Delete Review'.
+
+![Adding a row to restaurants using command line](/assets/images/stage-seven-design-b)
+
+Now we can see the review is no longer displayed. The record has been deleted from the database
+
+![Adding a row to restaurants using command line](/assets/images/stage-seven-design-a)
+
+Stage Seven is now complete. 
+
+
 
 
 

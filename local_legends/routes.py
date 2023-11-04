@@ -92,12 +92,37 @@ def handle_edit_review(review_id):
 
     restaurant_id = 16
     user_id = 1
-
-    
-
-      # Update the review in the database
+  
+     # Update the review in the database
     
     #session.update(query)
+    db.session.commit()
+
+    return redirect(url_for("restaurant_profile", restaurant_id=restaurant_id))
+
+
+
+@app.route("/edit_review/<int:review_id>/delete_review", methods=["GET", "POST"])
+def delete_review(review_id):
+
+    review = Reviews.query.get_or_404(review_id)
+
+    #review.taste_stars = int(request.form.get("edit_taste_stars"))
+    #review.presentation_stars = int(request.form.get("edit_presentation_stars"))
+    #review.friendliness_stars = int(request.form.get("edit_friendliness_stars"))
+    #review.price_stars = int(request.form.get("edit_price_stars"))
+    #review.ambience_stars = int(request.form.get("edit_ambience_stars"))
+    #review.written_review_title = request.form.get("edit_review_title")
+    #review.written_review = request.form.get("edit_written_review")
+    #review.overall_stars = (int(request.form.get("edit_taste_stars")) + int(request.form.get("edit_presentation_stars")) + int(request.form.get("edit_friendliness_stars")) + int(request.form.get("edit_price_stars")) + int(request.form.get("edit_ambience_stars"))) / 5
+
+    restaurant_id = 16
+    #user_id = 1
+  
+     # Update the review in the database
+    
+    #session.update(query)
+    db.session.delete(review)
     db.session.commit()
 
     return redirect(url_for("restaurant_profile", restaurant_id=restaurant_id))
