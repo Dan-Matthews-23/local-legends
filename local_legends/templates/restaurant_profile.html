@@ -9,8 +9,8 @@
     <div class="row with-borders">
         <!--<div class="col with-borders">-->
             <div class="row card-panel grey lighten-5">
-                <form action="{{ url_for('handle_leave_review', restaurant_id=restaurant.restaurant_id) }}"
-                    method="POST">
+                <form action="{{ url_for('handle_leave_review', restaurant_id=restaurant.restaurant_id) }}" method="POST">
+                    
                     <!-- restaurant name -->
                     
                     <div class="row ">
@@ -34,6 +34,9 @@
                     <div class="row ">
                         <div class="col">
                             <h4><label for="edit_review_title">Review Title {{ reviews.review_id }}</label></h4>
+                        </div>
+                        <div class="col">
+                            <h4><label for="edit_review_title">Overall Title {{ reviews.overall_stars }}</label></h4>
                         </div>
                         <div class="col"><input type="text" name="edit_review_title" id="edit_review_title"
                                 value="{{ reviews.written_review_title }}"></div>
@@ -116,6 +119,7 @@
         <span class="card-title grey-text text-darken-4">{{ reviews.written_review }}<i class="material-icons right">close</i></span>
         <p>{{ reviews.review_id }}.</p>
         <p>{{ reviews.written_review }}.</p>
+        <p>Overall: {{ reviews.overall_stars }}.</p>
        
     </div>
 </div>

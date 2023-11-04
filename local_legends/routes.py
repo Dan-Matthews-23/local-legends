@@ -1,6 +1,7 @@
 from flask import render_template, flash, request, redirect, url_for
 from local_legends import app, db
 from local_legends.models import Users, Reviews, Restaurants
+from flask import session
 
 @app.route("/")
 def home():
@@ -45,31 +46,82 @@ def edit_review(review_id):
     return render_template("edit_review.html", reviews=reviews)
 
 
-@app.route("/edit_review/<int:review_id>", methods=["GET", "POST"])
+#@app.route("/edit_review/<int:review_id>", methods=["GET", "POST"])
+#def handle_edit_review(review_id):
+#   edit_review_title = request.form.get("edit_review_title")
+#    edit_written_review = request.form.get("edit_written_review")
+#    edit_taste_stars = request.form.get("edit_taste_stars")
+#    edit_presentation_stars = request.form.get("edit_presentation_stars")
+#    edit_friendliness_stars = request.form.get("edit_friendliness_stars")
+#    edit_price_stars = request.form.get("edit_price_stars")
+#    edit_ambience_stars = request.form.get("edit_ambience_stars")
+
+#    review = Reviews.query.get_or_404(review_id)
+   
+#    review.taste_stars = edit_taste_stars
+#    review.presentation_stars = edit_presentation_stars
+#    review.friendliness_stars = edit_friendliness_stars
+#    review.price_stars = edit_price_stars
+#    review.ambience_stars = edit_ambience_stars
+#    review.overall_stars = 1
+#    review.written_review_title = edit_review_title
+#    review.written_review = edit_written_review
+#    review.user_id = 1
+#    review.restaurant_id = restaurant_id
+
+
+#    db.session.update(review)
+#    db.session.commit()
+
+#    return redirect(url_for("edit_review", review_id=review_id))
+
+
+@app.route("/edit_review/<int:review_id>/edit_review", methods=["GET", "POST"])
 def handle_edit_review(review_id):
-    edit_review_title = request.form.get("edit_review_title")
-    edit_written_review = request.form.get("edit_written_review")
-    edit_taste_stars = request.form.get("edit_taste_stars")
-    edit_presentation_stars = request.form.get("edit_presentation_stars")
-    edit_friendliness_stars = request.form.get("edit_friendliness_stars")
-    edit_price_stars = request.form.get("edit_price_stars")
-    edit_ambience_stars = request.form.get("edit_ambience_stars")
 
     review = Reviews.query.get_or_404(review_id)
 
-    review.taste_stars = edit_taste_stars
-    review.presentation_stars = edit_presentation_stars
-    review.friendliness_stars = edit_friendliness_stars
-    review.price_stars = edit_price_stars
-    review.ambience_stars = edit_ambience_stars
-    review.overall_stars = 1
-    review.written_review_title = edit_review_title
-    review.written_review = edit_written_review
+    review.taste_stars = int(request.form.get("edit_taste_stars"))
+    review.presentation_stars = int(request.form.get("edit_presentation_stars"))
+    review.friendliness_stars = int(request.form.get("edit_friendliness_stars"))
+    review.price_stars = int(request.form.get("edit_price_stars"))
+    review.ambience_stars = int(request.form.get("edit_ambience_stars"))
+    review.written_review_title = request.form.get("edit_review_title")
+    review.written_review = request.form.get("edit_written_review")
+    review.overall_stars = (int(request.form.get("edit_taste_stars")) + int(request.form.get("edit_presentation_stars")) + int(request.form.get("edit_friendliness_stars")) + int(request.form.get("edit_price_stars")) + int(request.form.get("edit_ambience_stars"))) / 5
 
-    db.session.update(review)
+    restaurant_id = 16
+    user_id = 1
+
+    
+
+      # Update the review in the database
+    
+    #session.update(query)
     db.session.commit()
 
-    return redirect(url_for("edit_review", review_id=review_id))
+    return redirect(url_for("restaurant_profile", restaurant_id=restaurant_id))
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -108,7 +160,11 @@ def handle_leave_review(restaurant_id):
     db.session.commit()
     return redirect(url_for("restaurant_profile", restaurant_id=restaurant_id))
 
+ 
 
+
+
+ 
 
 
 

@@ -7,6 +7,7 @@
         <div class="row card-panel grey lighten-5">
         {% for reviews in reviews %}
         <form action="{{ url_for('handle_edit_review', review_id=reviews.review_id) }}" method="POST">
+            <input type="hidden" id={{ reviews.review_id }} name={{ reviews.review_id }} value={{ reviews.review_id }}>
             <div class="row ">
                     <div class="col"><h4><label for="edit_review_title">Review Title {{ reviews.review_id }}</label></h4></div>
                     <div class="col"><input type="text" name="edit_review_title" id="edit_review_title" value="{{ reviews.written_review_title }}"></div>
