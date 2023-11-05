@@ -157,25 +157,8 @@ def profile():
 @app.route("/signin", methods=["GET", "POST"])
 def login():
 
-  if request.method == "POST":
-    existing_user = Users.query.filter(
-        Users.email == request.form.get("email_login").lower()
-    ).all()
-
-    if existing_user:
-      if check_password_hash(
-          existing_user[0].password, request.form.get("password_login")
-      ):
-        session["user"] = request.form.get("email_login").lower()
-        flash("Welcome back, {}".format(
-            request.form.get("email_login").capitalize()
-        ))
-        return redirect(url_for("auth.profile", username=session["user"]))
-      else:
-        flash("Incorrect Username and/or Password")
-    else:
-      flash("Incorrect Username and/or Password")
-
-  return render_template("signin.html")
+    if request.method == "POST":
+        return redirect(url_for("profile"))
+    return render_template("signin.html")
 
 
