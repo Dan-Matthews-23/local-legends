@@ -391,7 +391,14 @@ Now we can see the review is no longer displayed. The record has been deleted fr
 
 ![Adding a row to restaurants using command line](/assets/images/stage-seven-design-a)
 
-Stage Seven is now complete. 
+Stage Seven is now complete. My next stage will focus on creating the login system so that I can add some validation to stop guests editing and deleting reviews. 
+
+
+### Stage Eight - Creating the login system
+
+For design purposes I will be using the following login details:
+
+![Adding a row to restaurants using command line](/assets/images/stage-eight-design-a)
 
 
 
