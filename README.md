@@ -400,6 +400,20 @@ For design purposes I will be using the following login details:
 
 ![Adding a row to restaurants using command line](/assets/images/stage-eight-design-a)
 
+This stage has been very difficult to create. I tested a few different methods, but in the end I had to settle for a step by step approach that forced the user to redirect to certain pages at each stage, just so I could see where it was working and where it was going wrong. I will document these stages as I go. 
+
+At this stage, the form only redirects when it detects a form submission. This redirect means that the form is working, and so is the syntax of the function so far
+
+![Adding a row to restaurants using command line](/assets/images/stage-eight-design-b)
+![Adding a row to restaurants using command line](/assets/images/stage-eight-design-c)
+
+Now I've added a section to redirect if the email is matched and the query works, which it does. Next is the password check
+
+![Adding a row to restaurants using command line](/assets/images/stage-eight-design-d)
+
+
+
+
 
 
 
