@@ -156,24 +156,21 @@ def profile():
 
 @app.route("/signin", methods=["GET", "POST"])
 def login():
-    test_pword = "Password"
+    test_pword = "Pssword" #request.form.get("password_login")
+    test_email = "admin@test.com" #request.form.get("email_login")
+
     if request.method == "POST":
-        existing_user = Users.query.filter(Users.email == request.form.get("email_login").lower()).all()
+        existing_user = Users.query.filter(Users.email == test_email).first()
+        existing_password = existing_user.password
 
-        if existing_user:
-            if existing_user.password == request.form.get("password_login"):
-                session["user"] = request.form.get("email_login").lower()
-                return redirect(url_for("profile", email=session["user"]))
 
-            else:
-                # invalid password match - By using and/or incorrect makes
-                # harder to brute force an account
-                flash("Incorrect Username and/or Password")
-                return redirect(url_for("home"))
-
+            
+        if existing_user and existing_password == test_pword:
+            return redirect(url_for("profile"))
         else:
-            # username doesn't exist - By using and/or incorrect
-            # makes harder to brute force an account
             flash("Incorrect Username and/or Password")
+            return redirect(url_for("home"))
 
     return render_template("signin.html")
+
+
