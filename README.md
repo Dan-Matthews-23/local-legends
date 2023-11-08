@@ -433,10 +433,9 @@ This now completes Stage Eight.
 
 ### Stage Nine - Defensive Programming
 
-### Is Logged In
+#### Is Logged In
 
 The permissions for this project will follow CRUD design and will be set out as follows:
-
 
 |      CRUD       |   Guests  | Registered Accounts |
 | ------------    | --------- | ---------           |
@@ -450,7 +449,7 @@ While Registered Accounts will have permission to create, update and delete thei
 
 The next stage will centre around defensive 
 
-Is Logged In is on  of the sessions that is created when the user logs in. I will amend each function to check for this being set before the function executes, else the user is directed back to the sign in page. 
+Is Logged In is one of the sessions that is created when the user logs in. I will amend each function to check for this being set before the function executes, else the user is directed back to the sign in page. 
 
 ![Adding a row to restaurants using command line](/assets/images/stage-nine-design-a)
 
@@ -503,6 +502,21 @@ I've added this section to aid me in the testing of this code, and added an 'err
 
 You can see below what happens when I try to edit a review that I did not leave:
 ![Adding a row to restaurants using command line](/assets/images/stage-nine-design-k)
+
+
+#### Delete Review
+
+This code will be edited in much the same way to prevent anyone other than the author from deleting reviews
+
+![Adding a row to restaurants using command line](/assets/images/stage-nine-design-l)
+
+![Adding a row to restaurants using command line](/assets/images/stage-nine-design-m)
+
+
+#### Password Hashing
+
+At this stage the password is easily manipulated. 
+
 
 
 
