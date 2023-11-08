@@ -429,10 +429,66 @@ To test the sessions were working correctly, I updated the Welcome Banner to sho
 
 ![Adding a row to restaurants using command line](/assets/images/stage-eight-design-j)
 
+This now completes Stage Eight. 
+
+### Stage Nine - Defensive Programming
+
+### Is Logged In
+
+The permissions for this project will follow CRUD design and will be set out as follows:
 
 
+|      CRUD       |   Guests  | Registered Accounts |
+| ------------    | --------- | ---------           |
+|  Create         | No        | Yes                 |
+|  Read           | Yes       | Yes                 |
+|  Update         | No        | Yes                 |
+|  Delete         | No        | Yes                 |
+|
+
+While Registered Accounts will have permission to create, update and delete their own reviews, they will not have the permission to alter other user's reviews.
+
+The next stage will centre around defensive 
+
+Is Logged In is on  of the sessions that is created when the user logs in. I will amend each function to check for this being set before the function executes, else the user is directed back to the sign in page. 
+
+![Adding a row to restaurants using command line](/assets/images/stage-nine-design-a)
+
+I've added this code to every function with update and delete design aspects.
+
+I want to add another failsafe to my project, so I will amend the templates to only show the parts I need it to
+
+#### Leave Review
+
+As it stands, guests are able to type in their review (see below). Although the function will not work, and will redirect to login page, I want to remove the ability to leave a review entirely. It'll make it better for the user journey. 
+
+Before:
+
+![Adding a row to restaurants using command line](/assets/images/stage-nine-design-b)
+
+After:
+
+![Adding a row to restaurants using command line](/assets/images/stage-nine-design-c)
+
+Testing to see impact:
+
+![Adding a row to restaurants using command line](/assets/images/stage-nine-design-d)
+
+![Adding a row to restaurants using command line](/assets/images/stage-nine-design-e)
+
+Now we have it so that only registered accounts aee given the option of leaving a review. 
 
 
+#### Edit Review
+
+Before (guest view):
+![Adding a row to restaurants using command line](/assets/images/stage-nine-design-f)
+
+After (guest view):
+![Adding a row to restaurants using command line](/assets/images/stage-nine-design-g)
+
+Register Account View:
+![Adding a row to restaurants using command line](/assets/images/stage-nine-design-h)
 
 
 

@@ -21,95 +21,79 @@ def restaurants():
 @app.route("/restaurant_profile/<int:restaurant_id>", methods=["GET", "POST"])
 def restaurant_profile(restaurant_id):
     restaurant = Restaurants.query.get_or_404(restaurant_id)
-
-    reviews = (
-        Reviews.query.filter_by(restaurant_id=restaurant_id)
-        .order_by(Reviews.review_id)
-        .all()
-    )
+    reviews = (Reviews.query.filter_by(restaurant_id=restaurant_id).order_by(Reviews.review_id).all())
 
     if request.method == "POST":
-
         db.session.commit()
-        return redirect(
-            url_for("restaurant_profile",
-                    restaurant_id=restaurant.restaurant_id)
-        )
-    return render_template(
-        "restaurant_profile.html", restaurant=restaurant, reviews=reviews
-    )
+        return redirect(url_for("restaurant_profile", restaurant_id=restaurant.restaurant_id))
+    return render_template("restaurant_profile.html", restaurant=restaurant, reviews=reviews)
 
 
 @app.route("/edit_review/<int:review_id>", methods=["GET", "POST"])
 def edit_review(review_id):
-    review = Reviews.query.get_or_404(review_id)
-
-    reviews = (
-        Reviews.query.filter_by(review_id=review_id).order_by(
-            Reviews.review_id).all()
-    )
-
-    if request.method == "POST":
-
-        db.session.commit()
-        return redirect(url_for("edit_review", review_id=review.review_id))
-    return render_template("edit_review.html", reviews=reviews)
+    if session.get('is_logged_in', False):
+        review = Reviews.query.get_or_404(review_id)
+        reviews = (Reviews.query.filter_by(review_id=review_id).order_by(Reviews.review_id).all())
+        if request.method == "POST":
+            db.session.commit()
+            return redirect(url_for("edit_review", review_id=review.review_id))
+            return render_template("edit_review.html", reviews=reviews)
+    else:
+        return redirect(url_for('login'))
 
 
 @app.route("/edit_review/<int:review_id>/edit_review", methods=["GET", "POST"])
 def handle_edit_review(review_id):
-
-    review = Reviews.query.get_or_404(review_id)
-
-    review.taste_stars = int(request.form.get("edit_taste_stars"))
-    review.presentation_stars = int(
+    if session.get('is_logged_in', False):
+        review = Reviews.query.get_or_404(review_id)
+        review.taste_stars = int(request.form.get("edit_taste_stars"))
+        review.presentation_stars = int(
         request.form.get("edit_presentation_stars"))
-    review.friendliness_stars = int(
+        review.friendliness_stars = int(
         request.form.get("edit_friendliness_stars"))
-    review.price_stars = int(request.form.get("edit_price_stars"))
-    review.ambience_stars = int(request.form.get("edit_ambience_stars"))
-    review.written_review_title = request.form.get("edit_review_title")
-    review.written_review = request.form.get("edit_written_review")
-    review.overall_stars = (
+        review.price_stars = int(request.form.get("edit_price_stars"))
+        review.ambience_stars = int(request.form.get("edit_ambience_stars"))
+        review.written_review_title = request.form.get("edit_review_title")
+        review.written_review = request.form.get("edit_written_review")
+        review.overall_stars = (
         int(request.form.get("edit_taste_stars"))
         + int(request.form.get("edit_presentation_stars"))
         + int(request.form.get("edit_friendliness_stars"))
         + int(request.form.get("edit_price_stars"))
-        + int(request.form.get("edit_ambience_stars"))
-    ) / 5
-
-    restaurant_id = 16
-    user_id = 1
-
-    db.session.commit()
-
-    return redirect(url_for("restaurant_profile", restaurant_id=restaurant_id))
+        + int(request.form.get("edit_ambience_stars"))) / 5
+        restaurant_id = 16
+        user_id = 1
+        db.session.commit()
+        return redirect(url_for("restaurant_profile", restaurant_id=restaurant_id))
+    else:
+        return redirect(url_for('login'))
 
 
 @app.route("/edit_review/<int:review_id>/delete_review", methods=["GET", "POST"])
 def delete_review(review_id):
 
-    review = Reviews.query.get_or_404(review_id)
-
-    restaurant_id = 16
-
-    db.session.delete(review)
-    db.session.commit()
-
-    return redirect(url_for("restaurant_profile", restaurant_id=restaurant_id))
+    if session.get('is_logged_in', False):
+        review = Reviews.query.get_or_404(review_id)
+        restaurant_id = 16
+        db.session.delete(review)
+        db.session.commit()
+        return redirect(url_for("restaurant_profile", restaurant_id=restaurant_id))
+    else:
+        return redirect(url_for('login'))
 
 
 @app.route("/restaurant_profile/<int:restaurant_id>/leave_review", methods=["POST"])
 def handle_leave_review(restaurant_id):
-    edit_review_title = request.form.get("edit_review_title")
-    edit_written_review = request.form.get("edit_written_review")
-    edit_taste_stars = request.form.get("edit_taste_stars")
-    edit_presentation_stars = request.form.get("edit_presentation_stars")
-    edit_friendliness_stars = request.form.get("edit_friendliness_stars")
-    edit_price_stars = request.form.get("edit_price_stars")
-    edit_ambience_stars = request.form.get("edit_ambience_stars")
+    if session.get('is_logged_in', False):
+        edit_review_title = request.form.get("edit_review_title")
+        edit_written_review = request.form.get("edit_written_review")
+        edit_taste_stars = request.form.get("edit_taste_stars")
+        edit_presentation_stars = request.form.get("edit_presentation_stars")
+        edit_friendliness_stars = request.form.get("edit_friendliness_stars")
+        edit_price_stars = request.form.get("edit_price_stars")
+        edit_ambience_stars = request.form.get("edit_ambience_stars")
 
-    review = Reviews(
+        review = Reviews(
         taste_stars=edit_taste_stars,
         presentation_stars=edit_presentation_stars,
         friendliness_stars=edit_friendliness_stars,
@@ -119,11 +103,12 @@ def handle_leave_review(restaurant_id):
         written_review_title=edit_review_title,
         written_review=edit_written_review,
         restaurant_id=restaurant_id,
-        user_id=1,
-    )
-    db.session.add(review)
-    db.session.commit()
-    return redirect(url_for("restaurant_profile", restaurant_id=restaurant_id))
+        user_id=1)
+        db.session.add(review)
+        db.session.commit()
+        return redirect(url_for("restaurant_profile", restaurant_id=restaurant_id))
+    else:
+        return redirect(url_for('login'))
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -142,16 +127,18 @@ def register():
 
 @app.route("/profile", methods=["GET", "POST"])
 def profile():
-    if request.method == "POST":
-        new_pass = request.form.get("password_change")
-        confirm_new_pass = request.form.get("confirm_password_change")
-
-        update_user_password = Users(password=password)
-        db.session.update(update_user_password)
-        db.session.commit()
-        flash("Password Updated!")
-        return redirect(url_for("profile"))
-    return render_template("profile.html")
+    if session.get('is_logged_in', False):
+        if request.method == "POST":
+            new_pass = request.form.get("password_change")
+            confirm_new_pass = request.form.get("confirm_password_change")
+            update_user_password = Users(password=password)
+            db.session.update(update_user_password)
+            db.session.commit()
+            flash("Password Updated!")
+            return redirect(url_for("profile"))
+        return render_template("profile.html")
+    else:
+        return redirect(url_for('login'))
 
 
 @app.route("/signin", methods=["GET", "POST"])

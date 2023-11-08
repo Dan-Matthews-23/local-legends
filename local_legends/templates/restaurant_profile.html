@@ -1,11 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
+
+
+{% if session.is_logged_in %}
+<!--Started check for session BEFORE form so that the handle_leave_review 
+        is never executed if the user is not logged in - another attempt at 
+        defensive programming-->
+
 <div class="container with-borders align-center card-panel grey lighten-5">
     <div class="row with-borders">
         <div class="col with-borders align-center">
             <h3>{{ restaurant.restaurant_name }}</h3>
         </div>
     </div>
+    
+   
+
     <div class="row with-borders">
         <!--<div class="col with-borders">-->
             <div class="row card-panel grey lighten-5">
@@ -101,6 +111,7 @@
         <!--</div>-->
     </div>
 </div>
+{% endif %}
 
 
 <h3 class="light-blue-text text-darken-4 center-align">Review List</h3>
@@ -123,10 +134,12 @@
        
     </div>
 </div>
+{% if session.is_logged_in %}
 <div class="card-action">
     <a href="{{ url_for('edit_review', review_id=reviews.review_id) }}">Edit Review</a>
 
 </div>
+{% endif %}
 {% endfor %}
 </div>
 {% endblock %}
