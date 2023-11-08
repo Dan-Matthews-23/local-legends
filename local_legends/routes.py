@@ -20,9 +20,9 @@ def restaurants():
 
 @app.route("/restaurant_profile/<int:restaurant_id>", methods=["GET", "POST"])
 def restaurant_profile(restaurant_id):
+    session['restaurant_id'] = restaurant_id
     restaurant = Restaurants.query.get_or_404(restaurant_id)
     reviews = (Reviews.query.filter_by(restaurant_id=restaurant_id).order_by(Reviews.review_id).all())
-
     if request.method == "POST":
         db.session.commit()
         return redirect(url_for("restaurant_profile", restaurant_id=restaurant.restaurant_id))
@@ -37,35 +37,39 @@ def edit_review(review_id):
         if request.method == "POST":
             db.session.commit()
             return redirect(url_for("edit_review", review_id=review.review_id))
-            return render_template("edit_review.html", reviews=reviews)
+        return render_template("edit_review.html", reviews=reviews)
     else:
         return redirect(url_for('login'))
+        
 
 
 @app.route("/edit_review/<int:review_id>/edit_review", methods=["GET", "POST"])
 def handle_edit_review(review_id):
+  
+    user_id = session.get('user_id')
+    restaurant_id = session.get('restaurant_id')
+
     if session.get('is_logged_in', False):
         review = Reviews.query.get_or_404(review_id)
-        review.taste_stars = int(request.form.get("edit_taste_stars"))
-        review.presentation_stars = int(
-        request.form.get("edit_presentation_stars"))
-        review.friendliness_stars = int(
-        request.form.get("edit_friendliness_stars"))
-        review.price_stars = int(request.form.get("edit_price_stars"))
-        review.ambience_stars = int(request.form.get("edit_ambience_stars"))
-        review.written_review_title = request.form.get("edit_review_title")
-        review.written_review = request.form.get("edit_written_review")
-        review.overall_stars = (
-        int(request.form.get("edit_taste_stars"))
-        + int(request.form.get("edit_presentation_stars"))
-        + int(request.form.get("edit_friendliness_stars"))
-        + int(request.form.get("edit_price_stars"))
-        + int(request.form.get("edit_ambience_stars"))) / 5
-        restaurant_id = 16
-        user_id = 1
-        db.session.commit()
-        return redirect(url_for("restaurant_profile", restaurant_id=restaurant_id))
+        if review.user_id == user_id:
+            review.taste_stars = int(request.form.get("edit_taste_stars"))
+            review.presentation_stars = int(
+            request.form.get("edit_presentation_stars"))
+            review.friendliness_stars = int(
+            request.form.get("edit_friendliness_stars"))
+            review.price_stars = int(request.form.get("edit_price_stars"))
+            review.ambience_stars = int(request.form.get("edit_ambience_stars"))
+            review.written_review_title = request.form.get("edit_review_title")
+            review.written_review = request.form.get("edit_written_review")
+            review.overall_stars = (int(request.form.get("edit_taste_stars")) + int(request.form.get("edit_presentation_stars")) + int(request.form.get("edit_friendliness_stars")) + int(request.form.get("edit_price_stars")) + int(request.form.get("edit_ambience_stars"))) / 5
+            db.session.commit()
+            session['err'] = "Edited review"
+            return redirect(url_for("restaurant_profile", restaurant_id=restaurant_id))
+        else:
+            session['err'] = "You cannot edit another user's review"
+            return redirect(url_for("restaurant_profile", restaurant_id=restaurant_id))
     else:
+        session['err'] = "You are not logged in"
         return redirect(url_for('login'))
 
 
@@ -85,6 +89,7 @@ def delete_review(review_id):
 @app.route("/restaurant_profile/<int:restaurant_id>/leave_review", methods=["POST"])
 def handle_leave_review(restaurant_id):
     if session.get('is_logged_in', False):
+        user_id = session.get('user_id')
         edit_review_title = request.form.get("edit_review_title")
         edit_written_review = request.form.get("edit_written_review")
         edit_taste_stars = request.form.get("edit_taste_stars")
@@ -103,7 +108,7 @@ def handle_leave_review(restaurant_id):
         written_review_title=edit_review_title,
         written_review=edit_written_review,
         restaurant_id=restaurant_id,
-        user_id=1)
+            user_id=user_id)
         db.session.add(review)
         db.session.commit()
         return redirect(url_for("restaurant_profile", restaurant_id=restaurant_id))

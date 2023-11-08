@@ -490,6 +490,14 @@ After (guest view):
 Register Account View:
 ![Adding a row to restaurants using command line](/assets/images/stage-nine-design-h)
 
+![Adding a row to restaurants using command line](/assets/images/stage-nine-design-i)
+
+
+#### Handle Edit Review
+
+I will now amend the code above to check that the user_id associated with that review is the same user_id that's logged in. This will prevent registered users from editing each other's review
+
+
 
 
 

@@ -83,6 +83,18 @@
         <div class="col " id="welcome-banner-right-div"></div>
     </div>
 </div>
+
+<div class="container align-center" id="welcome-banner">
+    <div class="row">
+        <div class="col" id="welcome-banner-left-div"></div>
+        <div class="col" id="welcome-banner-central-div">
+            {% if session.err %}
+            Error: {{session.err}}           
+            {% endif %}
+        </div>
+        <div class="col " id="welcome-banner-right-div"></div>
+    </div>
+</div>
     
     
     <main class="container">{% block content %} {% endblock %}</main>

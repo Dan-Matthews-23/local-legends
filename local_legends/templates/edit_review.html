@@ -36,6 +36,11 @@
                     <div class="col"><h4><label for="edit_ambience_stars">How would you rate the ambience?{{ reviews.review_id }}</label></h4></div>
                     <div class="col"><input type="text" name="edit_ambience_stars" id="edit_ambience_stars" value="{{ reviews.ambience_stars }}"></div>
             </div>
+             <div class="row ">
+                    <div class="col"><h4><label for="edit_ambience_stars">User ID of the person who left review:{{ reviews.user_id }}</label></h4></div>
+                    <div class="col"><h4><label for="edit_ambience_stars">Your user ID:{{ session.user_id }}</label></h4></div>
+                    
+            </div>
 
 
 
