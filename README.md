@@ -497,6 +497,14 @@ Register Account View:
 
 I will now amend the code above to check that the user_id associated with that review is the same user_id that's logged in. This will prevent registered users from editing each other's review
 
+![Adding a row to restaurants using command line](/assets/images/stage-nine-design-j)
+
+I've added this section to aid me in the testing of this code, and added an 'error' session. 
+
+You can see below what happens when I try to edit a review that I did not leave:
+![Adding a row to restaurants using command line](/assets/images/stage-nine-design-k)
+
+
 
 
 
