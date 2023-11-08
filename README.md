@@ -412,6 +412,25 @@ Now I've added a section to redirect if the email is matched and the query works
 ![Adding a row to restaurants using command line](/assets/images/stage-eight-design-d)
 
 
+The structure of the function works when hard-coded
+
+![Adding a row to restaurants using command line](/assets/images/stage-eight-design-e)
+
+Now it works when form submitted
+![Adding a row to restaurants using command line](/assets/images/stage-eight-design-f)
+
+To test the sessions were working correctly, I updated the Welcome Banner to show the username when logged in, and amended the nav bar to incorperate a check to see if the is_logged_in session was set, then display Sign In / Sign Out
+
+![Adding a row to restaurants using command line](/assets/images/stage-eight-design-g)
+
+![Adding a row to restaurants using command line](/assets/images/stage-eight-design-h)
+
+![Adding a row to restaurants using command line](/assets/images/stage-eight-design-i)
+
+![Adding a row to restaurants using command line](/assets/images/stage-eight-design-j)
+
+
+
 
 
 

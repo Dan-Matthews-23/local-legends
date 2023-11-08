@@ -156,21 +156,30 @@ def profile():
 
 @app.route("/signin", methods=["GET", "POST"])
 def login():
-    test_pword = "Pssword" #request.form.get("password_login")
-    test_email = "admin@test.com" #request.form.get("email_login")
+    test_pword = request.form.get("password_login")
+    test_email = request.form.get("email_login")
 
     if request.method == "POST":
         existing_user = Users.query.filter(Users.email == test_email).first()
         existing_password = existing_user.password
-
-
             
         if existing_user and existing_password == test_pword:
-            return redirect(url_for("profile"))
+            user_id = existing_user.user_id
+            session['user_id'] = user_id
+            session['username'] = existing_user.username
+            session['is_logged_in'] = True            
+            return redirect(url_for("profile", user_id=user_id))
         else:
             flash("Incorrect Username and/or Password")
             return redirect(url_for("home"))
-
     return render_template("signin.html")
 
 
+
+
+
+
+@app.route("/signout", methods=["GET", "POST"])
+def logout():
+    session.clear() 
+    return redirect(url_for('home'))
