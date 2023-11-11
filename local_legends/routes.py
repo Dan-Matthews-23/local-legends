@@ -155,7 +155,7 @@ def register():
         #session['err'] = password
 
         new_user = Users(username=username, email=email,
-                         password=post_password)
+                         password_hash=post_password)
         db.session.add(new_user)
         db.session.commit()
         flash("Registration successful!")
@@ -192,7 +192,7 @@ def login():
 
     if request.method == "POST":
         existing_user = Users.query.filter(Users.email == test_email).first()
-        existing_password = existing_user.password
+        existing_password = existing_user.password_hash
             
         if existing_user and existing_password == test_pword:
             user_id = existing_user.user_id

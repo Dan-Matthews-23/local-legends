@@ -1,5 +1,5 @@
 import os
-from local_legends import app
+from local_legends import app, db
 
 if __name__ == "__main__":
     app.run(
