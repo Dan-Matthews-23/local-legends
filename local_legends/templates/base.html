@@ -26,46 +26,34 @@
 
   <body>
     <header>
+    
+
+                
       <!--Nav bar for screens 993px and above-->
       
       <nav class="brown lighten-5">
-        <div class="nav-wrapper top-nav-wrapper">
-          <a class="header-links" href="{{ url_for('home') }}">Local Legends</a>
-          <a data-target="mobile-demo" class="sidenav-trigger" href="#">
-            <i class="fas fa-bars"></i
-          ></a>
-          <ul class="right hide-on-med-and-down">
-            <!--CHANGE THIS IN STYLE-->
-            <li>
-              <a class="header-links" href="{{ url_for('home') }}">Home</a>
-            </li>
-            <li>
-              <a class="header-links" href="{{ url_for('register') }}">Register</a>
-            </li>
+       <div class="nav-wrapper top-nav-wrapper">
+            <a class="header-links" id="title" href="{{ url_for('home') }}">Local Legends</a>
+            <a data-target="mobile-demo" class="sidenav-trigger" href="#"><i class="fas fa-bars"></i></a>
             
-            {% if session.is_logged_in %}
-            <li>
-                <a class="header-links" href="{{ url_for('logout') }}">Sign Out</a>
-            </li>
-            {% else %}
-            <li>
-                <a class="header-links" href="{{ url_for('login') }}">Sign In</a>
-            </li>
-            {% endif %}
-            <li>
-              <a class="header-links" href="{{ url_for('restaurants') }}">Restaurants</a>
-            </li>
-            <li>
-               <a class="header-links" href="{{ url_for('profile') }}">Profile</a>
-            </li>
-          </ul>
+            <ul class="right hide-on-med-and-down">            
+                <li><a class="header-links" href="{{ url_for('home') }}">Home</a></li>
+                <li><a class="header-links" href="{{ url_for('register') }}">Register</a></li>            
+                {% if session.is_logged_in %}<li><a class="header-links" href="{{ url_for('logout') }}">Sign Out</a></li>{% else %}<li><a class="header-links" href="{{ url_for('login') }}">Sign In</a></li>{% endif %}
+                <li><a class="header-links" href="{{ url_for('restaurants') }}">Restaurants</a></li>
+                <li><a class="header-links" href="{{ url_for('profile') }}">Profile</a></li>
+            </ul>
+            
         </div>
       </nav>
       <!--Nav bar for screens 992px and under-->
       <ul class="sidenav" id="mobile-demo">
         <li><a class="header-links" href="{{ url_for('home') }}">Home</a></li>
-        <li><a class="header-links" href="{{ url_for('home') }}">Home</a></li>
-        <li><a class="header-links" href="{{ url_for('home') }}">Home</a></li>
+        <li><a class="header-links" href="{{ url_for('register') }}">Register</a></li>
+        {% if session.is_logged_in %}<li><a class="header-links" href="{{ url_for('logout') }}">Sign Out</a></li>{% else %}<li>
+            <a class="header-links" href="{{ url_for('login') }}">Sign In</a></li>{% endif %}
+        <li><a class="header-links" href="{{ url_for('restaurants') }}">Restaurants</a></li>
+        <li><a class="header-links" href="{{ url_for('profile') }}">Profile</a></li>
       </ul>
     </header>
     
@@ -84,18 +72,17 @@
     </div>
 </div>
 
-<div class="container align-center" id="welcome-banner">
-    <div class="row">
-        <div class="col" id="welcome-banner-left-div"></div>
-        <div class="col" id="welcome-banner-central-div">
-            {% if session.err %}
-            Error: {{session.err}}           
-            {% endif %}
+{% if session.err %}
+<div class="container align-center with-borders" id="error-bar">
+    <div class="row with-borders">
+        <div class="col with-borders" id="error-bar-main-div">Error: {{session.err}}</div>
+        <div class="col with-borders" id="error-bar-exit">
+            <a href="{{ url_for('clear_error') }}">
+            <i class="fa-regular fa-circle-xmark fa-2xl" style="color: #6d4c41;"></i></a>
         </div>
-        <div class="col " id="welcome-banner-right-div"></div>
     </div>
 </div>
-    
+{% endif %}
     
     <main class="container">{% block content %} {% endblock %}</main>
     

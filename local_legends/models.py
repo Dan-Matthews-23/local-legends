@@ -4,9 +4,9 @@ class Users(db.Model):
     """Schema for the Users model."""
 
     user_id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(25), unique=True, nullable=False)
-    email = db.Column(db.String(25), nullable=False)
-    password = db.Column(db.String(25), nullable=False)
+    username = db.Column(db.String(150), unique=True, nullable=False)
+    email = db.Column(db.String(500), nullable=False)
+    password = db.Column(db.String(500), nullable=False)
     
 
     def __repr__(self):

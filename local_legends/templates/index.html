@@ -1,43 +1,32 @@
-<
 {% extends "base.html" %}
 {% block content %}
 
-<div class="container" id="get-started-header">
-    <div class="row">
-        <div class="col with-borders align-center">Restaurants you may like</div>
+<h3 class="light-blue-text text-darken-4 center-align">Restaurant List</h3>
+{% for restaurants_snippet in restaurants_snippet %}
+<div class="row align-center with-borders"></div>
+<div class="card">
+    <div class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src="https://en.wikipedia.org/wiki/File:Barbieri_-_ViaSophia25668.jpg">
     </div>
-    <div class="row">
-        <div class="col s12 m6 l3 with-borders">Restaurant Title Placeholder</div>
-        <div class="col s12 m6 l3 with-borders">Restaurant Title Placeholder</div>
-        <div class="col s12 m6 l3 with-borders">Restaurant Title Placeholder</div>
-        <div class="col s12 m6 l3 with-borders">Restaurant Title Placeholder</div>
+    <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4">{{ restaurants_snippet.restaurant_name }}<i
+                class="material-icons right">See Stars</i></span>
+
     </div>
-    <div class="row">
-        <div class="col s12 m6 l3 with-borders">Image Placeholder</div>
-        <div class="col s12 m6 l3 with-borders">Image Placeholder</div>
-        <div class="col s12 m6 l3 with-borders">Image Placeholder</div>
-        <div class="col s12 m6 l3 with-borders">Image Placeholder</div>
+    <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+        <p>{{ restaurants_snippet.average_taste_stars }}.</p>
+        <p>{{ restaurants_snippet.average_presentation_stars }}.</p>
+        <p>{{ restaurants_snippet.average_friendliness_stars }}.</p>
+        <p>{{ restaurants_snippet.average_ambience_stars }}.</p>
+        <p>{{ restaurants_snippet.average_overall_stars }}.</p>
     </div>
-    <div class="row">
-        <div class="col s12 m6 l3 with-borders">Description Placeholder</div>
-        <div class="col s12 m6 l3 with-borders">Description Placeholder</div>
-        <div class="col s12 m6 l3 with-borders">Description Placeholder</div>
-        <div class="col s12 m6 l3 with-borders">Description Placeholder</div>
-    </div>
-    <div class="row">
-        <a href="register.html"><div class="col s12 m6 l3 with-borders"><input type="submit" id="placeholder" name="placeholder" value="placeholder"></div></a>
-        <div class="col s12 m6 l3 with-borders"><input type="submit" id="placeholder" name="placeholder" value="placeholder"></div>
-        <div class="col s12 m6 l3 with-borders"><input type="submit" id="placeholder" name="placeholder" value="placeholder"></div>
-        <div class="col s12 m6 l3 with-borders"><input type="submit" id="placeholder" name="placeholder" value="placeholder"></div>
-    </div>
+</div>
+<div class="card-action">
+    <a href="{{ url_for('restaurant_profile', restaurant_id=restaurants_snippet.restaurant_id) }}">See Reviews</a>
 
 </div>
-
-
-
-
-
-
+{% endfor %}
 
 
 {% endblock %}

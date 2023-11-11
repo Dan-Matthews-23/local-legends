@@ -4,11 +4,14 @@ from local_legends.models import Users, Reviews, Restaurants
 from flask import session
 from flask_login import login_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
+from passlib.hash import sha256_crypt
 
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    restaurants_snippet = list(Restaurants.query.order_by(
+        Restaurants.restaurant_name).limit(4))
+    return render_template("index.html", restaurants_snippet=restaurants_snippet)
 
 
 @app.route("/restaurants")
@@ -142,13 +145,26 @@ def register():
     if request.method == "POST":
         username = request.form.get("username_register")
         email = request.form.get("email_register")
-        password = request.form.get("password_register")
-        new_user = Users(username=username, email=email, password=password)
+        post_password = request.form.get("password_register")
+
+        #password = sha256_crypt.encrypt(request.form.get("password_register"))
+        #password2 = sha256_crypt.encrypt(request.form.get("password_register"))
+
+        #print(sha256_crypt.verify("password", password))
+        
+        #session['err'] = password
+
+        new_user = Users(username=username, email=email,
+                         password=post_password)
         db.session.add(new_user)
         db.session.commit()
         flash("Registration successful!")
         return redirect(url_for("register"))
     return render_template("register.html")
+
+
+
+
 
 
 @app.route("/profile", methods=["GET", "POST"])
@@ -197,4 +213,9 @@ def login():
 @app.route("/signout", methods=["GET", "POST"])
 def logout():
     session.clear() 
+    return redirect(url_for('home'))
+
+@app.route("/home", methods=["GET", "POST"])
+def clear_error():
+    session.pop('err')
     return redirect(url_for('home'))

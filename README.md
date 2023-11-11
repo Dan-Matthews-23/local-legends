@@ -515,7 +515,9 @@ This code will be edited in much the same way to prevent anyone other than the a
 
 #### Password Hashing
 
-At this stage the password is easily manipulated. 
+At this stage the password is easily manipulated. I will need to secure the password with hash. 
+
+I'm having difficulty with this stage due to my db models no longer migrating. 
 
 
 

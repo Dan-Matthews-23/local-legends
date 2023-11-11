@@ -5,6 +5,9 @@
 
     /*---Font Colour---*/
     --brown-darken-1: #6d4c41;
+
+    /*---Welcome Banner Height---*/
+    --height-preset: 35px;
 }
 
 /*<!-----------------------HEADER------------------------------------>*/
@@ -12,30 +15,49 @@
 
 
 /*<!-----------------------NAV BAR------------------------------------>*/
+
+#title{
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--brown-darken-1);
+    letter-spacing: 3px;
+}
+
+
+.top-nav-wrapper {
+    border-bottom: 1px solid black;
+    width: 100%;
+    margin: auto;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
 /*<!-----------------------END OF NAV BAR------------------------------------>*/
 
 /*<!-----------------------WELCOME BANNER------------------------------------>*/
 #welcome-banner {
-
-    padding: 80px 0px 80px 0px;
+    padding: 10px 0px 10px 0px;
     margin: auto;
-    vertical-align: middle;
-   
+    vertical-align: middle;   
 }
 
 #welcome-banner-central-div {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    height: 80px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height:var(--height-preset);
     width: 80%;
     background-color: #efebe9;
     margin: auto;
     vertical-align: middle;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--brown-darken-1);
+    letter-spacing: 5px;
   }
 
 #welcome-banner-left-div {
- border-radius: 80% 0% 0% 80%;
-height: 80px;
+border-radius: 80% 0% 0% 80%;
+height: var(--height-preset);
 width: 10%;
 background-color: #efebe9;
 margin: auto;
@@ -44,13 +66,57 @@ vertical-align: middle;
 
 #welcome-banner-right-div {
 border-radius: 0% 80% 80% 0%;
-height: 80px;
+height: var(--height-preset);
 width: 10%;
 background-color: #efebe9;
 margin: auto;
 vertical-align: middle;
 }
 /*<!-----------------------END OF WELCOME BANNER------------------------------------>*/
+
+
+/*<!-----------------------Error Bar------------------------------------>*/
+
+#error-bar-main-div{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: var(--height-preset);
+    width: 90%;
+    background-color: #efebe9;
+    margin: auto;
+    vertical-align: middle;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--brown-darken-1);
+    letter-spacing: 3px;   
+}
+
+#error-bar-exit {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: var(--height-preset);
+    width: 10%;
+    background-color: #efebe9;
+    margin: auto;
+    vertical-align: middle;
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--brown-darken-1);
+    letter-spacing: 3px;
+    
+
+}
+
+/*<!-----------------------END OF Error Bar------------------------------------>*/
+
+
+
+
+
+
+
+
+
 
 /*<!-----------------------REGISTER/LOGIN PAGE------------------------------------>*/
 
@@ -165,9 +231,7 @@ span {
 
 
 
-.top-nav-wrapper {
-    border-bottom: 1px solid black;
- }
+
 
 
 /*<!-----------------------FOOTER------------------------------------>*/
@@ -203,4 +267,41 @@ span {
 .header-links {
     color: var(--brown-darken-1);
     
+}
+
+
+
+/*<!-----------------------Media Queries------------------------------------>*/
+@media screen and (max-width: 800px) {
+    #welcome-banner-central-div {
+        letter-spacing: 2px;
+        padding: 4px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    #welcome-banner-central-div {
+        letter-spacing: 1px;
+        padding: 2px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #welcome-banner-central-div {
+        letter-spacing: none;
+        padding: 2px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #welcome-banner-central-div {
+        letter-spacing: none;
+        margin:auto;
+        padding: 2px;
+        width: 100%;
+    }
+        #welcome-banner-left-div,
+        #welcome-banner-right-div {
+            display: none;
+        }
 }
