@@ -261,18 +261,17 @@ def check_admin_status():
         user = Users.query.filter(Users.user_id == user_id).first()
         
         # Fourth line of defense - checking the user has admin status
-        is_admin = user.is_admin
-        
+        is_admin = user.is_admin        
         if is_admin == True:
-            admin_id_check = Admins.query.filter(Admins.user_id == user_id).first()
-                        
+            admin_id_check = Admins.query.filter(Admins.user_id == user_id).first()                        
             
+            #Fifth line of defense - checking the user's user_id is stored in the admin database
             if admin_id_check is None:
                 return redirect(url_for("home"))
             else:
                 admin_id = admin_id_check.user_id
                 
-                # Fifth line of defense - checking if user_id matches the user_id stored in Admins table
+                # Sixth line of defense - checking if user_id matches the user_id stored in Admins table
                 if user_id == admin_id:                
                     return render_template("admin_login.html")
                 else:
