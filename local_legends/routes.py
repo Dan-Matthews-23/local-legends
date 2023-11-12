@@ -1,6 +1,6 @@
 from flask import render_template, flash, request, redirect, url_for
 from local_legends import app, db
-from local_legends.models import Users, Reviews, Restaurants
+from local_legends.models import Users, Reviews, Restaurants, Admins
 from flask import session
 from flask_login import login_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -247,19 +247,38 @@ def admin_login():
 
     return render_template("admin_login.html")
 
+# First line of defense is the admin table storing user_ids of all admins
 @app.route("/profile/check", methods=["GET", "POST"])
+# Second line of defense is checking for admin status before the
+# admin login to make sure they have admin status
 def check_admin_status():
     if session.get('err'):
         session.pop('err')
 
+    # Third line of defense - checking user is logged in
     if session.get('is_logged_in', False):
         user_id = session.get('user_id')
         user = Users.query.filter(Users.user_id == user_id).first()
+        
+        # Fourth line of defense - checking the user has admin status
         is_admin = user.is_admin
-        if is_admin:
-            return render_template("admin_login.html")
-        else:
+        
+        if is_admin == True:
+            admin_id_check = Admins.query.filter(Admins.user_id == user_id).first()
+                        
+            
+            if admin_id_check is None:
+                return redirect(url_for("home"))
+            else:
+                admin_id = admin_id_check.user_id
+                
+                # Fifth line of defense - checking if user_id matches the user_id stored in Admins table
+                if user_id == admin_id:                
+                    return render_template("admin_login.html")
+                else:
+                    return redirect(url_for("home"))
             return redirect(url_for("home"))
+        return redirect(url_for("home"))
     return redirect(url_for("home"))
         
 
