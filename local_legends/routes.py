@@ -213,6 +213,46 @@ def login():
     return render_template("signin.html")
 
 
+
+
+# First line of defense is the login button that will only display to users
+# with the is_admin attribute
+
+# Second line of defense is the admin table storing user_ids of all admins
+
+@app.route("/profile/check", methods=["GET", "POST"])
+# Third line of defense is checking for admin status before the
+# admin login to make sure they have admin status
+def check_admin_status():
+    if session.get('err'):
+        session.pop('err')
+
+    # Fourth line of defense - checking user is logged in
+    if session.get('is_logged_in', False):
+        user_id = session.get('user_id')
+        user = Users.query.filter(Users.user_id == user_id).first()
+        
+        # Fifth line of defense - checking the user has admin status
+        is_admin = user.is_admin        
+        if is_admin == True:
+            admin_id_check = Admins.query.filter(Admins.user_id == user_id).first()                        
+            
+            #Sixth line of defense - checking the user's user_id is stored in the admin database
+            if admin_id_check is None:
+                return redirect(url_for("home"))
+            else:
+                admin_id = admin_id_check.user_id
+                
+                # Seventh line of defense - checking if user_id matches the user_id stored in Admins table
+                if user_id == admin_id:                
+                    return render_template("admin_login.html")
+                else:
+                    return redirect(url_for("home"))
+            return redirect(url_for("home"))
+        return redirect(url_for("home"))
+    return redirect(url_for("home"))
+        
+
 @app.route("/admin_login", methods=["GET", "POST"])
 def admin_login():
 
@@ -225,7 +265,8 @@ def admin_login():
         admin_pass = request.form.get("admin_password")
 
         if request.method == "POST":
-            existing_user = Users.query.filter(Users.email == test_email).first()
+            existing_user = Users.query.filter(
+                Users.email == test_email).first()
             is_admin = existing_user.is_admin
             existing_password = existing_user.password_hash
             user_id = existing_user.user_id
@@ -246,41 +287,6 @@ def admin_login():
                 return redirect(url_for("home"))
 
     return render_template("admin_login.html")
-
-# First line of defense is the admin table storing user_ids of all admins
-@app.route("/profile/check", methods=["GET", "POST"])
-# Second line of defense is checking for admin status before the
-# admin login to make sure they have admin status
-def check_admin_status():
-    if session.get('err'):
-        session.pop('err')
-
-    # Third line of defense - checking user is logged in
-    if session.get('is_logged_in', False):
-        user_id = session.get('user_id')
-        user = Users.query.filter(Users.user_id == user_id).first()
-        
-        # Fourth line of defense - checking the user has admin status
-        is_admin = user.is_admin        
-        if is_admin == True:
-            admin_id_check = Admins.query.filter(Admins.user_id == user_id).first()                        
-            
-            #Fifth line of defense - checking the user's user_id is stored in the admin database
-            if admin_id_check is None:
-                return redirect(url_for("home"))
-            else:
-                admin_id = admin_id_check.user_id
-                
-                # Sixth line of defense - checking if user_id matches the user_id stored in Admins table
-                if user_id == admin_id:                
-                    return render_template("admin_login.html")
-                else:
-                    return redirect(url_for("home"))
-            return redirect(url_for("home"))
-        return redirect(url_for("home"))
-    return redirect(url_for("home"))
-        
-
 
 
 
