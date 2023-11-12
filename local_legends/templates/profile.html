@@ -70,17 +70,23 @@
 </section>
 
 <!--USER FORM FOR GET INVOLVED-->
+
+
+{% for user in users %}
+{% if user.is_admin %}
+{% if not session.is_admin %}
 <section class="delete">
     <form action="{{ url_for('check_admin_status') }}" method="POST">
-            <div class="row sign-up-row align-center">
-                <div class="col-sign-up  align-center">
-                    <input type="submit" class="submit-btn" name="submit_delete" id="submit_delete"
-                        value="Log in as admin">
-                </div>
+        <div class="row sign-up-row align-center">
+            <div class="col-sign-up align-center">
+                <input type="submit" class="submit-btn" name="submit_delete" id="submit_delete" value="Log in as admin">
             </div>
         </div>
     </form>
 </section>
+{% endif %}
+{% endif %}
+{% endfor %}
 
 
 

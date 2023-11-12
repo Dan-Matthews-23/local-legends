@@ -174,6 +174,9 @@ def profile():
     if session.get('err'):
         session.pop('err')
     if session.get('is_logged_in', False):
+        user_id = session.get('user_id')        
+        users = Users.query.filter_by(user_id=user_id)
+
         if request.method == "POST":
             new_pass = request.form.get("password_change")
             confirm_new_pass = request.form.get("confirm_password_change")
@@ -182,9 +185,12 @@ def profile():
             db.session.commit()
             flash("Password Updated!")
             return redirect(url_for("profile"))
-        return render_template("profile.html")
+        return render_template("profile.html", users=users)
     else:
         return redirect(url_for('login'))
+
+
+
 
 
 @app.route("/signin", methods=["GET", "POST"])
