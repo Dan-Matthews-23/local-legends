@@ -5,6 +5,7 @@ from flask import session
 from flask_login import login_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from passlib.hash import sha256_crypt
+import datetime
 
 
 @app.route("/")
@@ -154,8 +155,9 @@ def register():
         
         #session['err'] = password
 
-        new_user = Users(username=username, email=email,
-                         password_hash=post_password)
+        todays_date = datetime.datetime.now()
+
+        new_user = Users(username=username, email=email, password_hash=post_password, user_date_registered=todays_date)
         db.session.add(new_user)
         db.session.commit()
         flash("Registration successful!")
