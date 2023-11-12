@@ -2,23 +2,26 @@ from local_legends import db
 
 
 class Users(db.Model):
-    user_id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String(150), unique=True, nullable=False)
     email = db.Column(db.String(500), nullable=False)
     password_hash = db.Column(db.String(500), nullable=False) 
     is_admin = db.Column(db.Boolean, default=False)
+   
 
     def __repr__(self):
         return self.user_id
 
+
+
+
 class Admins(db.Model):
-    user_id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(150), unique=True, nullable=False)
-    email = db.Column(db.String(500), nullable=False)
+    admin_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    user_id = db.Column(db.Integer, nullable=False)
     admin_password_hash = db.Column(db.String(500), nullable=False)   
 
     def __repr__(self):
-        return self.user_id
+        return self.admin_id
 
 
 class Restaurants(db.Model):
@@ -36,25 +39,7 @@ class Restaurants(db.Model):
     restaurant_average_ambience_stars = db.Column(db.Float)
     restaurant_average_overall_stars = db.Column(db.Float)
     restaurant_image_url = db.Column(db.String(500))
-    restaurant_date_registered = db.Column(db.String(50))
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
 
     def __repr__(self):
         return self.restaurant_id
@@ -73,6 +58,7 @@ class Reviews(db.Model):
         "restaurants.restaurant_id", ondelete="CASCADE"), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id", 
     ondelete="CASCADE"), nullable=False)
+   
 
     def __repr__(self):
         return self.review_id

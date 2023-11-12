@@ -205,7 +205,7 @@ def login():
     return render_template("signin.html")
 
 
-@app.route("/admin_portal", methods=["GET", "POST"])
+@app.route("/admin_login", methods=["GET", "POST"])
 def admin_login():
 
     if session.get('err'):
@@ -217,8 +217,7 @@ def admin_login():
         admin_pass = request.form.get("admin_password")
 
         if request.method == "POST":
-            existing_user = Users.query.filter(
-                Users.email == test_email).first()
+            existing_user = Users.query.filter(Users.email == test_email).first()
             is_admin = existing_user.is_admin
             existing_password = existing_user.password_hash
             user_id = existing_user.user_id
@@ -239,7 +238,25 @@ def admin_login():
                 return redirect(url_for("home"))
 
     return render_template("admin_login.html")
-                
+
+@app.route("/profile/check", methods=["GET", "POST"])
+def check_admin_status():
+    if session.get('err'):
+        session.pop('err')
+
+    if session.get('is_logged_in', False):
+        user_id = session.get('user_id')
+        user = Users.query.filter(Users.user_id == user_id).first()
+        is_admin = user.is_admin
+        if is_admin:
+            return render_template("admin_login.html")
+        else:
+            return redirect(url_for("home"))
+    return redirect(url_for("home"))
+        
+
+
+
 
 
 
