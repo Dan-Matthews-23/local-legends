@@ -5,9 +5,18 @@ class Users(db.Model):
     user_id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(150), unique=True, nullable=False)
     email = db.Column(db.String(500), nullable=False)
-    password_hash = db.Column(db.String(500), nullable=False)
-    test = db.Column(db.String(100))
-   
+    password_hash = db.Column(db.String(500), nullable=False) 
+    is_admin = db.Column(db.Boolean, default=False)
+
+    def __repr__(self):
+        return self.user_id
+
+class Admins(db.Model):
+    user_id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(150), unique=True, nullable=False)
+    email = db.Column(db.String(500), nullable=False)
+    admin_password_hash = db.Column(db.String(500), nullable=False)   
+
     def __repr__(self):
         return self.user_id
 
@@ -29,9 +38,26 @@ class Restaurants(db.Model):
     restaurant_image_url = db.Column(db.String(500))
     restaurant_date_registered = db.Column(db.String(50))
 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     def __repr__(self):
         return self.restaurant_id
-
 
 class Reviews(db.Model):
     review_id = db.Column(db.Integer, primary_key=True)
@@ -45,7 +71,8 @@ class Reviews(db.Model):
     written_review = db.Column(db.String(25), nullable=False)
     restaurant_id = db.Column(db.Integer, db.ForeignKey(
         "restaurants.restaurant_id", ondelete="CASCADE"), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id", ondelete="CASCADE"), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id", 
+    ondelete="CASCADE"), nullable=False)
 
     def __repr__(self):
         return self.review_id

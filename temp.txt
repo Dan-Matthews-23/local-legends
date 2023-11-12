@@ -16,7 +16,10 @@ PRIMARY KEY (restaurant_id)
 );
 
 INSERT INTO restaurants (restaurant_name, restaurant_address_one, restaurant_address_two, 
-restaurant_address_three, restaurant_address_four, restaurant_address_postcode,  restaurant_average_taste_stars, restaurant_average_presentation_stars, restaurant_average_friendliness_stars, restaurant_average_price_stars, restaurant_average_ambience_stars, restaurant_average_overall_stars, user_id) VALUES ('TEST_NAME', 'TEST_ADD_ONE', 'TEST_ADD_TWO', 'TEST_ADD_THREE', 'TEST_ADD_FOUR', 'TEST_ADD_POSTCODE', 1, 1, 1, 1, 1, 1, 1);
+restaurant_address_three, restaurant_address_four, restaurant_address_postcode,  
+restaurant_average_taste_stars, restaurant_average_presentation_stars, restaurant_average_friendliness_stars, 
+restaurant_average_price_stars, restaurant_average_ambience_stars, restaurant_average_overall_stars, user_id) 
+VALUES ('TEST_NAME', 'TEST_ADD_ONE', 'TEST_ADD_TWO', 'TEST_ADD_THREE', 'TEST_ADD_FOUR', 'TEST_ADD_POSTCODE', 1, 1, 1, 1, 1, 1, 1);
   
 SELECT * FROM restaurants;
 

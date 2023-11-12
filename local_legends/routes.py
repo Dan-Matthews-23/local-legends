@@ -192,8 +192,7 @@ def login():
 
     if request.method == "POST":
         existing_user = Users.query.filter(Users.email == test_email).first()
-        existing_password = existing_user.password_hash
-            
+        existing_password = existing_user.password_hash            
         if existing_user and existing_password == test_pword:
             user_id = existing_user.user_id
             session['user_id'] = user_id
@@ -204,6 +203,43 @@ def login():
             flash("Incorrect Username and/or Password")
             return redirect(url_for("home"))
     return render_template("signin.html")
+
+
+@app.route("/admin_portal", methods=["GET", "POST"])
+def admin_login():
+
+    if session.get('err'):
+        session.pop('err')
+
+    if session.get('is_logged_in', False):
+        test_pword = request.form.get("password_login")
+        test_email = request.form.get("email_login")
+        admin_pass = request.form.get("admin_password")
+
+        if request.method == "POST":
+            existing_user = Users.query.filter(
+                Users.email == test_email).first()
+            is_admin = existing_user.is_admin
+            existing_password = existing_user.password_hash
+            user_id = existing_user.user_id
+
+            check_admin_credentials = Admins.query.filter(
+                Admins.user_id == user_id).first()
+
+            if check_admin_credentials:
+                existing_admin_password = check_admin_credentials.admin_password_hash
+                if existing_admin_password == admin_pass and user_id == check_admin_credentials.user_id:
+                    session['admin_is_logged_in'] = True
+                    return redirect(url_for("profile", user_id=user_id))
+                else:
+                    flash("You do not have adminstrator access")
+                    return redirect(url_for("profile", user_id=user_id))
+            else:
+                flash("You do not have adminstrator access")
+                return redirect(url_for("home"))
+
+    return render_template("admin_login.html")
+                
 
 
 
