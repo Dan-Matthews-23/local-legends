@@ -259,34 +259,35 @@ def admin_login():
     if session.get('err'):
         session.pop('err')
 
+    # Fourth line of defense - checking user is logged in
     if session.get('is_logged_in', False):
-        test_pword = request.form.get("password_login")
-        test_email = request.form.get("email_login")
-        admin_pass = request.form.get("admin_password")
-
-        if request.method == "POST":
-            existing_user = Users.query.filter(
-                Users.email == test_email).first()
-            is_admin = existing_user.is_admin
-            existing_password = existing_user.password_hash
-            user_id = existing_user.user_id
-
-            check_admin_credentials = Admins.query.filter(
-                Admins.user_id == user_id).first()
-
-            if check_admin_credentials:
-                existing_admin_password = check_admin_credentials.admin_password_hash
-                if existing_admin_password == admin_pass and user_id == check_admin_credentials.user_id:
-                    session['admin_is_logged_in'] = True
-                    return redirect(url_for("profile", user_id=user_id))
-                else:
-                    flash("You do not have adminstrator access")
-                    return redirect(url_for("profile", user_id=user_id))
-            else:
-                flash("You do not have adminstrator access")
+        user_id = session.get('user_id')
+        user = Users.query.filter(Users.user_id == user_id).first()
+        
+        # Fifth line of defense - checking the user has admin status
+        is_admin = user.is_admin        
+        if is_admin == True:
+            admin_id_check = Admins.query.filter(Admins.user_id == user_id).first()                        
+            
+            #Sixth line of defense - checking the user's user_id is stored in the admin database
+            if admin_id_check is None:
                 return redirect(url_for("home"))
-
-    return render_template("admin_login.html")
+            else:
+                admin_id = admin_id_check.user_id
+                
+                # Seventh line of defense - checking if user_id matches the user_id stored in Admins table
+                if user_id == admin_id:
+                    if request.form.get("username") == user.username and request.form.get("email") == user.email and request.form.get("password") == user.password_hash and request.form.get("admin_password") == admin_id_check.admin_password_hash:
+                        # Not setting admin_id to user_id as a final line of defense, as this could be easily intercepted if the user_id is known.
+                        session['admin_id'] = admin_id_check.admin_id
+                        return render_template("admin_portal.html")
+                    else:
+                        return redirect(url_for("home"))
+                else:
+                    return redirect(url_for("home"))
+            return redirect(url_for("home"))
+        return redirect(url_for("home"))
+    return redirect(url_for("home"))
 
 
 
