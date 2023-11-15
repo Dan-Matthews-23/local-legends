@@ -7,79 +7,110 @@
         is never executed if the user is not logged in - another attempt at 
         defensive programming-->
 
-<div class="container with-borders align-center card-panel grey lighten-5">
-    <div class="row with-borders">
-        <div class="col with-borders align-center">
-            <h3>Create Restaurant</h3>
+<div class="container  align-center card-panel grey lighten-5">
+    <div class="row input-row">       
+            <h3 class="light-blue-text text-darken-4 center-align">Create Restaurants</h3>
         </div>
     </div>
 
-    <div class="row with-borders">
-        <!--<div class="col with-borders">-->
-        <div class="row card-panel grey lighten-5">
-            <form action="{{ url_for('create_restaurant') }}" method="POST">         
+    
+       
+<form action="{{ url_for('create_restaurant') }}" method="POST">  
+    
+    <button type="button" class="collapsible">{{ restaurants.restaurant_name }}</button>
+    <div class="content ">
+        <div class="container  input-container">
+    
+            <div class="row  align-center input-row">
+                <div class="col  align-center label-col">
+                    <label class="collapse-label" for="restaurant_name">
+                        <h4 class="label">Restaurant Name</h4>
+                    </label>
+                </div>
+                <div class="col  align-center input-col">
+                    <input type="text" class="collapse-input" name="restaurant_name" id="restaurant_name" placeholder="Enter a restaurant name">
+                </div>
+            </div>
+        </div>
+    
+        <div class="row  align-center input-row">
+            <div class="col  align-center label-col">
+                <label class="collapse-label" for="first_address">
+                    <h4 class="label">First Line of Address Name</h4>
+                </label>
+            </div>
+            <div class="col  align-center input-col">
+                <input type="text" class="collapse-input" name="first_address" id="first_address"  placeholder="Enter the first line of address">
+            </div>
+        </div>
+    
+        <div class="row  align-center input-row">
+            <div class="col  align-center label-col">
+                <label class="collapse-label" for="second_address">
+                    <h4 class="label">Second Line of Address</h4>
+                </label>
+            </div>
+            <div class="col  align-center input-col">
+                <input type="text" class="collapse-input" name="second_address" id="second_address"
+                   placeholder="Enter the second line of address">
+            </div>
+        </div>
+    
+        <div class="row  align-center input-row">
+            <div class="col  align-center label-col">
+                <label class="collapse-label" for="third_address">
+                    <h4 class="label">Third Line of Address</h4>
+                </label>
+            </div>
+            <div class="col  align-center input-col">
+                <input type="text" class="collapse-input" name="third_address" id="third_address" placeholder="Enter the third line of address">
+            </div>
+        </div>
+    
+        <div class="row  align-center input-row">
+            <div class="col  align-center label-col">
+                <label class="collapse-label" for="fourth_address">
+                    <h4 class="label">Fourth Line of Address</h4>
+                </label>
+            </div>
+            <div class="col  align-center input-col">
+                <input type="text" class="collapse-input" name="fourth_address" id="fourth_address" placeholder="Enter a fourth line of address">
+            </div>
+        </div>
+    
+        <div class="row  align-center input-row">
+            <div class="col  align-center label-col">
+                <label class="collapse-label" for="postcode">
+                    <h4 class="label">Postcode</h4>
+                </label>
+            </div>
+            <div class="col  align-center input-col">
+                <input type="text" class="collapse-input" name="postcode" id="postcode"placeholder="Enter a postcode">
+            </div>
+        </div>
+    
+        <div class="row  align-center input-row">
+            <div class="col  align-center label-col">
+                <label class="collapse-label" for="thumbnail">
+                    <h4 class="label">Thumbnail URL</h4>
+                </label>
+            </div>
+            <div class="col  align-center input-col">
+                <input type="text" class="collapse-input" name="thumbnail" id="thumbnail" placeholder="Enter a URL for the thumbnail">
+            </div>
+        </div>
+    
+        <div class="row  align-center input-row">    
+            <button type="submit" class="btn-large light-blue darken-1">Create Restaurant<i class="fas fa-edit right"></i>
+            </button>
+    
+        </div>
+    </div>
+    </form>
 
              
               
-                <div class="row ">                    
-                    <div class="col">
-                        <h4><label for="restaurant_name">Restaurant Name</label></h4>
-                    </div>
-                    <div class="col"><input type="text" name="restaurant_name" id="restaurant_name" placeholder="Enter a restaurant name" required></div>
-                </div>
-                <div class="row ">
-                    <div class="col">
-                        <h4><label for="first_address">First line of address</label></h4>
-                    </div>
-                    <div class="col"><input type="text" name="first_address" id="first_address"
-                            placeholder="First line of address" required></div>
-                </div>
-                <div class="row ">
-                    <div class="col">
-                        <h4><label for="second_address">Second line of address</label></h4>
-                    </div>
-                    <div class="col"><input type="text" name="second_address" id="second_address" placeholder="Second line of address"
-                            required></div>
-                </div>
-                <div class="row ">
-                    <div class="col">
-                        <h4><label for="third_address">Third line of address</label></h4>
-                    </div>
-                    <div class="col"><input type="text" name="third_address" id="third_address" placeholder="Third line of address"></div>
-                </div>
-                <div class="row ">
-                    <div class="col">
-                        <h4><label for="fourth_address">Fourth line of address</label></h4>
-                    </div>
-                    <div class="col"><input type="text" name="fourth_address" id="fourth_address" placeholder="Fourth line of address">
-                    </div>
-                </div>
-                <div class="row ">
-                    <div class="col">
-                        <h4><label for="postcode">Postcode</label></h4>
-                    </div>
-                    <div class="col"><input type="text" name="postcode" id="postcode" placeholder="Postcode" required>
-                    </div>
-                </div>
-                <div class="row ">
-                    <div class="col">
-                        <h4><label for="thumbnail">Thumbnail Image</label></h4>
-                    </div>
-                    <div class="col"><input type="text" name="thumbnail" id="thumbnail" placeholder="Thumbnail UR">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s12 center-align">
-                        <button type="submit" class="btn-large light-blue darken-1">Create Restaurant<i
-                                class="fas fa-edit right"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <!--</div>-->
-    </div>
-</div>
+              
 
 
 
@@ -92,96 +123,96 @@
     <input type="hidden" name="{{ restaurants.restaurant_id }}" id="{{ restaurants.restaurant_id }}" value="{{ restaurants.restaurant_id }}">
 
     <button type="button" class="collapsible">{{ restaurants.restaurant_name }}</button>
-    <div class="content with-borders">
-        <div class="container with-borders input-container">
+    <div class="content ">
+        <div class="container  input-container">
             
-            <div class="row with-borders align-center input-row">
-                <div class="col with-borders align-center label-col">
+            <div class="row  align-center input-row">
+                <div class="col  align-center label-col">
                     <label class="collapse-label" for="edit_restaurant_name">
                         <h4 class="label">Restaurant Name</h4>
                     </label>
                 </div>
-                <div class="col with-borders align-center input-col">
+                <div class="col  align-center input-col">
                     <input type="text" class="collapse-input" name="edit_restaurant_name" id="edit_restaurant_name"
                                     value="{{ restaurants.restaurant_name }}" placeholder="{{ restaurants.restaurant_name }}">
                     </div>
                 </div>
             </div>
 
-            <div class="row with-borders align-center input-row">
-                <div class="col with-borders align-center label-col">
+            <div class="row  align-center input-row">
+                <div class="col  align-center label-col">
                     <label class="collapse-label" for="edit_address_one">
                         <h4 class="label">First Line of Address Name</h4>
                     </label>
                 </div>
-                <div class="col with-borders align-center input-col">
+                <div class="col  align-center input-col">
                     <input type="text" class="collapse-input" name="edit_address_one" id="edit_address_one"
                         value="{{ restaurants.restaurant_address_one }}" placeholder="{{ restaurants.restaurant_address_one }}">
                 </div>
             </div>
 
-            <div class="row with-borders align-center input-row">
-                <div class="col with-borders align-center label-col">
+            <div class="row  align-center input-row">
+                <div class="col  align-center label-col">
                     <label class="collapse-label" for="edit_address_two">
                         <h4 class="label">Second Line of Address</h4>
                     </label>
                 </div>
-                <div class="col with-borders align-center input-col">
+                <div class="col  align-center input-col">
                     <input type="text" class="collapse-input" name="edit_address_two" id="edit_address_two"
                         value="{{ restaurants.restaurant_address_two }}" placeholder="{{ restaurants.restaurant_address_two }}">
                 </div>
             </div>
 
-            <div class="row with-borders align-center input-row">
-                <div class="col with-borders align-center label-col">
+            <div class="row  align-center input-row">
+                <div class="col  align-center label-col">
                     <label class="collapse-label" for="edit_address_three">
                         <h4 class="label">Third Line of Address</h4>
                     </label>
                 </div>
-                <div class="col with-borders align-center input-col">
+                <div class="col  align-center input-col">
                     <input type="text" class="collapse-input" name="edit_address_three" id="edit_address_three"
                         value="{{ restaurants.restaurant_address_three }}" placeholder="{{ restaurants.restaurant_address_three }}">
                 </div>
             </div>
 
-            <div class="row with-borders align-center input-row">
-                <div class="col with-borders align-center label-col">
+            <div class="row  align-center input-row">
+                <div class="col  align-center label-col">
                     <label class="collapse-label" for="edit_address_four">
                         <h4 class="label">Fourth Line of Address</h4>
                     </label>
                 </div>
-                <div class="col with-borders align-center input-col">
+                <div class="col  align-center input-col">
                     <input type="text" class="collapse-input" name="edit_address_four" id="edit_address_four"
                         value="{{ restaurants.restaurant_address_four }}" placeholder="{{ restaurants.restaurant_address_four }}">
                 </div>
             </div>
 
-            <div class="row with-borders align-center input-row">
-                <div class="col with-borders align-center label-col">
+            <div class="row  align-center input-row">
+                <div class="col  align-center label-col">
                     <label class="collapse-label" for="edit_postcode">
                         <h4 class="label">Postcode</h4>
                     </label>
                 </div>
-                <div class="col with-borders align-center input-col">
+                <div class="col  align-center input-col">
                     <input type="text" class="collapse-input" name="edit_postcode" id="edit_postcode"
                         value="{{ restaurants.restaurant_address_postcode }}" placeholder="{{ restaurants.restaurant_address_postcode }}">
                 </div>
             </div>
 
-            <div class="row with-borders align-center input-row">
-                <div class="col with-borders align-center label-col">
+            <div class="row  align-center input-row">
+                <div class="col  align-center label-col">
                     <label class="collapse-label" for="edit_thumbnail">
                         <h4 class="label">Thumbnail URL</h4>
                     </label>
                 </div>
-                <div class="col with-borders align-center input-col">
+                <div class="col  align-center input-col">
                     <input type="text" class="collapse-input" name="edit_thumbnail" id="edit_thumbnail"
                         value="{{ restaurants.restaurant_image_url }}"
                         placeholder="{{ restaurants.restaurant_image_url }}">
                 </div>
             </div>
 
-            <div class="row with-borders align-center input-row">                
+            <div class="row  align-center input-row">                
                 
                     <button type="submit" class="btn-large light-blue darken-1">Edit Restaurant<i class="fas fa-edit right"></i>
                     </button>
