@@ -226,23 +226,19 @@ def login():
 def check_admin_status():
     if session.get('err'):
         session.pop('err')
-
     # Fourth line of defense - checking user is logged in
     if session.get('is_logged_in', False):
         user_id = session.get('user_id')
-        user = Users.query.filter(Users.user_id == user_id).first()
-        
+        user = Users.query.filter(Users.user_id == user_id).first()        
         # Fifth line of defense - checking the user has admin status
         is_admin = user.is_admin        
         if is_admin == True:
-            admin_id_check = Admins.query.filter(Admins.user_id == user_id).first()                        
-            
+            admin_id_check = Admins.query.filter(Admins.user_id == user_id).first()               
             #Sixth line of defense - checking the user's user_id is stored in the admin database
             if admin_id_check is None:
                 return redirect(url_for("home"))
             else:
-                admin_id = admin_id_check.user_id
-                
+                admin_id = admin_id_check.user_id                
                 # Seventh line of defense - checking if user_id matches the user_id stored in Admins table
                 if user_id == admin_id:                
                     return render_template("admin_login.html")
@@ -255,41 +251,103 @@ def check_admin_status():
 
 @app.route("/admin_login", methods=["GET", "POST"])
 def admin_login():
-
     if session.get('err'):
         session.pop('err')
-
     # Fourth line of defense - checking user is logged in
     if session.get('is_logged_in', False):
         user_id = session.get('user_id')
-        user = Users.query.filter(Users.user_id == user_id).first()
-        
+        user = Users.query.filter(Users.user_id == user_id).first()        
         # Fifth line of defense - checking the user has admin status
         is_admin = user.is_admin        
         if is_admin == True:
-            admin_id_check = Admins.query.filter(Admins.user_id == user_id).first()                        
-            
+            admin_id_check = Admins.query.filter(Admins.user_id == user_id).first()            
             #Sixth line of defense - checking the user's user_id is stored in the admin database
             if admin_id_check is None:
-                return redirect(url_for("home"))
+                session['err'] = "Your user ID is not in the admin list"
+                return redirect(url_for("home"))                
             else:
-                admin_id = admin_id_check.user_id
-                
+                admin_id = admin_id_check.user_id                
                 # Seventh line of defense - checking if user_id matches the user_id stored in Admins table
                 if user_id == admin_id:
                     if request.form.get("username") == user.username and request.form.get("email") == user.email and request.form.get("password") == user.password_hash and request.form.get("admin_password") == admin_id_check.admin_password_hash:
                         # Not setting admin_id to user_id as a final line of defense, as this could be easily intercepted if the user_id is known.
                         session['admin_id'] = admin_id_check.admin_id
-                        return render_template("admin_portal.html")
+                        restaurants = list(Restaurants.query.order_by(Restaurants.restaurant_name).all())                        
+                        return render_template("admin_portal.html", restaurants=restaurants)
                     else:
-                        return redirect(url_for("home"))
+                        session['err'] = "Those details are incorrect"
+                        return redirect(url_for("home"))                        
                 else:
+                    session['err'] = "Admin Login failed"
                     return redirect(url_for("home"))
+            session['err'] = "Admin Login failed"
             return redirect(url_for("home"))
-        return redirect(url_for("home"))
+        session['err'] = "Admin Login failed"
+        return redirect(url_for("home"))        
+    session['err'] = "Admin Login failed"
     return redirect(url_for("home"))
+   
+
+@app.route("/admin_login/create", methods=["GET", "POST"])
+def create_restaurant():
+
+    if session.get('err'):
+        session.pop('err')
+
+    if session.get('is_logged_in', False):
+        try:
+            
+            restaurant_name = request.form.get("restaurant_name")
+            restaurant_add_one = request.form.get("first_address")
+            restaurant_add_two = request.form.get("second_address")
+            restaurant_add_three = request.form.get("third_address")
+            restaurant_add_four = request.form.get("fourth_address")
+            restaurant_postcode = request.form.get("postcode")
+            restaurant_thumbnail = request.form.get("thumbnail")
+            todays_date = datetime.datetime.now()
+
+            new_restaurant = Restaurants(restaurant_name=restaurant_name,
+                                         restaurant_address_one=restaurant_add_one,
+                                         restaurant_address_two=restaurant_add_two,
+                                         restaurant_address_three=restaurant_add_three,
+                                         restaurant_address_four=restaurant_add_four,
+                                         restaurant_address_postcode=restaurant_postcode,
+                                         restaurant_image_url=restaurant_thumbnail,
+                                         restaurant_date_registered=todays_date)
+
+            db.session.add(new_restaurant)
+            db.session.commit()
+        except Exception as e:
+            logger.error("Error creating restaurant:", e)
+            session['err'] = "Failed to create restaurant. Please try again later."
+            return redirect(url_for("admin_portal"))
+
+        session['err'] = "Restaurant created"
+        return redirect(url_for("restaurants"))
+
+    session['err'] = "You are not logged in"
+    return redirect(url_for("login"))
 
 
+#@app.route("/admin_portal/<int:restaurant_id", methods=["GET", "POST"])
+#def edit_restaurant():
+#    if session.get('err'):
+#        session.pop('err')
+#        
+#        if session.get('is_logged_in', False):
+#            restaurant = Restaurants.query.filter(Restaurants.restaurant_id == restaurant_id).first()
+
+
+                
+
+
+
+
+
+
+
+
+   
 
 
 

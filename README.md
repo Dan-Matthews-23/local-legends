@@ -443,7 +443,7 @@ The permissions for this project will follow CRUD design and will be set out as 
 |  Read           | Yes       | Yes                 |
 |  Update         | No        | Yes                 |
 |  Delete         | No        | Yes                 |
-|
+
 
 While Registered Accounts will have permission to create, update and delete their own reviews, they will not have the permission to alter other user's reviews.
 
@@ -520,7 +520,29 @@ At this stage the password is easily manipulated. I will need to secure the pass
 I'm having difficulty with this stage due to my db models no longer migrating. 
 
 
+#### Administrator Privilages
 
+The Administrator will have additional permissions in order to maintain this project, as set out below:
+
+|      CRUD                             |   Guests  | Registered Accounts | Administrators |
+| ------------                          | --------- | ---------           |----------      |
+|  Create Accounts                      | No        | Yes                 | No             |
+|  Create reviews                       | Yes       | Yes                 | Yes|
+|  Create restaurants                   | No        | No                 | Yes|
+|  Read user Details                    | No        | Yes                 | Yes|
+|  Read reviews                         | No        | Yes                 | Yes|
+|  Read restaurant information          | No        | Yes                 | Yes|
+|  Edit/Update account details          | No        | Yes                 | Yes|
+|  Edit/Update reviews                  | No        | Yes                 | Yes|
+|  Delete user accounts details         | No        | No                 | Yes|
+|  Delete reviews                       | No        | No                 | Yes|
+|  Delete restaurant details            | No        | No                 | Yes|
+
+I have introduced a multi-stage defensive approach to logging in as admin, checking authentication and forcing the user to enter their full account details in order to login. 
+
+- First Stage: Each function checks a user is logged in. Functions will not execute without this authentication
+- Second Stage: The administrator uses their profile page to log in. There is a button at the bottom of the page that will not be displayed unless that user has admin prviliages. This is marked in the users table under the "is_admin" field, and is set to true. 
+- Third stage: The check_admin_status is executed each time the user initiates a task that only the admin can perform. It checks not only if the above marker is set in the users table, but also if the user_id matches the user_id stored in the admins table. If it does not match, the user is not authenticated. 
 
 
 

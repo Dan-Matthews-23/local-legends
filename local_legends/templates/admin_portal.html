@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+{% if session.is_logged_in %}
+<!--Started check for session BEFORE form so that the handle_leave_review 
+        is never executed if the user is not logged in - another attempt at 
+        defensive programming-->
+
+<div class="container with-borders align-center card-panel grey lighten-5">
+    <div class="row with-borders">
+        <div class="col with-borders align-center">
+            <h3>Create Restaurant</h3>
+        </div>
+    </div>
+
+    <div class="row with-borders">
+        <!--<div class="col with-borders">-->
+        <div class="row card-panel grey lighten-5">
+            <form action="{{ url_for('create_restaurant') }}" method="POST">         
+
+             
+              
+                <div class="row ">                    
+                    <div class="col">
+                        <h4><label for="restaurant_name">Restaurant Name</label></h4>
+                    </div>
+                    <div class="col"><input type="text" name="restaurant_name" id="restaurant_name" placeholder="Enter a restaurant name" required></div>
+                </div>
+                <div class="row ">
+                    <div class="col">
+                        <h4><label for="first_address">First line of address</label></h4>
+                    </div>
+                    <div class="col"><input type="text" name="first_address" id="first_address"
+                            placeholder="First line of address" required></div>
+                </div>
+                <div class="row ">
+                    <div class="col">
+                        <h4><label for="second_address">Second line of address</label></h4>
+                    </div>
+                    <div class="col"><input type="text" name="second_address" id="second_address" placeholder="Second line of address"
+                            required></div>
+                </div>
+                <div class="row ">
+                    <div class="col">
+                        <h4><label for="third_address">Third line of address</label></h4>
+                    </div>
+                    <div class="col"><input type="text" name="third_address" id="third_address" placeholder="Third line of address"></div>
+                </div>
+                <div class="row ">
+                    <div class="col">
+                        <h4><label for="fourth_address">Fourth line of address</label></h4>
+                    </div>
+                    <div class="col"><input type="text" name="fourth_address" id="fourth_address" placeholder="Fourth line of address">
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col">
+                        <h4><label for="postcode">Postcode</label></h4>
+                    </div>
+                    <div class="col"><input type="text" name="postcode" id="postcode" placeholder="Postcode" required>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col">
+                        <h4><label for="thumbnail">Thumbnail Image</label></h4>
+                    </div>
+                    <div class="col"><input type="text" name="thumbnail" id="thumbnail" placeholder="Thumbnail UR">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <button type="submit" class="btn-large light-blue darken-1">Submit Review<i
+                                class="fas fa-edit right"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--</div>-->
+    </div>
+</div>
+
+<h3 class="light-blue-text text-darken-4 center-align">Restaurant List - Admin View</h3>
+{% for restaurants in restaurants %}
+<div class="row align-center with-borders"></div>
+<div class="card">
+    <div class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src="https://en.wikipedia.org/wiki/File:Barbieri_-_ViaSophia25668.jpg">
+    </div>
+    <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4">{{ restaurants.restaurant_name }}<i
+                class="material-icons right">See Stars</i></span>
+
+    </div>
+    <div class="card-reveal admin-restaurant-view">   
+    
+    
+        <span class="card-title grey-text text-darken-4 admin-restaurant-view">{{ restaurants.restaurant_name }}<i class="material-icons right">close</i></span>
+        <p class="admin-restaurant-view">
+            <span class="card-title grey-text text-darken-4 admin-restaurant-view"><h4><label for="edit_restaurant_name">Restaurant Name</label></h4></span>
+            <span class="card-title grey-text text-darken-4 admin-restaurant-view"><input type="text" name="edit_restaurant_name" id="edit_restaurant_name" 
+                placeholder="{{ restaurants.restaurant_name }}"required></span>           
+        </p>
+        <p>
+            <span class="card-title grey-text text-darken-4">
+                <h4><label for="edit_address_one">First Line of Address</label></h4>
+            </span>
+            <span class="card-title grey-text text-darken-4"><input type="text" name="edit_address_one" id="edit_address_one"
+                    placeholder="{{ restaurants.restaurant_address_one }}" required></span>
+        </p>
+        <p>
+            <span class="card-title grey-text text-darken-4">
+                <h4><label for="edit_address_two">Second Line of Address</label></h4>
+            </span>
+            <span class="card-title grey-text text-darken-4"><input type="text" name="edit_address_two" id="edit_address_two"
+                    placeholder="{{ restaurants.restaurant_address_two }}" required></span>
+        </p>
+        <p>
+            <span class="card-title grey-text text-darken-4">
+                <h4><label for="edit_address_three">Third Line of Address</label></h4>
+            </span>
+            <span class="card-title grey-text text-darken-4"><input type="text" name="edit_address_three" id="edit_address_three"
+                    placeholder="{{ restaurants.restaurant_address_three }}"></span>
+        </p>
+        <p>
+            <span class="card-title grey-text text-darken-4">
+                <h4><label for="edit_address_four">Fourth Line of Address</label></h4>
+            </span>
+            <span class="card-title grey-text text-darken-4"><input type="text" name="edit_address_four"
+                    id="edit_address_four" placeholder="{{ restaurants.restaurant_address_four }}"></span>
+        </p>
+        <p>
+            <span class="card-title grey-text text-darken-4">
+                <h4><label for="edit_postcode">Postcode</label></h4>
+            </span>
+            <span class="card-title grey-text text-darken-4"><input type="text" name="edit_postcode" id="edit_postcode"
+                    placeholder="{{ restaurants.restaurant_postcode }}"></span>
+        </p>
+        <p>
+            <span class="card-title grey-text text-darken-4">
+                <h4><label for="edit_thumbnail">Thumbnail URL</label></h4>
+            </span>
+            <span class="card-title grey-text text-darken-4"><input type="text" name="edit_thumbnail" id="edit_thumbnail"
+                    placeholder="{{ restaurants.restaurant_image_url }}"></span>
+        </p>
+        
+        
+    </div>
+</div>
+
+
+
+
+{% endfor %}
+
+
+
+
+
+
+
+
+
+
+{% endif %}
+
+
+
+{% endblock %}

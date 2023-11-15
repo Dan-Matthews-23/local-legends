@@ -22,11 +22,11 @@
                 <p>{{ restaurants.average_overall_stars }}.</p>
         </div>
     </div>
-    <div class="card-action">
-        <a href="{{ url_for('restaurant_profile', restaurant_id=restaurants.restaurant_id) }}">See Reviews</a>
+    <div class="card-action"><a href="{{ url_for('restaurant_profile', restaurant_id=restaurants.restaurant_id) }}">See Reviews</a></div>
+    
+   
         
-    </div>
-        {% endfor %}
+            {% endfor %}
    
 
 {% endblock %}
