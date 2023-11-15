@@ -10,6 +10,88 @@
     --height-preset: 35px;
 }
 
+
+
+
+.collapsible {
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+
+.active,
+.collapsible:hover {
+    background-color: #555;
+}
+
+.collapsible:after {
+    content: '\002B';
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2212";
+}
+
+.content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*<!-----------------------HEADER------------------------------------>*/
 /*<!-----------------------END OF HEADER------------------------------------>*/
 
@@ -112,13 +194,21 @@ vertical-align: middle;
 
 
 
-.admin-restaurant-view {
-    height: 2000px;
-   
+.ad-card{
+    height: 500px;
 }
 
-
-
+.thumbnail {
+    border: 1px solid #ddd;
+    /* Gray border */
+    border-radius: 4px;
+    /* Rounded border */
+    padding: 5px;
+    /* Some padding */
+    width: 10%;
+    width: 10%;
+    /* Set a small width */
+}
 
 
 /*<!-----------------------REGISTER/LOGIN PAGE------------------------------------>*/
@@ -225,14 +315,44 @@ span {
     margin: auto;
 }
 
-.with-borders {
+.with-borders
+ {
     border-style: solid;
     border-color: black;
 }
 
 
 
+h4 {
+    font-size: 16px;
+}
 
+.input-container{
+    width:100%;
+    margin: auto;
+}
+
+.input-row{
+    width:50%;
+    padding: 2px;
+    margin: auto;
+}
+
+.label-col {
+    width: 40%;
+    padding: 2px;
+    margin: auto;
+}
+
+.input-col {
+    width: 60%;
+    padding: 2px;
+    margin: auto;
+}
+
+.collapse-label {
+    font-weight: bold;
+}
 
 
 

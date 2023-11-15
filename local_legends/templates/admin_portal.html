@@ -70,7 +70,7 @@
                 </div>
                 <div class="row">
                     <div class="col s12 center-align">
-                        <button type="submit" class="btn-large light-blue darken-1">Submit Review<i
+                        <button type="submit" class="btn-large light-blue darken-1">Create Restaurant<i
                                 class="fas fa-edit right"></i>
                         </button>
                     </div>
@@ -81,90 +81,117 @@
     </div>
 </div>
 
-<h3 class="light-blue-text text-darken-4 center-align">Restaurant List - Admin View</h3>
+
+
+
+
+
+<h3 class="light-blue-text text-darken-4 center-align">Edit Restaurants</h3>
 {% for restaurants in restaurants %}
-<div class="row align-center with-borders"></div>
-<div class="card">
-    <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src="https://en.wikipedia.org/wiki/File:Barbieri_-_ViaSophia25668.jpg">
-    </div>
-    <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4">{{ restaurants.restaurant_name }}<i
-                class="material-icons right">See Stars</i></span>
+<form action="{{ url_for('edit_restaurant') }}?restaurant_id={{ restaurants.restaurant_id }}" method="POST">
+    <input type="hidden" name="{{ restaurants.restaurant_id }}" id="{{ restaurants.restaurant_id }}" value="{{ restaurants.restaurant_id }}">
 
-    </div>
-    <div class="card-reveal admin-restaurant-view">   
-    
-    
-        <span class="card-title grey-text text-darken-4 admin-restaurant-view">{{ restaurants.restaurant_name }}<i class="material-icons right">close</i></span>
-        <p class="admin-restaurant-view">
-            <span class="card-title grey-text text-darken-4 admin-restaurant-view"><h4><label for="edit_restaurant_name">Restaurant Name</label></h4></span>
-            <span class="card-title grey-text text-darken-4 admin-restaurant-view"><input type="text" name="edit_restaurant_name" id="edit_restaurant_name" 
-                placeholder="{{ restaurants.restaurant_name }}"required></span>           
-        </p>
-        <p>
-            <span class="card-title grey-text text-darken-4">
-                <h4><label for="edit_address_one">First Line of Address</label></h4>
-            </span>
-            <span class="card-title grey-text text-darken-4"><input type="text" name="edit_address_one" id="edit_address_one"
-                    placeholder="{{ restaurants.restaurant_address_one }}" required></span>
-        </p>
-        <p>
-            <span class="card-title grey-text text-darken-4">
-                <h4><label for="edit_address_two">Second Line of Address</label></h4>
-            </span>
-            <span class="card-title grey-text text-darken-4"><input type="text" name="edit_address_two" id="edit_address_two"
-                    placeholder="{{ restaurants.restaurant_address_two }}" required></span>
-        </p>
-        <p>
-            <span class="card-title grey-text text-darken-4">
-                <h4><label for="edit_address_three">Third Line of Address</label></h4>
-            </span>
-            <span class="card-title grey-text text-darken-4"><input type="text" name="edit_address_three" id="edit_address_three"
-                    placeholder="{{ restaurants.restaurant_address_three }}"></span>
-        </p>
-        <p>
-            <span class="card-title grey-text text-darken-4">
-                <h4><label for="edit_address_four">Fourth Line of Address</label></h4>
-            </span>
-            <span class="card-title grey-text text-darken-4"><input type="text" name="edit_address_four"
-                    id="edit_address_four" placeholder="{{ restaurants.restaurant_address_four }}"></span>
-        </p>
-        <p>
-            <span class="card-title grey-text text-darken-4">
-                <h4><label for="edit_postcode">Postcode</label></h4>
-            </span>
-            <span class="card-title grey-text text-darken-4"><input type="text" name="edit_postcode" id="edit_postcode"
-                    placeholder="{{ restaurants.restaurant_postcode }}"></span>
-        </p>
-        <p>
-            <span class="card-title grey-text text-darken-4">
-                <h4><label for="edit_thumbnail">Thumbnail URL</label></h4>
-            </span>
-            <span class="card-title grey-text text-darken-4"><input type="text" name="edit_thumbnail" id="edit_thumbnail"
-                    placeholder="{{ restaurants.restaurant_image_url }}"></span>
-        </p>
-        
-        
-    </div>
-</div>
+    <button type="button" class="collapsible">{{ restaurants.restaurant_name }}</button>
+    <div class="content with-borders">
+        <div class="container with-borders input-container">
+            
+            <div class="row with-borders align-center input-row">
+                <div class="col with-borders align-center label-col">
+                    <label class="collapse-label" for="edit_restaurant_name">
+                        <h4 class="label">Restaurant Name</h4>
+                    </label>
+                </div>
+                <div class="col with-borders align-center input-col">
+                    <input type="text" class="collapse-input" name="edit_restaurant_name" id="edit_restaurant_name"
+                                    value="{{ restaurants.restaurant_name }}" placeholder="{{ restaurants.restaurant_name }}">
+                    </div>
+                </div>
+            </div>
 
+            <div class="row with-borders align-center input-row">
+                <div class="col with-borders align-center label-col">
+                    <label class="collapse-label" for="edit_address_one">
+                        <h4 class="label">First Line of Address Name</h4>
+                    </label>
+                </div>
+                <div class="col with-borders align-center input-col">
+                    <input type="text" class="collapse-input" name="edit_address_one" id="edit_address_one"
+                        value="{{ restaurants.restaurant_address_one }}" placeholder="{{ restaurants.restaurant_address_one }}">
+                </div>
+            </div>
 
+            <div class="row with-borders align-center input-row">
+                <div class="col with-borders align-center label-col">
+                    <label class="collapse-label" for="edit_address_two">
+                        <h4 class="label">Second Line of Address</h4>
+                    </label>
+                </div>
+                <div class="col with-borders align-center input-col">
+                    <input type="text" class="collapse-input" name="edit_address_two" id="edit_address_two"
+                        value="{{ restaurants.restaurant_address_two }}" placeholder="{{ restaurants.restaurant_address_two }}">
+                </div>
+            </div>
 
+            <div class="row with-borders align-center input-row">
+                <div class="col with-borders align-center label-col">
+                    <label class="collapse-label" for="edit_address_three">
+                        <h4 class="label">Third Line of Address</h4>
+                    </label>
+                </div>
+                <div class="col with-borders align-center input-col">
+                    <input type="text" class="collapse-input" name="edit_address_three" id="edit_address_three"
+                        value="{{ restaurants.restaurant_address_three }}" placeholder="{{ restaurants.restaurant_address_three }}">
+                </div>
+            </div>
+
+            <div class="row with-borders align-center input-row">
+                <div class="col with-borders align-center label-col">
+                    <label class="collapse-label" for="edit_address_four">
+                        <h4 class="label">Fourth Line of Address</h4>
+                    </label>
+                </div>
+                <div class="col with-borders align-center input-col">
+                    <input type="text" class="collapse-input" name="edit_address_four" id="edit_address_four"
+                        value="{{ restaurants.restaurant_address_four }}" placeholder="{{ restaurants.restaurant_address_four }}">
+                </div>
+            </div>
+
+            <div class="row with-borders align-center input-row">
+                <div class="col with-borders align-center label-col">
+                    <label class="collapse-label" for="edit_postcode">
+                        <h4 class="label">Postcode</h4>
+                    </label>
+                </div>
+                <div class="col with-borders align-center input-col">
+                    <input type="text" class="collapse-input" name="edit_postcode" id="edit_postcode"
+                        value="{{ restaurants.restaurant_address_postcode }}" placeholder="{{ restaurants.restaurant_address_postcode }}">
+                </div>
+            </div>
+
+            <div class="row with-borders align-center input-row">
+                <div class="col with-borders align-center label-col">
+                    <label class="collapse-label" for="edit_thumbnail">
+                        <h4 class="label">Thumbnail URL</h4>
+                    </label>
+                </div>
+                <div class="col with-borders align-center input-col">
+                    <input type="text" class="collapse-input" name="edit_thumbnail" id="edit_thumbnail"
+                        value="{{ restaurants.restaurant_image_url }}"
+                        placeholder="{{ restaurants.restaurant_image_url }}">
+                </div>
+            </div>
+
+            <div class="row with-borders align-center input-row">                
+                
+                    <button type="submit" class="btn-large light-blue darken-1">Edit Restaurant<i class="fas fa-edit right"></i>
+                    </button>
+                
+            </div>
+        </div>
+    </form>           
+                   
+                
 
 {% endfor %}
-
-
-
-
-
-
-
-
-
-
 {% endif %}
-
-
-
 {% endblock %}

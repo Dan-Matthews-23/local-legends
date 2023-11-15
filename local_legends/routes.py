@@ -56,11 +56,8 @@ def edit_review(review_id):
 @app.route("/edit_review/<int:review_id>/edit_review", methods=["GET", "POST"])
 def handle_edit_review(review_id):
     if session.get('err'):
-        session.pop('err')
-  
+        session.pop('err')  
     user_id = session.get('user_id')
-   
-
     if session.get('is_logged_in', False):
         review = Reviews.query.get_or_404(review_id)
         restaurant_id = Reviews.restaurant_id
@@ -329,20 +326,73 @@ def create_restaurant():
     return redirect(url_for("login"))
 
 
-#@app.route("/admin_portal/<int:restaurant_id", methods=["GET", "POST"])
-#def edit_restaurant():
-#    if session.get('err'):
-#        session.pop('err')
-#        
-#        if session.get('is_logged_in', False):
-#            restaurant = Restaurants.query.filter(Restaurants.restaurant_id == restaurant_id).first()
+@app.route("/admin_portal/", methods=["GET", "POST"])
+def edit_restaurant():
+    # Check if the user is logged in
+    if not session.get('is_logged_in'):
+        session['err'] = "You are not logged in"
+        return redirect(url_for('login'))
+
+    # Get the restaurant ID from the form
+    restaurant_id = request.args.get('restaurant_id')
+
+    # Fetch the restaurant from the database
+    restaurant = Restaurants.query.get_or_404(restaurant_id)
+
+    # If the restaurant is not found, display an error message
+    if not restaurant:
+        session['err'] = f"Restaurant not found - the ID is {restaurant_id}"
+        return render_template('admin_login.html')
+
+    # Validate and sanitize user input
+    edit_restaurant_name = request.form.get("edit_restaurant_name")
+    edit_address_one = request.form.get("edit_address_one")
+    edit_address_two = request.form.get("edit_address_two")
+    edit_address_three = request.form.get("edit_address_three")
+    edit_address_four = request.form.get("edit_address_four")
+    edit_postcode = request.form.get("edit_postcode")
+    edit_thumbnail = request.form.get("edit_thumbnail")
+    
+
+    # Update the restaurant's information
+    restaurant.restaurant_name = edit_restaurant_name
+    restaurant.restaurant_address_one = edit_address_one
+    restaurant.restaurant_address_two = edit_address_two
+    restaurant.restaurant_address_three = edit_address_three
+    restaurant.restaurant_address_four = edit_address_four
+    restaurant.restaurant_address_postcode = edit_postcode
+    restaurant.restaurant_image_url = edit_thumbnail
+    restaurant.restaurant_date_registered = restaurant.restaurant_date_registered
+
+    # Commit the changes to the database
+    try:
+        db.session.commit()
+        session['err'] = "Restaurant edited successfully"
+        return render_template('admin_login.html')
+    except Exception as e:
+        print(e)
+        session['err'] = f"An error occurred while editing the restaurant - the ID is {restaurant_id}"
+        return render_template('admin_login.html')
 
 
-                
+#@app.route("/admin_portal/", methods=["GET", "POST"])
+#def admin_portal():
+
+#    if not session.get('is_logged_in'):
+#        session['err'] = "You are not logged in"
+#        return redirect(url_for('login'))
+
+#        if not session.get('admin_id'):
+#            session['err'] = "You are not logged in"
+#            return redirect(url_for('admin_login'))
+#    
+#    return render_template('admin_login.html')
+
+    
 
 
 
-
+    
 
 
 
