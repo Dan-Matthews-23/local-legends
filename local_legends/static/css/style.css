@@ -354,6 +354,44 @@ h4 {
     font-weight: bold;
 }
 
+.restaurant-details-container {
+width: 100%;
+
+}
+
+.restaurant-details-left-hero-image {
+width: 100%;
+float: left;
+height: 200px;
+}
+
+.restaurant-details-stars-left {
+    width: 100%;
+    float: left;
+    height: 400px;
+}
+
+.restaurant-details-right {
+width: 65%;
+float: right;
+height: 600px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

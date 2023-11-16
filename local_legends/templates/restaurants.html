@@ -1,47 +1,138 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="light-blue-text text-darken-4 center-align">Restaurant List</h3>
+
+{% if session.is_logged_in %}
+<!--Started check for session BEFORE form so that the handle_leave_review 
+        is never executed if the user is not logged in - another attempt at 
+        defensive programming-->
+
+<div class="container  align-center card-panel grey lighten-5">
+    <div class="row input-row">
+        <h3 class="light-blue-text text-darken-4 center-align">Local Legends: Restaurants</h3>
+    </div>
+</div>
+
 {% for restaurants in restaurants %}
-    <div class="row align-center with-borders"></div>
-    <div class="card">
-        <div class="card-image waves-effect waves-block waves-light">
-            <img class="activator" src="https://en.wikipedia.org/wiki/File:Barbieri_-_ViaSophia25668.jpg">
-        </div>
-        <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4">{{ restaurants.restaurant_name }}<i
-                    class="material-icons right">See Stars</i></span>
+<form action="{{ url_for('edit_restaurant') }}?restaurant_id={{ restaurants.restaurant_id }}" method="POST">
+    <input type="hidden" name="{{ restaurants.restaurant_id }}" id="{{ restaurants.restaurant_id }}"
+        value="{{ restaurants.restaurant_id }}">
+
+    <button type="button" class="collapsible">{{ restaurants.restaurant_name }}</button>
+    <div class="content ">
+        <div class="restaurant-details-container with-borders">
+            <div class="row with-borders">
+                <div class="col with-borders ">
+                    <div class="col with-borders restaurant-details-left-hero-image"><THIS IS THE IMAGE BLOCK></div>
+                    <div class="col with-borders restaurant-details-stars-left">THIS IS THE STARS BLOCK</div>
+                </div>
+
+
+                <div class="col with-borders restaurant-details-right">
+
+
+                    <div class="row with-borders">
+                        <div class="col align-center label-col">
+                            <label class="collapse-label" for="edit_restaurant_name">
+                                <h4 class="label">Restaurant Name</h4>
+                            </label>
+                        </div>
+                        <div class="col align-center input-col">
+                            {{ restaurants.restaurant_name }}
+                        </div>
+                    </div>
+
+                    <div class="row with-borders">                
+                        <div class="col  align-center label-col">
+                            <label class="collapse-label" for="edit_address_one">
+                                <h4 class="label">First Line of Address Name</h4>
+                            </label>
+                        </div>
+                        <div class="col  align-center input-col">
+                            {{ restaurants.restaurant_address_one }}
+                        </div>
+                    </div>
+
+                    <div class="row with-borders">
+                        <div class="col  align-center label-col">
+                            <label class="collapse-label" for="edit_address_two">
+                                <h4 class="label">Second Line of Address</h4>
+                            </label>
+                        </div>
+                        <div class="col  align-center input-col">{{ restaurants.restaurant_address_two }}</div>
+                    </div>
+
+                    <div class="row with-borders">
+                        <div class="col  align-center label-col">
+                            <label class="collapse-label" for="edit_address_three">
+                                <h4 class="label">Third Line of Address</h4>
+                            </label>
+                        </div>
+                        <div class="col  align-center input-col">{{ restaurants.restaurant_address_three }}</div>
+                    </div>
+
+                    <div class="row with-borders">
+                        <div class="col  align-center label-col">
+                            <label class="collapse-label" for="edit_address_four">
+                                <h4 class="label">Fourth Line of Address</h4>
+                            </label>
+                        </div>
+                        <div class="col  align-center input-col">{{ restaurants.restaurant_address_four }}</div>
+                    </div>
+
+                    <div class="row with-borders">
+                        <div class="col align-center label-col">
+                            <label class="collapse-label" for="edit_postcode">
+                                <h4 class="label">Postcode</h4>
+                            </label>
+                        </div>
+                        <div class="col  align-center input-col">{{ restaurants.restaurant_address_postcode }}</div>
+                    </div>
+
+                    <div class="row with-borders">
+                        <div class="col  align-center label-col">
+                            <label class="collapse-label" for="edit_thumbnail">
+                                <h4 class="label">Thumbnail URL</h4>
+                            </label>
+                        </div>
+                        <div class="col  align-center input-col">{{ restaurants.restaurant_image_url }}</div>
+                    </div>                
+                </div>
+                
+            </div>
             
-        </div>
-        <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                <p>{{ restaurants.average_taste_stars }}.</p>
-                <p>{{ restaurants.average_presentation_stars }}.</p>
-                <p>{{ restaurants.average_friendliness_stars }}.</p>
-                <p>{{ restaurants.average_ambience_stars }}.</p>
-                <p>{{ restaurants.average_overall_stars }}.</p>
+
+          
+            <div class="row with-borders">
+                <div class="col with-borders">
+                    THIS IS THE REVIEWS BLOCK            
+                </div>
+            </div>
+
         </div>
     </div>
-    <div class="card-action"><a href="{{ url_for('restaurant_profile', restaurant_id=restaurants.restaurant_id) }}">See Reviews</a></div>
-    
-   
-        
-            {% endfor %}
-   
+</form>
+            
+                
+                
+                    
+                    
+                    
+                    
+                
+                
+ 
+                
+            
 
+
+
+
+            
+                
+
+
+
+{% endfor %}
+{% endif %}
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
