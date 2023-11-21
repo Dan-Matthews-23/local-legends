@@ -14,122 +14,143 @@
 </div>
 
 {% for restaurants in restaurants %}
-<form action="{{ url_for('edit_restaurant') }}?restaurant_id={{ restaurants.restaurant_id }}" method="POST">
-    <input type="hidden" name="{{ restaurants.restaurant_id }}" id="{{ restaurants.restaurant_id }}"
-        value="{{ restaurants.restaurant_id }}">
 
-    <button type="button" class="collapsible">{{ restaurants.restaurant_name }}</button>
-    <div class="content ">
-        <div class="restaurant-details-container with-borders">
-            <div class="row with-borders">
-                <div class="col with-borders ">
-                    <div class="col with-borders restaurant-details-left-hero-image"><THIS IS THE IMAGE BLOCK></div>
-                    <div class="col with-borders restaurant-details-stars-left">THIS IS THE STARS BLOCK</div>
+
+<button type="button" class="collapsible">{{ restaurants.restaurant_name }}</button>
+<div class="content ">
+    <div class="restaurant-details-container ">
+        <div class="row ">
+            <div class="col ">
+
+                <!--THIS IS THE START OF THE FIRST HALF OF THE CONTAINER-->
+                <div class="col s12 m12 l12 xl6  align-center">
+                    <div class="col align-center  s12"><img class="hero-image"
+                            src="{{ restaurants.restaurant_image_url }}"></div>
+                    <div class="col s12  stars-div align-center">
+
+                        <div class="row ">
+                            <div class="col restaurant-stars-display  s6 m6 l6 xl6">Taste</div>
+                            <div class="col restaurant-stars-display  s6 m6 l6 xl6">VALUE</div>
+                        </div>
+                        <div class="row ">
+                            <div class="col restaurant-stars-display  s6 m6 l6 xl6">Presentation</div>
+                            <div class="col restaurant-stars-display  s6 m6 l6 xl6">VALUE</div>
+                        </div>
+                        <div class="row ">
+                            <div class="col restaurant-stars-display  s6 m6 l6 xl6">Friendliness</div>
+                            <div class="col restaurant-stars-display  s6 m6 l6 xl6">VALUE</div>
+                        </div>
+                        <div class="row ">
+                            <div class="col restaurant-stars-display  s6 m6 l6 xl6y">Price</div>
+                            <div class="col restaurant-stars-display  s6 m6 l6 xl6">VALUE</div>
+                        </div>
+                        <div class="row ">
+                            <div class="col restaurant-stars-display  s6 m6 l6 xl6">Ambience</div>l6
+                            <div class="col restaurant-stars-display  s6 m6 l6 xl6">VALUE</div>
+                        </div>
+                        <div class="row ">
+                            <div class="col restaurant-stars-display  s6 m6 l6 xl6">Overall</div>
+                            <div class="col restaurant-stars-display  s6 m6 l6 xl6">VALUE</div>
+                        </div>
+                    </div>
                 </div>
 
-
-                <div class="col with-borders restaurant-details-right">
-
-
-                    <div class="row with-borders">
-                        <div class="col align-center label-col">
-                            <label class="collapse-label" for="edit_restaurant_name">
-                                <h4 class="label">Restaurant Name</h4>
-                            </label>
+                <!--THIS IS THE START OF THE SECOND HALF OF THE CONTAINER-->
+                <div class="col s12 m12 l12 xl6  align-center info-div">
+                    <div class="row ">
+                        <div class="col  s6 m6 l6 xl6">
+                            <h4 class="restaurant-information">Restaurant Name</h4>
                         </div>
-                        <div class="col align-center input-col">
-                            {{ restaurants.restaurant_name }}
+                        <div class="col  s6 m6 l6 xl6">
+                            <h4 class="restaurant-information">
+                                {{ restaurants.restaurant_name }}</h4>
                         </div>
                     </div>
 
-                    <div class="row with-borders">                
-                        <div class="col  align-center label-col">
-                            <label class="collapse-label" for="edit_address_one">
-                                <h4 class="label">First Line of Address Name</h4>
-                            </label>
+                    <div class="row ">
+                        <div class="col  s6 m6 l6 xl6">
+                            <h4 class="restaurant-information">First Line of Address Name</h4>
                         </div>
-                        <div class="col  align-center input-col">
-                            {{ restaurants.restaurant_address_one }}
+                        <div class="col  s6 m6 l6 xl6">
+                            <h4 class="restaurant-information">
+                                {{ restaurants.restaurant_address_one }}</h4>
                         </div>
                     </div>
 
-                    <div class="row with-borders">
-                        <div class="col  align-center label-col">
-                            <label class="collapse-label" for="edit_address_two">
-                                <h4 class="label">Second Line of Address</h4>
-                            </label>
+                    <div class="row ">
+                        <div class="col  s6 m6 l6 xl6">
+                            <h4 class="restaurant-information">Second Line of Address</h4>
                         </div>
-                        <div class="col  align-center input-col">{{ restaurants.restaurant_address_two }}</div>
+                        <div class="col  s6 m6 l6 xl6">
+                            <h4 class="restaurant-information">{{ restaurants.restaurant_address_two }}</h4>
+                        </div>
                     </div>
 
-                    <div class="row with-borders">
-                        <div class="col  align-center label-col">
-                            <label class="collapse-label" for="edit_address_three">
-                                <h4 class="label">Third Line of Address</h4>
-                            </label>
+                    <div class="row ">
+                        <div class="col  s6 m6 l6 xl6">
+                            <h4 class="restaurant-information">Third Line of Address</h4>
                         </div>
-                        <div class="col  align-center input-col">{{ restaurants.restaurant_address_three }}</div>
+                        <div class="col  s6 m6 l6 xl6">
+                            <h4 class="restaurant-information">{{ restaurants.restaurant_address_three }}</h4>
+                        </div>
                     </div>
 
-                    <div class="row with-borders">
-                        <div class="col  align-center label-col">
-                            <label class="collapse-label" for="edit_address_four">
-                                <h4 class="label">Fourth Line of Address</h4>
-                            </label>
+                    <div class="row ">
+                        <div class="col  s6 m6 l6 xl6">
+                            <h4 class="restaurant-information">Fourth Line of Address</h4>
                         </div>
-                        <div class="col  align-center input-col">{{ restaurants.restaurant_address_four }}</div>
+                        <div class="col  s6 m6 l6 xl6">
+                            <h4 class="restaurant-information">{{ restaurants.restaurant_address_four }}</h4>
+                        </div>
                     </div>
 
-                    <div class="row with-borders">
-                        <div class="col align-center label-col">
-                            <label class="collapse-label" for="edit_postcode">
-                                <h4 class="label">Postcode</h4>
-                            </label>
+                    <div class="row ">
+                        <div class="col  s6 m6 l6 xl6">
+                            <h4 class="restaurant-information">Postcode</h4>
                         </div>
-                        <div class="col  align-center input-col">{{ restaurants.restaurant_address_postcode }}</div>
+                        <div class="col  s6 m6 l6 xl6">
+                            <h4 class="restaurant-information">{{ restaurants.restaurant_address_postcode }}</h4>
+                        </div>
                     </div>
-
-                    <div class="row with-borders">
-                        <div class="col  align-center label-col">
-                            <label class="collapse-label" for="edit_thumbnail">
-                                <h4 class="label">Thumbnail URL</h4>
-                            </label>
-                        </div>
-                        <div class="col  align-center input-col">{{ restaurants.restaurant_image_url }}</div>
-                    </div>                
                 </div>
-                
             </div>
-            
 
-          
-            <div class="row with-borders">
-                <div class="col with-borders">
-                    THIS IS THE REVIEWS BLOCK            
-                </div>
-            </div>
+            <form action="{{ url_for('edit_restaurant') }}?restaurant_id={{ restaurants.restaurant_id }}" method="POST">
+                <input type="hidden" name="{{ restaurants.restaurant_id }}" id="{{ restaurants.restaurant_id }}"
+                    value="{{ restaurants.restaurant_id }}">
+                <button type="button">Leave a review for this restaurant</button>
+            </form>
 
         </div>
     </div>
-</form>
-            
-                
-                
-                    
-                    
-                    
-                    
-                
-                
- 
-                
-            
+</div>
 
 
 
 
-            
-                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
