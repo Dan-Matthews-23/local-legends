@@ -30,7 +30,8 @@ def restaurant_profile(restaurant_id):
     
     session['restaurant_id'] = restaurant_id
     restaurant = Restaurants.query.get_or_404(restaurant_id)
-    reviews = (Reviews.query.filter_by(restaurant_id=restaurant_id).order_by(Reviews.review_id).all())
+    reviews = (Reviews.query.filter_by(restaurant_id=restaurant_id).
+    order_by(Reviews.review_id).all())
     if request.method == "POST":
         db.session.commit()
         return redirect(url_for("restaurant_profile", restaurant_id=restaurant.restaurant_id))
