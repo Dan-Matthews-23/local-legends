@@ -3,6 +3,7 @@
 - [Contents](#contents)
   - [Testing](#testing)
     - [Manual Testing](#manual-testing)
+  - [Testing the User Journey](#testing-the-user-journey)
     - [Automated Testing](#automated-testing)
     - [Validation and formatting](#validation-and-formatting)
       - [HTML and CSS](#html-and-css)
@@ -55,6 +56,19 @@ The project was built using Google Chrome and tested through Chrome Developer To
 
 
   - - -
+
+## Testing the User Journey
+
+| Test Number         |      App Route          |   Function           |   Expectation       | Result     |  Comments |  
+|------------         | ------------            | ------------        | ------------                          |------------| ------------             |
+| 001                |  @app.route("/")         | home              |  The user will be shown 4-6 existing restaurants to browse      | Fail       | The user was not shown any restaurants      |
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+| N/A        | N/A | N/A            | N/A| N/A| N/A|
+| 002                |  @app.route("/")         | home              |  The user will be shown 4-6 existing restaurants to browse      | Pass       | TThe error I got in Test 001 was beaause I had recently emptied the database. After creating a new restaurant using Admin Portal the restaurant was displayed      |
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+| N/A        | N/A | N/A            | N/A| N/A| N/A|
+
+
 
 ### Automated Testing
 
