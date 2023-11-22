@@ -4,6 +4,7 @@
   - [Testing](#testing)
     - [Manual Testing](#manual-testing)
   - [Testing the User Journey](#testing-the-user-journey)
+    - [As a guest](#as-a-guest)
     - [Automated Testing](#automated-testing)
     - [Validation and formatting](#validation-and-formatting)
       - [HTML and CSS](#html-and-css)
@@ -59,14 +60,22 @@ The project was built using Google Chrome and tested through Chrome Developer To
 
 ## Testing the User Journey
 
+### As a guest
+
 | Test Number         |      App Route          |   Function           |   Expectation       | Result     |  Comments |  
 |------------         | ------------            | ------------        | ------------                          |------------| ------------             |
 | 001                |  @app.route("/")         | home              |  The user will be shown 4-6 existing restaurants to browse      | Fail       | The user was not shown any restaurants      |
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
 | N/A        | N/A | N/A            | N/A| N/A| N/A|
-| 002                |  @app.route("/")         | home              |  The user will be shown 4-6 existing restaurants to browse      | Pass       | TThe error I got in Test 001 was beaause I had recently emptied the database. After creating a new restaurant using Admin Portal the restaurant was displayed      |
+| 002                |  @app.route("/restaurants")         | restaurants              |  The user will be shown 4-6 existing restaurants to browse      | Pass       | TThe error I got in Test 001 was beaause I had recently emptied the database. After creating a new restaurant using Admin Portal the restaurant was displayed      |
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
-| N/A        | N/A | N/A            | N/A| N/A| N/A|
+| ![001](/assets/testing/testing-images/testing-user-journey-test-one-a)       | N/A | N/A            | N/A| N/A| N/A|
+| 003                |  @app.route("/restaurant_profile")         | restaurant_profile              |  The user will be able to select a restaurant to see the reviews      | Pass       | The user is able to select a review and see the details of it      |
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+| ![001](/assets/testing/testing-images/testing-user-journey-test-three-a)       | ![001](/assets/testing/testing-images/testing-user-journey-test-three-b) | N/A            | N/A| N/A| N/A|
+| 004                |  @app.route("/register")         | register              |  The user will be able to create an account and be prompted with feedback for validation      | Fail       | The verification is displayed on the email address but does not initiate responses for username already taken or password too simple      |
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+| ![001](/assets/testing/testing-images/testing-user-journey-test-four-a)       | ![001](/assets/testing/testing-images/testing-user-journey-test-four-b) | N/A            | N/A| N/A| N/A|
 
 
 

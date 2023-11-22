@@ -32,7 +32,7 @@ def restaurant_profile(restaurant_id):
     session['restaurant_id'] = restaurant_id
     restaurant = Restaurants.query.get_or_404(restaurant_id)
     reviews = (Reviews.query.filter_by(restaurant_id=restaurant_id).
-    order_by(Reviews.review_id).all())  
+               order_by(Reviews.review_id.desc()).all())
     
      
     
@@ -122,7 +122,8 @@ def handle_leave_review(restaurant_id):
         edit_friendliness_stars = (int(request.form.get("edit_friendliness_stars")))
         edit_price_stars = (int(request.form.get("edit_price_stars")))
         edit_ambience_stars = (int(request.form.get("edit_ambience_stars")))
-        todays_date = datetime.datetime.now()
+        date_calc = datetime.datetime.now()
+        todays_date = (date_calc.strftime("%Y-%m-%d"))
 
         restaurant = Restaurants.query.get_or_404(restaurant_id)
         existing_taste_stars = restaurant.restaurant_average_taste_stars
