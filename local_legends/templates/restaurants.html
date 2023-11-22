@@ -1,155 +1,119 @@
 {% extends "base.html" %}
 {% block content %}
-
-
 {% if session.is_logged_in %}
 <!--Started check for session BEFORE form so that the handle_leave_review 
-        is never executed if the user is not logged in - another attempt at 
-        defensive programming-->
-
-<div class="container  align-center card-panel grey lighten-5">
+   is never executed if the user is not logged in - another attempt at 
+   defensive programming-->
+<div class="container  align-center card-panel grey lighten-5 ">
     <div class="row input-row">
         <h3 class="light-blue-text text-darken-4 center-align">Local Legends: Restaurants</h3>
     </div>
 </div>
-
 {% for restaurants in restaurants %}
-
-
 <button type="button" class="collapsible">{{ restaurants.restaurant_name }}</button>
 <div class="content ">
     <div class="restaurant-details-container ">
         <div class="row ">
-            <div class="col ">
-
+            <div class="col lg-padding restaurant-details-container">
                 <!--THIS IS THE START OF THE FIRST HALF OF THE CONTAINER-->
-                <div class="col s12 m12 l12 xl6  align-center">
+                <div class="col s12 m12 l12 xl6 left-panel-container ">
                     <div class="col align-center  s12"><img class="hero-image"
                             src="{{ restaurants.restaurant_image_url }}"></div>
-                    <div class="col s12  stars-div align-center">
-
-                        <div class="row ">
-                            <div class="col restaurant-stars-display  s6 m6 l6 xl6">Taste</div>
-                            <div class="col restaurant-stars-display  s6 m6 l6 xl6">VALUE</div>
+                    <div class="col s2 m2 l2 xl2 "></div>
+                    <div class="col s8 m8 l8 xl8 stars-div card-panel ">
+                        
+                    <div class="row restaurant-stars-display-row">
+                        <div class="col s6 m6 l6 xl6 restaurant-stars-display-col">
+                            Overall {{ restaurants.restaurant_overall_stars }}
                         </div>
-                        <div class="row ">
-                            <div class="col restaurant-stars-display  s6 m6 l6 xl6">Presentation</div>
-                            <div class="col restaurant-stars-display  s6 m6 l6 xl6">VALUE</div>
-                        </div>
-                        <div class="row ">
-                            <div class="col restaurant-stars-display  s6 m6 l6 xl6">Friendliness</div>
-                            <div class="col restaurant-stars-display  s6 m6 l6 xl6">VALUE</div>
-                        </div>
-                        <div class="row ">
-                            <div class="col restaurant-stars-display  s6 m6 l6 xl6y">Price</div>
-                            <div class="col restaurant-stars-display  s6 m6 l6 xl6">VALUE</div>
-                        </div>
-                        <div class="row ">
-                            <div class="col restaurant-stars-display  s6 m6 l6 xl6">Ambience</div>l6
-                            <div class="col restaurant-stars-display  s6 m6 l6 xl6">VALUE</div>
-                        </div>
-                        <div class="row ">
-                            <div class="col restaurant-stars-display  s6 m6 l6 xl6">Overall</div>
-                            <div class="col restaurant-stars-display  s6 m6 l6 xl6">VALUE</div>
+                        <div class="col s6 m6 l6 xl6 restaurant-stars-display-col">
+                            
                         </div>
                     </div>
+
+                        <div class="row ">
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Taste</div>
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">VALUE</div>
+                        </div>
+                        <div class="row row display-table-row-border  ">
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Presentation</div>
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">VALUE</div>
+                        </div>
+                        <div class="row ">
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Friendliness</div>
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">VALUE</div>
+                        </div>
+                        <div class="row ">
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Price</div>
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">VALUE</div>
+                        </div>
+                        <div class="row ">
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Ambience</div>
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">VALUE</div>
+                        </div>
+                        
+                    </div>
+                    <div class="col s2 m2 l2 xl2 "></div>
                 </div>
-
                 <!--THIS IS THE START OF THE SECOND HALF OF THE CONTAINER-->
-                <div class="col s12 m12 l12 xl6  align-center info-div">
-                    <div class="row ">
-                        <div class="col  s6 m6 l6 xl6">
-                            <h4 class="restaurant-information">Restaurant Name</h4>
+                <div class="col s12 m12 l12 xl6 left-panel-container">
+                    <div class="col align-center  s12">Restaurant Details</div>
+                    <div class="col s1 m1 l1 xl1 "></div>
+                    <div class="col s10 m10 l10 xl10 stars-div card-panel ">
+                        <div class="row restaurant-stars-display-row">
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Name</div>
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_name }}</div>
                         </div>
-                        <div class="col  s6 m6 l6 xl6">
-                            <h4 class="restaurant-information">
-                                {{ restaurants.restaurant_name }}</h4>
+                        <div class="row row display-table-row-border  ">
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Building Name/No.</div>
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_address_one }}</div>
                         </div>
-                    </div>
-
-                    <div class="row ">
-                        <div class="col  s6 m6 l6 xl6">
-                            <h4 class="restaurant-information">First Line of Address Name</h4>
+                        <div class="row ">
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Street</div>
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_address_two }}</div>
                         </div>
-                        <div class="col  s6 m6 l6 xl6">
-                            <h4 class="restaurant-information">
-                                {{ restaurants.restaurant_address_one }}</h4>
+                        <div class="row ">
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">City</div>
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_address_three }}</div>
                         </div>
-                    </div>
-
-                    <div class="row ">
-                        <div class="col  s6 m6 l6 xl6">
-                            <h4 class="restaurant-information">Second Line of Address</h4>
+                        <div class="row ">
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">County</div>
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_address_four }}</div>
                         </div>
-                        <div class="col  s6 m6 l6 xl6">
-                            <h4 class="restaurant-information">{{ restaurants.restaurant_address_two }}</h4>
+                        <div class="row ">
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Postcode</div>
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_address_postcode }}</div>
                         </div>
-                    </div>
-
-                    <div class="row ">
-                        <div class="col  s6 m6 l6 xl6">
-                            <h4 class="restaurant-information">Third Line of Address</h4>
-                        </div>
-                        <div class="col  s6 m6 l6 xl6">
-                            <h4 class="restaurant-information">{{ restaurants.restaurant_address_three }}</h4>
+                        <div class="row ">
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Date Registered</div>
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_date_registered }}</div>
                         </div>
                     </div>
-
-                    <div class="row ">
-                        <div class="col  s6 m6 l6 xl6">
-                            <h4 class="restaurant-information">Fourth Line of Address</h4>
-                        </div>
-                        <div class="col  s6 m6 l6 xl6">
-                            <h4 class="restaurant-information">{{ restaurants.restaurant_address_four }}</h4>
-                        </div>
-                    </div>
-
-                    <div class="row ">
-                        <div class="col  s6 m6 l6 xl6">
-                            <h4 class="restaurant-information">Postcode</h4>
-                        </div>
-                        <div class="col  s6 m6 l6 xl6">
-                            <h4 class="restaurant-information">{{ restaurants.restaurant_address_postcode }}</h4>
-                        </div>
-                    </div>
+                    <div class="col s1 m1 l1 xl1 "></div>
                 </div>
             </div>
-            <form action="{{ url_for('restaurant_profile', restaurant_id=restaurants.restaurant_id) }}" method="POST">
-            <button type="submit" id="reviews">See More</button>            
-            </form>
-
+        </div>
+    </div>
+    
+    <div class="container align-center with-borders">
+            
+        
+        <div class="row with-borders s12 m12 l12 xl12 align-center">
+            <div class="col with-borders s12 m12 l12 xl12 align-center">
+                <form action="{{ url_for('restaurant_profile', restaurant_id=restaurants.restaurant_id) }}" method="POST">
+                    <button type="submit" class="see-reviews">Leave a review for {{ restaurants.restaurant_name }}</button>
+                </form>
+            </div>
+        </div>
+        <div class="row with-borders s12 m12 l12 xl12 align-center">
+            <div class="col with-borders s12 m12 l12 xl12 align-center">
+               
+                
+            </div>
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!--THIS IS THE START OF THE SECOND HALF OF THE CONTAINER-->
 
 {% endfor %}
 {% endif %}

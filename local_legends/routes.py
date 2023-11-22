@@ -20,8 +20,9 @@ def restaurants():
     if session.get('err'):
         session.pop('err')
         
-    restaurants = list(Restaurants.query.order_by(
-        Restaurants.restaurant_name).all())
+    restaurants = list(Restaurants.query.order_by(Restaurants.restaurant_name).all())  
+
+
     return render_template("restaurants.html", restaurants=restaurants)
 
 
@@ -118,6 +119,23 @@ def handle_leave_review(restaurant_id):
         edit_friendliness_stars = request.form.get("edit_friendliness_stars")
         edit_price_stars = request.form.get("edit_price_stars")
         edit_ambience_stars = request.form.get("edit_ambience_stars")
+        todays_date = datetime.datetime.now()
+
+        restaurant = Restaurants.query.get_or_404(restaurant_id)
+        new_taste_stars = restaurant.restaurant_average_taste_stars + (int(request.form.get("edit_taste_stars")))
+        #new_presentation_stars = restaurant.restaurant_average_presentation_stars + (int(request.form.get("edit_presentation_stars")))
+        #new_price_stars = restaurant.restaurant_average_price_stars + (int(request.form.get("edit_price_stars"))) 
+        #new_ambience_stars = restaurant.restaurant_average_ambience_stars + (int(request.form.get("edit_ambience_stars")))        
+        #new_friendliness_stars = restaurant.restaurant_average_friendliness_stars + (int(request.form.get("edit_friendliness_stars"))) 
+       #new_overall_stars = new_taste_stars + new_presentation_stars + new_price_stars + new_ambience_stars + new_friendliness_stars  / 5
+        new_restaurant = Restaurants(
+            restaurant_average_taste_stars = new_taste_stars,
+            restaurant_average_presentation_stars = new_presentation_stars,
+            restaurant_average_friendliness_stars = new_friendliness_stars,
+            restaurant_average_price_stars=new_price_stars,
+            restaurant_average_ambience_stars = new_ambience_stars,
+            restaurant_average_overall_stars=new_overall_stars
+        )
 
         review = Reviews(
         taste_stars=edit_taste_stars,
@@ -129,7 +147,8 @@ def handle_leave_review(restaurant_id):
         written_review_title=edit_review_title,
         written_review=edit_written_review,
         restaurant_id=restaurant_id,
-            user_id=user_id)
+            user_id=user_id,
+            review_date =  todays_date)
         db.session.add(review)
         db.session.commit()
         return redirect(url_for("restaurant_profile", restaurant_id=restaurant_id))
