@@ -355,37 +355,39 @@ h4 {
     margin: auto;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.restaurant-stars-display-row {
-   
+.review-title-text {
+    font-size: 24px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-align: center;
 }
 
-.restaurant-stars-display-col {
-    
+.review-body-text {
+    font-size: 16px;    
+    text-align: justify;
 }
 
-.stars-div {
-   
-
+.review-display {
+border-bottom:black;
+border-bottom-style: solid;
+border-bottom-width: 0.5px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -411,6 +413,8 @@ h4 {
 .hero-image { 
     width: 90%;
     height: 90%;
+    max-width: 350px;
+    max-height: 350px;
     
 
   }

@@ -50,7 +50,7 @@ class Reviews(db.Model):
     ambience_stars = db.Column(db.Integer, nullable=False)
     overall_stars = db.Column(db.Integer, nullable=False)
     written_review_title = db.Column(db.String(25), nullable=False)
-    written_review = db.Column(db.String(25), nullable=False)
+    written_review = db.Column(db.String(500), nullable=False)
     restaurant_id = db.Column(db.Integer, db.ForeignKey("restaurants.restaurant_id", ondelete="CASCADE"), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id", 
     ondelete="CASCADE"), nullable=False)

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-{% if session.is_logged_in %}
+
 <!--Started check for session BEFORE form so that the handle_leave_review 
    is never executed if the user is not logged in - another attempt at 
    defensive programming-->
@@ -33,23 +33,23 @@
 
                         <div class="row ">
                             <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Taste</div>
-                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">VALUE</div>
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_average_taste_stars }}</div>
                         </div>
                         <div class="row row display-table-row-border  ">
                             <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Presentation</div>
-                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">VALUE</div>
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_average_presentation_stars }}</div>
                         </div>
                         <div class="row ">
                             <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Friendliness</div>
-                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">VALUE</div>
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_average_friendliness_stars }}</div>
                         </div>
                         <div class="row ">
                             <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Price</div>
-                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">VALUE</div>
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_average_price_stars }}</div>
                         </div>
                         <div class="row ">
                             <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Ambience</div>
-                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">VALUE</div>
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_average_ambience_stars }}</div>
                         </div>
                         
                     </div>
@@ -116,5 +116,5 @@
 <!--THIS IS THE START OF THE SECOND HALF OF THE CONTAINER-->
 
 {% endfor %}
-{% endif %}
+
 {% endblock %}

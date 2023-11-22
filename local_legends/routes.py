@@ -32,7 +32,10 @@ def restaurant_profile(restaurant_id):
     session['restaurant_id'] = restaurant_id
     restaurant = Restaurants.query.get_or_404(restaurant_id)
     reviews = (Reviews.query.filter_by(restaurant_id=restaurant_id).
-    order_by(Reviews.review_id).all())
+    order_by(Reviews.review_id).all())  
+    
+     
+    
     if request.method == "POST":
         db.session.commit()
         return redirect(url_for("restaurant_profile", restaurant_id=restaurant.restaurant_id))
@@ -114,28 +117,47 @@ def handle_leave_review(restaurant_id):
         user_id = session.get('user_id')
         edit_review_title = request.form.get("edit_review_title")
         edit_written_review = request.form.get("edit_written_review")
-        edit_taste_stars = request.form.get("edit_taste_stars")
-        edit_presentation_stars = request.form.get("edit_presentation_stars")
-        edit_friendliness_stars = request.form.get("edit_friendliness_stars")
-        edit_price_stars = request.form.get("edit_price_stars")
-        edit_ambience_stars = request.form.get("edit_ambience_stars")
+        edit_taste_stars = (int(request.form.get("edit_taste_stars")))
+        edit_presentation_stars = (int(request.form.get("edit_presentation_stars")))
+        edit_friendliness_stars = (int(request.form.get("edit_friendliness_stars")))
+        edit_price_stars = (int(request.form.get("edit_price_stars")))
+        edit_ambience_stars = (int(request.form.get("edit_ambience_stars")))
         todays_date = datetime.datetime.now()
 
         restaurant = Restaurants.query.get_or_404(restaurant_id)
-        new_taste_stars = restaurant.restaurant_average_taste_stars + (int(request.form.get("edit_taste_stars")))
-        #new_presentation_stars = restaurant.restaurant_average_presentation_stars + (int(request.form.get("edit_presentation_stars")))
-        #new_price_stars = restaurant.restaurant_average_price_stars + (int(request.form.get("edit_price_stars"))) 
-        #new_ambience_stars = restaurant.restaurant_average_ambience_stars + (int(request.form.get("edit_ambience_stars")))        
-        #new_friendliness_stars = restaurant.restaurant_average_friendliness_stars + (int(request.form.get("edit_friendliness_stars"))) 
-       #new_overall_stars = new_taste_stars + new_presentation_stars + new_price_stars + new_ambience_stars + new_friendliness_stars  / 5
-        new_restaurant = Restaurants(
-            restaurant_average_taste_stars = new_taste_stars,
-            restaurant_average_presentation_stars = new_presentation_stars,
-            restaurant_average_friendliness_stars = new_friendliness_stars,
-            restaurant_average_price_stars=new_price_stars,
-            restaurant_average_ambience_stars = new_ambience_stars,
-            restaurant_average_overall_stars=new_overall_stars
-        )
+        existing_taste_stars = restaurant.restaurant_average_taste_stars
+        existing_presentation_stars = restaurant.restaurant_average_presentation_stars
+        existing_friendliness_stars = restaurant.restaurant_average_friendliness_stars
+        existing_price_stars = restaurant.restaurant_average_price_stars
+        existing_ambience_stars = restaurant.restaurant_average_ambience_stars
+        restaurant_name = restaurant.restaurant_name
+        
+        
+        new_taste_stars = edit_taste_stars if existing_taste_stars is None else existing_taste_stars + edit_taste_stars
+        new_presentation_stars = edit_presentation_stars if existing_taste_stars is None else existing_presentation_stars + edit_presentation_stars
+        new_friendliness_stars = edit_friendliness_stars if existing_presentation_stars is None else existing_friendliness_stars + edit_friendliness_stars
+        new_price_stars = edit_price_stars if existing_taste_stars is None else existing_price_stars + edit_price_stars
+        new_ambience_stars = edit_ambience_stars if existing_taste_stars is None else existing_ambience_stars + edit_ambience_stars
+        new_overall_stars = new_taste_stars + new_presentation_stars + new_price_stars + new_ambience_stars + new_friendliness_stars / 5
+   
+        restaurant.restaurant_average_taste_stars=new_taste_stars,
+        restaurant.restaurant_average_presentation_stars = new_presentation_stars,
+        restaurant.restaurant_average_friendliness_stars = new_friendliness_stars,
+        restaurant.restaurant_average_price_stars=new_price_stars,
+        restaurant.restaurant_average_ambience_stars = new_ambience_stars,
+        restaurant.restaurant_average_overall_stars=new_overall_stars
+        db.session.commit()
+            
+        
+
+       
+        
+
+
+
+
+
+        
 
         review = Reviews(
         taste_stars=edit_taste_stars,

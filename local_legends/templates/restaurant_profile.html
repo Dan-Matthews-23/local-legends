@@ -2,45 +2,27 @@
 {% block content %}
 
 
-{% if session.is_logged_in %}
-<!--Started check for session BEFORE form so that the handle_leave_review 
-        is never executed if the user is not logged in - another attempt at 
-        defensive programming-->
 
-<div class="container with-borders align-center card-panel grey lighten-5">
-    <div class="row with-borders">
-        <div class="col with-borders align-center">
-            <h3>{{ restaurant.restaurant_name }}</h3>
-        </div>
-    </div>
-    
-   
-
-    <div class="row with-borders">
-        <!--<div class="col with-borders">-->
-            <div class="row card-panel grey lighten-5">
+<div class="container align-center card-panel grey lighten-5">
+    <div class="row">
+        <div class="col card-panel grey lighten-5">
+            
                 <form action="{{ url_for('handle_leave_review', restaurant_id=restaurant.restaurant_id) }}" method="POST">
                     
-                    <!-- restaurant name -->
+               
                     
                     <div class="row ">
                         <div class="col">
                             <h3>How would you rate your experience?</h3>
                         </div>
                     </div>
-                    <!--<div class="row with-borders review-stars-row ">
-                        <div class="col with-borders review-stars-div">
-                            <h4 class="review-heading">Taste:</h4>
+                    {% if not session.is_logged_in %}
+                    <div class="row ">
+                        <div class="col">
+                            <h4>You must sign in before you can leave a review. <a href="{{ url_for('login') }}">Click here to sign in</a></h3>
                         </div>
-                        <div class="col review-stars-div">
-                            <span><i class="fa-regular fa-star fa-2xl" style="color: #ede607;"></i></span>
-                            <span><i class="fa-regular fa-star fa-2xl" style="color: #ede607;"></i></span>
-                            <span><i class="fa-regular fa-star fa-2xl" style="color: #ede607;"></i></span>
-                            <span><i class="fa-regular fa-star fa-2xl" style="color: #ede607;"></i></span>
-                            <span><i class="fa-regular fa-star fa-2xl" style="color: #ede607;"></i></span>
-                        </div>
-                    </div>-->
-
+                    </div>
+                    {% else %}                    
                     <div class="row ">
                         <div class="col">
                             <h4><label for="edit_review_title">Review Title {{ reviews.review_id }}</label></h4>
@@ -93,12 +75,7 @@
                         </div>
                         <div class="col"><input type="text" name="edit_ambience_stars" id="edit_ambience_stars"
                                 value="{{ reviews.ambience_stars }}"></div>
-                    </div>
-                    
-
-
-
-
+                    </div>      
                     <div class="row">
                         <div class="col s12 center-align">
                             <button type="submit" class="btn-large light-blue darken-1">Submit Review<i
@@ -106,129 +83,90 @@
                             </button>
                         </div>
                     </div>
+                    
+                    
+                    {% endif %}
+
                 </form>
             </div>
         <!--</div>-->
     </div>
 </div>
-{% endif %}
 
 
-<h3 class="light-blue-text text-darken-4 center-align">Review List</h3>
 
-<div class="container  align-center card-panel grey lighten-5">
-    <div class="row input-row">
-        <h3 class="light-blue-text text-darken-4 center-align">Local Legends: Restaurants</h3>
-    </div>
-</div>
+<h3 class="light-blue-text text-darken-4 center-align">See what others think</h3>
 
 {% for reviews in reviews %}
-
-
 <button type="button" class="collapsible">{{ reviews.written_review_title }}</button>
 <div class="content ">
     <div class="restaurant-details-container ">
         <div class="row ">
-            <div class="col ">
-
+            <div class="col lg-padding restaurant-details-container">
                 <!--THIS IS THE START OF THE FIRST HALF OF THE CONTAINER-->
-                <div class="col s12 m12 l12 xl6  align-center">
-                    <div class="col align-center  s12">IMG BLOCK</div>
-                    <div class="col s12 stars-div align-center">
-
+                <div class="col s12 m12 l12 xl6 left-panel-container ">
+                    
+                    <div class="col s2 m2 l2 xl2 "></div>
+                    <div class="col s8 m8 l8 xl8 stars-div card-panel ">
+    
                         <div class="row ">
-                            <div class="col restaurant-stars-display  s6 m6 l6 xl6">Taste</div>
-                            <div class="col restaurant-stars-display  s6 m6 l6 xl6">VALUE</div>
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Overall</div>
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">{{
+                                reviews.overall_stars }}</div>
+                        </div>
+    
+                        <div class="row ">
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Taste</div>
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">{{
+                                reviews.taste_stars }}</div>
+                        </div>
+                        <div class="row row display-table-row-border  ">
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Presentation</div>
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">{{
+                                reviews.presentation_stars }}</div>
                         </div>
                         <div class="row ">
-                            <div class="col restaurant-stars-display  s6 m6 l6 xl6">Presentation</div>
-                            <div class="col restaurant-stars-display  s6 m6 l6 xl6">VALUE</div>
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Friendliness</div>
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">{{
+                                reviews.friendliness_stars }}</div>
                         </div>
                         <div class="row ">
-                            <div class="col restaurant-stars-display  s6 m6 l6 xl6">Friendliness</div>
-                            <div class="col restaurant-stars-display  s6 m6 l6 xl6">VALUE</div>
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Price</div>
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">{{
+                                reviews.price_stars }}</div>
                         </div>
                         <div class="row ">
-                            <div class="col restaurant-stars-display  s6 m6 l6 xl6y">Price</div>
-                            <div class="col restaurant-stars-display  s6 m6 l6 xl6">VALUE</div>
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Ambience</div>
+                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">{{
+                                reviews.ambience_stars }}</div>
                         </div>
-                        <div class="row ">
-                            <div class="col restaurant-stars-display  s6 m6 l6 xl6">Ambience</div>l6
-                            <div class="col restaurant-stars-display  s6 m6 l6 xl6">VALUE</div>
-                        </div>
-                        <div class="row ">
-                            <div class="col restaurant-stars-display  s6 m6 l6 xl6">Overall</div>
-                            <div class="col restaurant-stars-display  s6 m6 l6 xl6">VALUE</div>
-                        </div>
+    
                     </div>
+                    <div class="col s2 m2 l2 xl2 "></div>
                 </div>
-
                 <!--THIS IS THE START OF THE SECOND HALF OF THE CONTAINER-->
-                <div class="col s12 m12 l12 xl6  align-center info-div">
-                    <div class="row ">
-                        <div class="col  s6 m6 l6 xl6">
-                            <h4 class="restaurant-information">Review Title</h4>
+                <div class="col s12 m12 l12 xl6 left-panel-container">
+                    <div class="col align-center  s12">Restaurant Details</div>
+                    <div class="col s1 m1 l1 xl1 "></div>
+                    <div class="col s10 m10 l10 xl10 stars-div card-panel ">
+                        <div class="row restaurant-stars-display-row">
+                            <!--<div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Name</div>-->
+                            <div class="col s12 m12 l12 xl12 review-display review-title-text ">"{{ reviews.written_review_title }}"</div>
                         </div>
-                        <div class="col  s6 m6 l6 xl6">
-                            <h4 class="restaurant-information">
-                                {{ reviews.written_review_title }}</h4>
-                        </div>
-                    </div>
+                        <div class="row row display-table-row-border  ">
+                            <!--<div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Name</div>-->
+                            <div class="col s12 m12 l12 xl12  review-body-text ">{{reviews.written_review }}</div>
+                        </div>                                              
+                        <div class="row ">
+                            <!--<div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Name</div>-->
+                           
+                            <div class="col s12 m12 l12 xl12 review-display review-body-text ">Posted on {{ reviews.review_date }} by {{ reviews.user_id }}</div>
 
-                    <div class="row ">
-                        <div class="col  s6 m6 l6 xl6">
-                            <h4 class="restaurant-information">Review Body</h4>
-                        </div>
-                        <div class="col  s6 m6 l6 xl6">
-                            <h4 class="restaurant-information">
-                                {{ reviews.written_review }}</h4>
                         </div>
                     </div>
-
-                    <div class="row ">
-                        <div class="col  s6 m6 l6 xl6">
-                            <h4 class="restaurant-information">Second Line of Address</h4>
-                        </div>
-                        <div class="col  s6 m6 l6 xl6">
-                            <h4 class="restaurant-information">{{ reviews.written_review }}</h4>
-                        </div>
-                    </div>
-
-                    <div class="row ">
-                        <div class="col  s6 m6 l6 xl6">
-                            <h4 class="restaurant-information">Third Line of Address</h4>
-                        </div>
-                        <div class="col  s6 m6 l6 xl6">
-                            <h4 class="restaurant-information">{{ reviews.written_review }}</h4>
-                        </div>
-                    </div>
-
-                    <div class="row ">
-                        <div class="col  s6 m6 l6 xl6">
-                            <h4 class="restaurant-information">Fourth Line of Address</h4>
-                        </div>
-                        <div class="col  s6 m6 l6 xl6">
-                            <h4 class="restaurant-information">{{ reviews.written_review }}</h4>
-                        </div>
-                    </div>
-
-                    <div class="row ">
-                        <div class="col  s6 m6 l6 xl6">
-                            <h4 class="restaurant-information">Postcode</h4>
-                        </div>
-                        <div class="col  s6 m6 l6 xl6">
-                            <h4 class="restaurant-information">{{ reviews.written_review }}</h4>
-                        </div>
-                    </div>
+                    <div class="col s1 m1 l1 xl1 "></div>
                 </div>
             </div>
-            {% if session.is_logged_in %}
-            <div class="card-action">
-                <a href="{{ url_for('edit_review', review_id=reviews.review_id) }}">Edit Review</a>
-            
-            </div>
-            {% endif %}
-
         </div>
     </div>
 </div>
