@@ -76,6 +76,22 @@ The project was built using Google Chrome and tested through Chrome Developer To
 | 004                |  @app.route("/register")         | register              |  The user will be able to create an account and be prompted with feedback for validation      | Fail       | The verification is displayed on the email address but does not initiate responses for username already taken or password too simple      |
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
 | ![001](/assets/testing/testing-images/testing-user-journey-test-four-a)       | ![001](/assets/testing/testing-images/testing-user-journey-test-four-b) | N/A            | N/A| N/A| N/A|
+| 005                |  @app.route("/register")         | register              |  The user will be able to create an account and be prompted with feedback for validation      | Pass       | All inout fields now have validation      |
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+| ![001](/assets/testing/testing-images/testing-user-journey-test-five-a)       | ![001](/assets/testing/testing-images/testing-user-journey-test-five-b) | N/A            | N/A| N/A| N/A|
+| 006                |  @app.route("/profile")         | profile              |  The user is redirected to the sign-in page      | Pass       | The user is redirected to the sign-in page      |
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+| ![001](/assets/testing/testing-images/testing-user-journey-test-six-a)       | N/A | N/A            | N/A| N/A| N/A|
+| 007                |  @app.route("/restaurants")         | restaurants              |  The user is able to view all restaurants without logging in including details of the restaurant, and a button that guides to the reviews page      | Pass       | The user can see all the restaurants, details and button      |
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+| ![001](/assets/testing/testing-images/testing-user-journey-test-seven-a)       | ![001](/assets/testing/testing-images/testing-user-journey-test-seven-b) | N/A            | N/A| N/A| N/A|
+| 008                |  @app.route("/restaurant_profile")         | restaurant_profile              |  The user is able to see all the reviews and is made aware of how to leave one themselves      | Pass       | The user can see all the reviews. The Leave Review section is hidden, replaced with a message telling the user to log in to leave a review, providing a link to do so      |
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+| ![001](/assets/testing/testing-images/testing-user-journey-test-eight-a)       N/A | N/A            | N/A| N/A| N/A|
+
+This now completes the Testing User Journey with Guest permissions
+
+
 
 
 
