@@ -215,6 +215,9 @@ def register():
 
 
 
+
+
+
         
 
         
@@ -329,17 +332,25 @@ def admin_login():
                 admin_id = admin_id_check.user_id                
                 # Seventh line of defense - checking if user_id matches the user_id stored in Admins table
                 if user_id == admin_id:
-                    if request.form.get("username") == user.username and request.form.get("email") == user.email and request.form.get("password") == user.password_hash and request.form.get("admin_password") == admin_id_check.admin_password_hash:
-                        # Not setting admin_id to user_id as a final line of defense, as this could be easily intercepted if the user_id is known.
-                        session['admin_id'] = admin_id_check.admin_id
-                        restaurants = list(Restaurants.query.order_by(Restaurants.restaurant_name).all())                        
-                        return render_template("admin_portal.html", restaurants=restaurants)
-                    else:
+                    if request.form.get("username") == user.username and request.form.get("email") == user.email:
+                        test_pword = request.form.get("password")
+                        admin_pass = request.form.get("admin_password")
+                        if check_password_hash(user.password_hash, test_pword):
+                            if check_password_hash(admin_id_check.admin_password_hash, admin_pass):
+
+                                # Not setting admin_id to user_id as a final line of defense, as this could be easily intercepted if the user_id is known.
+                                session['admin_id'] = admin_id_check.admin_id
+                                restaurants = list(Restaurants.query.order_by(Restaurants.restaurant_name).all())                        
+                                return render_template("admin_portal.html", restaurants=restaurants)
+                            else:
+                                session['err'] = "Those details are incorrect"
+                                return redirect(url_for("home"))  
                         session['err'] = "Those details are incorrect"
-                        return redirect(url_for("home"))                        
-                else:
-                    session['err'] = "Admin Login failed"
+                        return redirect(url_for("home"))
+                    session['err'] = "Those details are incorrect"
                     return redirect(url_for("home"))
+                session['err'] = "You are not an authorised admin"
+                return redirect(url_for("home"))   
             session['err'] = "Admin Login failed"
             return redirect(url_for("home"))
         session['err'] = "Admin Login failed"
@@ -347,6 +358,17 @@ def admin_login():
     session['err'] = "Admin Login failed"
     return redirect(url_for("home"))
    
+
+
+
+
+
+
+
+
+
+
+
 
 @app.route("/admin_login/create", methods=["GET", "POST"])
 def create_restaurant():

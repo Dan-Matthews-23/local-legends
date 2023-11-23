@@ -1,0 +1,54 @@
+ {% extends "base.html" %} 
+ {% block content %} 
+
+<!--USER FORM FOR GET INVOLVED-->
+
+<!--USER FORM FOR GET INVOLVED-->
+<section class="register">
+    <form method="POST" action="{{ url_for('hash') }}">
+        <div class="container align-center login-container">
+            <div class="row sign-up-row  align-center ">
+                <div class="col-sign-up align-center lg-padding">
+                    <h3>Password Hash</h3>
+                </div>
+            </div>         
+           
+            <div class="row sign-up-row  align-center">
+                <div class="col-sign-up align-right lg-padding">
+                    <label for="name">Password:</label>
+                </div>
+                <div class="col-sign-up  align-left">
+                    <input type="password" class="sign-up" name="password_register" id="password_register" placeholder="Choose a password" required>
+                </div>
+            </div>
+            
+            <div class="row sign-up-row align-center">
+                <div class="col-sign-up  align-center">
+                    <input type="submit" class="submit-btn" name="submit_register" id="submit_register" value="Register">
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+    
+
+
+@app.route("/temp_admin_access", methods=["GET", "POST"])
+def hash():
+if request.method == "POST":
+query = Admins.query.filter(Admins.user_id == 6).first()
+if query:
+new_password = generate_password_hash(request.form.get("password_register"))
+query.admin_password_hash = new_password
+db.session.commit()
+session['err'] = "Password hashed!"
+return redirect(url_for("home"))
+else:
+session['err'] = "Did not work"
+return redirect(url_for("profile"))
+return render_template("temp_admin_access.html")
+
+
+
+
+    {% endblock %}
