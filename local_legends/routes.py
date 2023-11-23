@@ -185,24 +185,43 @@ def register():
         session.pop('err')
     if request.method == "POST":
         username = request.form.get("username_register")
-        email = request.form.get("email_register")
-        post_password = request.form.get("password_register")
+        email = request.form.get("email_register")       
 
-        #password = sha256_crypt.encrypt(request.form.get("password_register"))
-        #password2 = sha256_crypt.encrypt(request.form.get("password_register"))
-
-        #print(sha256_crypt.verify("password", password))
+        existing_username = Users.query.filter(Users.username == username.lower()).all()
+        existing_email = Users.query.filter(Users.email == email.lower()).all()
         
-        #session['err'] = password
-
-        todays_date = datetime.datetime.now()
-
-        new_user = Users(username=username, email=email, password_hash=post_password, user_date_registered=todays_date)
-        db.session.add(new_user)
-        db.session.commit()
-        flash("Registration successful!")
-        return redirect(url_for("register"))
+        if existing_username:
+            session['err'] = "That username is already taken. Please choose another"
+        elif existing_email:
+            session['err'] = "That email address is already taken. Please choose another"
+        elif existing_username and existing_email:
+            session['err'] = "Both the username and the email address have already been registered"
+        else: 
+            post_password = (len(request.form.get("password_register")))
+            if (post_password < 11):
+                session['err'] = "Your password must be at least 10 characters long"
+            else:
+                new_password = generate_password_hash(request.form.get("password_register"))
+                todays_date = datetime.datetime.now()
+                new_user = Users(username=username, email=email, password_hash=new_password, user_date_registered=todays_date)
+                db.session.add(new_user)
+                db.session.commit()
+                session['err'] = "Registration successful!"
+                return redirect(url_for("login"))
     return render_template("register.html")
+
+
+
+
+
+
+        
+
+        
+
+        
+
+        
 
 
 
@@ -240,17 +259,18 @@ def login():
 
     if request.method == "POST":
         existing_user = Users.query.filter(Users.email == test_email).first()
-        existing_password = existing_user.password_hash            
-        if existing_user and existing_password == test_pword:
-            user_id = existing_user.user_id
-            session['user_id'] = user_id
-            session['username'] = existing_user.username
-            session['is_logged_in'] = True            
-            return redirect(url_for("profile", user_id=user_id))
-        else:
-            flash("Incorrect Username and/or Password")
-            return redirect(url_for("home"))
+        if existing_user:
+            if check_password_hash(existing_user.password_hash, test_pword):
+                user_id = existing_user.user_id
+                session['user_id'] = user_id
+                session['username'] = existing_user.username
+                session['is_logged_in'] = True            
+                return redirect(url_for("profile", user_id=user_id))
+            else:
+                flash("Incorrect Username and/or Password")
+                return redirect(url_for("home"))
     return render_template("signin.html")
+
 
 
 

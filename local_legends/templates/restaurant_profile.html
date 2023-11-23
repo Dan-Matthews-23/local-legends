@@ -169,6 +169,15 @@
             </div>
         </div>
     </div>
+    {% if session.user_id == reviews.user_id %}
+    <div class="row with-borders s12 m12 l12 xl12 align-center">
+        <div class="col with-borders s12 m12 l12 xl12 align-center">
+            <form action="{{ url_for('edit_review', review_id=reviews.review_id) }}" method="POST">
+                <button type="submit" class="see-reviews">Edit Review</button>
+            </form>
+        </div>
+    </div>
+    {% endif %}
 </div>
 {% endfor %}
 </div>
