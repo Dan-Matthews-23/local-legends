@@ -257,22 +257,36 @@ def profile():
 
 @app.route("/signin", methods=["GET", "POST"])
 def login():
-    test_pword = request.form.get("password_login")
-    test_email = request.form.get("email_login")
+    password = request.form.get("password_login")
+    email = request.form.get("email_login")
 
     if request.method == "POST":
-        existing_user = Users.query.filter(Users.email == test_email).first()
+        existing_user = Users.query.filter(Users.email == email).first()
         if existing_user:
-            if check_password_hash(existing_user.password_hash, test_pword):
+            if check_password_hash(existing_user.password_hash, password):
                 user_id = existing_user.user_id
                 session['user_id'] = user_id
                 session['username'] = existing_user.username
                 session['is_logged_in'] = True            
                 return redirect(url_for("profile", user_id=user_id))
+                # I could have given seperate feedback errors to email and password,
+                # however for security purposes I have not done this (see README)
             else:
-                flash("Incorrect Username and/or Password")
-                return redirect(url_for("home"))
-    return render_template("signin.html")
+                session['err'] = "Incorrect details. Please try again"
+                return redirect(url_for("login"))
+        else:
+            session['err'] = "Incorrect details. Please try again"
+            return redirect(url_for("home"))
+    return render_template("signin.html") 
+
+
+
+           
+            
+
+            
+  
+    
 
 
 

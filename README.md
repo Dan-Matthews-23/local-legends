@@ -545,8 +545,9 @@ I have introduced a multi-stage defensive approach to logging in as admin, check
 - Third stage: The check_admin_status is executed each time the user initiates a task that only the admin can perform. It checks not only if the above marker is set in the users table, but also if the user_id matches the user_id stored in the admins table. If it does not match, the user is not authenticated. 
 
 
+#### Login
 
-
+Ordinarily, protocol discates that the error message the customer receieves should give clear reasons why they have not been able to do what they expected. In def login, the script checks for an email address. If it's not found, the user is supposed to be told this. However I don't want anyone unauthorised to know that one of the fields is correct, which they would do if I were to give specirfic feedback on why the login failed. To mitigate this I have a generic failure reason. 
 
 
 

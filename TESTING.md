@@ -94,6 +94,28 @@ This now completes the Testing User Journey with Guest permissions
 
 
 
+| Test Number         |      App Route          |   Function           |   Expectation       | Result     |  Comments |  
+|------------         | ------------            | ------------        | ------------                          |------------| ------------             |
+| 009                |  @app.route("/signin")         | login              |  The user will be able to login, and get feedback if any errors occur     | Fail       | When incorrectly entering details, the user was directed back to the home page with no error      |
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+|![001](/assets/testing/testing-images/testing-user-journey-test-nine-a)        | N/A | N/A            | N/A| N/A| N/A|
+| 010                |  @app.route("/signin")         | login              |  The user will be able to login, and get feedback if any errors occur     | Pass       | The user can log in. If there are errors they are clearly displayed      |
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+|![001](/assets/testing/testing-images/testing-user-journey-test-ten-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-ten-b) | N/A            | N/A| N/A| N/A|
+| 011                |  @app.route("/")         | home              |  The user will be shown existing restaurants to browse     | Pass       | The user is shown  restaurants (for testing purposes only two restaurants exist in the db)     |
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+|![001](/assets/testing/testing-images/testing-user-journey-test-eleven-a)        | N/A | N/A            | N/A| N/A| N/A|
+| 012                |  @app.route("/restaurants")         | restaurants              |  The user will be able to see the details of each restaurant     | Fail       | The user details are shown, but the stars section only says "Value"     |
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+|![001](/assets/testing/testing-images/testing-user-journey-test-twelve-a)        | N/A | N/A            | N/A| N/A| N/A|
+
+
+
+
+This now completes the Testing User Journey with Registered User permissions
+
+
+
 
 ### Automated Testing
 
