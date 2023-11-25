@@ -154,6 +154,14 @@ This now completes the Testing User Journey with Guest permissions
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
 |![001](/assets/testing/testing-images/testing-user-journey-test-twenty-one-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-twenty-one-b)  | ![001](/assets/testing/testing-images/testing-user-journey-test-twenty-one-c)            | N/A| N/A| N/A|
 
+| 024                |  @app.route("/restaurant_profile")         | restaurant_profile              |  Given the same test data from Test 022, I would expect the Overall, Taste, Presentation, Friendliness, Price and Ambience stars to equal 3 on all counts    | Fail | All fields except Overall in the Reviews table worked as expected. Test failed 
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+|![001](/assets/testing/testing-images/testing-user-journey-test-twenty-four-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-twenty-four-b)  | N/A          | N/A| N/A| N/A|
+
+| 025                |  @app.route("/restaurant_profile")         | restaurant_profile              |  Given the same test data from Test 022, I would expect the Overall, Taste, Presentation, Friendliness, Price and Ambience stars to equal 3 on all counts    | Pass | All fields except Overall in the Reviews table worked as expected. The miscalculation was because I was overriding the final overall calc in the second part of the IF statement 
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+|![001](/assets/testing/testing-images/testing-user-journey-test-twenty-five-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-twenty-five-b)  | N/A          | N/A| N/A| N/A|
+
 
 
 This now completes the Testing User Journey with Registered User permissions

@@ -166,7 +166,9 @@ def handle_leave_review(restaurant_id):
         review_title = request.form.get("edit_review_title")
         written_review = request.form.get("edit_written_review")
         date_calc = datetime.datetime.now()
-        todays_date = (date_calc.strftime("%Y-%m-%d"))        
+        todays_date = (date_calc.strftime("%Y-%m-%d"))
+
+               
 
         existing_reviews = Reviews.query.filter(Reviews.restaurant_id == restaurant_id).all()
         restaurant = Restaurants.query.filter(
@@ -233,22 +235,34 @@ def handle_leave_review(restaurant_id):
             sum_overall_stars = [average_ambience_stars, average_price_stars,
             average_friendliness_stars, average_presentation_stars, 
             average_taste_stars]
-            average_overall_stars_for_restaurants_table = statistics.mean(sum_overall_stars)  
+            average_overall_stars_for_restaurants_table = statistics.mean(sum_overall_stars)
 
-        else:   
+            posted_taste_stars = int(request.form.get("edit_taste_stars"))
+            posted_presentation_stars = int(request.form.get("edit_presentation_stars"))
+            posted_friendliness_stars = int(request.form.get("edit_friendliness_stars"))
+            posted_price_stars = int(request.form.get("edit_price_stars"))
+            posted_ambience_stars = int(request.form.get("edit_ambience_stars"))
 
+            overall_calc = (posted_taste_stars + posted_presentation_stars +
+                            posted_friendliness_stars + posted_price_stars + posted_ambience_stars) / 5
+            
+
+        else:
             average_taste_stars = int(request.form.get("edit_taste_stars"))
             average_presentation_stars = int(request.form.get("edit_presentation_stars"))
             average_friendliness_stars = int(request.form.get("edit_friendliness_stars"))
             average_price_stars = int(request.form.get("edit_price_stars"))
-            average_ambience_stars = int(request.form.get("edit_ambience_stars"))
-            overall_stars = average_taste_stars + average_presentation_stars +  average_friendliness_stars + average_price_stars +  average_ambience_stars
+            average_ambience_stars = int(request.form.get("edit_ambience_stars"))    
+
+            overall_stars = (average_taste_stars + average_presentation_stars +
+                             average_friendliness_stars + average_price_stars + average_ambience_stars)
             average_overall_stars_for_restaurants_table = (overall_stars / 5)
+            
+            overall_calc = (average_taste_stars + average_presentation_stars +
+                            average_friendliness_stars + average_price_stars + average_ambience_stars) / 5
 
 
         
-        
-        overall_calc = (int(request.form.get("edit_taste_stars"))) + (int(request.form.get("edit_presentation_stars"))) + (int(request.form.get("edit_friendliness_stars"))) + (int(request.form.get("edit_price_stars"))) + (int(request.form.get("edit_ambience_stars"))) / 5
         # Insert a review into the table Reviews
         new_review = Reviews(
             taste_stars=int(request.form.get("edit_taste_stars")),
