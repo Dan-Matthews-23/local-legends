@@ -166,9 +166,7 @@ def handle_leave_review(restaurant_id):
         review_title = request.form.get("edit_review_title")
         written_review = request.form.get("edit_written_review")
         date_calc = datetime.datetime.now()
-        todays_date = (date_calc.strftime("%Y-%m-%d"))
-
-               
+        todays_date = (date_calc.strftime("%Y-%m-%d"))               
 
         existing_reviews = Reviews.query.filter(Reviews.restaurant_id == restaurant_id).all()
         restaurant = Restaurants.query.filter(
