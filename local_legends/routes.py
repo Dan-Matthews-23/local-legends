@@ -6,6 +6,42 @@ from flask_login import login_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from passlib.hash import sha256_crypt
 import datetime
+import statistics
+
+## DELETE THIS ONCE USED##
+@app.route("/temp_admin_access", methods=["GET", "POST"])
+def hash():
+    user_id = user_id = session.get('user_id')
+    if request.method == "POST":
+        query = Admins.query.filter(Admins.user_id == user_id).first()
+        if query:
+            new_password = generate_password_hash(request.form.get("password_register"))
+            query.admin_password_hash = new_password
+            db.session.commit()
+            session['err'] = "Password hashed!"
+            return redirect(url_for("home"))
+        else:
+            session['err'] = "Did not work"
+            return redirect(url_for("profile"))
+    return render_template("temp_admin_access.html")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @app.route("/")
@@ -108,6 +144,15 @@ def delete_review(review_id):
         return redirect(url_for('login'))
 
 
+
+
+
+
+
+
+
+
+
 @app.route("/restaurant_profile/<int:restaurant_id>/leave_review", methods=["POST"])
 def handle_leave_review(restaurant_id):
     if session.get('err'):
@@ -115,68 +160,69 @@ def handle_leave_review(restaurant_id):
 
     if session.get('is_logged_in', False):
         user_id = session.get('user_id')
-        edit_review_title = request.form.get("edit_review_title")
-        edit_written_review = request.form.get("edit_written_review")
-        edit_taste_stars = (int(request.form.get("edit_taste_stars")))
-        edit_presentation_stars = (int(request.form.get("edit_presentation_stars")))
-        edit_friendliness_stars = (int(request.form.get("edit_friendliness_stars")))
-        edit_price_stars = (int(request.form.get("edit_price_stars")))
-        edit_ambience_stars = (int(request.form.get("edit_ambience_stars")))
+        restaurant_id = restaurant_id
+        review_title = request.form.get("edit_review_title")
+        written_review = request.form.get("edit_written_review")
         date_calc = datetime.datetime.now()
         todays_date = (date_calc.strftime("%Y-%m-%d"))
-
-        restaurant = Restaurants.query.get_or_404(restaurant_id)
-        existing_taste_stars = restaurant.restaurant_average_taste_stars
-        existing_presentation_stars = restaurant.restaurant_average_presentation_stars
-        existing_friendliness_stars = restaurant.restaurant_average_friendliness_stars
-        existing_price_stars = restaurant.restaurant_average_price_stars
-        existing_ambience_stars = restaurant.restaurant_average_ambience_stars
-        restaurant_name = restaurant.restaurant_name
-        
-        
-        new_taste_stars = edit_taste_stars if existing_taste_stars is None else existing_taste_stars + edit_taste_stars
-        new_presentation_stars = edit_presentation_stars if existing_taste_stars is None else existing_presentation_stars + edit_presentation_stars
-        new_friendliness_stars = edit_friendliness_stars if existing_presentation_stars is None else existing_friendliness_stars + edit_friendliness_stars
-        new_price_stars = edit_price_stars if existing_taste_stars is None else existing_price_stars + edit_price_stars
-        new_ambience_stars = edit_ambience_stars if existing_taste_stars is None else existing_ambience_stars + edit_ambience_stars
-        new_overall_stars = new_taste_stars + new_presentation_stars + new_price_stars + new_ambience_stars + new_friendliness_stars / 5
-   
-        restaurant.restaurant_average_taste_stars=new_taste_stars,
-        restaurant.restaurant_average_presentation_stars = new_presentation_stars,
-        restaurant.restaurant_average_friendliness_stars = new_friendliness_stars,
-        restaurant.restaurant_average_price_stars=new_price_stars,
-        restaurant.restaurant_average_ambience_stars = new_ambience_stars,
-        restaurant.restaurant_average_overall_stars=new_overall_stars
-        db.session.commit()
-            
         
 
-       
+        existing_reviews = Reviews.query.filter(Reviews.restaurant_id == restaurant_id).all()
+        restaurant = Restaurants.query.filter(
+            Restaurants.restaurant_id == restaurant_id).first()
+
+        # If there are no reviews for this restaurant
+        if existing_reviews:
+            sum_taste_stars = existing_reviews.taste_stars.sum()
+            average_taste_stars = statistics.mean(sum_taste_stars)
+            sum_presentation_stars = existing_reviews.presentation_stars.sum()
+            average_presentation_stars = statistics.mean(sum_presentation_stars)
+            sum_friendliness_stars = existing_reviews.friendliness_stars.sum()
+            average_friendliness_stars = statistics.mean(sum_friendliness_stars)
+            sum_price_stars = existing_reviews.price_stars.sum()
+            average_price_stars = statistics.mean(sum_price_stars)
+            sum_ambience_stars = existing_reviews.ambience_stars.sum()
+            average_ambience_stars = statistics.mean(sum_ambience_stars)
+            sum_overall_stars = existing_reviews.overall_stars.sum()
+            average_overall_stars = statistics.mean(sum_overall_stars)
+
+        else:   
+
+            average_taste_stars = int(request.form.get("edit_taste_stars"))
+            average_presentation_stars = int(request.form.get("edit_presentation_stars"))
+            average_friendliness_stars = int(request.form.get("edit_friendliness_stars"))
+            average_price_stars = int(request.form.get("edit_price_stars"))
+            average_ambience_stars = int(request.form.get("edit_ambience_stars"))
+            overall_stars = [average_taste_stars, average_presentation_stars, average_friendliness_stars, average_price_stars, average_ambience_stars]
+            average_overall_stars = statistics.mean(overall_stars)
+
+        # Insert a review into the table Reviews
+        new_review = Reviews(taste_stars=average_taste_stars, presentation_stars=average_presentation_stars, friendliness_stars=average_friendliness_stars, price_stars=average_price_stars, ambience_stars=average_ambience_stars, overall_stars=average_overall_stars, written_review_title=review_title, written_review=written_review, restaurant_id=restaurant_id, user_id=user_id, review_date=todays_date)
         
+        if restaurant:
+            restaurant.restaurant_average_taste_stars = average_taste_stars
+            restaurant.restaurant_average_presentation_stars = average_presentation_stars
+            restaurant.restaurant_average_friendliness_stars = average_friendliness_stars
+            restaurant.restaurant_average_price_stars = average_price_stars
+            restaurant.restaurant_average_ambience_stars = average_ambience_stars
+            restaurant.restaurant_average_overall_stars = average_overall_stars             
+        else:
+            return redirect(url_for("restaurant_profile", restaurant_id=restaurant_id))
+            session['err'] = "There was an error in pulling records from the Restaurant table"            
+        db.session.add(new_review)
+        db.session.commit()       
+    return redirect(url_for('login'))
 
 
 
 
 
-        
 
-        review = Reviews(
-        taste_stars=edit_taste_stars,
-        presentation_stars=edit_presentation_stars,
-        friendliness_stars=edit_friendliness_stars,
-        price_stars=edit_price_stars,
-        ambience_stars=edit_ambience_stars,
-        overall_stars=1,
-        written_review_title=edit_review_title,
-        written_review=edit_written_review,
-        restaurant_id=restaurant_id,
-            user_id=user_id,
-            review_date =  todays_date)
-        db.session.add(review)
-        db.session.commit()
-        return redirect(url_for("restaurant_profile", restaurant_id=restaurant_id))
-    else:
-        return redirect(url_for('login'))
+
+
+
+
+
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -303,27 +349,34 @@ def login():
 def check_admin_status():
     if session.get('err'):
         session.pop('err')
+    
+    if session.get('admin_id'):
+        restaurants = list(Restaurants.query.order_by(
+            Restaurants.restaurant_name).all())
+        return render_template("admin_portal.html", restaurants=restaurants)
+    else:      
+        
     # Fourth line of defense - checking user is logged in
-    if session.get('is_logged_in', False):
-        user_id = session.get('user_id')
-        user = Users.query.filter(Users.user_id == user_id).first()        
+        if session.get('is_logged_in', False):
+            user_id = session.get('user_id')
+            user = Users.query.filter(Users.user_id == user_id).first()        
         # Fifth line of defense - checking the user has admin status
-        is_admin = user.is_admin        
-        if is_admin == True:
-            admin_id_check = Admins.query.filter(Admins.user_id == user_id).first()               
+            is_admin = user.is_admin        
+            if is_admin == True:
+                admin_id_check = Admins.query.filter(Admins.user_id == user_id).first()               
             #Sixth line of defense - checking the user's user_id is stored in the admin database
-            if admin_id_check is None:
-                return redirect(url_for("home"))
-            else:
-                admin_id = admin_id_check.user_id                
-                # Seventh line of defense - checking if user_id matches the user_id stored in Admins table
-                if user_id == admin_id:                
-                    return render_template("admin_login.html")
-                else:
+                if admin_id_check is None:
                     return redirect(url_for("home"))
+                else:
+                    admin_id = admin_id_check.user_id                
+                # Seventh line of defense - checking if user_id matches the user_id stored in Admins table
+                    if user_id == admin_id:                
+                        return render_template("admin_login.html")
+                    else:
+                        return redirect(url_for("home"))
+                return redirect(url_for("home"))
             return redirect(url_for("home"))
         return redirect(url_for("home"))
-    return redirect(url_for("home"))
         
 
 @app.route("/admin_login", methods=["GET", "POST"])

@@ -105,9 +105,21 @@ This now completes the Testing User Journey with Guest permissions
 | 011                |  @app.route("/")         | home              |  The user will be shown existing restaurants to browse     | Pass       | The user is shown  restaurants (for testing purposes only two restaurants exist in the db)     |
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
 |![001](/assets/testing/testing-images/testing-user-journey-test-eleven-a)        | N/A | N/A            | N/A| N/A| N/A|
-| 012                |  @app.route("/restaurants")         | restaurants              |  The user will be able to see the details of each restaurant     | Fail       | The user details are shown, but the stars section only says "Value"     |
+| 012                |  @app.route("/")         | home              |  The user will be able to see the details of each restaurant     | Fail       | The user details are shown, but the stars section only says "Value"     |
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
 |![001](/assets/testing/testing-images/testing-user-journey-test-twelve-a)        | N/A | N/A            | N/A| N/A| N/A|
+| 013                |  @app.route("/")         | home              |  The user will be able to see the average stars for each category including overall stars     | Fail       | The overall stars says 21. It's supposed to be out of five stars which suggests it's adding the reviews up in error     |
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+|![001](/assets/testing/testing-images/testing-user-journey-test-thirteen-a)        | N/A | N/A            | N/A| N/A| N/A|
+| 014                |  @app.route("/")         | home              |  After leaving a review, the stars should now update     | Fail       | The function directed us back to homne which it was designed to do only if the restaurants or reviews query failed. However no error is being displayed either      |
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+|I have not included a screenshot in this test        | N/A | N/A            | N/A| N/A| N/A|
+| 015                |  @app.route("/restaurant_profile")         | restaurant_profile              |  After leaving a review, the stars should now update     | Fail       | Attempting to fix the code from Test 014, we now get an error. The reason there was no error was because I had the user redirected before the error was generated. However tests still failed expectations, although at least I now know that the error is with the connection to the reviews table      |
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+|![001](/assets/testing/testing-images/testing-user-journey-test-fifteen-a)        | N/A | N/A            | N/A| N/A| N/A|
+| 016                |  @app.route("/restaurant_profile")         | restaurant_profile              |  The user will be able to leave a review as the error in Test 015 has now been corrected. It happened because I had no eventuality if the reviews table was empty      | The user is now able to leave a review, which populates the reviews table and updates the restaurants table's fields for average stars
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+|![001](/assets/testing/testing-images/testing-user-journey-test-sixteen-a)        | N/A | N/A            | N/A| N/A| N/A|
 
 
 
