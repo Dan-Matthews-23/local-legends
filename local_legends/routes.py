@@ -230,10 +230,10 @@ def handle_leave_review(restaurant_id):
                 rounded_ambience_stars += 0.5
             average_ambience_stars = rounded_ambience_stars
             
-            sum_overall_stars = [average_ambience_stars, average_price_stars, 
+            sum_overall_stars = [average_ambience_stars, average_price_stars,
             average_friendliness_stars, average_presentation_stars, 
             average_taste_stars]
-            average_overall_stars = statistics.mean(sum_overall_stars)
+            average_overall_stars_for_restaurants_table = statistics.mean(sum_overall_stars)  
 
         else:   
 
@@ -242,9 +242,13 @@ def handle_leave_review(restaurant_id):
             average_friendliness_stars = int(request.form.get("edit_friendliness_stars"))
             average_price_stars = int(request.form.get("edit_price_stars"))
             average_ambience_stars = int(request.form.get("edit_ambience_stars"))
-            overall_stars = [average_taste_stars, average_presentation_stars, average_friendliness_stars, average_price_stars, average_ambience_stars]
-            average_overall_stars = statistics.mean(overall_stars)
+            overall_stars = average_taste_stars + average_presentation_stars +  average_friendliness_stars + average_price_stars +  average_ambience_stars
+            average_overall_stars_for_restaurants_table = (overall_stars / 5)
 
+
+        
+        
+        overall_calc = (int(request.form.get("edit_taste_stars"))) + (int(request.form.get("edit_presentation_stars"))) + (int(request.form.get("edit_friendliness_stars"))) + (int(request.form.get("edit_price_stars"))) + (int(request.form.get("edit_ambience_stars"))) / 5
         # Insert a review into the table Reviews
         new_review = Reviews(
             taste_stars=int(request.form.get("edit_taste_stars")),
@@ -252,7 +256,7 @@ def handle_leave_review(restaurant_id):
         friendliness_stars=int(request.form.get("edit_friendliness_stars")), 
         price_stars=int(request.form.get("edit_price_stars")), 
         ambience_stars=int(request.form.get("edit_ambience_stars")), 
-            overall_stars=average_overall_stars,
+            overall_stars=overall_calc,
         written_review_title=review_title, 
         written_review=written_review, 
         restaurant_id=restaurant_id, 
@@ -265,7 +269,7 @@ def handle_leave_review(restaurant_id):
             restaurant.restaurant_average_friendliness_stars = average_friendliness_stars
             restaurant.restaurant_average_price_stars = average_price_stars
             restaurant.restaurant_average_ambience_stars = average_ambience_stars
-            restaurant.restaurant_average_overall_stars = average_overall_stars             
+            restaurant.restaurant_average_overall_stars = average_overall_stars_for_restaurants_table
         else:
             return redirect(url_for("restaurant_profile", restaurant_id=restaurant_id))
             session['err'] = "There was an error in pulling records from the Restaurant table"            

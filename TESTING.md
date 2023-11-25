@@ -146,6 +146,14 @@ This now completes the Testing User Journey with Guest permissions
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
 |![001](/assets/testing/testing-images/testing-user-journey-test-twenty-one-a)        | N/A  | N/A            | N/A| N/A| N/A|
 
+| 022                |  @app.route("/restaurant_profile")         | restaurant_profile              |  The Overall Scores will be calculated correctly after I add another review. For testing purposes, I am using the values "Vile". "Vile" "1", "1", "1", "1", "1" followed by "Excellent". "Excellent" "5", "5", "5", "5", "5". I have calculated this manually and the mean (display) should read 3 for taste, price, presentation, friendliness and ambience. It should also read 3 for overall mean (overall stars)    | Pass | All means were calculated correctly, however image two shows that the overall score is not being submitted to the reviews table correctly. Tests passed the purpose but that must be corrected 
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+|![001](/assets/testing/testing-images/testing-user-journey-test-twenty-one-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-twenty-one-b)  | ![001](/assets/testing/testing-images/testing-user-journey-test-twenty-one-c)            | N/A| N/A| N/A|
+
+| 023                |  @app.route("/restaurant_profile")         | restaurant_profile              |  The overall score will be submitted correctly into the reviews table    | Pass | All means were calculated correctly, however image two shows that the overall score is not being submitted to the reviews table correctly. Tests passed the purpose but that must be corrected 
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+|![001](/assets/testing/testing-images/testing-user-journey-test-twenty-one-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-twenty-one-b)  | ![001](/assets/testing/testing-images/testing-user-journey-test-twenty-one-c)            | N/A| N/A| N/A|
+
 
 
 This now completes the Testing User Journey with Registered User permissions
