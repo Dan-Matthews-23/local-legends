@@ -114,13 +114,37 @@ This now completes the Testing User Journey with Guest permissions
 | 014                |  @app.route("/")         | home              |  After leaving a review, the stars should now update     | Fail       | The function directed us back to homne which it was designed to do only if the restaurants or reviews query failed. However no error is being displayed either      |
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
 |I have not included a screenshot in this test        | N/A | N/A            | N/A| N/A| N/A|
+
+
 | 015                |  @app.route("/restaurant_profile")         | restaurant_profile              |  After leaving a review, the stars should now update     | Fail       | Attempting to fix the code from Test 014, we now get an error. The reason there was no error was because I had the user redirected before the error was generated. However tests still failed expectations, although at least I now know that the error is with the connection to the reviews table      |
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
 |![001](/assets/testing/testing-images/testing-user-journey-test-fifteen-a)        | N/A | N/A            | N/A| N/A| N/A|
-| 016                |  @app.route("/restaurant_profile")         | restaurant_profile              |  The user will be able to leave a review as the error in Test 015 has now been corrected. It happened because I had no eventuality if the reviews table was empty      | The user is now able to leave a review, which populates the reviews table and updates the restaurants table's fields for average stars
-| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
-|![001](/assets/testing/testing-images/testing-user-journey-test-sixteen-a)        | N/A | N/A            | N/A| N/A| N/A|
 
+
+| 016                |  @app.route("/restaurant_profile")         | restaurant_profile              |  The user will be able to leave a review as the error in Test 015 has now been corrected. It happened because I had no eventuality if the reviews table was empty   | Pass   | The user is now able to leave a review, which populates the reviews table and updates the restaurants table's fields for average stars
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+|![001](/assets/testing/testing-images/testing-user-journey-test-sixteen-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-sixteen-b)  | N/A            | N/A| N/A| N/A|
+
+
+| 017                |  @app.route("/restaurant_profile")         | restaurant_profile              |  Now that the Leave Review is working, the user should be able to leave another review which will then recalculate the restaurant average stars    | Fail | The error indicated that the way I am attempting to recalculate the average stars is not permitted. I think it's the ".sum" part. 
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+|![001](/assets/testing/testing-images/testing-user-journey-test-seventeen-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-sixteen-b)  | N/A            | N/A| N/A| N/A|
+
+| 018                |  @app.route("/restaurant_profile")         | restaurant_profile              |  The user will be able to leave a review and see the Restaurants rating recalculated     | Pass | The restaurant stars were displayed, however they were displayed to 15 decimal places, which is not a good user experience. Test passed but must redo this  
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+|![001](/assets/testing/testing-images/testing-user-journey-test-eighteen-a)        | N/A  | N/A            | N/A| N/A| N/A|
+
+| 019                |  @app.route("/restaurant_profile")         | restaurant_profile              |  The user will be able to leave a review and see the Restaurants rating recalculate to either .5 or a whole number    | Pass | The ratings were displayed to a whole number. More refining is needed however test passed  
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+|![001](/assets/testing/testing-images/testing-user-journey-test-nineteen-a)        | N/A  | N/A            | N/A| N/A| N/A|
+
+| 020                |  @app.route("/restaurant_profile")         | restaurant_profile              |  TThe user will be able to see the result of the review they just posted    | Fail | The details of the review did not match the review that was posted (for testing purposes, I used the values: "Vile". "Vile" "1", "1", "1", "1", "1"). I note that this is the same information now displayed for the Restaurant  
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+|![001](/assets/testing/testing-images/testing-user-journey-test-twenty-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-twenty-b)  | N/A            | N/A| N/A| N/A|
+
+| 021                |  @app.route("/restaurant_profile")         | restaurant_profile              |  The user will be able to see the result of the review they just posted    | Pass | The details of the review matched the review that was posted (for testing purposes, I used the values: "Vile". "Vile" "1", "1", "1", "1", "1"). However the Overall Stars does not appear to be calculating correctly. Test passed as user-inputted data was correct.   
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+|![001](/assets/testing/testing-images/testing-user-journey-test-twenty-one-a)        | N/A  | N/A            | N/A| N/A| N/A|
 
 
 
