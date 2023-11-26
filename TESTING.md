@@ -162,7 +162,7 @@ This now completes the Testing User Journey with Guest permissions
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
 |![001](/assets/testing/testing-images/testing-user-journey-test-twenty-five-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-twenty-five-b)  | N/A          | N/A| N/A| N/A|
 
-| 026                |  @app.route("/restaurant_profile")         | restaurant_profile              |  The user should not be able to choose a number higher than 5 when adding a review    | Pass | All fields except Overall in the Reviews table worked as expected. The miscalculation was because I was overriding the final overall calc in the second part of the IF statement 
+| 026                |  @app.route("/restaurant_profile")         | restaurant_profile              |  The user should not be able to choose a number higher than 5 when adding a review    | Pass |  
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
 |![001](/assets/testing/testing-images/testing-user-journey-test-twenty-five-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-twenty-five-b)  | N/A          | N/A| N/A| N/A|
 
