@@ -6103,7 +6103,7 @@ label {
 
 /* Text Inputs + Textarea
    ========================================================================== */
-/* Style Placeholders */
+/*
 ::-webkit-input-placeholder {
   color: #d1d1d1;
 }
@@ -6120,7 +6120,7 @@ label {
   color: #d1d1d1;
 }
 
-/* Text inputs */
+
 input:not([type]),
 input[type=text]:not(.browser-default),
 input[type=password]:not(.browser-default),
@@ -6294,7 +6294,7 @@ textarea.materialize-textarea.validate + label {
   width: 100%;
 }
 
-/* Validation Sass Placeholders */
+
 input.valid:not([type]), input.valid:not([type]):focus,
 input.valid[type=text]:not(.browser-default),
 input.valid[type=text]:not(.browser-default):focus,
@@ -6617,7 +6617,7 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
   }
 }
 
-/* Search Field */
+
 .input-field input[type=search] {
   display: block;
   line-height: inherit;
@@ -6666,7 +6666,6 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
   transition: .3s color;
 }
 
-/* Textarea */
 textarea {
   width: 100%;
   height: 3rem;
@@ -6676,9 +6675,9 @@ textarea {
 textarea.materialize-textarea {
   line-height: normal;
   overflow-y: hidden;
-  /* prevents scroll bar flash */
+
   padding: .8rem 0 .8rem 0;
-  /* prevents text jump on Enter keypress */
+
   resize: none;
   min-height: 3rem;
   -webkit-box-sizing: border-box;
@@ -6690,15 +6689,15 @@ textarea.materialize-textarea {
   white-space: pre-wrap;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  /* future version of deprecated 'word-wrap' */
+
   padding-top: 1.2rem;
-  /* prevents text jump on Enter keypress */
+ 
   position: absolute;
   top: 0;
   z-index: -1;
 }
 
-/* Autocomplete */
+
 .autocomplete-content li .highlight {
   color: #444;
 }
@@ -6709,11 +6708,11 @@ textarea.materialize-textarea {
   margin: 5px 15px;
 }
 
-/* Character Counter */
+
 .character-counter {
   min-height: 18px;
 }
-
+*/
 
 
 /* Checkboxes
@@ -7016,7 +7015,8 @@ input[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::before {
 
 /* Select Field
    ========================================================================== */
-select {
+/*
+   select {
   display: none;
 }
 
@@ -7163,7 +7163,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
 
 .select-dropdown li.optgroup ~ li.optgroup-option {
   padding-left: 1rem;
-}
+}*/
 
 /* File Input
    ========================================================================== */

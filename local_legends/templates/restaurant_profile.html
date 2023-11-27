@@ -21,24 +21,111 @@
                     </div>
                 </div>
                 {% else %}
-                <div class="col s12 m12 l12 xl12 card-panel ">
+                <div class="col s12 m12 l12 xl12 card-panel   ">
                     <div class="row ">
-                        <div class="col s6 m6 l6 xl6 ">
-                            <label for="edit_taste_stars">
+                        <div class="row ">
+                            <div class="col s9 m9 l9 xl9   leave-review-label-div">
+                                <label for="in-a-few-words">
+                                    <h4>In a few words, how was your experience?</h4>
+                                </label>
+                            </div>
+                            <div class="col s3 m3 l3 xl3   leave-review-select-div">
+                                <input type="text" id="written_review_title" name="written_review_title">
+                            </div>
+                        </div>                 
+                        
+                        
+                        <div class="col s9 m9 l9 xl9   leave-review-label-div">
+                            <label for="choose-taste-stars">
                                 <h4>How would you rate the taste?</h4>
                             </label>
                         </div>
-                        <div class="rating">
-                            <input id="rating1" type="radio" name="rating" value="1">
-                            <label for="rating1">1</label>
-                            <input id="rating2" type="radio" name="rating" value="2">
-                            <label for="rating2">2</label>
-                            <input id="rating3" type="radio" name="rating" value="3">
-                            <label for="rating3">3</label>
-                            <input id="rating4" type="radio" name="rating" value="4">
-                            <label for="rating4">4</label>
-                            <input id="rating5" type="radio" name="rating" value="5">
-                            <label for="rating5">5</label>
+                        <div class="col s3 m3 l3 xl3   leave-review-select-div">
+                            <select name="leave-review-select-taste" id="leave-review-select-taste" class="leave-review-select">
+                                <option value=1>1</option>
+                                <option value=2>2</option>
+                                <option value=3>3</option>
+                                <option value=4>4</option>
+                                <option value=5>5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col s9 m9 l9 xl9   leave-review-label-div">
+                            <label for="leave-review-select-presentation">
+                                <h4>How would you rate the presentation?</h4>
+                            </label>
+                        </div>
+                        <div class="col s3 m3 l3 xl3   leave-review-select-div">
+                            <select name="leave-review-select-presentation" id="leave-review-select-presentation" class="leave-review-select">
+                                <option value=1>1</option>
+                                <option value=2>2</option>
+                                <option value=3>3</option>
+                                <option value=4>4</option>
+                                <option value=5>5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col s9 m9 l9 xl9   leave-review-label-div">
+                            <label for="choose-friendliness-stars">
+                                <h4>How would you rate the friendliness?</h4>
+                            </label>
+                        </div>
+                        <div class="col s3 m3 l3 xl3   leave-review-select-div">
+                            <select name="leave-review-select-friendliness" id="leave-review-select-friendliness"
+                                class="leave-review-select">
+                                <option value=1>1</option>
+                                <option value=2>2</option>
+                                <option value=3>3</option>
+                                <option value=4>4</option>
+                                <option value=5>5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col s9 m9 l9 xl9   leave-review-label-div">
+                            <label for="choose-ambience-stars">
+                                <h4>How would you rate the ambience?</h4>
+                            </label>
+                        </div>
+                        <div class="col s3 m3 l3 xl3   leave-review-select-div">
+                            <select name="leave-review-select-ambience" id="leave-review-select-ambience"
+                                class="leave-review-select">
+                                <option value=1>1</option>
+                                <option value=2>2</option>
+                                <option value=3>3</option>
+                                <option value=4>4</option>
+                                <option value=5>5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col s9 m9 l9 xl9   leave-review-label-div">
+                            <label for="choose-price-stars">
+                                <h4>How would you rate the price?</h4>
+                            </label>
+                        </div>
+                        <div class="col s3 m3 l3 xl3   leave-review-select-div">
+                            <select name="leave-review-select-price" id="leave-review-select-price" class="leave-review-select">
+                                <option value=1>1</option>
+                                <option value=2>2</option>
+                                <option value=3>3</option>
+                                <option value=4>4</option>
+                                <option value=5>5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col s9 m9 l9 xl9   leave-review-label-div">
+                            <label for="choose-price-stars">
+                                <h4>Please tell us more about your visit</h4>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col s3 m3 l3 xl3 leave-review-textarea">
+                            <textarea name="written_review" id="written_review" rows="20" cols="100"></textarea>
                         </div>
                     </div>
                     
@@ -137,8 +224,8 @@
         </div>
     </div>
     {% if session.user_id == reviews.user_id %}
-    <div class="row with-borders s12 m12 l12 xl12 align-center">
-        <div class="col with-borders s12 m12 l12 xl12 align-center">
+    <div class="row  s12 m12 l12 xl12 align-center">
+        <div class="col  s12 m12 l12 xl12 align-center">
             <form action="{{ url_for('edit_review', review_id=reviews.review_id) }}" method="POST">
                 <button type="submit" class="see-reviews">Edit Review</button>
             </form>
