@@ -510,26 +510,91 @@ def edit_restaurant():
 ##---DELETE---##
 
 
+
 @app.route("/edit_review/<int:review_id>/delete_review", methods=["GET", "POST"])
 def delete_review(review_id):
     if session.get('err'):
         session.pop('err')
-
     if session.get('is_logged_in', False):
+        restaurant_id = request.args.get('restaurant_id')
+        review_id = request.form.get("review_id")
         user_id = session.get('user_id')
-        review = Reviews.query.get_or_404(review_id)
-        restaurant_id = review.restaurant_id
-        if review.user_id == user_id:
-            db.session.delete(review)
-            db.session.commit()
-            return redirect(url_for("restaurant_profile", restaurant_id=restaurant_id))
+        
+        selected_review = Reviews.query.filter(Reviews.review_id == review_id).first()        
+        restaurant = Restaurants.query.filter(Restaurants.restaurant_id == restaurant_id).first()
+
+        if selected_review.user_id != user_id:
+            session['err'] = "You cannot delete another users' review"
+            return render_template('restaurants.html')
+        elif not selected_review:
+            session['err'] = "An error occured while locating the review"
+            return render_template('restaurants.html')
         else:
-            session['err'] = "You cannot delete another user's review"
-            return redirect(url_for("restaurant_profile", restaurant_id=restaurant_id))
-    else:
-        return redirect(url_for('login'))
+            taste_reviews_to_consider = [review for review in Reviews.query.all() if review != selected_review.taste_stars]
+            average_taste_stars_before_rounding = mean([review.taste_stars for review in taste_reviews_to_consider])
+            average_taste_stars = math.floor(average_taste_stars_before_rounding + 0.5)
+
+            presentation_reviews_to_consider = [review for review in Reviews.query.all() if review != selected_review.presentation_stars]
+            average_presentation_stars_before_rounding = mean([review.presentation_stars for review in presentation_reviews_to_consider])
+            average_presentation_stars = math.floor(average_presentation_stars_before_rounding + 0.5)
+
+            ambience_reviews_to_consider = [review for review in Reviews.query.all() if review != selected_review.ambience_stars]
+            average_ambience_stars_before_rounding = mean([review.ambience_stars for review in ambience_reviews_to_consider])
+            average_ambience_stars = math.floor(average_ambience_stars_before_rounding + 0.5)
+
+            friendliness_reviews_to_consider = [review for review in Reviews.query.all() if review != selected_review.friendliness_stars]
+            average_friendliness_stars_before_rounding = mean([review.friendliness_stars for review in friendliness_reviews_to_consider])
+            average_friendliness_stars = math.floor(average_friendliness_stars_before_rounding + 0.5)
+
+            price_reviews_to_consider = [review for review in Reviews.query.all() if review != selected_review.price_stars]
+            average_price_stars_before_rounding = mean([review.price_stars for review in price_reviews_to_consider])
+            average_price_stars = math.floor(average_price_stars_before_rounding + 0.5)
+
+            average_overall_stars_for_restaurants_table = (
+                average_taste_stars + average_presentation_stars + average_ambience_stars + average_friendliness_stars + average_price_stars) / 5
+
+            if restaurant:
+                restaurant.restaurant_average_taste_stars = average_taste_stars
+                restaurant.restaurant_average_presentation_stars = average_presentation_stars
+                restaurant.restaurant_average_friendliness_stars = average_friendliness_stars
+                restaurant.restaurant_average_price_stars = average_price_stars
+                restaurant.restaurant_average_ambience_stars = average_ambience_stars
+                restaurant.restaurant_average_overall_stars = average_overall_stars_for_restaurants_table
+        
+        try:
+            db.session.delete(selected_review)
+            db.session.commit()
+            session['err'] = "review deleted successfully"
+            return redirect(url_for('restaurants'))
+        except Exception as e:
+            print(e)
+            session['err'] = f"An error occurred while deleting this review - the ID is {restaurant_id}"
+            return redirect(url_for('restaurants'))
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           
+
+
+
+            
 ##---END OF DELETE---##
 
 ##---NO CRUD FUNCTIONALITY---##

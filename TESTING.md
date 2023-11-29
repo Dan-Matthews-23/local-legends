@@ -166,15 +166,34 @@ This now completes the Testing User Journey with Guest permissions
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
 |![001](/assets/testing/testing-images/testing-user-journey-test-twenty-five-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-twenty-five-b)  | N/A          | N/A| N/A| N/A|
 
-| 027                |  @app.route("/edit_review")         | edit_review / handle_edit_review              |  The user will be able to edit their own review    | Pass |  
+| 027                |  @app.route("/edit_review")         | edit_review / handle_edit_review              |  The user will be able to edit their own review    | Pass | The review is edited.   
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
-|![001](/assets/testing/testing-images/testing-user-journey-test-twenty-five-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-twenty-five-b)  | N/A          | N/A| N/A| N/A|
+|![001](/assets/testing/testing-images/testing-user-journey-test-twenty-seven-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-twenty-seven-b)  | ![001](/assets/testing/testing-images/testing-user-journey-test-twenty-seven-c)         | ![001](/assets/testing/testing-images/testing-user-journey-test-twenty-seven-d)| N/A| N/A|
+
+| 028                |  @app.route("/delete_review")         | delete_review            |  The user will be able to delete their own review    | Pass | The review was deleted
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+|![001](/assets/testing/testing-images/testing-user-journey-test-twenty-eight-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-eight-seven-b)  | N/A         | N/A| N/A| N/A|
+
+| 029                |  @app.route("/delete_review")         | delete_review            |  The user will be anle to see the restaurant's overall stars change as they delete their reviews    | Pass | The review was deleted
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+|![001](/assets/testing/testing-images/testing-user-journey-test-twenty-nine-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-eight-seven-b)  | N/A         | N/A| N/A| N/A|
 
 
 
 This now completes the Testing User Journey with Registered User permissions
 
 
+
+
+### Further Testing
+
+#### Edit Review
+
+There are three layers of security in the process of editing a review that result in a user being unable to edit another user's review. It has not been possible to test these methods the way I have with most other functions. 
+
+- The edit_review.html page contains an element that will check the user's ID against the user_id stored in the reviews table. If the user_ids match, the Edit Review button will be seen by the user. If not, the button does not display. Therefore there is no foreseeable way, other than forced attempts, that the user will be able to edit the review
+
+- The handle_edit_review function contains a second layer to check this again, just in case the user found their way into this function by unforseeable methods. If the user_id does not match, the user is redirected away and is given feedback that they are not allowed to edit that review
 
 
 ### Automated Testing
