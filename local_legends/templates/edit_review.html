@@ -1,89 +1,137 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container with-borders align-center card-panel grey lighten-5">
-
-    <div class="row with-borders">
-        <!--<div class="col with-borders">-->
-        <div class="row card-panel grey lighten-5">
-        {% for reviews in reviews %}
-        <form action="{{ url_for('handle_edit_review', review_id=reviews.review_id) }}" method="POST">
-            <input type="hidden" id={{ reviews.review_id }} name={{ reviews.review_id }} value={{ reviews.review_id }}>
-            <div class="row ">
-                    <div class="col"><h4><label for="edit_review_title">Review Title {{ reviews.review_id }}</label></h4></div>
-                    <div class="col"><input type="text" name="edit_review_title" id="edit_review_title" value="{{ reviews.written_review_title }}"></div>
-            </div>
-            <div class="row ">
-                    <div class="col"><h4><label for="edit_written_review">Written Review {{ reviews.review_id }}</label></h4></div>
-                    <div class="col"><input type="text" name="edit_written_review" id="edit_written_review" value="{{ reviews.written_review }}"></div>
-            </div>
-            <div class="row ">
-                    <div class="col"><h4><label for="edit_taste_stars">How would you rate the taste?{{ reviews.review_id }}</label></h4></div>
-                    <div class="col"><input type="text" name="edit_taste_stars" id="edit_taste_stars" value="{{ reviews.taste_stars }}"></div>
-            </div>
-            <div class="row ">
-                    <div class="col"><h4><label for="edit_presentation_stars">How would you rate the presentation?{{ reviews.review_id }}</label></h4></div>
-                    <div class="col"><input type="text" name="edit_presentation_stars" id="edit_presentation_stars" value="{{ reviews.presentation_stars }}"></div>
-            </div>
-            <div class="row ">
-                    <div class="col"><h4><label for="edit_friendliness_stars">How would you rate the friendliness?{{ reviews.review_id }}</label></h4></div>
-                    <div class="col"><input type="text" name="edit_friendliness_stars" id="edit_friendliness_stars" value="{{ reviews.friendliness_stars }}"></div>
-            </div>
-            <div class="row ">
-                    <div class="col"><h4><label for="edit_price_stars">How would you rate the price?{{ reviews.review_id }}</label></h4></div>
-                    <div class="col"><input type="text" name="edit_price_stars" id="edit_price_stars" value="{{ reviews.price_stars }}"></div>
-            </div>
-            <div class="row ">
-                    <div class="col"><h4><label for="edit_ambience_stars">How would you rate the ambience?{{ reviews.review_id }}</label></h4></div>
-                    <div class="col"><input type="text" name="edit_ambience_stars" id="edit_ambience_stars" value="{{ reviews.ambience_stars }}"></div>
-            </div>
-             <div class="row ">
-                    <div class="col"><h4><label for="edit_ambience_stars">User ID of the person who left review:{{ reviews.user_id }}</label></h4></div>
-                    <div class="col"><h4><label for="edit_ambience_stars">Your user ID:{{ session.user_id }}</label></h4></div>
-                    
-            </div>
 
 
 
-
-
-                <!--<div class="row with-borders review-stars-row ">
-                    <div class="col with-borders review-stars-div">
-                        <h4 class="review-heading">Taste:</h4>
-                    </div>
-                    <div class="col review-stars-div">
-                        <span><i class="fa-regular fa-star fa-2xl" style="color: #ede607;"></i></span>
-                        <span><i class="fa-regular fa-star fa-2xl" style="color: #ede607;"></i></span>
-                        <span><i class="fa-regular fa-star fa-2xl" style="color: #ede607;"></i></span>
-                        <span><i class="fa-regular fa-star fa-2xl" style="color: #ede607;"></i></span>
-                        <span><i class="fa-regular fa-star fa-2xl" style="color: #ede607;"></i></span>
-                    </div>
-                </div>-->
-                
-                <div class="row">
-                    <div class="col s12 center-align">
-                        <button type="submit" class="btn-large light-blue darken-1">Submit Edited Review<i
-                                class="fas fa-edit right"></i>
-                        </button>
+<div class="container align-center card-panel grey lighten-5">
+    <div class="row">
+        <div class="col card-panel grey lighten-5">
+            {% for reviews in reviews %}
+            <form action="{{ url_for('handle_edit_review', review_id=reviews.review_id) }}" method="POST">
+                <input type="hidden" name="restaurant_id" id="restaurant_id" value="{{reviews.restaurant_id }}">
+                <div class="row ">
+                    <div class="col">
+                        <h3>How would you rate your experience?</h3>
                     </div>
                 </div>
-        </form>
-        <form action="{{ url_for('delete_review', review_id=reviews.review_id) }}" method="POST">
-        
-                <div class="row">
-                    <div class="col s12 center-align">
-                        <button type="submit" class="btn-large light-blue darken-1">Delete Review<i
-                                class="fas fa-edit right"></i>
-                        </button>
+                
+                <div class="col s12 m12 l12 xl12 card-panel   ">
+                    <div class="row ">
+                        <div class="row ">
+                            <div class="col s9 m9 l9 xl9   leave-review-label-div">
+                                <label for="in-a-few-words">
+                                    <h4>In a few words, how was your experience?</h4>
+                                </label>
+                            </div>
+                            <div class="col s3 m3 l3 xl3   leave-review-select-div">
+                                <input type="text" id="written_review_title" name="written_review_title" value="{{reviews.written_review_title }}">
+                            </div>
+                        </div>
+
+
+                        <div class="col s9 m9 l9 xl9   leave-review-label-div">
+                            <label for="select_taste">
+                                <h4>How would you rate the taste?</h4>
+                            </label>
+                        </div>
+                        <div class="col s3 m3 l3 xl3   leave-review-select-div">
+                            <select name="select_taste" id="select_taste" class="leave-review-select">                                
+                                <option value=1 {% if reviews.taste_stars==1 %}selected{% endif %}>1</option>                       
+                                <option value=2 {% if reviews.taste_stars==2 %}selected{% endif %}>2</option>
+                                <option value=3 {% if reviews.taste_stars==3 %}selected{% endif %}>3</option>
+                                <option value=4 {% if reviews.taste_stars==4 %}selected{% endif %}>4</option>
+                                <option value=5 {% if reviews.taste_stars==5 %}selected{% endif %}>5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col s9 m9 l9 xl9   leave-review-label-div">
+                            <label for="select_presentation">
+                                <h4>How would you rate the presentation?</h4>
+                            </label>
+                        </div>
+                        <div class="col s3 m3 l3 xl3   leave-review-select-div">
+                            <select name="select_presentation" id="select_presentation" class="leave-review-select">
+                                <option value=1 {% if reviews.presentation_stars==1 %}selected{% endif %}>1</option>
+                                <option value=2 {% if reviews.presentation_stars==2 %}selected{% endif %}>2</option>
+                                <option value=3 {% if reviews.presentation_stars==3 %}selected{% endif %}>3</option>
+                                <option value=4 {% if reviews.presentation_stars==4 %}selected{% endif %}>4</option>
+                                <option value=5 {% if reviews.presentation_stars==5 %}selected{% endif %}>5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col s9 m9 l9 xl9   leave-review-label-div">
+                            <label for="select_friendliness">
+                                <h4>How would you rate the friendliness?</h4>
+                            </label>
+                        </div>
+                        <div class="col s3 m3 l3 xl3   leave-review-select-div">
+                            <select name="select_friendliness" id="select_friendliness" class="leave-review-select">
+                                <option value=1 {% if reviews.friendliness_stars==1 %}selected{% endif %}>1</option>
+                                <option value=2 {% if reviews.friendliness_stars==2 %}selected{% endif %}>2</option>
+                                <option value=3 {% if reviews.friendliness_stars==3 %}selected{% endif %}>3</option>
+                                <option value=4 {% if reviews.friendliness_stars==4 %}selected{% endif %}>4</option>
+                                <option value=5 {% if reviews.friendliness_stars==5 %}selected{% endif %}>5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col s9 m9 l9 xl9   leave-review-label-div">
+                            <label for="select_ambience">
+                                <h4>How would you rate the ambience?</h4>
+                            </label>
+                        </div>
+                        <div class="col s3 m3 l3 xl3   leave-review-select-div">
+                            <select name="select_ambience" id="select_ambience" class="leave-review-select">
+                                <option value=1 {% if reviews.ambience_stars==1 %}selected{% endif %}>1</option>
+                                <option value=2 {% if reviews.ambience_stars==2 %}selected{% endif %}>2</option>
+                                <option value=3 {% if reviews.ambience_stars==3 %}selected{% endif %}>3</option>
+                                <option value=4 {% if reviews.ambience_stars==4 %}selected{% endif %}>4</option>
+                                <option value=5 {% if reviews.ambience_stars==5 %}selected{% endif %}>5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col s9 m9 l9 xl9   leave-review-label-div">
+                            <label for="select_price">
+                                <h4>How would you rate the price?</h4>
+                            </label>
+                        </div>
+                        <div class="col s3 m3 l3 xl3   leave-review-select-div">
+                            <select name="select_price" id="select_price" class="leave-review-select">
+                                <option value=1 {% if reviews.price_stars==1 %}selected{% endif %}>1</option>
+                                <option value=2 {% if reviews.price_stars==2 %}selected{% endif %}>2</option>
+                                <option value=3 {% if reviews.price_stars==3 %}selected{% endif %}>3</option>
+                                <option value=4 {% if reviews.price_stars==4 %}selected{% endif %}>4</option>
+                                <option value=5 {% if reviews.price_stars==5 %}selected{% endif %}>5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col s9 m9 l9 xl9   leave-review-label-div">
+                            <label for="written_review">
+                                <h4>Please tell us more about your visit</h4>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col s3 m3 l3 xl3 leave-review-textarea">
+                            <textarea name="written_review" id="written_review" rows="20" cols="100">{{reviews.written_review }}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s12 center-align">
+                            <button type="submit" class="btn-large light-blue darken-1">Submit Review<i
+                                    class="fas fa-edit right"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </form>
+            {% endfor %}
         </div>
-        {% endfor %}
-        <!--</div>-->
     </div>
-</div>
-
-
-
 </div>
 {% endblock %}

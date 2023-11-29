@@ -166,6 +166,10 @@ This now completes the Testing User Journey with Guest permissions
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
 |![001](/assets/testing/testing-images/testing-user-journey-test-twenty-five-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-twenty-five-b)  | N/A          | N/A| N/A| N/A|
 
+| 027                |  @app.route("/edit_review")         | edit_review / handle_edit_review              |  The user will be able to edit their own review    | Pass |  
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+|![001](/assets/testing/testing-images/testing-user-journey-test-twenty-five-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-twenty-five-b)  | N/A          | N/A| N/A| N/A|
+
 
 
 This now completes the Testing User Journey with Registered User permissions
