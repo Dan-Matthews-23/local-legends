@@ -5,6 +5,8 @@
     - [Manual Testing](#manual-testing)
   - [Testing the User Journey](#testing-the-user-journey)
     - [As a guest](#as-a-guest)
+    - [Further Testing](#further-testing)
+      - [Edit Review](#edit-review)
     - [Automated Testing](#automated-testing)
     - [Validation and formatting](#validation-and-formatting)
       - [HTML and CSS](#html-and-css)
@@ -174,9 +176,13 @@ This now completes the Testing User Journey with Guest permissions
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
 |![001](/assets/testing/testing-images/testing-user-journey-test-twenty-eight-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-eight-seven-b)  | N/A         | N/A| N/A| N/A|
 
-| 029                |  @app.route("/delete_review")         | delete_review            |  The user will be anle to see the restaurant's overall stars change as they delete their reviews    | Pass | The review was deleted
+| 029                |  @app.route("/delete_review")         | delete_review            |  The user will be anle to see the restaurant's overall stars change as they delete their reviews    | Fail | The restaurant stars did change, however they were incorrect, and it would appear the stars while adding, editing and deleting all reviews are now not calculating correctly. 
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
-|![001](/assets/testing/testing-images/testing-user-journey-test-twenty-nine-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-eight-seven-b)  | N/A         | N/A| N/A| N/A|
+|![001](/assets/testing/testing-images/testing-user-journey-test-twenty-nine-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-twenty-nine-b)  | N/A         | N/A| N/A| N/A|
+
+| 030               |  @app.route("/leave_review")         | leave_review            |  The restaurant stars rating will calculate correctly as the user adds a review
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+|![001](/assets/testing/testing-images/testing-user-journey-test-twenty-nine-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-twenty-nine-b)  | N/A         | N/A| N/A| N/A|
 
 
 

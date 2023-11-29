@@ -566,6 +566,7 @@ def delete_review(review_id):
             db.session.commit()
             session['err'] = "review deleted successfully"
             return redirect(url_for('restaurants'))
+            session['err'] = "review deleted successfully"
         except Exception as e:
             print(e)
             session['err'] = f"An error occurred while deleting this review - the ID is {restaurant_id}"
