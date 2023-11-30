@@ -180,9 +180,12 @@ This now completes the Testing User Journey with Guest permissions
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
 |![001](/assets/testing/testing-images/testing-user-journey-test-twenty-nine-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-twenty-nine-b)  | N/A         | N/A| N/A| N/A|
 
-| 030               |  @app.route("/leave_review")         | leave_review            |  The restaurant stars rating will calculate correctly as the user adds a review
+
+| 030                |  @app.route("/delete_review")         | delete_review            |  The restaurant stars rating will calculate correctly as the user adds a review    | Fail | None of the reviews are displaying the correct stars. 
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
-|![001](/assets/testing/testing-images/testing-user-journey-test-twenty-nine-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-twenty-nine-b)  | N/A         | N/A| N/A| N/A|
+|![001](assets/testing/testing-images/testing-user-journey-test-thirty-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-thirty-b)  | N/A         | N/A| N/A| N/A|
+
+
 
 
 
