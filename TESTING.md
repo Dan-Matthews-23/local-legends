@@ -185,9 +185,13 @@ This now completes the Testing User Journey with Guest permissions
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
 |![001](assets/testing/testing-images/testing-user-journey-test-thirty-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-thirty-b)  | N/A         | N/A| N/A| N/A|
 
-| 031               |  @app.route("/leave_review")         | leave_review            |  I have emptied the Reviews table using the PSQL command interface. I will leave a review. The input will be: Taste: 5, Presentation: 5, Friendliness: 5, Ambience: 5, Price: 5. The result will be Taste: 5, Presentation: 5, Friendliness: 5, Ambience: 5, Price: 5 into the Reviews table, and the same in the Restaurants table  
+| 031               |  @app.route("/leave_review")         | leave_review            | I have emptied the Reviews table using the PSQL command interface. I will leave a review. The input will be: Taste: 5, Presentation: 5, Friendliness: 5, Ambience: 5, Price: 5. The result will be Taste: 5, Presentation: 5, Friendliness: 5, Ambience: 5, Price: 5 into the Reviews table, and the same in the Restaurants table | Pass | The Restaurants and Reviews ratings were updated as expected.  
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
-|![001](assets/testing/testing-images/testing-user-journey-test-thirty-one-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-thirty-b)  | N/A         | N/A| N/A| N/A|
+|![001](assets/testing/testing-images/testing-user-journey-test-thirty-one-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-thirty-one-b)  | ![001](/assets/testing/testing-images/testing-user-journey-test-thirty-one-c        | N/A | N/A| N/A|
+
+| 032               |  @app.route("/leave_review")         | leave_review            | Directly following Test 031, I will leave another review. The input will be: Taste: 1, Presentation: 1, Friendliness: 1, Ambience: 1, Price: 1. The result will be Taste: 1, Presentation: 1, Friendliness: 1, Ambience: 1, Price: 1, Overall: 1 into the Reviews table, and Taste: 3, Presentation: 3, Friendliness: 3, Ambience: 3, Price: 3, Overall: 3  same in the Restaurants table | Fail | The Overall Stars on both Reviews and Restaurants was not correct. This suggests there is something wrong with the code for both inputs for Overall Stars  
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+|![001](assets/testing/testing-images/testing-user-journey-test-thirty-two-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-thirty-two-b)  | N/A        | N/A | N/A| N/A|
 
 
 
