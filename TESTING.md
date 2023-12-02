@@ -193,6 +193,9 @@ This now completes the Testing User Journey with Guest permissions
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
 |![001](assets/testing/testing-images/testing-user-journey-test-thirty-two-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-thirty-two-b)  | N/A        | N/A | N/A| N/A|
 
+| 033               |  @app.route("/leave_review")         | leave_review            | Using the same input as Tests 031 and 032, I will submit two reviews with the expectation that the stars in the Restaurant reviews are all 3  | Pass | All stars read as three as expected, however the function displays an incorrect Overall stars in the secon  review. This indicates that there is an error in the code when calculating new values for the second part of the else statement where there is already a review stored.   
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+|![001](assets/testing/testing-images/testing-user-journey-test-thirty-three-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-thirty-three-b)  | N/A        | N/A | N/A| N/A|
 
 
 

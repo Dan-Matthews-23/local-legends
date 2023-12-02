@@ -69,45 +69,55 @@ def handle_leave_review(restaurant_id):
 
         #existing_reviews = Reviews.query.filter(Reviews.restaurant_id == restaurant_id and Reviews.user_id == user_id).first()
         existing_reviews = Reviews.query.filter(Reviews.restaurant_id == restaurant_id).all()
-        restaurant = Restaurants.query.filter(Restaurants.restaurant_id == restaurant_id).first()
-
-        # This function was written based on a request for cleaner code by Bard. 
+        
         if existing_reviews:
 
-            if existing_reviews:
-                average_taste_stars = []
-                for review in existing_reviews:
-                    average_taste_stars.append(round(review.taste_stars))
-                average_taste_stars = sum(average_taste_stars) / len(average_taste_stars)
+            posted_taste_stars = int(request.form.get("select_taste"))
+            average_taste_stars = [posted_taste_stars]  # Include posted taste stars
+            for review in existing_reviews:
+                average_taste_stars.append(review.taste_stars)
+            average_taste_stars = mean(average_taste_stars)            
+          
+            posted_presentation_stars = int(request.form.get("select_presentation"))
+            average_presentation_stars = [posted_presentation_stars]  # Include posted presentation stars
+            for review in existing_reviews:
+                average_presentation_stars.append(review.presentation_stars)
+            average_presentation_stars = mean(average_presentation_stars)
+         
+            posted_friendliness_stars = int(request.form.get("select_friendliness"))
+            average_friendliness_stars = [posted_friendliness_stars]  # Include posted friendliness stars
+            for review in existing_reviews:
+                average_friendliness_stars.append(review.friendliness_stars)
+            average_friendliness_stars = mean(average_friendliness_stars)
+            
+            posted_ambience_stars = int(request.form.get("select_ambience"))
+            average_ambience_stars = [posted_ambience_stars]  # Include posted ambience stars
+            for review in existing_reviews:
+                average_ambience_stars.append(review.ambience_stars)
+            average_ambience_stars = mean(average_ambience_stars)
+            
+            posted_price_stars = int(request.form.get("select_price"))
+            average_price_stars = [posted_price_stars]  # Include posted price stars
+            for review in existing_reviews:
+                average_price_stars.append(review.price_stars)
+            average_price_stars = mean(average_price_stars)        
+            
 
-                average_presentation_stars = []
-                for review in existing_reviews:
-                    average_presentation_stars.append(round(review.presentation_stars))
-                average_presentation_stars = sum(
-                    average_presentation_stars) / len(average_presentation_stars)
+           
 
-                average_friendliness_stars = []
-                for review in existing_reviews:
-                    average_friendliness_stars.append(round(review.friendliness_stars))
-                average_friendliness_stars = sum(
-                    average_friendliness_stars) / len(average_friendliness_stars)
 
-                average_ambience_stars = []
-                for review in existing_reviews:
-                    average_ambience_stars.append(round(review.ambience_stars))
-                average_ambience_stars = sum(average_ambience_stars) / len(average_ambience_stars)
 
-                average_price_stars = []
-                for review in existing_reviews:
-                    average_price_stars.append(round(review.price_stars))
-                average_price_stars = sum(
-                    average_price_stars) / len(average_price_stars)
+            sum_overall_stars_for_restaurant = []
+            for review in existing_reviews:
+                sum_overall_stars_for_restaurant.append(round(review.overall_stars))                
+            
+           
+                
+            sum_overall_stars_for_review = (average_ambience_stars + average_price_stars + average_friendliness_stars + average_presentation_stars + average_taste_stars) / 5
+            sum_overall_stars_for_restaurant = sum_overall_stars_for_review
 
-                average_overall_stars = []
-                for review in existing_reviews:
-                    average_overall_stars.append(round(review.overall_stars))
-                sum_overall_stars_for_restaurant = sum(
-                    average_overall_stars) / len(average_overall_stars)
+
+
 
             #new_taste_stars = request.form.get("select_taste")
             #existing_taste_stars = set(
@@ -164,10 +174,10 @@ def handle_leave_review(restaurant_id):
             average_presentation_stars = (int(request.form.get("select_presentation")))
             average_friendliness_stars = (int(request.form.get("select_friendliness")))
             average_ambience_stars = (int(request.form.get("select_ambience")))
-            average_price_stars = (int(request.form.get("select_price")))
-            sum_overall_stars_for_restaurant = (average_ambience_stars + average_price_stars + average_friendliness_stars + average_presentation_stars + average_taste_stars) / 5
-        
-        sum_overall_stars_for_review = (average_ambience_stars + average_price_stars + average_friendliness_stars + average_presentation_stars + average_taste_stars) / 5
+            average_price_stars = (int(request.form.get("select_price")))       
+            
+            sum_overall_stars_for_restaurant = (average_ambience_stars + average_price_stars + average_friendliness_stars + average_presentation_stars + average_taste_stars) / 5        
+            sum_overall_stars_for_review = sum_overall_stars_for_restaurant
         
                 
 
@@ -184,26 +194,28 @@ def handle_leave_review(restaurant_id):
             restaurant_id=restaurant_id,
             user_id=user_id,
             review_date=todays_date)
-        
 
-        if restaurant:
+        restaurant = Restaurants.query.filter(Restaurants.restaurant_id == restaurant_id).first()
+        if not restaurant:
+            session['err'] = "Restaurant could not be edited"
+        else:
             restaurant.restaurant_average_taste_stars = average_taste_stars
             restaurant.restaurant_average_presentation_stars = average_presentation_stars
             restaurant.restaurant_average_friendliness_stars = average_friendliness_stars
             restaurant.restaurant_average_price_stars = average_price_stars
             restaurant.restaurant_average_ambience_stars = average_ambience_stars
             restaurant.restaurant_average_overall_stars = sum_overall_stars_for_restaurant
-        
+            db.session.commit()
            
-    try:
-        db.session.add(new_review)
-        db.session.commit()
-        session['err'] = "Review edited successfully"
-        return redirect(url_for('restaurants'))
-    except Exception as e:
-        print(e)
-        session['err'] = f"An error occurred while editing the restaurant - the ID is {restaurant_id}"
-        return render_template("restaurant_profile.html", restaurant=restaurant, reviews=existing_reviews)
+        try:
+            db.session.add(new_review)
+            db.session.commit()
+            session['err'] = "Review edited successfully"
+            return redirect(url_for('restaurants'))
+        except Exception as e:
+            print(e)
+            session['err'] = f"An error occurred while editing the restaurant - the ID is {restaurant_id}"
+            return render_template("restaurant_profile.html", restaurant=restaurant, reviews=existing_reviews)
 
 
 
