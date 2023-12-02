@@ -181,10 +181,13 @@ This now completes the Testing User Journey with Guest permissions
 |![001](/assets/testing/testing-images/testing-user-journey-test-twenty-nine-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-twenty-nine-b)  | N/A         | N/A| N/A| N/A|
 
 
-| 030                |  @app.route("/delete_review")         | delete_review            |  The restaurant stars rating will calculate correctly as the user adds a review    | Fail | None of the reviews are displaying the correct stars. 
+| 030                |  @app.route("/delete_review")         | delete_review            |  The restaurant stars rating will calculate correctly as the user adds a review    | Fail | None of the reviews are displaying the correct stars.  I will now run a series of tests with predicted outcomes for the stars
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
 |![001](assets/testing/testing-images/testing-user-journey-test-thirty-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-thirty-b)  | N/A         | N/A| N/A| N/A|
 
+| 031               |  @app.route("/leave_review")         | leave_review            |  I have emptied the Reviews table using the PSQL command interface. I will leave a review. The input will be: Taste: 5, Presentation: 5, Friendliness: 5, Ambience: 5, Price: 5. The result will be Taste: 5, Presentation: 5, Friendliness: 5, Ambience: 5, Price: 5 into the Reviews table, and the same in the Restaurants table  
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+|![001](assets/testing/testing-images/testing-user-journey-test-thirty-one-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-thirty-b)  | N/A         | N/A| N/A| N/A|
 
 
 

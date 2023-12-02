@@ -101,6 +101,7 @@
         <div class="row with-borders s12 m12 l12 xl12 align-center">
             <div class="col with-borders s12 m12 l12 xl12 align-center">
                 <form action="{{ url_for('restaurant_profile', restaurant_id=restaurants.restaurant_id) }}" method="POST">
+                    <input type="hidden" name="restaurant_id" id="restaurant_id" value="{{restaurants.restaurant_id }}">
                     <button type="submit" class="see-reviews">Leave a review for {{ restaurants.restaurant_name }}</button>
                 </form>
             </div>

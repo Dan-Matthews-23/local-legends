@@ -55,128 +55,102 @@ def handle_leave_review(restaurant_id):
     if session.get('err'):
         session.pop('err')
 
-    if session.get('is_logged_in', False):
+    if not session.get('is_logged_in'):
+        session['err'] = "You are not logged in"
+        return redirect(url_for('login'))
+    else:
+        #review_id = review_id
         user_id = session.get('user_id')
-        restaurant_id = restaurant_id
+        restaurant_id = request.form.get("restaurant_id")
         review_title = request.form.get("written_review_title")
         written_review = request.form.get("written_review")
         date_calc = datetime.datetime.now()
         todays_date = (date_calc.strftime("%Y-%m-%d"))
 
-        existing_reviews = Reviews.query.filter(
-            Reviews.restaurant_id == restaurant_id).all()
-        restaurant = Restaurants.query.filter(
-            Restaurants.restaurant_id == restaurant_id).first()
+        #existing_reviews = Reviews.query.filter(Reviews.restaurant_id == restaurant_id and Reviews.user_id == user_id).first()
+        existing_reviews = Reviews.query.filter(Reviews.restaurant_id == restaurant_id).all()
+        restaurant = Restaurants.query.filter(Restaurants.restaurant_id == restaurant_id).first()
 
-        # If there are reviews for this restaurant
+        # This function was written based on a request for cleaner code by Bard. 
         if existing_reviews:
-            existing_taste_stars = []
-            for review in Reviews.query.all():
-                existing_taste_stars.append(review.taste_stars)
-            existing_taste_stars.append(int(request.form.get("select_taste")))
-            all_taste_stars = existing_taste_stars
-            calc_average_taste_stars = mean(all_taste_stars)
-            rounded_taste_stars = math.floor(calc_average_taste_stars + 0.5)
-            if calc_average_taste_stars - rounded_taste_stars >= 0.5:
-                rounded_taste_stars += 0.5
-            average_taste_stars = rounded_taste_stars
+            new_taste_stars = request.form.get("select_taste")
+            existing_taste_stars = set(
+                existing_reviews.taste_stars for review in Reviews.query.all())
+            filtered_existing_taste_reviews = [
+            review for review in Reviews.query.all()
+            if review.taste_stars in existing_taste_stars]
+            taste_reviews_to_consider = set(existing_reviews.taste_stars for review in Reviews.query.all()) | {new_taste_stars}
+            average_taste_stars = round(sum(existing_reviews.taste_stars for review in taste_reviews_to_consider) / len(taste_reviews_to_consider))
 
-            existing_presentation_stars = []
-            for review in Reviews.query.all():
-                existing_presentation_stars.append(review.presentation_stars)
-            existing_presentation_stars.append(
-                int(request.form.get("select_presentation")))
-            all_presentation_stars = existing_presentation_stars
-            calc_average_presentation_stars = mean(all_presentation_stars)
-            rounded_presentation_stars = math.floor(
-                calc_average_presentation_stars + 0.5)
-            if calc_average_presentation_stars - rounded_presentation_stars >= 0.5:
-                rounded_presentation_stars += 0.5
-            average_presentation_stars = rounded_presentation_stars
+            new_presentation_stars = request.form.get("select_presentation")
+            existing_presentation_stars = set(existing_reviews.presentation_stars for review in Reviews.query.all())
+            filtered_existing_presentation_reviews = [
+            review for review in Reviews.query.all()
+            if review.presentation_stars in existing_presentation_stars]
+            presentation_reviews_to_consider = set(existing_reviews.presentation_stars for review in Reviews.query.all()) | {new_presentation_stars}
+            average_presentation_stars = round(sum(existing_reviews.presentation_stars for review in presentation_reviews_to_consider) / len(presentation_reviews_to_consider))
 
-            existing_friendliness_stars = []
-            for review in Reviews.query.all():
-                existing_friendliness_stars.append(review.friendliness_stars)
-            existing_friendliness_stars.append(
-                int(request.form.get("select_friendliness")))
-            all_friendliness_stars = existing_friendliness_stars
-            calc_average_friendliness_stars = mean(all_friendliness_stars)
-            rounded_friendliness_stars = math.floor(
-                calc_average_friendliness_stars + 0.5)
-            if calc_average_friendliness_stars - rounded_friendliness_stars >= 0.5:
-                rounded_friendliness_stars += 0.5
-            average_friendliness_stars = rounded_friendliness_stars
+            new_friendliness_stars = request.form.get("select_friendliness")
+            existing_friendliness_stars = set(existing_reviews.friendliness_stars for review in Reviews.query.all())
+            filtered_existing_friendliness_reviews = [
+            review for review in Reviews.query.all()
+            if review.friendliness_stars in existing_friendliness_stars]
+            friendliness_reviews_to_consider = set(existing_reviews.friendliness_stars for review in Reviews.query.all()) | {new_friendliness_stars}
+            average_friendliness_stars = round(sum(existing_reviews.friendliness_stars for review in friendliness_reviews_to_consider) / len(friendliness_reviews_to_consider))
 
-            existing_price_stars = []
-            for review in Reviews.query.all():
-                existing_price_stars.append(review.price_stars)
-            existing_price_stars.append(int(request.form.get("select_price")))
-            all_price_stars = existing_price_stars
-            calc_average_price_stars = mean(all_price_stars)
-            rounded_price_stars = math.floor(calc_average_price_stars + 0.5)
-            if calc_average_price_stars - rounded_price_stars >= 0.5:
-                rounded_price_stars += 0.5
-            average_price_stars = rounded_price_stars
+            new_ambience_stars = request.form.get("select_ambience")
+            existing_ambience_stars = set(existing_reviews.ambience_stars for review in Reviews.query.all())
+            filtered_existing_ambience_reviews = [
+            review for review in Reviews.query.all()
+            if review.ambience_stars in existing_ambience_stars]
+            ambience_reviews_to_consider = set(existing_reviews.ambience_stars for review in Reviews.query.all()) | {new_ambience_stars}
+            average_ambience_stars = round(sum(existing_reviews.ambience_stars for review in ambience_reviews_to_consider) / len(ambience_reviews_to_consider))
 
-            existing_ambience_stars = []
-            for review in Reviews.query.all():
-                existing_ambience_stars.append(review.ambience_stars)
-            existing_ambience_stars.append(
-                int(request.form.get("select_ambience")))
-            all_ambience_stars = existing_ambience_stars
-            calc_average_ambience_stars = mean(all_ambience_stars)
-            rounded_ambience_stars = math.floor(
-                calc_average_ambience_stars + 0.5)
-            if calc_average_ambience_stars - rounded_ambience_stars >= 0.5:
-                rounded_ambience_stars += 0.5
-            average_ambience_stars = rounded_ambience_stars
+            new_price_stars = request.form.get("select_price")
+            existing_price_stars = set(existing_reviews.price_stars for review in Reviews.query.all())
+            filtered_existing_price_reviews = [
+            review for review in Reviews.query.all()
+            if review.price_stars in existing_price_stars]
+            price_reviews_to_consider = set(existing_reviews.price_stars for review in Reviews.query.all()) | {new_price_stars}
+            average_price_stars = round(sum(
+                existing_reviews.price_stars for review in price_reviews_to_consider) / len(price_reviews_to_consider))
 
-            sum_overall_stars = [average_ambience_stars, average_price_stars,
-                                 average_friendliness_stars, average_presentation_stars,
-                                 average_taste_stars]
-            average_overall_stars_for_restaurants_table = statistics.mean(
-                sum_overall_stars)
-
-            posted_taste_stars = int(request.form.get("select_taste"))
-            posted_presentation_stars = int(
-                request.form.get("select_presentation"))
-            posted_friendliness_stars = int(
-                request.form.get("select_friendliness"))
-            posted_price_stars = int(request.form.get("select_price"))
-            posted_ambience_stars = int(request.form.get("select_ambience"))
-
-            overall_calc = (posted_taste_stars + posted_presentation_stars +
-                            posted_friendliness_stars + posted_price_stars + posted_ambience_stars) / 5
-
+            new_overall_stars = (new_price_stars + new_ambience_stars +
+                                 new_friendliness_stars + new_presentation_stars + new_taste_stars)
+            existing_overall_stars = set(existing_reviews.overall_stars for review in Reviews.query.all())
+            filtered_existing_overall_reviews = [
+            review for review in Reviews.query.all()
+            if review.overall_stars in existing_overall_stars]
+            overall_reviews_to_consider = set(existing_reviews.overall_stars for review in Reviews.query.all()) | {new_overall_stars}
+            sum_overall_stars_for_restaurant = round(sum(
+                existing_reviews.overall_stars for review in overall_reviews_to_consider) / len(overall_reviews_to_consider))
+        
         else:
-            average_taste_stars = int(request.form.get("select_taste"))
-            average_presentation_stars = int(
-                request.form.get("select_presentation"))
-            average_friendliness_stars = int(
-                request.form.get("select_friendliness"))
-            average_price_stars = int(request.form.get("select_price"))
-            average_ambience_stars = int(request.form.get("select_ambience"))
+            average_taste_stars = (int(request.form.get("select_taste")))
+            average_presentation_stars = (int(request.form.get("select_presentation")))
+            average_friendliness_stars = (int(request.form.get("select_friendliness")))
+            average_ambience_stars = (int(request.form.get("select_ambience")))
+            average_price_stars = (int(request.form.get("select_price")))
+            sum_overall_stars_for_restaurant = (average_ambience_stars + average_price_stars + average_friendliness_stars + average_presentation_stars + average_taste_stars) / 5
+        
+        sum_overall_stars_for_review = (average_ambience_stars + average_price_stars + average_friendliness_stars + average_presentation_stars + average_taste_stars) / 5
+        
+                
 
-            overall_stars = (average_taste_stars + average_presentation_stars +
-                             average_friendliness_stars + average_price_stars + average_ambience_stars)
-            average_overall_stars_for_restaurants_table = (overall_stars / 5)
-
-            overall_calc = (average_taste_stars + average_presentation_stars +
-                            average_friendliness_stars + average_price_stars + average_ambience_stars) / 5
-
-        # Insert a review into the table Reviews
+        # UPDATE table Reviews
         new_review = Reviews(
             taste_stars=int(request.form.get("select_taste")),
             presentation_stars=int(request.form.get("select_presentation")),
             friendliness_stars=int(request.form.get("select_friendliness")),
             price_stars=int(request.form.get("select_price")),
             ambience_stars=int(request.form.get("select_ambience")),
-            overall_stars=overall_calc,
+            overall_stars=sum_overall_stars_for_review,
             written_review_title=review_title,
             written_review=written_review,
             restaurant_id=restaurant_id,
             user_id=user_id,
             review_date=todays_date)
+        
 
         if restaurant:
             restaurant.restaurant_average_taste_stars = average_taste_stars
@@ -184,13 +158,69 @@ def handle_leave_review(restaurant_id):
             restaurant.restaurant_average_friendliness_stars = average_friendliness_stars
             restaurant.restaurant_average_price_stars = average_price_stars
             restaurant.restaurant_average_ambience_stars = average_ambience_stars
-            restaurant.restaurant_average_overall_stars = average_overall_stars_for_restaurants_table
-        else:
-            return redirect(url_for("restaurant_profile", restaurant_id=restaurant_id))
-            session['err'] = "There was an error in pulling records from the Restaurant table"
+            restaurant.restaurant_average_overall_stars = sum_overall_stars_for_restaurant
+        
+           
+    try:
         db.session.add(new_review)
         db.session.commit()
-    return redirect(url_for('login'))
+        session['err'] = "Review edited successfully"
+        return redirect(url_for('restaurants'))
+    except Exception as e:
+        print(e)
+        session['err'] = f"An error occurred while editing the restaurant - the ID is {restaurant_id}"
+        return render_template("restaurant_profile.html", restaurant=restaurant, reviews=existing_reviews)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @app.route("/admin_login/create", methods=["GET", "POST"])
 def create_restaurant():
@@ -231,6 +261,69 @@ def create_restaurant():
 
     session['err'] = "You are not logged in"
     return redirect(url_for("login"))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
 ##---END OF CREATE---##
 
