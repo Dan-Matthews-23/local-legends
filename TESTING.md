@@ -193,10 +193,17 @@ This now completes the Testing User Journey with Guest permissions
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
 |![001](assets/testing/testing-images/testing-user-journey-test-thirty-two-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-thirty-two-b)  | N/A        | N/A | N/A| N/A|
 
-| 033               |  @app.route("/leave_review")         | leave_review            | Using the same input as Tests 031 and 032, I will submit two reviews with the expectation that the stars in the Restaurant reviews are all 3  | Pass | All stars read as three as expected, however the function displays an incorrect Overall stars in the secon  review. This indicates that there is an error in the code when calculating new values for the second part of the else statement where there is already a review stored.   
+| 033               |  @app.route("/leave_review")         | leave_review            | Using the same input as Tests 031 and 032, I will submit two reviews with the expectation that the stars in the Restaurant reviews are all 3  | Fail | All stars read as three as expected, however the function displays an incorrect Overall stars in the secon  review. This indicates that there is an error in the code when calculating new values for the second part of the else statement where there is already a review stored.   
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
 |![001](assets/testing/testing-images/testing-user-journey-test-thirty-three-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-thirty-three-b)  | N/A        | N/A | N/A| N/A|
 
+| 034               |  @app.route("/leave_review")         | leave_review            | In attempt to correct the code in Tests 031 and 032, I rewrote the calculation to attempt a fix. I now expect the result to be three for all fields in the Restaurant values, and then all 1s and all 5s respectivley for the Review.   | Fail | All stars except the Overall Stars on both tables displayed as expected. However the Overall was calculated at 13. I do not yet understand why.   
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+|![001](assets/testing/testing-images/testing-user-journey-test-thirty-four-a)        | N/A  | N/A        | N/A | N/A| N/A|
+
+| 035               |  @app.route("/leave_review")         | leave_review            | Again, I expect the results to be three.    | Fail | The Restaurants table is now correct, but the Reviews is now
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+|![001](assets/testing/testing-images/testing-user-journey-test-thirty-five-a)        | |![001](assets/testing/testing-images/testing-user-journey-test-thirty-five-a)  | N/A        | N/A | N/A| N/A|
 
 
 This now completes the Testing User Journey with Registered User permissions
