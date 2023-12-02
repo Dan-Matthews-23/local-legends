@@ -109,7 +109,9 @@ def handle_leave_review(restaurant_id):
                 average_overall_stars.append(review.overall_stars)
             average_overall_stars = mean(average_overall_stars)
 
-            calculated_overall_stars = average_overall_stars
+            calculated_overall_stars_for_restaurant = average_overall_stars
+            calculated_overall_stars_for_review = (
+                posted_taste_stars + posted_presentation_stars + posted_friendliness_stars + posted_ambience_stars + posted_price_stars) / 5
 
 
             
@@ -134,7 +136,8 @@ def handle_leave_review(restaurant_id):
             average_ambience_stars = (int(request.form.get("select_ambience")))
             average_price_stars = (int(request.form.get("select_price")))       
             
-            calculated_overall_stars = (average_ambience_stars + average_price_stars +average_friendliness_stars + average_presentation_stars + average_taste_stars) / 5
+            calculated_overall_stars_for_review = (average_ambience_stars + average_price_stars +average_friendliness_stars + average_presentation_stars + average_taste_stars) / 5
+            calculated_overall_stars_for_restaurant = calculated_overall_stars_for_review
             
         
                 
@@ -146,7 +149,7 @@ def handle_leave_review(restaurant_id):
             friendliness_stars=int(request.form.get("select_friendliness")),
             price_stars=int(request.form.get("select_price")),
             ambience_stars=int(request.form.get("select_ambience")),
-            overall_stars=calculated_overall_stars,
+            overall_stars=calculated_overall_stars_for_review,
             written_review_title=review_title,
             written_review=written_review,
             restaurant_id=restaurant_id,
@@ -162,7 +165,7 @@ def handle_leave_review(restaurant_id):
             restaurant.restaurant_average_friendliness_stars = average_friendliness_stars
             restaurant.restaurant_average_price_stars = average_price_stars
             restaurant.restaurant_average_ambience_stars = average_ambience_stars
-            restaurant.restaurant_average_overall_stars = calculated_overall_stars
+            restaurant.restaurant_average_overall_stars = calculated_overall_stars_for_restaurant
             db.session.commit()
            
         try:

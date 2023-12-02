@@ -203,7 +203,11 @@ This now completes the Testing User Journey with Guest permissions
 
 | 035               |  @app.route("/leave_review")         | leave_review            | Again, I expect the results to be three.    | Fail | The Restaurants table is now correct, but the Reviews is now
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
-|![001](assets/testing/testing-images/testing-user-journey-test-thirty-five-a)        | |![001](assets/testing/testing-images/testing-user-journey-test-thirty-five-a)  | N/A        | N/A | N/A| N/A|
+|![001](assets/testing/testing-images/testing-user-journey-test-thirty-five-a)        | |![001](assets/testing/testing-images/testing-user-journey-test-thirty-five-b)  | N/A        | N/A | N/A| N/A|
+
+| 036               |  @app.route("/leave_review")         | leave_review            | Repeating previous method of emptying the table and inputting two reviews with values of 3 and 5 respectivley, and expecting the same output, I have amended the code once again. | Pass | All outputs displayed as expected. 
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+|![001](assets/testing/testing-images/testing-user-journey-test-thirty-six-a)        | |![001](assets/testing/testing-images/testing-user-journey-test-thirty-six-b)  | N/A        | N/A | N/A| N/A|
 
 
 This now completes the Testing User Journey with Registered User permissions
