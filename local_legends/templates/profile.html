@@ -2,7 +2,7 @@
 
 <!--USER FORM FOR GET INVOLVED-->
 <section class="change_password">
-    <form action="{{ url_for('hash') }}"">
+    <form action="{{ url_for('change_password') }}"">
         <div class="container align-center login-container ">
             <div class="row sign-up-row  align-center ">
                 <div class="col-sign-up align-center lg-padding ">
@@ -13,6 +13,9 @@
             <div class="row sign-up-row  align-center  ">
                 <div class="col-sign-up align-right lg-padding ">
                     <label for="name">Change Password:</label>
+                </div>
+                <div class="col-sign-up  align-left ">
+                    <input type="password" class="sign-up" name="current_password" id="current_password" placeholder="Enter your current password" required>
                 </div>
                 <div class="col-sign-up  align-left ">
                     <input type="password" class="sign-up" name="password_change" id="password_change"

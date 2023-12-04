@@ -344,8 +344,8 @@ def restaurant_profile(restaurant_id):
 
 @app.route("/profile", methods=["GET", "POST"])
 def profile():
-    if session.get('err'):
-        session.pop('err')
+    #if session.get('err'):
+        #session.pop('err')
     if session.get('is_logged_in', False):
         user_id = session.get('user_id')
         users = Users.query.filter_by(user_id=user_id)
@@ -365,6 +365,53 @@ def profile():
 ##---END OF READ---##
 
 ##---UPDATE---##
+
+
+@app.route("/profile/change_password", methods=["GET", "POST"])
+def change_password():
+    #if session.get('err'):
+    #    session.pop('err')
+    if request.method == "POST":
+        if not session.get('is_logged_in'):
+            session['err'] = "You are not logged in"
+            return redirect(url_for('login'))
+        else:
+            user_id = session.get('user_id')      
+            if (len(request.form.get("current_password")) > 10):
+                if (len(request.form.get("password_change")) > 10):
+                    if (len(request.form.get("confirm_password_change")) > 10):
+                        if (request.form.get("password_change") != request.form.get("confirm_password_change")):
+                            user_details = Users.query.filter_by(user_id=user_id).first()
+                            if user_details is None:
+                                session['err'] = "User details could not be found"
+                                return redirect(url_for('home'))
+                            else:
+                                if check_password_hash(user_details.password_hash, current_password):
+                                    new_password_value = generate_password_hash(current_password)
+                                    user_details.password_hash = new_password_value
+                                    db.session.add(user_details)
+                                    try:
+                                        db.session.commit()
+                                        session['err'] = "Password updated successfully"
+                                        return redirect(url_for('profile'))
+                                    except Exception as e:
+                                        print(e)
+                                    session['err'] = f"An error occurred"                           
+                        else:
+                            session['err'] = "Your new password and confirm new password must match"
+                    else:
+                        session['err'] = "Your new password must be at least 10 characters long"
+                else:
+                    session['err'] = "Your new password must be at least 10 characters long"
+            else:
+                session['err'] = "Your current password must be at least 10 characters long"
+    return render_template("profile.html")
+                
+    
+
+
+
+
 @app.route("/edit_review/<int:review_id>", methods=["GET", "POST"])
 def edit_review(review_id):
     if session.get('err'):
