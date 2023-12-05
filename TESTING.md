@@ -237,9 +237,9 @@ This now completes the Testing User Journey with Guest permissions
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
 |![001](assets/testing/testing-images/testing-user-journey-test-fourty-three-a)       | ![001](assets/testing/testing-images/testing-user-journey-test-fourty-two-b) | ![001](assets/testing/testing-images/testing-user-journey-test-fourty-two-c)  | N/A        | N/A | N/A| N/A|
 
-| 044               |  @app.route("/delete_review")         | delete_review            | I need the delete_review to remove the row from the table and then recalculate the review and restaurant ratings, opposite to leave_review. For this test, there are three reviews in the table. Two reviews have ratings of all 1s. One of them has ratings of all 5s. This gives an overall restaurant rating of 2.33333. I am going to delete teh review with all 5s. I expect the restaurant rating to then read all 1s.  | Pass | The code worked first time. The review was deleted and the restaurant rating was calculated correctly.  
+| 044               |  @app.route("/change_password")         | change_password            | I want to be able to change my password. If there are errors, I want to be told exacly what I need to do  | Pass | The password was changed successfully with relevant user feedback  
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
-|![001](assets/testing/testing-images/testing-user-journey-test-fourty-three-a)       | ![001](assets/testing/testing-images/testing-user-journey-test-fourty-two-b) | ![001](assets/testing/testing-images/testing-user-journey-test-fourty-two-c)  | N/A        | N/A | N/A| N/A|
+|![001](assets/testing/testing-images/testing-user-journey-test-fourty-four-a)       | ![001](assets/testing/testing-images/testing-user-journey-test-fourty-four-b) | ![001](assets/testing/testing-images/testing-user-journey-test-fourty-four-c)  | ![001](assets/testing/testing-images/testing-user-journey-test-fourty-four-d)        | N/A | N/A| N/A|
 
 
 

@@ -38,8 +38,7 @@ def register():
             if (post_password < 11):
                 session['err'] = "Your password must be at least 10 characters long"
             else:
-                new_password = generate_password_hash(
-                    request.form.get("password_register"))
+                new_password = generate_password_hash(request.form.get("password_register"))
                 todays_date = datetime.datetime.now()
                 new_user = Users(username=username, email=email,
                                  password_hash=new_password, user_date_registered=todays_date)
@@ -369,43 +368,49 @@ def profile():
 
 @app.route("/profile/change_password", methods=["GET", "POST"])
 def change_password():
-    #if session.get('err'):
-    #    session.pop('err')
-    if request.method == "POST":
-        if not session.get('is_logged_in'):
-            session['err'] = "You are not logged in"
-            return redirect(url_for('login'))
+    if session.get('err'):
+        session.pop('err')
+    if not session.get('is_logged_in'):
+        session['err'] = "You are not logged in"
+        return redirect(url_for('login'))
+    else:        
+        user_id = session.get('user_id')
+        update_query = Users.query.filter(Users.user_id == user_id).first()
+        if update_query is None:
+            session['err'] = "Review could not be found"
+            return redirect(url_for('restaurants'))
         else:
-            user_id = session.get('user_id')      
-            if (len(request.form.get("current_password")) > 10):
-                if (len(request.form.get("password_change")) > 10):
-                    if (len(request.form.get("confirm_password_change")) > 10):
-                        if (request.form.get("password_change") != request.form.get("confirm_password_change")):
-                            user_details = Users.query.filter_by(user_id=user_id).first()
-                            if user_details is None:
-                                session['err'] = "User details could not be found"
-                                return redirect(url_for('home'))
-                            else:
-                                if check_password_hash(user_details.password_hash, current_password):
-                                    new_password_value = generate_password_hash(current_password)
-                                    user_details.password_hash = new_password_value
-                                    db.session.add(user_details)
-                                    try:
-                                        db.session.commit()
-                                        session['err'] = "Password updated successfully"
-                                        return redirect(url_for('profile'))
-                                    except Exception as e:
-                                        print(e)
-                                    session['err'] = f"An error occurred"                           
-                        else:
-                            session['err'] = "Your new password and confirm new password must match"
-                    else:
-                        session['err'] = "Your new password must be at least 10 characters long"
-                else:
-                    session['err'] = "Your new password must be at least 10 characters long"
+            if (len(request.form.get("current_password"))) < 11:
+                session['err'] = "You must enter your current password"
+                return redirect(url_for('profile'))
+
+            elif (len(request.form.get("password_change"))) < 11:
+                session['err'] = "Your new password must be at least 10 characters"
+                return redirect(url_for('profile'))
+            
+            elif (len(request.form.get("confirm_password_change"))) < 11:
+                session['err'] = "Your new password must be at least 10 characters"
+                return redirect(url_for('profile'))
+            
+            elif request.form.get("password_change") != request.form.get("confirm_password_change"):
+                session['err'] = "Your new password and confirm new password did not match"
+                return redirect(url_for('profile'))
+            
             else:
-                session['err'] = "Your current password must be at least 10 characters long"
-    return render_template("profile.html")
+                hashed_password = generate_password_hash(request.form.get("current_password"))
+                update_query.password_hash = hashed_password
+                db.session.add(update_query)
+            #db.session.commit()         
+            try:
+                db.session.commit()
+                session['err'] = "Password edited successfully"
+                return redirect(url_for('profile'))
+            except Exception as e:
+                print(e)
+                session['err'] = str(e)
+                return render_template("profile.html")
+    
+
                 
     
 
