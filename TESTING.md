@@ -5,6 +5,8 @@
     - [Manual Testing](#manual-testing)
   - [Testing the User Journey](#testing-the-user-journey)
     - [As a guest](#as-a-guest)
+    - [As a Registered User](#as-a-registered-user)
+    - [As administrator](#as-administrator)
     - [Further Testing](#further-testing)
       - [Edit Review](#edit-review)
     - [Automated Testing](#automated-testing)
@@ -252,6 +254,7 @@ This now completes the Testing User Journey with Guest permissions
 | 047               |  @app.route("/change_username")         | change_username            | I want to be able to change my username address.   | Pass | The username address was changed. My new username appeared in the banner right away  
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
 |![001](assets/testing/testing-images/testing-user-journey-test-fourty-seven-a)       | ![001](assets/testing/testing-images/testing-user-journey-test-fourty-seven-b)| N/A  | N/A       | N/A | N/A| N/A|
+
 This now completes the Testing User Journey with Registered User permissions
 
 ### As administrator
@@ -260,7 +263,19 @@ This now completes the Testing User Journey with Registered User permissions
 |------------         | ------------            | ------------        | ------------                          |------------| ------------             |
 | 048                |  @app.route("/admin_login")         | admin_login              |  As an admin, the user should be able to enter a secon tier of login to authorise admin credentials     | Pass       | When correctly entering all user details as well as admin password, the user was directed to the admin portal page with no error      |
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
-|![001](/assets/testing/testing-images/testing-user-journey-test-nine-a)        | N/A | N/A            | N/A| N/A| N/A|
+|![001](/assets/testing/testing-images/testing-user-journey-test-fourty-eight-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-fourty-eight-b) | N/A            | N/A| N/A| N/A|
+
+| 049                |  @app.route("/admin_portal")         | admin_portal              |  As an admin, the user should be able to create a restaurant     | Pass       | The restaurant was created      |
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+|![001](/assets/testing/testing-images/testing-user-journey-test-fourty-nine-a)        | ![001](/assets/testing/testing-images/testing-user-journey-test-fourty-nine-b) | N/A            | N/A| N/A| N/A|
+
+| 050                |  @app.route("/admin_portal")         | admin_portal              |  As an admin, the user should be able to edit a restaurant     | Pass       | The restaurant was created      |
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+|![001](/assets/testing/testing-images/testing-user-journey-test-fifty-a)        | N/A | N/A            | N/A| N/A| N/A|
+
+This now completes the Testing User Journey with Administrator permissions
+
+
 
 
 ### Further Testing
