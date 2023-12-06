@@ -245,6 +245,14 @@ This now completes the Testing User Journey with Guest permissions
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
 |![001](assets/testing/testing-images/testing-user-journey-test-fourty-five-a)       | ![001](assets/testing/testing-images/testing-user-journey-test-fourty-five-b) | ![001](assets/testing/testing-images/testing-user-journey-test-fourty-five-c)  | N/A)        | N/A | N/A| N/A|
 
+| 046               |  @app.route("/change_email")         | change_email            | I want to be able to change my email address.   | Pass | The email address was changed  
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+|![001](assets/testing/testing-images/testing-user-journey-test-fourty-six-a)       | N/A| N/A  | N/A       | N/A | N/A| N/A|
+
+| 047               |  @app.route("/change_username")         | change_username            | I want to be able to change my username address.   | Pass | The username address was changed. My new username appeared in the banner right away  
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+|![001](assets/testing/testing-images/testing-user-journey-test-fourty-seven-a)       | ![001](assets/testing/testing-images/testing-user-journey-test-fourty-seven-b)| N/A  | N/A       | N/A | N/A| N/A|
+
 
 
 
