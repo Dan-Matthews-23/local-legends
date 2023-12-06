@@ -979,9 +979,12 @@ def admin_login():
 
 ## DELETE THIS ONCE USED##
 
+@app.route("/profile/admin", methods=["GET", "POST"])
+def hash():
+    return render_template("temp_admin_access.html")
 
 @app.route("/temp_admin_access", methods=["GET", "POST"])
-def hash():
+def handle_hash():
     user_id = user_id = session.get('user_id')
     if request.method == "POST":
         query = Admins.query.filter(Admins.user_id == user_id).first()

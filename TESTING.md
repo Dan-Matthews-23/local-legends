@@ -94,7 +94,7 @@ The project was built using Google Chrome and tested through Chrome Developer To
 This now completes the Testing User Journey with Guest permissions
 
 
-
+### As a Registered User
 
 | Test Number         |      App Route          |   Function           |   Expectation       | Result     |  Comments |  
 |------------         | ------------            | ------------        | ------------                          |------------| ------------             |
@@ -252,13 +252,15 @@ This now completes the Testing User Journey with Guest permissions
 | 047               |  @app.route("/change_username")         | change_username            | I want to be able to change my username address.   | Pass | The username address was changed. My new username appeared in the banner right away  
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
 |![001](assets/testing/testing-images/testing-user-journey-test-fourty-seven-a)       | ![001](assets/testing/testing-images/testing-user-journey-test-fourty-seven-b)| N/A  | N/A       | N/A | N/A| N/A|
-
-
-
-
 This now completes the Testing User Journey with Registered User permissions
 
+### As administrator
 
+| Test Number         |      App Route          |   Function           |   Expectation       | Result     |  Comments |  
+|------------         | ------------            | ------------        | ------------                          |------------| ------------             |
+| 048                |  @app.route("/admin_login")         | admin_login              |  As an admin, the user should be able to enter a secon tier of login to authorise admin credentials     | Pass       | When correctly entering all user details as well as admin password, the user was directed to the admin portal page with no error      |
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+|![001](/assets/testing/testing-images/testing-user-journey-test-nine-a)        | N/A | N/A            | N/A| N/A| N/A|
 
 
 ### Further Testing

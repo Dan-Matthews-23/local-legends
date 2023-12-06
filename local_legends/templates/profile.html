@@ -130,13 +130,23 @@
             <div class="col-sign-up align-center">
                 <input type="submit" class="submit-btn" name="submit_delete" id="submit_delete" value="Log in as admin">
             </div>
+            
+        </div>
+    </form>
+</section>
+<section class="hash">
+    <form action="{{ url_for('hash') }}" method="POST">
+        <div class="row sign-up-row align-center">
+            <div class="col-sign-up align-center">
+                <input type="submit" class="submit-btn" name="hash" id="hash" value="Hash">
+            </div>
+
         </div>
     </form>
 </section>
 {% endif %}
 {% endif %}
 {% endfor %}
-
 
 
 
