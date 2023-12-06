@@ -9,7 +9,7 @@ import datetime
 import statistics
 from statistics import mean
 import math
-
+import re
 
 
 ##--CRUD FUNCTIONALITY--##
@@ -313,6 +313,10 @@ def create_restaurant():
 ##---END OF CREATE---##
 
 ##---READ---##
+
+
+
+
 @app.route("/")
 def home():
     restaurants_snippet = list(Restaurants.query.order_by(
@@ -409,8 +413,95 @@ def change_password():
                 print(e)
                 session['err'] = str(e)
                 return render_template("profile.html")
-    
 
+
+@app.route("/profile/change_email", methods=["GET", "POST"])
+def change_email():
+    if session.get('err'):
+        session.pop('err')
+    if not session.get('is_logged_in'):
+        session['err'] = "You are not logged in"
+        return redirect(url_for('login'))
+    else:
+        user_id = session.get('user_id')
+        update_query = Users.query.filter(Users.user_id == user_id).first()
+        if update_query is None:
+            session['err'] = "Review could not be found"
+            return redirect(url_for('restaurants'))
+        else:
+            
+            ##---
+            ## This Email Validator was adapted from Geeks for Geeks
+            ## See Readme for more information
+            ## Start of adapted code
+            regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
+            email = request.form.get("change_email")           
+            if (re.fullmatch(regex, email)):
+                checked_email = email                
+            else:
+                checked_email = ""                
+            ## End of adapted code
+            ##---
+
+            if checked_email == "":
+                session['err'] = "You must enter a correct email address"
+                return redirect(url_for('profile'))
+            
+            else:                
+                check_email_exists = Users.query.filter(Users.email == email).all()
+                if check_email_exists:
+                    session['err'] = "That email address is already taken"
+                    return redirect(url_for('profile'))
+                else:                
+                    update_query.email = checked_email
+                    db.session.add(update_query)           
+                try:
+                    db.session.commit()
+                    session['err'] = "Email address edited successfully"
+                    return redirect(url_for('profile'))
+                except Exception as e:
+                    print(e)
+                    session['err'] = str(e)
+                    return render_template("profile.html")
+
+    
+@app.route("/profile/change_username", methods=["GET", "POST"])
+def change_username():
+    if session.get('err'):
+        session.pop('err')
+    if not session.get('is_logged_in'):
+        session['err'] = "You are not logged in"
+        return redirect(url_for('login'))
+    else:
+        user_id = session.get('user_id')
+        update_query = Users.query.filter(Users.user_id == user_id).first()
+        if update_query is None:
+            session['err'] = "Review could not be found"
+            return redirect(url_for('restaurants'))
+        else:
+            if (len(request.form.get("change_username"))) < 3:
+                session['err'] = "You must choose a username with at least 4 characters"
+                return redirect(url_for('profile'))
+            else:
+                username = request.form.get("change_username") 
+                check_username_exists = Users.query.filter(Users.username == username).all()
+                if check_username_exists:
+                    session['err'] = "That username address is already taken"
+                    return redirect(url_for('profile'))
+                else:                
+                    update_query.username = username
+                    db.session.add(update_query)
+
+                try:
+                    db.session.commit()
+                    session['err'] = "Username edited successfully"
+                    refresh_username_session = Users.query.filter(Users.user_id == user_id).first()
+                    session['username'] = refresh_username_session.username
+                    return redirect(url_for('profile'))
+                except Exception as e:
+                    print(e)
+                    session['err'] = str(e)
+                    return render_template("profile.html")
                 
     
 
@@ -612,6 +703,36 @@ def edit_restaurant():
 ##---END OF UPDATE---##
 
 ##---DELETE---##
+
+
+@app.route("/profile//delete_user", methods=["GET", "POST"])
+def delete_user():
+    if session.get('err'):
+        session.pop('err')
+    user_id = session.get('user_id')
+    password = request.form.get("password_delete")
+
+    if request.method == "POST":
+        existing_user = Users.query.filter(Users.user_id == user_id).first()
+        if existing_user:
+            if check_password_hash(existing_user.password_hash, password):
+                db.session.delete(existing_user)
+                db.session.commit()
+                session.clear() 
+                session['err'] = "Your account was deleted"
+                return redirect(url_for('home'))
+            else:
+                session['err'] = "That password was incorrect"
+                return redirect(url_for("profile"))
+        else:
+            session['err'] = "Those details were incorect"
+            return redirect(url_for("profile"))
+    return render_template("profile.html")
+    
+
+    
+       
+
 
 
 

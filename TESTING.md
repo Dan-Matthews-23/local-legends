@@ -241,6 +241,10 @@ This now completes the Testing User Journey with Guest permissions
 | **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
 |![001](assets/testing/testing-images/testing-user-journey-test-fourty-four-a)       | ![001](assets/testing/testing-images/testing-user-journey-test-fourty-four-b) | ![001](assets/testing/testing-images/testing-user-journey-test-fourty-four-c)  | ![001](assets/testing/testing-images/testing-user-journey-test-fourty-four-d)        | N/A | N/A| N/A|
 
+| 045               |  @app.route("/delete_user")         | delete_user            | I want to be able to delete my account. But I don't want to do it accidently.   | Pass | The account was deleted. I had to retype my password to confirm I wanted to delete my account  
+| **Image One**       |   **Image Two**   |**Image Three**      |**Image Four**                         |**Image Five**  |**Image Six**  |
+|![001](assets/testing/testing-images/testing-user-journey-test-fourty-five-a)       | ![001](assets/testing/testing-images/testing-user-journey-test-fourty-five-b) | ![001](assets/testing/testing-images/testing-user-journey-test-fourty-five-c)  | N/A)        | N/A | N/A| N/A|
+
 
 
 

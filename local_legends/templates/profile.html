@@ -36,7 +36,59 @@
     </form>
 </section>
 
-<!--USER FORM FOR GET INVOLVED-->
+<section class="change_username">
+    <form action="{{ url_for('change_username') }}" method="POST">
+        <div class="container align-center login-container ">
+            <div class="row sign-up-row  align-center ">
+               
+            </div>
+
+            <div class="row sign-up-row  align-center  ">
+                <div class="col-sign-up align-right lg-padding ">
+                    <label for="name">Change Username:</label>
+                </div>
+                <div class="col-sign-up  align-left ">
+                    <input type="text" class="sign-up" name="change_username" id="change_username"
+                        placeholder="Enter a new username" required>
+                </div>              
+             </div>
+            <div class="row sign-up-row  align-center">
+                <div class="col-sign-up align-center ">
+                    <input type="submit" class="submit-btn" name="submit_change_username" id="submit_change_username"
+                        value="Change Username">
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+
+<section class="change_email">
+    <form action="{{ url_for('change_email') }}" method="POST">
+        <div class="container align-center login-container ">
+            <div class="row sign-up-row  align-center ">
+
+            </div>
+
+            <div class="row sign-up-row  align-center  ">
+                <div class="col-sign-up align-right lg-padding ">
+                    <label for="name">Change Email Address:</label>
+                </div>
+                <div class="col-sign-up  align-left ">
+                    <input type="text" class="sign-up" name="change_email" id="change_email"
+                        placeholder="Enter a new email address" required>
+                </div>
+            </div>
+            <div class="row sign-up-row  align-center">
+                <div class="col-sign-up align-center ">
+                    <input type="submit" class="submit-btn" name="submit_change_email" id="submit_change_email"
+                        value="Change Email Address">
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+
+<form action="{{ url_for('delete_user') }}" method="POST">
 <section class="delete">
     <form action="index.html">
         <div class="container align-center login-container">
@@ -55,13 +107,7 @@
                         placeholder="Enter your password" required>
                 </div>
             </div>
-            <div class="row sign-up-row align-center">
-                <div class="col sign-up-over-one align-center ">
-                    <input type="checkbox" class="sign-up" name="confirm_delete" id="confirm_delete" required>
-                    I want to delete my account:
-
-                </div>
-            </div>
+            
             <div class="row sign-up-row align-center">
                 <div class="col-sign-up  align-center">
                     <input type="submit" class="submit-btn" name="submit_delete" id="submit_delete"
