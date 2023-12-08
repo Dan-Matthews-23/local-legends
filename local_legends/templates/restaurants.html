@@ -6,10 +6,12 @@
    defensive programming-->
 <div class="container  align-center card-panel grey lighten-5 ">
     <div class="row with-borders input-row">
-        <h3 class="light-blue-text text-darken-4 center-align">Local Legends: Restaurants</h3>
+        <h3 class="light-blue-text text-darken-4 center-align">Local Legends: restaurants</h3>
     </div>
 </div>
 {% for restaurants in restaurants %}
+
+
 
 
 <section id="thumb_section">
@@ -19,12 +21,7 @@
         <div class="col with-borders align-center s12 m12 l6 xl6"><img class="hero-image-thumb" src="{{ restaurants.restaurant_image_url }}"></div>  
         <div class="col with-borders s12 m12 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_name }}</div>
         <div class="col with-borders s12 m12 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_average_overall_stars }}</div>
-        <div class="col with-borders s12 m12 l6 xl6 restaurant-stars-display-col ">
-            
-
-            
-            
-            </div>
+        <div class="col with-borders s12 m12 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_review_count }}</div>
         
         <!--<div class="col with-borders  s2 m2 l0 x0 show-on-small"></div>-->
     </div>
@@ -136,6 +133,7 @@
     </div>
 </div>
 <!--THIS IS THE START OF THE SECOND HALF OF THE CONTAINER-->
+
 
 
 {% endfor %}

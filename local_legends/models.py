@@ -36,6 +36,7 @@ class Restaurants(db.Model):
     restaurant_average_overall_stars = db.Column(db.Float)
     restaurant_image_url = db.Column(db.String(500))
     restaurant_date_registered = db.Column(db.DateTime, nullable=False)
+    restaurant_review_count = db.Column(db.Integer)
   
 
     def __repr__(self):

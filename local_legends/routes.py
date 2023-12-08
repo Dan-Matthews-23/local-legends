@@ -135,6 +135,9 @@ def handle_leave_review(restaurant_id):
             review_date=todays_date)
 
         restaurant = Restaurants.query.filter(Restaurants.restaurant_id == restaurant_id).first()
+        get_reviews_by_restaurant_id = Reviews.query.filter(Reviews.restaurant_id == restaurant_id).all()
+        review_count_by_restaurant_id = len(get_reviews_by_restaurant_id) + 1
+        
         if not restaurant:
             session['err'] = "Restaurant could not be edited"
         else:
@@ -144,6 +147,7 @@ def handle_leave_review(restaurant_id):
             restaurant.restaurant_average_price_stars = average_price_stars
             restaurant.restaurant_average_ambience_stars = average_ambience_stars
             restaurant.restaurant_average_overall_stars = calculated_overall_stars_for_restaurant
+            restaurant.restaurant_review_count = review_count_by_restaurant_id
             db.session.commit()
            
         try:
@@ -328,12 +332,20 @@ def home():
 def restaurants():
     if session.get('err'):
         session.pop('err')
-    restaurants = list(Restaurants.query.order_by(
-        Restaurants.restaurant_id).all())
 
+    restaurants = Restaurants.query.order_by(Restaurants.restaurant_id).all()
     
 
-    return render_template("restaurants.html", restaurants=restaurants)
+    return render_template('restaurants.html', restaurants=restaurants)
+
+
+
+
+
+
+
+
+
 
 
 
@@ -343,8 +355,7 @@ def restaurant_profile(restaurant_id):
     
     session['restaurant_id'] = restaurant_id
     restaurant = Restaurants.query.get_or_404(restaurant_id)
-    reviews = (Reviews.query.filter_by(restaurant_id=restaurant_id).
-               order_by(Reviews.review_id.desc()).all())    
+    reviews = (Reviews.query.filter_by(restaurant_id=restaurant_id).order_by(Reviews.review_id.desc()).all())    
     if request.method == "POST":
         db.session.commit()
         return redirect(url_for("restaurant_profile", restaurant_id=restaurant.restaurant_id))
@@ -626,6 +637,9 @@ def handle_edit_review(review_id):
                 calculated_overall_stars_for_restaurant = calculated_overall_stars_for_review  
 
             restaurant = Restaurants.query.filter(Restaurants.restaurant_id == restaurant_id).first()
+            get_reviews_by_restaurant_id = Reviews.query.filter(Reviews.restaurant_id == restaurant_id).all()
+            review_count_by_restaurant_id = len(get_reviews_by_restaurant_id)
+
             if not restaurant:
                 session['err'] = "Restaurant could not be edited"
             else:
@@ -635,6 +649,8 @@ def handle_edit_review(review_id):
                 restaurant.restaurant_average_price_stars = average_price_stars
                 restaurant.restaurant_average_ambience_stars = average_ambience_stars
                 restaurant.restaurant_average_overall_stars = calculated_overall_stars_for_restaurant
+                restaurant.restaurant_review_count = review_count_by_restaurant_id
+                db.session.add(restaurant)
                 db.session.commit()
         try:            
             db.session.commit()
@@ -780,39 +796,66 @@ def delete_review(review_id):
                 average_taste_stars = []
                 for review in existing_reviews:
                     average_taste_stars.append(review.taste_stars)
-                average_taste_stars = mean(average_taste_stars)            
+                    if len(average_taste_stars) == 0:
+                        average_taste_stars = 0
+                    else:
+                        average_taste_stars = mean(average_taste_stars)            
             
                 average_presentation_stars = []
                 for review in existing_reviews:
-                    average_presentation_stars.append(review.presentation_stars)
-                average_presentation_stars = mean(average_presentation_stars)               
+                    average_presentation_stars.append(
+                        review.presentation_stars)
+                    if len(average_presentation_stars) == 0:
+                        average_presentation_stars = 0
+                    else:
+                        average_presentation_stars = mean(
+                            average_presentation_stars)
            
                 average_friendliness_stars = []
                 for review in existing_reviews:
-                    average_friendliness_stars.append(review.friendliness_stars)
-                average_friendliness_stars = mean(average_friendliness_stars)         
+                    average_friendliness_stars.append(
+                        review.friendliness_stars)
+                    if len(average_friendliness_stars) == 0:
+                        average_friendliness_stars = 0
+                    else:
+                        average_friendliness_stars = mean(
+                            average_friendliness_stars)
             
                 average_ambience_stars = []
                 for review in existing_reviews:
                     average_ambience_stars.append(review.ambience_stars)
-                average_ambience_stars = mean(average_ambience_stars)            
+                    if len(average_ambience_stars) == 0:
+                        average_ambience_stars = 0
+                    else:
+                        average_ambience_stars = mean(average_ambience_stars)
           
                 average_price_stars = []
                 for review in existing_reviews:
                     average_price_stars.append(review.price_stars)
-                average_price_stars = mean(average_price_stars)           
+                    if len(average_price_stars) == 0:
+                        average_price_stars = 0
+                    else:
+                        average_price_stars = mean(average_price_stars)
             
                 average_overall_stars = []
                 for review in existing_reviews:
                     average_overall_stars.append(review.overall_stars)
-                average_overall_stars = mean(average_overall_stars)
+                    if len(average_overall_stars) == 0:
+                        average_overall_stars = 0
+                    else:
+                        average_overall_stars = mean(average_overall_stars)
 
                 calculated_overall_stars_for_restaurant = average_overall_stars              
 
-                calculated_overall_stars_for_review = (average_ambience_stars + average_price_stars + average_friendliness_stars + average_presentation_stars + average_taste_stars) / 5
+                calculated_overall_stars_for_review = int(sum(
+                    (average_ambience_stars, average_price_stars, average_friendliness_stars, average_presentation_stars, average_taste_stars))) / 5
+
                 calculated_overall_stars_for_restaurant = calculated_overall_stars_for_review  
 
             restaurant = Restaurants.query.filter(Restaurants.restaurant_id == restaurant_id).first()
+            get_reviews_by_restaurant_id = Reviews.query.filter(Reviews.restaurant_id == restaurant_id).all()
+            review_count_by_restaurant_id = len(get_reviews_by_restaurant_id) - 1
+
             if not restaurant:
                 session['err'] = "Restaurant could not be edited"
             else:
@@ -822,6 +865,7 @@ def delete_review(review_id):
                 restaurant.restaurant_average_price_stars = average_price_stars
                 restaurant.restaurant_average_ambience_stars = average_ambience_stars
                 restaurant.restaurant_average_overall_stars = calculated_overall_stars_for_restaurant
+                restaurant.restaurant_review_count = review_count_by_restaurant_id
                 db.session.commit()
         try:            
             db.session.commit()
