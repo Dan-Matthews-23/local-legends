@@ -102,17 +102,18 @@ This project has been designed with two end users in mind:
 
 The new customer / visitor:
 
-- To be able to Create, Read, Update and Delete reviews and accounts.
-- To be able to read reviews that other users have left
-- To understand clearly how the rating is calculated and displayed
-  
+- To be able to Read reviews.
+- To be able to register an account and log in
+- To be able to create, read, edit and delete reviews
+- To be able to delete my account
+-   
 
 The existing user and previous diner:
 
-- To be able to Create, Read, Update and Delete reviews and accounts.
-- To be able to read reviews that other users have left
-- To understand clearly how the rating is calculated and displayed
-  
+- To be able to Read reviews.
+- To be able to register an account and log in
+- To be able to create, read, edit and delete reviews
+- To be able to delete my account  
 
 
 ### First Time Visitor Goals
@@ -439,10 +440,11 @@ The permissions for this project will follow CRUD design and will be set out as 
 
 |      CRUD       |   Guests  | Registered Accounts |
 | ------------    | --------- | ---------           |
-|  Create         | No        | Yes                 |
+|  Create         | No *       | Yes                 |
 |  Read           | Yes       | Yes                 |
 |  Update         | No        | Yes                 |
 |  Delete         | No        | Yes                 |
+* except to create account
 
 
 While Registered Accounts will have permission to create, update and delete their own reviews, they will not have the permission to alter other user's reviews.
@@ -526,22 +528,24 @@ The Administrator will have additional permissions in order to maintain this pro
 
 |      CRUD                             |   Guests  | Registered Accounts | Administrators |
 | ------------                          | --------- | ---------           |----------      |
-|  Create Accounts                      | No        | Yes                 | No             |
-|  Create reviews                       | Yes       | Yes                 | Yes|
-|  Create restaurants                   | No        | No                 | Yes|
+|  Create Accounts                      | Yes       | Yes                 | No             |
+|  Create reviews                       | Yes       | Yes                 | No |
+|  Create restaurants                   | No        | No                  | Yes|
 |  Read user Details                    | No        | Yes                 | Yes|
-|  Read reviews                         | No        | Yes                 | Yes|
-|  Read restaurant information          | No        | Yes                 | Yes|
-|  Edit/Update account details          | No        | Yes                 | Yes|
-|  Edit/Update reviews                  | No        | Yes                 | Yes|
-|  Delete user accounts details         | No        | No                 | Yes|
-|  Delete reviews                       | No        | No                 | Yes|
+|  Read reviews                         | Yes        | Yes                 | Yes|
+|  Read restaurant information          | Yes        | Yes                 | Yes|
+|  Edit/Update account details          | No        | Yes                 | No|
+|  Edit/Update reviews                  | No        | Yes                 | No|
+|  Delete user accounts details         | No        | No                 | No|
+|  Delete reviews                       | No        | No                 | No|
 |  Delete restaurant details            | No        | No                 | Yes|
 
 I have introduced a multi-stage defensive approach to logging in as admin, checking authentication and forcing the user to enter their full account details in order to login. 
 
 - First Stage: Each function checks a user is logged in. Functions will not execute without this authentication
-- Second Stage: The administrator uses their profile page to log in. There is a button at the bottom of the page that will not be displayed unless that user has admin prviliages. This is marked in the users table under the "is_admin" field, and is set to true. 
+  
+- Second Stage: The administrator uses their profile page to log in. There is a button at the bottom of the page that will not be displayed unless that user has admin prviliages. This is marked in the users table under the "is_admin" field, and is set to true.
+   
 - Third stage: The check_admin_status is executed each time the user initiates a task that only the admin can perform. It checks not only if the above marker is set in the users table, but also if the user_id matches the user_id stored in the admins table. If it does not match, the user is not authenticated. 
 
 

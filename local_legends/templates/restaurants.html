@@ -5,91 +5,112 @@
    is never executed if the user is not logged in - another attempt at 
    defensive programming-->
 <div class="container  align-center card-panel grey lighten-5 ">
-    <div class="row input-row">
+    <div class="row with-borders input-row">
         <h3 class="light-blue-text text-darken-4 center-align">Local Legends: Restaurants</h3>
     </div>
 </div>
 {% for restaurants in restaurants %}
-<button type="button" class="collapsible">{{ restaurants.restaurant_name }}</button>
+
+
+<section id="thumb_section">
+<div class="col with-borders  s12 m12 l12 xl6 left-panel-container-thumb">
+    <div class="row">
+        <!--<div class="col with-borders  s2 m2 l0 x0 show-on-small"></div>-->
+        <div class="col with-borders align-center s12 m12 l6 xl6"><img class="hero-image-thumb" src="{{ restaurants.restaurant_image_url }}"></div>  
+        <div class="col with-borders s12 m12 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_name }}</div>
+        <div class="col with-borders s12 m12 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_average_overall_stars }}</div>
+        <div class="col with-borders s12 m12 l6 xl6 restaurant-stars-display-col ">
+            
+
+            
+            
+            </div>
+        
+        <!--<div class="col with-borders  s2 m2 l0 x0 show-on-small"></div>-->
+    </div>
+</div>
+</section>
+
+
+        
+<button type="button" class="collapsible">See more</button>
 <div class="content ">
     <div class="restaurant-details-container ">
-        <div class="row ">
-            <div class="col lg-padding restaurant-details-container">
+        <div class="row with-borders ">
+            <div class="col with-borders  lg-padding restaurant-details-container">
                 <!--THIS IS THE START OF THE FIRST HALF OF THE CONTAINER-->
-                <div class="col s12 m12 l12 xl6 left-panel-container ">
-                    <div class="col align-center  s12"><img class="hero-image"
+                <div class="col with-borders  s12 m12 l12 xl6 left-panel-container ">
+                    <div class="col with-borders  align-center  s12"><img class="hero-image"
                             src="{{ restaurants.restaurant_image_url }}"></div>
-                    <div class="col s2 m2 l2 xl2 "></div>
-                    <div class="col s8 m8 l8 xl8 stars-div card-panel ">
+                    <div class="col with-borders  s2 m2 l2 xl2 "></div>
+                    <div class="col with-borders  s8 m8 l8 xl8 stars-div card-panel ">
                         
-                    <div class="row restaurant-stars-display-row">
-                        <div class="col s6 m6 l6 xl6 restaurant-stars-display-col">
-                            Overall {{ restaurants.restaurant_average_overall_stars }}
-                        </div>
-                        <div class="col s6 m6 l6 xl6 restaurant-stars-display-col">
+                    <div class="row with-borders restaurant-stars-display-row">
+                        <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col">Overall</div>
+                        <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col">{{ restaurants.restaurant_average_overall_stars }}
                             
                         </div>
                     </div>
 
-                        <div class="row ">
-                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Taste</div>
-                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_average_taste_stars }}</div>
+                        <div class="row with-borders ">
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">Taste</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_average_taste_stars }}</div>
                         </div>
-                        <div class="row row display-table-row-border  ">
-                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Presentation</div>
-                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_average_presentation_stars }}</div>
+                        <div class="row with-borders row display-table-row-border  ">
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">Presentation</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_average_presentation_stars }}</div>
                         </div>
-                        <div class="row ">
-                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Friendliness</div>
-                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_average_friendliness_stars }}</div>
+                        <div class="row with-borders ">
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">Friendliness</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_average_friendliness_stars }}</div>
                         </div>
-                        <div class="row ">
-                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Price</div>
-                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_average_price_stars }}</div>
+                        <div class="row with-borders ">
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">Price</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_average_price_stars }}</div>
                         </div>
-                        <div class="row ">
-                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Ambience</div>
-                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_average_ambience_stars }}</div>
+                        <div class="row with-borders ">
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">Ambience</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_average_ambience_stars }}</div>
                         </div>
                         
                     </div>
-                    <div class="col s2 m2 l2 xl2 "></div>
+                    <div class="col with-borders  s2 m2 l2 xl2 "></div>
                 </div>
                 <!--THIS IS THE START OF THE SECOND HALF OF THE CONTAINER-->
-                <div class="col s12 m12 l12 xl6 left-panel-container">
-                    <div class="col align-center  s12">Restaurant Details</div>
-                    <div class="col s1 m1 l1 xl1 "></div>
-                    <div class="col s10 m10 l10 xl10 stars-div card-panel ">
-                        <div class="row restaurant-stars-display-row">
-                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Name</div>
-                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_name }}</div>
+                <div class="col with-borders  s12 m12 l12 xl6 left-panel-container">
+                    <div class="col with-borders  align-center  s12">Restaurant Details</div>
+                    <div class="col with-borders  s1 m1 l1 xl1 "></div>
+                    <div class="col with-borders  s10 m10 l10 xl10 stars-div card-panel ">
+                        <div class="row with-borders restaurant-stars-display-row">
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">Name</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_name }}</div>
                         </div>
-                        <div class="row row display-table-row-border  ">
-                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Building Name/No.</div>
-                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_address_one }}</div>
+                        <div class="row with-borders row display-table-row-border  ">
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">Building Name/No.</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_address_one }}</div>
                         </div>
-                        <div class="row ">
-                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Street</div>
-                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_address_two }}</div>
+                        <div class="row with-borders ">
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">Street</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_address_two }}</div>
                         </div>
-                        <div class="row ">
-                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">City</div>
-                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_address_three }}</div>
+                        <div class="row with-borders ">
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">City</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_address_three }}</div>
                         </div>
-                        <div class="row ">
-                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">County</div>
-                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_address_four }}</div>
+                        <div class="row with-borders ">
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">County</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_address_four }}</div>
                         </div>
-                        <div class="row ">
-                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Postcode</div>
-                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_address_postcode }}</div>
+                        <div class="row with-borders ">
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">Postcode</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_address_postcode }}</div>
                         </div>
-                        <div class="row ">
-                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Date Registered</div>
-                            <div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_date_registered }}</div>
+                        <div class="row with-borders ">
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">Date Registered</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_date_registered }}</div>
                         </div>
                     </div>
-                    <div class="col s1 m1 l1 xl1 "></div>
+                    <div class="col with-borders  s1 m1 l1 xl1 "></div>
                 </div>
             </div>
         </div>
@@ -98,16 +119,16 @@
     <div class="container align-center with-borders">
             
         
-        <div class="row with-borders s12 m12 l12 xl12 align-center">
-            <div class="col with-borders s12 m12 l12 xl12 align-center">
+        <div class="row with-borders with-borders s12 m12 l12 xl12 align-center">
+            <div class="col with-borders  with-borders s12 m12 l12 xl12 align-center">
                 <form action="{{ url_for('restaurant_profile', restaurant_id=restaurants.restaurant_id) }}" method="POST">
                     <input type="hidden" name="restaurant_id" id="restaurant_id" value="{{restaurants.restaurant_id }}">
                     <button type="submit" class="see-reviews">Leave a review for {{ restaurants.restaurant_name }}</button>
                 </form>
             </div>
         </div>
-        <div class="row with-borders s12 m12 l12 xl12 align-center">
-            <div class="col with-borders s12 m12 l12 xl12 align-center">
+        <div class="row with-borders with-borders s12 m12 l12 xl12 align-center">
+            <div class="col with-borders  with-borders s12 m12 l12 xl12 align-center">
                
                 
             </div>
@@ -115,6 +136,7 @@
     </div>
 </div>
 <!--THIS IS THE START OF THE SECOND HALF OF THE CONTAINER-->
+
 
 {% endfor %}
 

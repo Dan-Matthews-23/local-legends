@@ -323,13 +323,19 @@ def home():
         Restaurants.restaurant_name).limit(4))
     return render_template("index.html", restaurants_snippet=restaurants_snippet)
 
+
 @app.route("/restaurants")
 def restaurants():
-    #if session.get('err'):
-     #   session.pop('err')        
-    restaurants = list(Restaurants.query.order_by(Restaurants.restaurant_name).all())  
+    if session.get('err'):
+        session.pop('err')
+    restaurants = list(Restaurants.query.order_by(
+        Restaurants.restaurant_id).all())
+
+    
 
     return render_template("restaurants.html", restaurants=restaurants)
+
+
 
 
 @app.route("/restaurant_profile/<int:restaurant_id>", methods=["GET", "POST"])
