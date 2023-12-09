@@ -71,10 +71,10 @@
 </div>
 
 {% if session.err %}
-<div class="container align-center with-borders" id="error-bar">
-    <div class="row with-borders">
-        <div class="col with-borders" id="error-bar-main-div">Error: {{session.err}}</div>
-        <div class="col with-borders" id="error-bar-exit">
+<div class="container align-center " id="error-bar">
+    <div class="row ">
+        <div class="col " id="error-bar-main-div">{{session.err}}</div>
+        <div class="col " id="error-bar-exit">
             <a href="{{ url_for('clear_error') }}">
             <i class="fa-regular fa-circle-xmark fa-2xl" style="color: #6d4c41;"></i></a>
         </div>

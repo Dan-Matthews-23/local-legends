@@ -51,8 +51,8 @@ def register():
 
 @app.route("/restaurant_profile/<int:restaurant_id>/leave_review", methods=["POST"])
 def handle_leave_review(restaurant_id):
-    if session.get('err'):
-        session.pop('err')
+    #if session.get('err'):
+        #session.pop('err')
 
     if not session.get('is_logged_in'):
         session['err'] = "You are not logged in"
@@ -65,6 +65,18 @@ def handle_leave_review(restaurant_id):
         written_review = request.form.get("written_review")
         date_calc = datetime.datetime.now()
         todays_date = (date_calc.strftime("%Y-%m-%d"))
+
+        if re.match(r'^\d+$', review_title) or re.match(r'^\d+$', written_review):
+            session['err'] = 'Error: The summary and written review must contain text, not only digits'
+            redirect_url = request.referrer or url_for(home)
+            return redirect(redirect_url)
+
+        if review_title == "" or written_review == "":
+            session['err'] = "Error: The summary and written review must not be blank"
+            redirect_url = request.referrer or url_for(home)
+            return redirect(redirect_url)
+
+
 
         #existing_reviews = Reviews.query.filter(Reviews.restaurant_id == restaurant_id and Reviews.user_id == user_id).first()
         existing_reviews = Reviews.query.filter(Reviews.restaurant_id == restaurant_id).all()
@@ -153,8 +165,9 @@ def handle_leave_review(restaurant_id):
         try:
             db.session.add(new_review)
             db.session.commit()
-            session['err'] = "Review edited successfully"
-            return redirect(url_for('restaurants'))
+            session['err'] = "Review created successfully"
+            redirect_url = request.referrer or url_for(home)
+            return redirect(redirect_url)
         except Exception as e:
             print(e)
             session['err'] = f"An error occurred while editing the restaurant - the ID is {restaurant_id}"
@@ -527,8 +540,7 @@ def change_username():
 
 @app.route("/edit_review/<int:review_id>", methods=["GET", "POST"])
 def edit_review(review_id):
-    if session.get('err'):
-        session.pop('err')
+    
     if session.get('is_logged_in', False):
         
         review = Reviews.query.get_or_404(review_id)
@@ -546,8 +558,7 @@ def edit_review(review_id):
 @app.route("/edit_review/<int:review_id>/edit_review", methods=["GET", "POST"])
 def handle_edit_review(review_id):
 
-    if session.get('err'):
-        session.pop('err')
+    
 
     if not session.get('is_logged_in'):
         session['err'] = "You are not logged in"
@@ -561,36 +572,48 @@ def handle_edit_review(review_id):
         date_calc = datetime.datetime.now()
         todays_date = (date_calc.strftime("%Y-%m-%d"))
 
-        update_review = Reviews.query.filter(Reviews.review_id == review_id).first()
+        ## This line of code was suggested by Google Bard
+        #if re.match(r'^[\s]*$', review_title) or re.match(r'^[\s]*$', written_review):
+            #session['err'] = "Error: The summary and written review must contain text, not only whitespace"
+            #redirect_url = request.referrer or url_for(home)
+            #return redirect(redirect_url)
+
+        if re.match(r'^\d+$', review_title) or re.match(r'^\d+$', written_review):
+            session['err'] = 'Error: The summary and written review must contain text, not only digits'
+            redirect_url = request.referrer or url_for(home)
+            return redirect(redirect_url)
+
+        if review_title == "" or written_review == "":           
+            session['err'] = "Error: The summary and written review must not be blank"            
+            redirect_url = request.referrer or url_for(home)            
+            return redirect(redirect_url)
+
+        update_review = Reviews.query.filter(Reviews.review_id == review_id and user_id == user_id).first()
 
         if update_review is None:
-            session['err'] = "Review could not be found"
-            return redirect(url_for('restaurants'))
+            session['err'] = "There was an error in retriving the review. Please try again"
+            redirect_url = request.referrer or url_for(home)
+            # Send a redirect response to the browser
+            return redirect(redirect_url)
         else:
+            update_review.written_review_title = review_title
+            update_review.written_review = written_review
+            update_review.review_date = todays_date
             taste_stars = int(request.form.get("select_taste"))
             update_review.taste_stars = taste_stars
-
             presentation_stars = int(request.form.get("select_presentation"))
             update_review.presentation_stars = presentation_stars
-
             friendliness_stars = int(request.form.get("select_friendliness"))
             update_review.friendliness_stars = friendliness_stars
-
             ambience_stars = int(request.form.get("select_ambience"))
             update_review.ambience_stars = ambience_stars
-
             price_stars = int(request.form.get("select_price"))
             update_review.price_stars = price_stars
-
             overall_stars = (taste_stars + presentation_stars +
                              friendliness_stars + ambience_stars + price_stars) / 5
-            update_review.overall_stars = overall_stars
-
-            # Mark the review object as modified for database update
+            update_review.overall_stars = overall_stars            
             db.session.add(update_review)
-            db.session.commit()          
-        
-        
+            db.session.commit()        
             
             existing_reviews = Reviews.query.filter( Reviews.restaurant_id == restaurant_id).all()
 
@@ -655,7 +678,8 @@ def handle_edit_review(review_id):
         try:            
             db.session.commit()
             session['err'] = "Review edited successfully"
-            return redirect(url_for('restaurants'))
+            redirect_url = request.referrer or url_for(home)            
+            return redirect(redirect_url)
         except Exception as e:
             print(e)
             session['err'] = f"An error occurred while editing the restaurant - the ID is {restaurant_id}"
@@ -920,7 +944,8 @@ def logout():
 @app.route("/home", methods=["GET", "POST"])
 def clear_error():
     session.pop('err')
-    return redirect(url_for('home'))
+    redirect_url = request.referrer or url_for(home)
+    return redirect(redirect_url)
 
 
 @app.route("/signin", methods=["GET", "POST"])
