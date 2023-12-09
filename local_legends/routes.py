@@ -346,8 +346,7 @@ def restaurants():
     if session.get('err'):
         session.pop('err')
 
-    restaurants = Restaurants.query.order_by(Restaurants.restaurant_id).all()
-    
+    restaurants = Restaurants.query.order_by(Restaurants.restaurant_id).all()  
 
     return render_template('restaurants.html', restaurants=restaurants)
 

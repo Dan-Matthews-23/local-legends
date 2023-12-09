@@ -4,11 +4,15 @@
 <!--Started check for session BEFORE form so that the handle_leave_review 
    is never executed if the user is not logged in - another attempt at 
    defensive programming-->
-<div class="container  align-center card-panel grey lighten-5 ">
-    <div class="row with-borders input-row">
-        <h3 class="light-blue-text text-darken-4 center-align">Local Legends: restaurants</h3>
+<section class="title-section">
+    <div class="container title-container  card-panel grey lighten-5 with-borders ">
+        <div class="row with-borders title-row">
+            <div class="col with-borders s12 m12 l12 xl12 title-col"><h1 class="title-font">Discover restaurants in Sunderland</h1></div>
+        </div>        
     </div>
-</div>
+</section>
+
+
 {% for restaurants in restaurants %}
 
 
@@ -19,9 +23,10 @@
     <div class="row">
         <!--<div class="col with-borders  s2 m2 l0 x0 show-on-small"></div>-->
         <div class="col with-borders align-center s12 m12 l6 xl6"><img class="hero-image-thumb" src="{{ restaurants.restaurant_image_url }}"></div>  
-        <div class="col with-borders s12 m12 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_name }}</div>
-        <div class="col with-borders s12 m12 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_average_overall_stars }}</div>
-        <div class="col with-borders s12 m12 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_review_count }}</div>
+        <div class="col with-borders s12 m12 l6 xl6 restaurant-stars-display-col default-text-size">{{ restaurants.restaurant_name }}</div>
+        <div class="col with-borders s12 m12 l6 xl6 restaurant-stars-display-col default-text-size ">
+            Average {{ restaurants.restaurant_average_overall_stars }} stars out of 5 ({{ restaurants.restaurant_review_count }} reviews in total)</div>
+        
         
         <!--<div class="col with-borders  s2 m2 l0 x0 show-on-small"></div>-->
     </div>
@@ -43,31 +48,31 @@
                     <div class="col with-borders  s8 m8 l8 xl8 stars-div card-panel ">
                         
                     <div class="row with-borders restaurant-stars-display-row">
-                        <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col">Overall</div>
-                        <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col">{{ restaurants.restaurant_average_overall_stars }}
+                        <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col default-text-size">Overall</div>
+                        <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col default-text-size">{{ restaurants.restaurant_average_overall_stars }}
                             
                         </div>
                     </div>
 
                         <div class="row with-borders ">
-                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">Taste</div>
-                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_average_taste_stars }}</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col default-text-size">Taste</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col default-text-size">{{ restaurants.restaurant_average_taste_stars }}</div>
                         </div>
                         <div class="row with-borders row display-table-row-border  ">
-                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">Presentation</div>
-                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_average_presentation_stars }}</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col default-text-size">Presentation</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col default-text-size">{{ restaurants.restaurant_average_presentation_stars }}</div>
                         </div>
                         <div class="row with-borders ">
-                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">Friendliness</div>
-                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_average_friendliness_stars }}</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col default-text-size">Friendliness</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col default-text-size">{{ restaurants.restaurant_average_friendliness_stars }}</div>
                         </div>
                         <div class="row with-borders ">
-                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">Price</div>
-                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_average_price_stars }}</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col default-text-size">Price</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col default-text-size">{{ restaurants.restaurant_average_price_stars }}</div>
                         </div>
                         <div class="row with-borders ">
-                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">Ambience</div>
-                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_average_ambience_stars }}</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col default-text-size">Ambience</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col default-text-size">{{ restaurants.restaurant_average_ambience_stars }}</div>
                         </div>
                         
                     </div>
@@ -79,32 +84,32 @@
                     <div class="col with-borders  s1 m1 l1 xl1 "></div>
                     <div class="col with-borders  s10 m10 l10 xl10 stars-div card-panel ">
                         <div class="row with-borders restaurant-stars-display-row">
-                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">Name</div>
-                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_name }}</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col default-text-size">Name</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col default-text-size">{{ restaurants.restaurant_name }}</div>
                         </div>
                         <div class="row with-borders row display-table-row-border  ">
-                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">Building Name/No.</div>
-                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_address_one }}</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col default-text-size">Building Name/No.</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col default-text-size">{{ restaurants.restaurant_address_one }}</div>
                         </div>
                         <div class="row with-borders ">
-                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">Street</div>
-                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_address_two }}</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col default-text-size">Street</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col default-text-size">{{ restaurants.restaurant_address_two }}</div>
                         </div>
                         <div class="row with-borders ">
-                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">City</div>
-                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_address_three }}</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col default-text-size">City</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col default-text-size">{{ restaurants.restaurant_address_three }}</div>
                         </div>
                         <div class="row with-borders ">
-                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">County</div>
-                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_address_four }}</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col default-text-size">County</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col default-text-size">{{ restaurants.restaurant_address_four }}</div>
                         </div>
                         <div class="row with-borders ">
-                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">Postcode</div>
-                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_address_postcode }}</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col default-text-size">Postcode</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col default-text-size">{{ restaurants.restaurant_address_postcode }}</div>
                         </div>
                         <div class="row with-borders ">
-                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">Date Registered</div>
-                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col ">{{ restaurants.restaurant_date_registered }}</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col default-text-size">Date Registered</div>
+                            <div class="col with-borders  s6 m6 l6 xl6 restaurant-stars-display-col default-text-size">{{ restaurants.restaurant_date_registered }}</div>
                         </div>
                     </div>
                     <div class="col with-borders  s1 m1 l1 xl1 "></div>
