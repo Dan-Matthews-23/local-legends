@@ -103,7 +103,23 @@
 
 }
 
+.btn-container {
+    width:100%;
+    text-align: center;
+        vertical-align: middle;
 
+}
+
+.btn-row {
+width: 100%;
+text-align: center;
+    vertical-align: middle;
+}
+
+.btn-col {
+text-align: center;
+    vertical-align: middle;
+}
 
 
 
@@ -414,7 +430,24 @@ span {
 
 
 
+.thumb-col
+ {
+    padding: 100px;
+}
 
+.thumb-col-heading {
+    padding-bottom: 20px;
+}
+
+
+
+.bold {
+    font-weight: bold;
+}
+
+.larger-than-default-text {
+    font-size: 24px;
+}
 
 
 
@@ -436,7 +469,15 @@ span {
 
 
 .lg-padding {
-    padding: 16px;
+    padding: 20px;
+}
+
+.md-padding {
+    padding: 10px;
+}
+
+.sm-padding {
+    padding: 5px;
 }
 
 

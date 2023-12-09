@@ -562,7 +562,8 @@ At this final stage, all forseeable programming has been completed, and the enti
 | ------------       | ---------            | ---------  |
 |  Restaurants       | The title is too big and unresponsive   | I've used four media queries to make the title responsive      | 
 |  Restaurants       | There is not enough information on the thumbnail view (view before 'See More' button is clicked)   | I've reworded the information      |
-|  Restaurants       | The font is hard to see. It needfs to be bigger    | I've reworded the information      |
+|  Restaurants       | The font is hard to see. It needs to be bigger    | I've adjusted the font size to 16px as default     |
+|  Restaurants       | The 'See More' button is left-aligned    | I've adjusted the font size to 16px as default     |
 
 
 
