@@ -789,72 +789,79 @@ def delete_review(review_id):
             db.session.commit() 
             
             existing_reviews = Reviews.query.filter( Reviews.restaurant_id == restaurant_id).all()
-            if existing_reviews is None:
-                session['err'] = "Review could not be found"
-                return redirect(url_for('restaurants'))
-            else:                
-                average_taste_stars = []
+            
+            if existing_reviews:
+
+                posted_taste_stars = int(request.form.get("select_taste"))
+                # Include posted taste stars
+                average_taste_stars = [posted_taste_stars]
                 for review in existing_reviews:
                     average_taste_stars.append(review.taste_stars)
-                    if len(average_taste_stars) == 0:
-                        average_taste_stars = 0
-                    else:
-                        average_taste_stars = mean(average_taste_stars)            
-            
-                average_presentation_stars = []
+                average_taste_stars = mean(average_taste_stars)
+
+                posted_presentation_stars = int(
+                    request.form.get("select_presentation"))
+                # Include posted presentation stars
+                average_presentation_stars = [posted_presentation_stars]
                 for review in existing_reviews:
-                    average_presentation_stars.append(
-                        review.presentation_stars)
-                    if len(average_presentation_stars) == 0:
-                        average_presentation_stars = 0
-                    else:
-                        average_presentation_stars = mean(
-                            average_presentation_stars)
-           
-                average_friendliness_stars = []
+                    average_presentation_stars.append(review.presentation_stars)
+                average_presentation_stars = mean(average_presentation_stars)
+
+                posted_friendliness_stars = int(
+                    request.form.get("select_friendliness"))
+                # Include posted friendliness stars
+                average_friendliness_stars = [posted_friendliness_stars]
                 for review in existing_reviews:
-                    average_friendliness_stars.append(
-                        review.friendliness_stars)
-                    if len(average_friendliness_stars) == 0:
-                        average_friendliness_stars = 0
-                    else:
-                        average_friendliness_stars = mean(
-                            average_friendliness_stars)
-            
-                average_ambience_stars = []
+                    average_friendliness_stars.append(review.friendliness_stars)
+                average_friendliness_stars = mean(average_friendliness_stars)
+
+                posted_ambience_stars = int(request.form.get("select_ambience"))
+                # Include posted ambience stars
+                average_ambience_stars = [posted_ambience_stars]
                 for review in existing_reviews:
                     average_ambience_stars.append(review.ambience_stars)
-                    if len(average_ambience_stars) == 0:
-                        average_ambience_stars = 0
-                    else:
-                        average_ambience_stars = mean(average_ambience_stars)
-          
-                average_price_stars = []
+                average_ambience_stars = mean(average_ambience_stars)
+
+                posted_price_stars = int(request.form.get("select_price"))
+                # Include posted price stars
+                average_price_stars = [posted_price_stars]
                 for review in existing_reviews:
                     average_price_stars.append(review.price_stars)
-                    if len(average_price_stars) == 0:
-                        average_price_stars = 0
-                    else:
-                        average_price_stars = mean(average_price_stars)
-            
-                average_overall_stars = []
+                average_price_stars = mean(average_price_stars)
+
+                posted_overall_stars = (posted_taste_stars + posted_presentation_stars +
+                                    posted_friendliness_stars + posted_ambience_stars + posted_price_stars) / 5
+                # Include posted price stars
+                average_overall_stars = [posted_overall_stars]
                 for review in existing_reviews:
                     average_overall_stars.append(review.overall_stars)
-                    if len(average_overall_stars) == 0:
-                        average_overall_stars = 0
-                    else:
-                        average_overall_stars = mean(average_overall_stars)
+                average_overall_stars = mean(average_overall_stars)
 
-                calculated_overall_stars_for_restaurant = average_overall_stars              
+                calculated_overall_stars_for_restaurant = average_overall_stars
+                calculated_overall_stars_for_review = (
+                posted_taste_stars + posted_presentation_stars + posted_friendliness_stars + posted_ambience_stars + posted_price_stars) / 5
+            else:
+                average_taste_stars = 0
+                average_presentation_stars = 0
+                average_friendliness_stars = 0
+                average_ambience_stars = 0
+                average_price_stars = 0
 
-                calculated_overall_stars_for_review = int(sum(
-                    (average_ambience_stars, average_price_stars, average_friendliness_stars, average_presentation_stars, average_taste_stars))) / 5
+            calculated_overall_stars_for_review = (average_ambience_stars + average_price_stars +
+                                                   average_friendliness_stars + average_presentation_stars + average_taste_stars) / 5
+            calculated_overall_stars_for_restaurant = calculated_overall_stars_for_review
 
-                calculated_overall_stars_for_restaurant = calculated_overall_stars_for_review  
+                
+
+               
 
             restaurant = Restaurants.query.filter(Restaurants.restaurant_id == restaurant_id).first()
             get_reviews_by_restaurant_id = Reviews.query.filter(Reviews.restaurant_id == restaurant_id).all()
-            review_count_by_restaurant_id = len(get_reviews_by_restaurant_id) - 1
+            result_num = len(get_reviews_by_restaurant_id)
+            if result_num <= 0:
+                review_count_by_restaurant_id = 0
+            else:
+                review_count_by_restaurant_id = result_num - 1
 
             if not restaurant:
                 session['err'] = "Restaurant could not be edited"
