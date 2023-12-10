@@ -430,14 +430,15 @@ span {
 
 
 
-.thumb-col
- {
-    padding: 100px;
+#thumb-col-heading,
+#thumb-col-stars,
+#thumb-col-keyword,
+#thumb-col-delivery,
+#thumb-col-restaurant-week {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
-.thumb-col-heading {
-    padding-bottom: 20px;
-}
 
 
 

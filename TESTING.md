@@ -18,6 +18,7 @@
     - [Testing User Stories](#testing-user-stories)
     - [Solved Bugs](#solved-bugs)
     - [Known Bugs](#known-bugs)
+      - [Restaurants](#restaurants)
 
 ## Testing
 
@@ -329,3 +330,11 @@ Please view the testing table for a list of all solved bugs.
   - - -
 
 ### Known Bugs
+
+#### Restaurants
+
+Under the Thumb section, there are a list of restaurant attributes. The 'See More' button is right underneath this (see below). I did originally have those DIVS assigned a class of 'col-thumb' so they could all be assigned the same class. But the class was not applied. This suggests that there was something else overriding the class. I could not figure out where it was. To fix this I have had to use ID selectors and assign the DIVS the styling this way instead. It's not ideal, but I will not be using this particular styling again. 
+
+![001](/assets/testing/testing-images/known-bugs-image-a)
+
+![001](/assets/testing/testing-images/known-bugs-image-b)
