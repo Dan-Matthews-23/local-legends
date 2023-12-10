@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+
+<div class=" align-center card-panel grey lighten-5 contact-us-container">
+    <div class="row">
+        <div class="col card-panel grey lighten-5">
+            
+            <form action="{{ url_for('become_legend') }}" method="POST">
+                
+                <div class="row ">
+                    <div class="col">
+                        <h3>Contact Us</h3>
+                    </div>
+                </div>
+
+                <div class=" align-center card-panel grey lighten-5 contact-us-container">
+                    <div class="row ">
+                        
+                        <div class="row ">
+                            <div class="col s9 m9 l9 xl9   leave-review-label-div">
+                                <label for="restaurant_name" class="default-text-styling">
+                                    In a few words, how was your experience?
+                                </label>
+                            </div>
+                            <div class="col s3 m3 l3 xl3   leave-review-select-div">
+                                <input type="text" id="restaurant_name" name="restaurant_name"
+                                    value="Content">
+                            </div>
+                        </div>
+
+                        <div class="row ">
+                            <div class="col s9 m9 l9 xl9   leave-review-label-div">
+                                <label for="first_cuisine" class="default-text-styling">
+                                    In a few words, how was your experience?
+                                </label>
+                            </div>
+                            <div class="col s3 m3 l3 xl3   leave-review-select-div">
+                                <input type="text" id="first_cuisine" name="first_cuisine" value="first_cuisine">
+                            </div>
+                        </div>
+
+                        <div class="row ">
+                            <div class="col s9 m9 l9 xl9   leave-review-label-div">
+                                <label for="second_cuisine" class="default-text-styling">
+                                    How would you rate the taste?
+                            </label>
+                            </div>
+                            <div class="col s3 m3 l3 xl3   leave-review-select-div">
+                                <input type="text" id="second_cuisine" name="second_cuisine" value="second_cuisine">
+                            </div>
+                        </div>
+
+                        <div class="row ">
+                            <div class="col s9 m9 l9 xl9   leave-review-label-div">
+                                <label for="third_cuisine" class="default-text-styling">
+                                    How would you rate the taste?
+                                </label>
+                            </div>
+                            <div class="col s3 m3 l3 xl3   leave-review-select-div">
+                                <input type="text" id="third_cuisine" name="third_cuisine" value="third_cuisine">
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col s12 center-align">
+                                <button type="submit" class="btn-large light-blue darken-1">Submit Review<i
+                                    class="fas fa-edit right"></i>
+                                </button>
+                            </div>
+                        </div>
+            </form>
+                   
+    </div>
+</div>
+</div>
+{% endblock %}

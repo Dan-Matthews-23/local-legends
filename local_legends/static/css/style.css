@@ -15,7 +15,9 @@
 
 }
 
-
+.contact-us-container {
+    width: 100%;
+}
 
 
 .collapsible,
@@ -116,6 +118,12 @@ padding-bottom: 100px;
 .default-text-size {
 
     font-size: 16px;
+
+}
+
+.default-text-styling{
+    font-size: 16px;
+    color: black;
 
 }
 
@@ -384,47 +392,37 @@ span {
     margin: auto;
 }
 
-.leave-review-row,
-.leave-review-div {
-    height: 100px;
-    line-height: 100px;
-    text-align: center;
-    border: 2px dashed #f69c55;
-    margin: auto;
-    color: black;
-    font-size: larger;
-
-}
 
 .leave-review-select-div,
-.leave-review-label-div
-
- {
-  
-    margin-top: auto;
-    margin-bottom: auto;
-    text-align: center; 
-    height: 50px;
-   
-
-  
+.leave-review-label-div{ 
+    height: 40px;
+    vertical-align:text-top;
 }
 
+.input-text,
 .leave-review-select {
+height: 25px;
+vertical-align: text-top;
+}
+
+
+/*.leave-review-select {
     padding-top: 10px;
     padding-bottom: 10px;
-}
+}*/
 
 .leave-review-textarea {
-    height: 350px;
-    padding-left: 20px;
-    padding-right: 20px;
+    height: 200px;
+    
 }
 
 .review-container {
     width: 100%;
 }
 
+#leave-review-btn-div {
+height: 70px;
+}
 
 
 .rating {
@@ -473,6 +471,18 @@ font-size: 20px;
 
 .larger-than-default-text {
     font-size: 24px;
+}
+
+.leave-review-container {
+    width: 50%;
+}
+
+.input-text {
+    width: 100%;
+}
+
+.contact-us {
+    font-size: 14px;
 }
 
 

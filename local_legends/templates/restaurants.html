@@ -8,7 +8,13 @@
     <div class="container title-container  card-panel grey lighten-5  ">
         <div class="row  title-row">
             <div class="col   s12 m12 l12 xl12 title-col"><h1 class="title-font">Discover restaurants in Sunderland</h1></div>
-        </div>        
+        </div> 
+        <div class="row title-row">
+            <div class="col s12 m12 l12 xl12 align-left">
+                <h2 class="contact-us">Looking to become a Local Legend? 
+                    <a href="{{ url_for('contact_us')}}">Contact us</a> to get your name in the stars</h2>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -41,7 +47,7 @@
             Delivery Not Available
             {% endif %}
         </div>       
-        <div id="thumb-col-restaurant-week" class="col s12 m12 l6 xl6 default-text-size  "><a href="https://www.sunderlandbid.co.uk/events/sunderland-restaurant-week-3">
+        <div id="thumb-col-restaurant-week" class="col s12 m12 l6 xl6 default-text-size  "><a target="_blank" href="https://www.sunderlandbid.co.uk/events/sunderland-restaurant-week-3">
             {% if restaurants.restaurant_week == True %}
             Member of Sunderland Restaurant Week
             {% else %}
@@ -150,7 +156,7 @@
         <div class="col     s12 m12 l12 xl12 align-center">
             <form action="{{ url_for('restaurant_profile', restaurant_id=restaurants.restaurant_id) }}" method="POST">
                 <input type="hidden" name="restaurant_id" id="restaurant_id" value="{{restaurants.restaurant_id }}">
-                <button type="submit" class="see-reviews">Leave a review for {{ restaurants.restaurant_name }}</button>
+                <button type="submit" class="card-panel">Leave a review for {{ restaurants.restaurant_name }}</button>
             </form>
         </div>
     </div>

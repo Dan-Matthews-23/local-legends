@@ -1,6 +1,6 @@
 from flask import render_template, flash, request, redirect, url_for
 from local_legends import app, db
-from local_legends.models import Users, Reviews, Restaurants, Admins
+from local_legends.models import Users, Reviews, Restaurants, Admins, Approvals
 from flask import session
 from flask_login import login_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -14,6 +14,85 @@ import re
 
 ##--CRUD FUNCTIONALITY--##
 #---CREATE---#
+
+@app.route("/contact-us", methods=["GET", "POST"])
+def contact_us():
+    return render_template("contact-us.html")
+
+
+
+@app.route("/become_legend", methods=["GET", "POST"])
+def become_legend():
+    if session.get('err'):
+        session.pop('err')    
+       
+
+    if request.method == "POST":    
+        try:            
+            restaurant_name = request.form.get("restaurant_name")
+            restaurant_add_one = request.form.get("first_address")
+            restaurant_add_two = request.form.get("second_address")
+            restaurant_add_three = request.form.get("third_address")
+            restaurant_add_four = request.form.get("fourth_address")
+            restaurant_postcode = request.form.get("postcode")
+            restaurant_thumbnail = request.form.get("thumbnail")
+            todays_date = datetime.datetime.now()
+            date_only = todays_date.date()
+
+            restaurant_cuisine_one = request.form.get("first_cuisine")
+            restaurant_cuisine_two = request.form.get("second_cuisine")
+            restaurant_cuisine_three = request.form.get("third_cuisine")
+            
+            if request.form.get("delivery_available") == "Yes":
+                restaurant_delivery = True
+            else:
+                restaurant_delivery = False
+            
+            if request.form.get("restaurant_week") == "Yes":
+                restaurant_week = True
+            else:
+                restaurant_week = False          
+
+            new_restaurant = Approvals(restaurant_name=restaurant_name,
+                                         restaurant_address_one=restaurant_add_one,
+                                         restaurant_address_two=restaurant_add_two,
+                                         restaurant_address_three=restaurant_add_three,
+                                         restaurant_address_four=restaurant_add_four,
+                                         restaurant_address_postcode=restaurant_postcode,
+                                         restaurant_image_url=restaurant_thumbnail,
+                                         restaurant_date_registered = date_only,
+                                         restaurant_cuisine_one=restaurant_cuisine_one,
+                                         restaurant_cuisine_two=restaurant_cuisine_two,
+                                         restaurant_cuisine_three=restaurant_cuisine_three,
+                                         restaurant_delivery=restaurant_delivery,
+                                         restaurant_week=restaurant_week
+                                         )
+
+            db.session.add(new_restaurant)
+            db.session.commit()
+        except Exception as e:
+            logger.error("Error creating restaurant:", e)
+            session['err'] = "Failed to create restaurant. Please try again later."
+            return redirect(url_for("admin_portal"))
+
+        session['err'] = "Your request has been sent. Please allow 3-5 working days"
+        redirect_url = request.referrer or url_for(home)
+        return redirect(redirect_url)
+    return render_template("contact-us.html")
+
+        
+
+    
+
+
+
+
+
+
+
+
+
+
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -246,8 +325,16 @@ def create_restaurant():
             restaurant_cuisine_one = request.form.get("first_cuisine")
             restaurant_cuisine_two = request.form.get("second_cuisine")
             restaurant_cuisine_three = request.form.get("third_cuisine")
-            restaurant_delivery = True
-            restaurant_week = True
+            
+            if request.form.get("delivery_available") == "Yes":
+                restaurant_delivery = True
+            else:
+                restaurant_delivery = False
+            
+            if request.form.get("restaurant_week") == "Yes":
+                restaurant_week = True
+            else:
+                restaurant_week = False          
 
             new_restaurant = Restaurants(restaurant_name=restaurant_name,
                                          restaurant_address_one=restaurant_add_one,

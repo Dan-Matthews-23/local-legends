@@ -65,3 +65,30 @@ class Reviews(db.Model):
 
     def __repr__(self):
         return self.review_id
+
+class Approvals(db.Model):
+    approval_id = db.Column(db.Integer, primary_key=True)
+    restaurant_name = db.Column(db.String(25), nullable=False)
+    restaurant_address_one = db.Column(db.String(25), nullable=False)
+    restaurant_address_two = db.Column(db.String(25))
+    restaurant_address_three = db.Column(db.String(25))
+    restaurant_address_four = db.Column(db.String(25))
+    restaurant_address_postcode = db.Column(db.String(25), nullable=False)
+    restaurant_average_taste_stars = db.Column(db.Float)
+    restaurant_average_presentation_stars = db.Column(db.Float)
+    restaurant_average_friendliness_stars = db.Column(db.Float)
+    restaurant_average_price_stars = db.Column(db.Float)
+    restaurant_average_ambience_stars = db.Column(db.Float)
+    restaurant_average_overall_stars = db.Column(db.Float)
+    restaurant_image_url = db.Column(db.String(500))
+    restaurant_date_registered = db.Column(db.Date, nullable=False)
+    restaurant_review_count = db.Column(db.Integer)
+    restaurant_cuisine_one = db.Column(db.String(25), nullable=False)
+    restaurant_cuisine_two = db.Column(db.String(25))
+    restaurant_cuisine_three = db.Column(db.String(25))
+    restaurant_delivery = db.Column(db.Boolean, default=False)
+    restaurant_week = db.Column(db.Boolean, default=False) 
+
+    def __repr__(self):
+        return self.approval_id
+    
