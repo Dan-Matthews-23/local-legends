@@ -241,6 +241,13 @@ def create_restaurant():
             restaurant_postcode = request.form.get("postcode")
             restaurant_thumbnail = request.form.get("thumbnail")
             todays_date = datetime.datetime.now()
+            date_only = todays_date.date()
+
+            restaurant_cuisine_one = request.form.get("first_cuisine")
+            restaurant_cuisine_two = request.form.get("second_cuisine")
+            restaurant_cuisine_three = request.form.get("third_cuisine")
+            restaurant_delivery = True
+            restaurant_week = True
 
             new_restaurant = Restaurants(restaurant_name=restaurant_name,
                                          restaurant_address_one=restaurant_add_one,
@@ -249,7 +256,13 @@ def create_restaurant():
                                          restaurant_address_four=restaurant_add_four,
                                          restaurant_address_postcode=restaurant_postcode,
                                          restaurant_image_url=restaurant_thumbnail,
-                                         restaurant_date_registered=todays_date)
+                                         restaurant_date_registered = date_only,
+                                         restaurant_cuisine_one=restaurant_cuisine_one,
+                                         restaurant_cuisine_two=restaurant_cuisine_two,
+                                         restaurant_cuisine_three=restaurant_cuisine_three,
+                                         restaurant_delivery=restaurant_delivery,
+                                         restaurant_week=restaurant_week
+                                         )
 
             db.session.add(new_restaurant)
             db.session.commit()
