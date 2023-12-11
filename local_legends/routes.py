@@ -35,7 +35,13 @@ def become_legend():
             restaurant_add_three = request.form.get("third_address")
             restaurant_add_four = request.form.get("fourth_address")
             restaurant_postcode = request.form.get("postcode")
-            restaurant_thumbnail = request.form.get("thumbnail")
+            
+            
+            posted_restaurant_thumbnail = request.form.get("thumbnail")
+            if not posted_restaurant_thumbnail:
+                restaurant_thumbnail = "https://images.pexels.com/photos/269257/pexels-photo-269257.jpeg?auto=compress&cs=tinysrgb&w=600"
+            else:
+                restaurant_thumbnail = posted_restaurant_thumbnail
             todays_date = datetime.datetime.now()
             date_only = todays_date.date()
 
@@ -310,33 +316,102 @@ def create_restaurant():
         session.pop('err')
 
     if session.get('is_logged_in', False):
-        try:
-            
-            restaurant_name = request.form.get("restaurant_name")
-            restaurant_add_one = request.form.get("first_address")
-            restaurant_add_two = request.form.get("second_address")
-            restaurant_add_three = request.form.get("third_address")
-            restaurant_add_four = request.form.get("fourth_address")
-            restaurant_postcode = request.form.get("postcode")
-            restaurant_thumbnail = request.form.get("thumbnail")
-            todays_date = datetime.datetime.now()
-            date_only = todays_date.date()
+        
+        approval_restaurant_id = request.form.get("restaurant_id")
 
-            restaurant_cuisine_one = request.form.get("first_cuisine")
-            restaurant_cuisine_two = request.form.get("second_cuisine")
-            restaurant_cuisine_three = request.form.get("third_cuisine")
+        approval = Approvals.query.filter_by(
+                approval_id=approval_restaurant_id).first()
             
-            if request.form.get("delivery_available") == "Yes":
-                restaurant_delivery = True
-            else:
-                restaurant_delivery = False
-            
-            if request.form.get("restaurant_week") == "Yes":
-                restaurant_week = True
-            else:
-                restaurant_week = False          
 
-            new_restaurant = Restaurants(restaurant_name=restaurant_name,
+        restaurant_name = approval.restaurant_name
+        restaurant_add_one = approval.restaurant_address_one
+        restaurant_add_two = approval.restaurant_address_two
+        restaurant_add_three = approval.restaurant_address_three
+        restaurant_add_four = approval.restaurant_address_four
+        restaurant_postcode = approval.restaurant_address_postcode
+        restaurant_thumbnail = approval.restaurant_image_url
+        restaurant_delivery = approval.restaurant_delivery
+        restaurant_week = approval.restaurant_week
+        restaurant_cuisine_one = approval.restaurant_cuisine_one
+        restaurant_cuisine_two = approval.restaurant_cuisine_two
+        restaurant_cuisine_three = approval.restaurant_cuisine_three          
+        todays_date = datetime.datetime.now()
+        date_only = todays_date.date()
+
+        if not approval:
+            session['err'] = f"Error - the approval is {approval}"
+            redirect_url = request.referrer or url_for(home)
+            return redirect(redirect_url)
+            
+        if not restaurant_name:
+            session['err'] = f"Error - the name is {restaurant_name}"
+            redirect_url = request.referrer or url_for(home)
+            return redirect(redirect_url)
+            
+        if not restaurant_add_one:
+            session['err'] = f"Error - the add_one is {restaurant_add_one}"
+            redirect_url = request.referrer or url_for(home)
+            return redirect(redirect_url)
+            
+        if not restaurant_add_two:
+            session['err'] = f"Error - the add_two is {restaurant_add_one}"
+            redirect_url = request.referrer or url_for(home)
+            return redirect(redirect_url)
+            
+        if not restaurant_add_three:
+            session['err'] = f"Error - the add_three is {restaurant_add_three}"
+            redirect_url = request.referrer or url_for(home)
+            return redirect(redirect_url)
+            
+        if not restaurant_add_four:
+            session['err'] = f"Error - the add_four is {restaurant_add_four}"
+            redirect_url = request.referrer or url_for(home)
+            return redirect(redirect_url)
+            
+        if not restaurant_postcode:
+            session['err'] = f"Error - the restaurant_postcode is {restaurant_postcode}"
+            redirect_url = request.referrer or url_for(home)
+            return redirect(redirect_url)
+            
+        if not restaurant_thumbnail:
+            session['err'] = f"Error - the restaurant_thumbnail is {restaurant_thumbnail}"
+            redirect_url = request.referrer or url_for(home)
+            return redirect(redirect_url)
+            
+        #if not restaurant_delivery:
+            #session['err'] = f"Error - the restaurant_delivery is {restaurant_delivery}"
+            #redirect_url = request.referrer or url_for(home)
+            #return redirect(redirect_url)
+            
+        #if not restaurant_week:
+            #session['err'] = f"Error - the restaurant_week is {restaurant_week}"
+            #redirect_url = request.referrer or url_for(home)
+            #return redirect(redirect_url)
+            
+        if not restaurant_cuisine_one:
+            session['err'] = f"Error - the restaurant_cuisine_one is {restaurant_cuisine_one}"
+            redirect_url = request.referrer or url_for(home)
+            return redirect(redirect_url)
+            
+        if not restaurant_cuisine_two:
+            session['err'] = f"Error - the restaurant_cuisine_two is {restaurant_cuisine_two}"
+            redirect_url = request.referrer or url_for(home)
+            return redirect(redirect_url)
+            
+        if not restaurant_cuisine_three:
+            session['err'] = f"Error - the restaurant_cuisine_three is {restaurant_cuisine_three}"
+            redirect_url = request.referrer or url_for(home)
+            return redirect(redirect_url)
+            
+        if not date_only:
+            session['err'] = f"Error - the date_only is {date_only}"
+            redirect_url = request.referrer or url_for(home)
+            return redirect(redirect_url)
+
+
+                    
+
+        new_restaurant = Restaurants(restaurant_name=restaurant_name,
                                          restaurant_address_one=restaurant_add_one,
                                          restaurant_address_two=restaurant_add_two,
                                          restaurant_address_three=restaurant_add_three,
@@ -351,18 +426,19 @@ def create_restaurant():
                                          restaurant_week=restaurant_week
                                          )
 
-            db.session.add(new_restaurant)
-            db.session.commit()
-        except Exception as e:
-            logger.error("Error creating restaurant:", e)
-            session['err'] = "Failed to create restaurant. Please try again later."
-            return redirect(url_for("admin_portal"))
+        db.session.add(new_restaurant)
+        db.session.commit()
 
-        session['err'] = "Restaurant created"
-        return redirect(url_for("restaurants"))
+        delete_approval = Approvals.query.filter_by(approval_id=approval_restaurant_id).first()
+        db.session.delete(delete_approval)
+        db.session.commit()
 
-    session['err'] = "You are not logged in"
-    return redirect(url_for("login"))
+        restaurants = Restaurants.query.order_by(Restaurants.restaurant_id).all()
+          
+        return render_template("admin_portal.html", restaurants=restaurants)
+
+
+        
 
 
 
@@ -1108,6 +1184,13 @@ def check_admin_status():
             return redirect(url_for("home"))
         return redirect(url_for("home"))
 
+## DELETE THIS ONE
+@app.route("/admin_portal", methods=["GET", "POST"])
+def admin_portal():
+    approvals = list(Approvals.query.order_by(Approvals.approval_id).all())                                
+    restaurants = list(Restaurants.query.order_by(Restaurants.restaurant_id).all())
+    return render_template("admin_portal.html", approvals=approvals, restaurants=restaurants)
+
 
 @app.route("/admin_login", methods=["GET", "POST"])
 def admin_login():
@@ -1138,9 +1221,7 @@ def admin_login():
 
                                 # Not setting admin_id to user_id as a final line of defense, as this could be easily intercepted if the user_id is known.
                                 session['admin_id'] = admin_id_check.admin_id
-                                restaurants = list(Restaurants.query.order_by(
-                                    Restaurants.restaurant_name).all())
-                                return render_template("admin_portal.html", restaurants=restaurants)
+                                return redirect(url_for("admin_portal"))
                             else:
                                 session['err'] = "Those details are incorrect"
                                 return redirect(url_for("home"))

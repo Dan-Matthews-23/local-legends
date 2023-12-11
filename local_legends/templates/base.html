@@ -40,6 +40,7 @@
                 {% if session.is_logged_in %}<li><a class="header-links" href="{{ url_for('logout') }}">Sign Out</a></li>{% else %}<li><a class="header-links" href="{{ url_for('login') }}">Sign In</a></li>{% endif %}
                 <li><a class="header-links" href="{{ url_for('restaurants') }}">Restaurants</a></li>
                 <li><a class="header-links" href="{{ url_for('profile') }}">Profile</a></li>
+                {% if session.admin_id %}<li><a class="header-links" href="{{ url_for('admin_portal') }}">Admin portal</a></li>{% endif %}
             </ul>
             
         </div>
