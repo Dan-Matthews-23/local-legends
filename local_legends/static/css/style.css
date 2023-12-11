@@ -16,7 +16,7 @@
 }
 
 .contact-us-container {
-    width: 100%;
+    width: 70%;
 }
 
 
@@ -91,7 +91,7 @@ padding-bottom: 100px;
 
 .collapsible:after {
     content: '\002B';
-    color: white;
+    color: black;
     font-weight: bold;
     float: right;
     margin-left: 5px;
@@ -519,6 +519,16 @@ font-size: 20px;
 
 .align-center {
     text-align: center;
+    margin: auto;
+}
+
+.align-right {
+    text-align: right;
+    margin: auto;
+}
+
+.align-left {
+    text-align: left;
     margin: auto;
 }
 

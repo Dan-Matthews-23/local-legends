@@ -1,166 +1,230 @@
 {% extends "base.html" %}
 {% block content %}
-
-
-
-<div class=" align-center card-panel grey lighten-5 contact-us-container">
-    <div class="row">
-        <div class="col card-panel grey lighten-5">
-            
-            <form action="{{ url_for('become_legend') }}" method="POST">
-                
-                <div class="row ">
-                    <div class="col">
-                        <h3>Contact Us</h3>
-                    </div>
+<div class=" align-center contact-us-container with-borders">
+    <div class="row with-borders align-center">
+        <div class="col s12 m12 l12 xl12 card-panel grey lighten-5 with-borders align-center">
+            <div class="row with-borders">
+                <div class="col align-center with-borders s12 m12 l12 xl12">
+                    <h1 class="title-font">Contact Us</h1>
                 </div>
-
-                <div class=" align-center card-panel grey lighten-5 contact-us-container">
-                    <div class="row ">
-                        
+            </div>
+            <button type="button" class="collapsible bold">Become a legend</button>
+            <div class="content ">
+                <form action="{{ url_for('become_legend') }}" method="POST">
+                    <div class=" align-center card-panel grey lighten-5 contact-us-container with-borders">
                         <div class="row ">
-                            <div class="col s9 m9 l9 xl9   leave-review-label-div">
-                                <label for="restaurant_name" class="default-text-styling">
-                                    Restaurant Name
-                                </label>
+                            <div class="row ">
+                                <div class="col s12 m12 l6 xl6   leave-review-label-div">
+                                    <label for="restaurant_name" class="default-text-styling">
+                                        Restaurant Name
+                                    </label>
+                                </div>
+                                <div class="col s12 m12 l6 xl6  leave-review-select-div">
+                                    <input type="text" id="restaurant_name" name="restaurant_name" value="Content">
+                                </div>
                             </div>
-                            <div class="col s3 m3 l3 xl3   leave-review-select-div">
-                                <input type="text" id="restaurant_name" name="restaurant_name"
-                                    value="Content">
+                            <div class="row ">
+                                <div class="col s12 m12 l6 xl6   leave-review-label-div">
+                                    <label for="first_cuisine" class="default-text-styling">
+                                        Cuisine Type One
+                                    </label>
+                                </div>
+                                <div class="col s12 m12 l6 xl6   leave-review-select-div">
+                                    <input type="text" id="first_cuisine" name="first_cuisine" value="first_cuisine">
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="row ">
-                            <div class="col s9 m9 l9 xl9   leave-review-label-div">
-                                <label for="first_cuisine" class="default-text-styling">
-                                    Cuisine Type One
-                                </label>
+                            <div class="row ">
+                                <div class="col s12 m12 l6 xl6   leave-review-label-div">
+                                    <label for="second_cuisine" class="default-text-styling">
+                                        Cuisine Type Two
+                                    </label>
+                                </div>
+                                <div class="col s12 m12 l6 xl6   leave-review-select-div">
+                                    <input type="text" id="second_cuisine" name="second_cuisine" value="second_cuisine">
+                                </div>
                             </div>
-                            <div class="col s3 m3 l3 xl3   leave-review-select-div">
-                                <input type="text" id="first_cuisine" name="first_cuisine" value="first_cuisine">
+                            <div class="row ">
+                                <div class="col s12 m12 l6 xl6   leave-review-label-div">
+                                    <label for="third_cuisine" class="default-text-styling">
+                                        Cuisine Type Three
+                                    </label>
+                                </div>
+                                <div class="col s12 m12 l6 xl6   leave-review-select-div">
+                                    <input type="text" id="third_cuisine" name="third_cuisine" value="third_cuisine">
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="row ">
-                            <div class="col s9 m9 l9 xl9   leave-review-label-div">
-                                <label for="second_cuisine" class="default-text-styling">
-                                    Cuisine Type Two
-                            </label>
+                            <div class="row ">
+                                <div class="col s12 m12 l6 xl6   leave-review-label-div">
+                                    <label for="delivery_available" class="default-text-styling">
+                                        Delivery Available?
+                                    </label>
+                                </div>
+                                <div class="col s12 m12 l6 xl6   leave-review-select-div">
+                                    <input type="text" id="delivery_available" name="delivery_available"
+                                        value="delivery_available">
+                                </div>
                             </div>
-                            <div class="col s3 m3 l3 xl3   leave-review-select-div">
-                                <input type="text" id="second_cuisine" name="second_cuisine" value="second_cuisine">
+                            <div class="row ">
+                                <div class="col s12 m12 l12 xl6   leave-review-label-div">
+                                    <label for="restaurant_week" class="default-text-styling">
+                                        Sunderland Restaurant Week Participant?
+                                    </label>
+                                </div>
+                                <div class="col s12 m12 l12 xl6   leave-review-select-div">
+                                    <input type="text" id="restaurant_week" name="restaurant_week"
+                                        value="restaurant_week">
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="row ">
-                            <div class="col s9 m9 l9 xl9   leave-review-label-div">
-                                <label for="third_cuisine" class="default-text-styling">
-                                    Cuisine Type Three
-                                </label>
+                            <div class="row ">
+                                <div class="col s12 m12 l6 xl6   leave-review-label-div">
+                                    <label for="first_address" class="default-text-styling">
+                                        First Line of Address
+                                    </label>
+                                </div>
+                                <div class="col s12 m12 l6 xl6   leave-review-select-div">
+                                    <input type="text" id="first_address" name="first_address" value="first_address">
+                                </div>
                             </div>
-                            <div class="col s3 m3 l3 xl3   leave-review-select-div">
-                                <input type="text" id="third_cuisine" name="third_cuisine" value="third_cuisine">
+                            <div class="row ">
+                                <div class="col s12 m12 l6 xl6   leave-review-label-div">
+                                    <label for="second_address" class="default-text-styling">
+                                        Second Line of Address
+                                    </label>
+                                </div>
+                                <div class="col s12 m12 l6 xl6   leave-review-select-div">
+                                    <input type="text" id="second_address" name="second_address" value="second_address">
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="row ">
-                            <div class="col s9 m9 l9 xl9   leave-review-label-div">
-                                <label for="delivery_available" class="default-text-styling">
-                                    Delivery Available?
-                                </label>
+                            <div class="row ">
+                                <div class="col s12 m12 l6 xl6   leave-review-label-div">
+                                    <label for="third_address" class="default-text-styling">
+                                        Third Line of Address
+                                    </label>
+                                </div>
+                                <div class="col s12 m12 l6 xl6   leave-review-select-div">
+                                    <input type="text" id="third_address" name="third_address" value="third_address">
+                                </div>
                             </div>
-                            <div class="col s3 m3 l3 xl3   leave-review-select-div">
-                                <input type="text" id="delivery_available" name="delivery_available" value="delivery_available">
+                            <div class="row ">
+                                <div class="col s12 m12 l6 xl6   leave-review-label-div">
+                                    <label for="fourth_address" class="default-text-styling">
+                                        Fourth Line of Address
+                                    </label>
+                                </div>
+                                <div class="col s12 m12 l6 xl6   leave-review-select-div">
+                                    <input type="text" id="fourth_address" name="fourth_address" value="fourth_address">
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="row ">
-                            <div class="col s9 m9 l9 xl9   leave-review-label-div">
-                                <label for="restaurant_week" class="default-text-styling">
-                                    Sunderland Restaurant Week Participant?
-                                </label>
+                            <div class="row ">
+                                <div class="col s12 m12 l6 xl6   leave-review-label-div">
+                                    <label for="postcode" class="default-text-styling">
+                                        Postcode
+                                    </label>
+                                </div>
+                                <div class="col s12 m12 l6 xl6   leave-review-select-div">
+                                    <input type="text" id="postcode" name="postcode" value="postcode">
+                                </div>
                             </div>
-                            <div class="col s3 m3 l3 xl3   leave-review-select-div">
-                                <input type="text" id="restaurant_week" name="restaurant_week" value="restaurant_week">
+                            <div class="row ">
+                                <div class="col s12 m12 l6 xl6   leave-review-label-div">
+                                    <label for="thumbnail" class="default-text-styling">
+                                        Thumbnail URL
+                                    </label>
+                                </div>
+                                <div class="col s12 m12 l6 xl6   leave-review-select-div">
+                                    <input type="text" id="thumbnail" name="thumbnail" value="thumbnail">
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="row ">
-                            <div class="col s9 m9 l9 xl9   leave-review-label-div">
-                                <label for="first_address" class="default-text-styling">
-                                    First Line of Address
-                                </label>
+                            <div class="row">
+                                <div class="col s12 center-align">
+                                    <button type="submit" class="card-panel grey lighten-5">Submit Request</button>
+                                </div>
                             </div>
-                            <div class="col s3 m3 l3 xl3   leave-review-select-div">
-                                <input type="text" id="first_address" name="first_address" value="first_address">
-                            </div>
-                        </div>
-
-                        <div class="row ">
-                            <div class="col s9 m9 l9 xl9   leave-review-label-div">
-                                <label for="second_address" class="default-text-styling">
-                                    Second Line of Address
-                                </label>
-                            </div>
-                            <div class="col s3 m3 l3 xl3   leave-review-select-div">
-                                <input type="text" id="second_address" name="second_address" value="second_address">
-                            </div>
-                        </div>
-
-                        <div class="row ">
-                            <div class="col s9 m9 l9 xl9   leave-review-label-div">
-                                <label for="third_address" class="default-text-styling">
-                                    Third Line of Address
-                                </label>
-                            </div>
-                            <div class="col s3 m3 l3 xl3   leave-review-select-div">
-                                <input type="text" id="third_address" name="third_address" value="third_address">
-                            </div>
-                        </div>
-
-                        <div class="row ">
-                            <div class="col s9 m9 l9 xl9   leave-review-label-div">
-                                <label for="fourth_address" class="default-text-styling">
-                                    Fourth Line of Address
-                                </label>
-                            </div>
-                            <div class="col s3 m3 l3 xl3   leave-review-select-div">
-                                <input type="text" id="fourth_address" name="fourth_address" value="fourth_address">
-                            </div>
-                        </div>
-
-                        <div class="row ">
-                            <div class="col s9 m9 l9 xl9   leave-review-label-div">
-                                <label for="postcode" class="default-text-styling">
-                                    Postcode
-                                </label>
-                            </div>
-                            <div class="col s3 m3 l3 xl3   leave-review-select-div">
-                                <input type="text" id="postcode" name="postcode" value="postcode">
-                            </div>
-                        </div>
-
-                        <div class="row ">
-                            <div class="col s9 m9 l9 xl9   leave-review-label-div">
-                                <label for="thumbnail" class="default-text-styling">
-                                    Thumbnail URL
-                                </label>
-                            </div>
-                            <div class="col s3 m3 l3 xl3   leave-review-select-div">
-                                <input type="text" id="thumbnail" name="thumbnail" value="thumbnail">
-                            </div>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="col s12 center-align">
-                                <button type="submit" class="btn-large light-blue darken-1">Submit Review<i
-                                    class="fas fa-edit right"></i>
-                                </button>
-                            </div>
-                        </div>
-            </form>
-                   
+                </form>
+            </div>
+        </div>
     </div>
-</div>
+            
+
+
+            <button type="button" class="collapsible bold">Having problems?</button>
+            <div class="content ">
+                <form action="{{ url_for('handle_contact_us') }}" method="POST">
+                    <div class=" align-center card-panel grey lighten-5 contact-us-container with-borders">
+                        <div class="row ">
+                            
+                            <div class="row ">
+                                <div class="col s12 m12 l6 xl6   leave-review-label-div">
+                                    <label for="user_type" class="default-text-styling">
+                                        Who are you?
+                                    </label>
+                                </div>
+                                <div class="col s12 m12 l6 xl6  leave-review-select-div align-left">
+                                    <select name="user_type" id="user_type" class="leave-review-select">
+                                        <option value="user">
+                                            {% if session.is_logged_in %}
+                                            User ({{session.username}})                                            
+                                            {% endif %}
+                                        </option>
+                                        <option value="guest">Guest</option>
+                                        <option value="business">Business</option>                                        
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row ">
+                                <div class="col s12 m12 l6 xl6   leave-review-label-div">
+                                    <label for="email" class="default-text-styling">
+                                        Email Address
+                                    </label>
+                                </div>
+                                <div class="col s12 m12 l6 xl6  leave-review-select-div align-left">
+                                    <input type="text" id="email" name="email" value="{{session.user_email}}">
+                                </div>
+                            </div>
+
+                            <div class="row ">
+                                <div class="col s12 m12 l6 xl6   leave-review-label-div">
+                                    <label for="problem_type" class="default-text-styling">
+                                        Problem Type
+                                    </label>
+                                </div>
+                                <div class="col s12 m12 l6 xl6  leave-review-select-div align-left">
+                                    <select name="problem_type" id="problem_type" class="leave-review-select ">
+                                        <option value="technical">Technical</option>
+                                        <option value="account">Issues with account</option>
+                                        <option value="information">Incorrect information</option>
+                                        <option value="something-else">Something else</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row ">
+                                <div class="col s12 m12 l12 xl12 leave-review-select-div ">
+                                    <label class="default-text-styling" for="more_info">
+                                        Please tell us more about your query in as much detail as possible
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <div class="col s12 m12 l12 xl12 leave-review-textarea  align-center">
+                                    <textarea name="more_info" id="more_info" rows="10" cols="50"></textarea>
+                                </div>
+                            </div>
+
+                            
+
+                            <div class="row">
+                                <div class="col s12 center-align">
+                                    <button type="submit" class="card-panel grey lighten-5">Submit Request</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

@@ -1,6 +1,6 @@
 from flask import render_template, flash, request, redirect, url_for
 from local_legends import app, db
-from local_legends.models import Users, Reviews, Restaurants, Admins, Approvals
+from local_legends.models import Users, Reviews, Restaurants, Admins, Approvals, Problems
 from flask import session
 from flask_login import login_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -17,26 +17,29 @@ import re
 
 @app.route("/contact-us", methods=["GET", "POST"])
 def contact_us():
+    if not session.get('is_logged_in'):
+        session['user_email'] = ""      
+    else:
+        user_id = session.get('user_id')
+        query = Users.query.filter(Users.user_id == user_id).first()
+        session['user_email'] = query.email
     return render_template("contact-us.html")
-
 
 
 @app.route("/become_legend", methods=["GET", "POST"])
 def become_legend():
     if session.get('err'):
-        session.pop('err')    
-       
+        session.pop('err')
 
-    if request.method == "POST":    
-        try:            
+    if request.method == "POST":
+        try:
             restaurant_name = request.form.get("restaurant_name")
             restaurant_add_one = request.form.get("first_address")
             restaurant_add_two = request.form.get("second_address")
             restaurant_add_three = request.form.get("third_address")
             restaurant_add_four = request.form.get("fourth_address")
             restaurant_postcode = request.form.get("postcode")
-            
-            
+
             posted_restaurant_thumbnail = request.form.get("thumbnail")
             if not posted_restaurant_thumbnail:
                 restaurant_thumbnail = "https://images.pexels.com/photos/269257/pexels-photo-269257.jpeg?auto=compress&cs=tinysrgb&w=600"
@@ -48,31 +51,31 @@ def become_legend():
             restaurant_cuisine_one = request.form.get("first_cuisine")
             restaurant_cuisine_two = request.form.get("second_cuisine")
             restaurant_cuisine_three = request.form.get("third_cuisine")
-            
+
             if request.form.get("delivery_available") == "Yes":
                 restaurant_delivery = True
             else:
                 restaurant_delivery = False
-            
+
             if request.form.get("restaurant_week") == "Yes":
                 restaurant_week = True
             else:
-                restaurant_week = False          
+                restaurant_week = False
 
             new_restaurant = Approvals(restaurant_name=restaurant_name,
-                                         restaurant_address_one=restaurant_add_one,
-                                         restaurant_address_two=restaurant_add_two,
-                                         restaurant_address_three=restaurant_add_three,
-                                         restaurant_address_four=restaurant_add_four,
-                                         restaurant_address_postcode=restaurant_postcode,
-                                         restaurant_image_url=restaurant_thumbnail,
-                                         restaurant_date_registered = date_only,
-                                         restaurant_cuisine_one=restaurant_cuisine_one,
-                                         restaurant_cuisine_two=restaurant_cuisine_two,
-                                         restaurant_cuisine_three=restaurant_cuisine_three,
-                                         restaurant_delivery=restaurant_delivery,
-                                         restaurant_week=restaurant_week
-                                         )
+                                       restaurant_address_one=restaurant_add_one,
+                                       restaurant_address_two=restaurant_add_two,
+                                       restaurant_address_three=restaurant_add_three,
+                                       restaurant_address_four=restaurant_add_four,
+                                       restaurant_address_postcode=restaurant_postcode,
+                                       restaurant_image_url=restaurant_thumbnail,
+                                       restaurant_date_registered=date_only,
+                                       restaurant_cuisine_one=restaurant_cuisine_one,
+                                       restaurant_cuisine_two=restaurant_cuisine_two,
+                                       restaurant_cuisine_three=restaurant_cuisine_three,
+                                       restaurant_delivery=restaurant_delivery,
+                                       restaurant_week=restaurant_week
+                                       )
 
             db.session.add(new_restaurant)
             db.session.commit()
@@ -85,6 +88,46 @@ def become_legend():
         redirect_url = request.referrer or url_for(home)
         return redirect(redirect_url)
     return render_template("contact-us.html")
+
+
+
+
+
+
+@app.route("/contact-us/problem", methods=["GET", "POST"])
+def handle_contact_us():
+    if session.get('err'):
+        session.pop('err')         
+
+    if request.method == "POST":                       
+        posted_user_type = request.form.get("user_type")
+        if (posted_user_type == "user"):
+            user_id = session.get('user_id')
+            #user_details = Users.query.filter(Users.user_id == user_id).first()
+        elif (posted_user_type == "guest") or (posted_user_type == "business"):
+            user_id = 0
+            
+        posted_email = request.form.get("email")
+        posted_problem_type = request.form.get("problem_type")
+        posted_more_info = request.form.get("more_info")
+        todays_date = datetime.datetime.now()
+        date_only = todays_date.date()                    
+
+        new_problem = Problems(user_type=posted_user_type, problem_type=posted_problem_type, user_id=user_id, email=posted_email, detail=posted_more_info, date=date_only)
+            
+        db.session.add(new_problem)
+        db.session.commit()
+
+        if new_problem:
+            session.pop('user_email')
+            session['err'] = "Your request has been sent. Please allow 3-5 working days"
+            redirect_url = request.referrer or url_for(home)
+            return redirect(redirect_url)
+        else: 
+            session['err'] = "Failed to create restaurant. Please try again later."
+            redirect_url = request.referrer or url_for(home)
+            return redirect(redirect_url)
+        return render_template("contact-us.html")
 
         
 
@@ -1136,6 +1179,8 @@ def login():
                 session['user_id'] = user_id
                 session['username'] = existing_user.username
                 session['is_logged_in'] = True
+                #users = Users.query.order_by(Users.user_id).all()
+                #session['users'] = users
                 return redirect(url_for("profile", user_id=user_id))
                 # I could have given seperate feedback errors to email and password,
                 # however for security purposes I have not done this (see README)
@@ -1189,7 +1234,8 @@ def check_admin_status():
 def admin_portal():
     approvals = list(Approvals.query.order_by(Approvals.approval_id).all())                                
     restaurants = list(Restaurants.query.order_by(Restaurants.restaurant_id).all())
-    return render_template("admin_portal.html", approvals=approvals, restaurants=restaurants)
+    problems = list(Problems.query.order_by(Problems.problem_id).all())
+    return render_template("admin_portal.html", approvals=approvals, restaurants=restaurants, problems=problems)
 
 
 @app.route("/admin_login", methods=["GET", "POST"])

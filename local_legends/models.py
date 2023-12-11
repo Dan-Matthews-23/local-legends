@@ -91,4 +91,17 @@ class Approvals(db.Model):
 
     def __repr__(self):
         return self.approval_id
+
+class Problems(db.Model):
+    problem_id = db.Column(db.Integer, primary_key=True)
+    user_type = db.Column(db.String(25), nullable=False)
+    problem_type = db.Column(db.String(25), nullable=False)
+    user_id = db.Column(db.Integer)
+    email = db.Column(db.String(25), nullable=False)
+    detail = db.Column(db.String(1000), nullable=False)
+    date = db.Column(db.DateTime, nullable=False)
+    
+
+    def __repr__(self):
+        return self.problem_id
     
