@@ -32,37 +32,93 @@ def become_legend():
         session.pop('err')
 
     if request.method == "POST":
-        try:
-            restaurant_name = request.form.get("restaurant_name")
-            restaurant_add_one = request.form.get("first_address")
-            restaurant_add_two = request.form.get("second_address")
-            restaurant_add_three = request.form.get("third_address")
-            restaurant_add_four = request.form.get("fourth_address")
-            restaurant_postcode = request.form.get("postcode")
+        
+        posted_restaurant_name = request.form.get("restaurant_name")
+        if (posted_restaurant_name == "" or posted_restaurant_name == "e.g. The Burger Bar"):
+            session['err'] = "The name of your restaurant must be completed"
+            redirect_url = request.referrer or url_for(home)
+            return redirect(redirect_url)
+        else:
+            restaurant_name = posted_restaurant_name
+            
+        posted_restaurant_add_one = request.form.get("first_address")
+        if (posted_restaurant_add_one == "" or posted_restaurant_add_one == "e.g. 123 Sunderland Road"):
+            session['err'] = "The first line of your restaurant address must be completed"
+            redirect_url = request.referrer or url_for(home)
+            return redirect(redirect_url)
+        else:
+            restaurant_add_one = posted_restaurant_add_one     
+        
+        posted_restaurant_add_two = request.form.get("second_address")
+        if (posted_restaurant_add_two == "" or posted_restaurant_add_two == "e.g. Sunderland Street"):
+            session['err'] = "The second line of your restaurant address must be completed"
+            redirect_url = request.referrer or url_for(home)
+            return redirect(redirect_url)
+        restaurant_add_two = posted_restaurant_add_two
 
-            posted_restaurant_thumbnail = request.form.get("thumbnail")
-            if not posted_restaurant_thumbnail:
-                restaurant_thumbnail = "https://images.pexels.com/photos/269257/pexels-photo-269257.jpeg?auto=compress&cs=tinysrgb&w=600"
-            else:
-                restaurant_thumbnail = posted_restaurant_thumbnail
-            todays_date = datetime.datetime.now()
-            date_only = todays_date.date()
 
-            restaurant_cuisine_one = request.form.get("first_cuisine")
-            restaurant_cuisine_two = request.form.get("second_cuisine")
-            restaurant_cuisine_three = request.form.get("third_cuisine")
+        posted_restaurant_add_three = request.form.get("third_address")
+        if (posted_restaurant_add_three == ""):
+            restaurant_add_three = ""               
+        else:
+            restaurant_add_three = posted_restaurant_add_three
 
-            if request.form.get("delivery_available") == "Yes":
-                restaurant_delivery = True
-            else:
-                restaurant_delivery = False
 
-            if request.form.get("restaurant_week") == "Yes":
-                restaurant_week = True
-            else:
-                restaurant_week = False
+        posted_restaurant_add_four = request.form.get("fourth_address")
+        if (posted_restaurant_add_four == ""):
+            restaurant_add_four = ""               
+        else:
+            restaurant_add_four = posted_restaurant_add_four
+            
+        posted_restaurant_postcode = request.form.get("postcode")
+        if (posted_restaurant_postcode == "" or posted_restaurant_postcode == "e.g. SR1 1AL"):
+            session['err'] = "The postcode of your restaurant address must be completed"
+            redirect_url = request.referrer or url_for(home)
+            return redirect(redirect_url)
+        else:
+            restaurant_postcode = posted_restaurant_postcode
 
-            new_restaurant = Approvals(restaurant_name=restaurant_name,
+        posted_restaurant_thumbnail = request.form.get("thumbnail")
+        if not posted_restaurant_thumbnail:
+            restaurant_thumbnail = "https://images.pexels.com/photos/269257/pexels-photo-269257.jpeg?auto=compress&cs=tinysrgb&w=600"
+        else:
+            restaurant_thumbnail = posted_restaurant_thumbnail
+        todays_date = datetime.datetime.now()
+        date_only = todays_date.date()
+
+        posted_restaurant_cuisine_one = request.form.get("first_cuisine")
+        if (posted_restaurant_cuisine_one == "" or posted_restaurant_cuisine_one == "e.g. Burgers"):
+            session['err'] = "You must complete at least one cusine type for your restaurant"
+            redirect_url = request.referrer or url_for(home)
+            return redirect(redirect_url)
+        else:
+            restaurant_cuisine_one = posted_restaurant_cuisine_one
+
+
+        posted_restaurant_cuisine_two = request.form.get("second_cuisine")
+        if (posted_restaurant_cuisine_two == "e.g. Fries"):
+            restaurant_cuisine_two = ""
+        else:
+            restaurant_cuisine_two = posted_restaurant_cuisine_two
+
+            
+        posted_restaurant_cuisine_three = request.form.get("third_cuisine")
+        if (posted_restaurant_cuisine_three == "e.g. Wraps"):
+            restaurant_cuisine_three = ""
+        else:
+            restaurant_cuisine_three = posted_restaurant_cuisine_three
+
+        if request.form.get("delivery_available") == "Yes":
+            restaurant_delivery = True
+        else:
+            restaurant_delivery = False
+
+        if request.form.get("restaurant_week") == "Yes":
+            restaurant_week = True
+        else:
+            restaurant_week = False
+
+        new_restaurant = Approvals(restaurant_name=restaurant_name,
                                        restaurant_address_one=restaurant_add_one,
                                        restaurant_address_two=restaurant_add_two,
                                        restaurant_address_three=restaurant_add_three,
@@ -77,14 +133,10 @@ def become_legend():
                                        restaurant_week=restaurant_week
                                        )
 
-            db.session.add(new_restaurant)
-            db.session.commit()
-        except Exception as e:
-            logger.error("Error creating restaurant:", e)
-            session['err'] = "Failed to create restaurant. Please try again later."
-            return redirect(url_for("admin_portal"))
+        db.session.add(new_restaurant)
+        db.session.commit()     
 
-        session['err'] = "Your request has been sent. Please allow 3-5 working days"
+        session['err'] = "Your request has been sent to an administrator for approval. Please allow 3-5 working days"
         redirect_url = request.referrer or url_for(home)
         return redirect(redirect_url)
     return render_template("contact-us.html")
@@ -401,15 +453,15 @@ def create_restaurant():
             redirect_url = request.referrer or url_for(home)
             return redirect(redirect_url)
             
-        if not restaurant_add_three:
-            session['err'] = f"Error - the add_three is {restaurant_add_three}"
-            redirect_url = request.referrer or url_for(home)
-            return redirect(redirect_url)
+        #if not restaurant_add_three:
+            #session['err'] = f"Error - the add_three is {restaurant_add_three}"
+            #redirect_url = request.referrer or url_for(home)
+            #return redirect(redirect_url)
             
-        if not restaurant_add_four:
-            session['err'] = f"Error - the add_four is {restaurant_add_four}"
-            redirect_url = request.referrer or url_for(home)
-            return redirect(redirect_url)
+        #if not restaurant_add_four:
+           # session['err'] = f"Error - the add_four is {restaurant_add_four}"
+            #redirect_url = request.referrer or url_for(home)
+            #return redirect(redirect_url)
             
         if not restaurant_postcode:
             session['err'] = f"Error - the restaurant_postcode is {restaurant_postcode}"
@@ -436,15 +488,15 @@ def create_restaurant():
             redirect_url = request.referrer or url_for(home)
             return redirect(redirect_url)
             
-        if not restaurant_cuisine_two:
-            session['err'] = f"Error - the restaurant_cuisine_two is {restaurant_cuisine_two}"
-            redirect_url = request.referrer or url_for(home)
-            return redirect(redirect_url)
+        #if not restaurant_cuisine_two:
+            #session['err'] = f"Error - the restaurant_cuisine_two is {restaurant_cuisine_two}"
+            #redirect_url = request.referrer or url_for(home)
+            #return redirect(redirect_url)
             
-        if not restaurant_cuisine_three:
-            session['err'] = f"Error - the restaurant_cuisine_three is {restaurant_cuisine_three}"
-            redirect_url = request.referrer or url_for(home)
-            return redirect(redirect_url)
+       # if not restaurant_cuisine_three:
+            #session['err'] = f"Error - the restaurant_cuisine_three is {restaurant_cuisine_three}"
+            #redirect_url = request.referrer or url_for(home)
+            #return redirect(redirect_url)
             
         if not date_only:
             session['err'] = f"Error - the date_only is {date_only}"

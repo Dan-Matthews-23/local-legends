@@ -10,14 +10,116 @@
 <div class="container align-center card-panel grey lighten-5 ">
     <div class="row ">
         <div class="col  align-center s12 m12 l12 xl12">
-            <h3 class="larger-than-default-text bold">Approvals</h3>
+            <h3 class="larger-than-default-text bold">Support Requests</h3>
         </div>
     </div>
 </div>
 
+<div class=" align-center contact-us-container with-borders">
+    <div class="row with-borders align-center">
+        <div class="col s12 m12 l12 xl12 card-panel grey lighten-5 with-borders align-center">
 
 
-    
+{% for problems in problems %}
+
+
+<form action="{{ url_for('create_restaurant') }}" method="POST">
+    <input type="hidden" id="restaurant_id" name="restaurant_id" value="{{problems.problem_id }}">
+    <button type="button" class="collapsible bold">Request type: {{problems.problem_type }}</button>
+    <div class="content ">
+        <div class="container  input-container with-borders">
+            <div class="row  align-center input-row">
+                <div class="col  align-center label-col">
+                    <label class="collapse-label" for="user_type">
+                        <h4 class="label">User Type</h4>
+                    </label>
+                </div>
+                <div class="col  align-center input-col">{{problems.user_type }}
+                </div>
+            </div>
+            <div class="row  align-center input-row">
+                <div class="col  align-center label-col">
+                    <label class="collapse-label" for="first_cuisine">
+                        <h4 class="label">Problem Type</h4>
+                    </label>
+                </div>
+                <div class="col  align-center input-col">
+                    {{problems.problem_type }}
+                </div>
+            </div>
+            <div class="row  align-center input-row">
+                <div class="col  align-center label-col">
+                    <label class="collapse-label" for="first_cuisine">
+                        <h4 class="label">User Id</h4>
+                    </label>
+                </div>
+                <div class="col  align-center input-col">
+                    {{problems.user_id }}
+                </div>
+            </div>
+            <div class="row  align-center input-row">
+                <div class="col  align-center label-col">
+                    <label class="collapse-label" for="first_cuisine">
+                        <h4 class="label">Email</h4>
+                    </label>
+                </div>
+                <div class="col  align-center input-col">
+                    {{problems.email }}
+                </div>
+            </div>
+            <div class="row  align-center input-row">
+                <div class="col  align-center label-col">
+                    <label class="collapse-label" for="first_cuisine">
+                        <h4 class="label">Date of request</h4>
+                    </label>
+                </div>
+                <div class="col  align-center input-col">
+                    {{problems.date }}
+                </div>
+            </div>
+            <div class="row  align-center input-row">
+                <div class="col  align-center label-col">
+                    <label class="collapse-label" for="first_cuisine">
+                        <h4 class="label">Date of request</h4>
+                    </label>
+                </div>
+            </div>
+            <div class="row  align-center input-row">
+            <div class="col  align-center input-col">
+                {{problems.detail }}
+            </div>
+        </div>
+        <div class="row  align-center input-row">
+            <button type="submit" class="btn-large light-blue darken-1">Approve Request<i class="fas fa-edit right"></i>
+            </button>
+        </div>
+    </div>
+</form>
+{% endfor %}
+</div>
+</div>
+</div>
+
+<div class="container lg-padding">
+    <div class="row">
+        <div class="col">
+
+        </div>
+    </div>
+</div>
+
+<div class="container align-center card-panel grey lighten-5 ">
+    <div class="row ">
+        <div class="col  align-center s12 m12 l12 xl12">
+            <h3 class="larger-than-default-text bold">Approval Requests</h3>
+        </div>
+    </div>
+</div>
+  
+
+<div class=" align-center contact-us-container with-borders">
+    <div class="row with-borders align-center">
+        <div class="col s12 m12 l12 xl12 card-panel grey lighten-5 with-borders align-center">
 {% for approvals in approvals %}
 <form action="{{ url_for('create_restaurant') }}" method="POST">
     <input type="hidden" id="restaurant_id" name="restaurant_id" value="{{approvals.approval_id }}">
@@ -169,17 +271,36 @@
     </div>
 {% endfor %}
     </form>
+    </div>
+    </div>
+    </div>
 
+<div class="container lg-padding">
+    <div class="row">
+        <div class="col">
+
+        </div>
+    </div>
+</div>
+              
              
-              
-              
 
 
 
 
 
 
-<h3 class="light-blue-text text-darken-4 center-align">Edit Restaurants</h3>
+<div class="container align-center card-panel grey lighten-5 ">
+    <div class="row ">
+        <div class="col  align-center s12 m12 l12 xl12">
+            <h3 class="larger-than-default-text bold">Edit Restaurant Details</h3>
+        </div>
+    </div>
+</div>
+
+<div class=" align-center contact-us-container with-borders">
+    <div class="row with-borders align-center">
+        <div class="col s12 m12 l12 xl12 card-panel grey lighten-5 with-borders align-center">
 {% for restaurants in restaurants %}
 <form action="{{ url_for('edit_restaurant') }}?restaurant_id={{ restaurants.restaurant_id }}" method="POST">
     <input type="hidden" name="{{ restaurants.restaurant_id }}" id="{{ restaurants.restaurant_id }}" value="{{ restaurants.restaurant_id }}">
@@ -283,7 +404,9 @@
         </div>
     </form>           
                    
-                
+    </div>
+    </div>
+    </div>
 
 {% endfor %}
 {% endif %}
