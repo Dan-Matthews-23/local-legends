@@ -1,157 +1,154 @@
-{% extends "base.html" %} {% block content %}
-
-<!--USER FORM FOR GET INVOLVED-->
-<section class="change_password">
-    <form action="{{ url_for('change_password') }}" method="POST">
-        <div class="container align-center login-container ">
-            <div class="row sign-up-row  align-center ">
-                <div class="col-sign-up align-center lg-padding ">
-                    <h3>Profile</h3>
+{% extends "base.html" %}
+{% block content %}
+<div class=" align-center contact-us-container with-borders">
+    <div class="row with-borders align-center">
+        <div class="col s12 m12 l12 xl12 card-panel grey lighten-5 with-borders align-center">
+            <div class="row with-borders">
+                <div class="col align-center with-borders s12 m12 l12 xl12">
+                    <h1 class="title-font">Profile</h1>
                 </div>
             </div>
+            <section class="change_password">
+                <form action="{{ url_for('change_password') }}" method="POST">
+                <div class=" align-center card-panel grey lighten-5 register-container with-borders">
+
+                    <div class="row ">
+                        <div class="col s12 m12 l6 xl6   leave-review-label-div align-left">
+                            <label for="current_password" class="default-text-styling align-left">
+                                Current Password
+                            </label>
+                        </div>
+                        <div class="col s12 m12 l6 xl6  leave-review-select-div align-left">
+                            <input type="password" class="sign-up" name="current_password" id="current_password" required>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col s12 m12 l6 xl6   leave-review-label-div align-left">
+                            <label for="password_change" class="default-text-styling align-left">
+                                New Password
+                            </label>
+                        </div>
+                        <div class="col s12 m12 l6 xl6  leave-review-select-div align-left">
+                            <input type="password" class="sign-up" name="password_change" id="password_change" required>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col s12 m12 l6 xl6   leave-review-label-div align-left">
+                            <label for="confirm_password_change" class="default-text-styling align-left">
+                               Confirm New Password
+                            </label>
+                        </div>
+                        <div class="col s12 m12 l6 xl6  leave-review-select-div align-left">
+                            <input type="password" class="sign-up" name="confirm_password_change" id="confirm_password_change" required>
+                        </div>
+                    </div>                    
+                    <div class="row">
+                        <div class="col s12 center-align">
+                            <button type="submit" class="card-panel grey lighten-5">Change Password</button>
+                        </div>
+                    </div>
+            </form>
+        </section>
+
+        <section class="change_username">
+            <form action="{{ url_for('change_username') }}" method="POST">
+                <div class=" align-center card-panel grey lighten-5 register-container with-borders">
+        
+                    <div class="row ">
+                        <div class="col s12 m12 l6 xl6   leave-review-label-div align-left">
+                            <label for="change_username" class="default-text-styling align-left">
+                                Change Username
+                            </label>
+                        </div>
+                        <div class="col s12 m12 l6 xl6  leave-review-select-div align-left">
+                            <input type="text" class="sign-up" name="change_username" id="change_username" placeholdeer="Enter a new username" required>
+                        </div>
+                    </div>                   
+                    <div class="row">
+                        <div class="col s12 center-align">
+                            <button type="submit" class="card-panel grey lighten-5">Change Username</button>
+                        </div>
+                    </div>
+            </form>
+        </section>
+
+        <section class="change_email">
+            <form action="{{ url_for('change_email') }}" method="POST">
+                <div class=" align-center card-panel grey lighten-5 register-container with-borders">
+        
+                    <div class="row ">
+                        <div class="col s12 m12 l6 xl6   leave-review-label-div align-left">
+                            <label for="email_login" class="default-text-styling align-left">
+                                Change Email Address
+                            </label>
+                        </div>
+                        <div class="col s12 m12 l6 xl6  leave-review-select-div align-left">
+                            <input type="email" class="sign-up" name="change_email" id="change_email"
+                                placeholdeer="Enter a new email address" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 center-align">
+                            <button type="submit" class="card-panel grey lighten-5">Change Email Address</button>
+                        </div>
+                    </div>
+            </form>
+        </section>
+
+        <section class="delete_user">
+            <form action="{{ url_for('delete_user') }}" method="POST">
+                <div class=" align-center card-panel grey lighten-5 register-container with-borders">
+        
+                    <div class="row ">
+                        <div class="col s12 m12 l6 xl6   leave-review-label-div align-left">
+                            <label for="password_delete" class="default-text-styling align-left">
+                                Enter your password
+                            </label>
+                        </div>
+                        <div class="col s12 m12 l6 xl6  leave-review-select-div align-left">
+                            <input type="email" class="sign-up" name="password_delete" id="password_delete"  required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 center-align">
+                            <button type="submit" class="card-panel grey lighten-5">Delete your account</button>
+                        </div>
+                    </div>
+            </form>
+        </section>
+
+        {% for user in users %}
+        {% if user.is_admin %}
+        {% if not session.is_admin %}
+
+        <section class="admin-section">
+
            
-            <div class="row sign-up-row  align-center  ">
-                <div class="col-sign-up align-right lg-padding ">
-                    <label for="name">Change Password:</label>
-                </div>
-                <div class="col-sign-up  align-left ">
-                    <input type="password" class="sign-up" name="current_password" id="current_password" placeholder="Enter your current password" required>
-                </div>
-                <div class="col-sign-up  align-left ">
-                    <input type="password" class="sign-up" name="password_change" id="password_change"
-                        placeholder="Enter a new password" required>
-                </div>
-                <div class="col-sign-up  align-left ">
-                    <input type="password" class="sign-up" name="confirm_password_change" id="confirm_password_change"
-                        placeholder="Confirm new password" required>
-                </div>
-            </div>
-
-            <div class="row sign-up-row  align-center">
-                <div class="col-sign-up align-center ">
-                    <input type="submit" class="submit-btn" name="submit_change_password" id="submit_change_password" value="Change Password">
-                </div>
-            </div>
-        </div>
-    </form>
-</section>
-
-<section class="change_username">
-    <form action="{{ url_for('change_username') }}" method="POST">
-        <div class="container align-center login-container ">
-            <div class="row sign-up-row  align-center ">
-               
-            </div>
-
-            <div class="row sign-up-row  align-center  ">
-                <div class="col-sign-up align-right lg-padding ">
-                    <label for="name">Change Username:</label>
-                </div>
-                <div class="col-sign-up  align-left ">
-                    <input type="text" class="sign-up" name="change_username" id="change_username"
-                        placeholder="Enter a new username" required>
-                </div>              
-             </div>
-            <div class="row sign-up-row  align-center">
-                <div class="col-sign-up align-center ">
-                    <input type="submit" class="submit-btn" name="submit_change_username" id="submit_change_username"
-                        value="Change Username">
-                </div>
-            </div>
-        </div>
-    </form>
-</section>
-
-<section class="change_email">
-    <form action="{{ url_for('change_email') }}" method="POST">
-        <div class="container align-center login-container ">
-            <div class="row sign-up-row  align-center ">
-
-            </div>
-
-            <div class="row sign-up-row  align-center  ">
-                <div class="col-sign-up align-right lg-padding ">
-                    <label for="name">Change Email Address:</label>
-                </div>
-                <div class="col-sign-up  align-left ">
-                    <input type="text" class="sign-up" name="change_email" id="change_email"
-                        placeholder="Enter a new email address" required>
-                </div>
-            </div>
-            <div class="row sign-up-row  align-center">
-                <div class="col-sign-up align-center ">
-                    <input type="submit" class="submit-btn" name="submit_change_email" id="submit_change_email"
-                        value="Change Email Address">
-                </div>
-            </div>
-        </div>
-    </form>
-</section>
-
-<form action="{{ url_for('delete_user') }}" method="POST">
-<section class="delete">
-    <form action="index.html">
-        <div class="container align-center login-container">
-            <div class="row sign-up-row  align-center ">
-                <div class="col-sign-up align-center lg-padding">
-                    <h3>Delete your account</h3>
-                </div>
-            </div>
-           
-            <div class="row sign-up-row  align-center">
-                <div class="col-sign-up align-right lg-padding">
-                    <label for="name">To confirm, please enter your password:</label>
-                </div>
-                <div class="col-sign-up  align-left">
-                    <input type="password" class="sign-up" name="password_delete" id="password_delete"
-                        placeholder="Enter your password" required>
-                </div>
-            </div>
-            
-            <div class="row sign-up-row align-center">
-                <div class="col-sign-up  align-center">
-                    <input type="submit" class="submit-btn" name="submit_delete" id="submit_delete"
-                        value="Delete Account">
-                </div>
-            </div>
-        </div>
-    </form>
-</section>
-
-<!--USER FORM FOR GET INVOLVED-->
-
-
-{% for user in users %}
-{% if user.is_admin %}
-{% if not session.is_admin %}
-<section class="delete">
-    <form action="{{ url_for('check_admin_status') }}" method="POST">
-        <div class="row sign-up-row align-center">
-            <div class="col-sign-up align-center">
-                <input type="submit" class="submit-btn" name="submit_delete" id="submit_delete" value="Log in as admin">
-            </div>
-            
-        </div>
-    </form>
-</section>
-<section class="hash">
-    <form action="{{ url_for('hash') }}" method="POST">
-        <div class="row sign-up-row align-center">
-            <div class="col-sign-up align-center">
-                <input type="submit" class="submit-btn" name="hash" id="hash" value="Hash">
-            </div>
+                <div class=" align-center card-panel grey lighten-5 register-container with-borders">
+                    <form action="{{ url_for('check_admin_status') }}" method="POST">
+                    <div class="row">
+                        <div class="col s12 center-align">
+                            <button type="submit" class="card-panel grey lighten-5">Login as Admin</button>
+                        </div>
+                    </div>
+                    
+                    <form action="{{ url_for('hash') }}" method="POST">
+                    <div class="row">
+                        <div class="col s12 center-align">
+                            <button type="submit" class="card-panel grey lighten-5">Hash Admin Password</button>
+                        </div>
+                    </div>
+                    </form>
+            </form>
+        </section>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
 
         </div>
-    </form>
-</section>
-{% endif %}
-{% endif %}
-{% endfor %}
-
-
-
-
-
-
-
+    </div>
+</div>
+</div>
+</div>
+</div>
 {% endblock %}

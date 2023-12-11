@@ -1,49 +1,58 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
+{% block content %}
+<div class=" align-center contact-us-container with-borders">
+    <div class="row with-borders align-center">
+        <div class="col s12 m12 l12 xl12 card-panel grey lighten-5 with-borders align-center">
+            <div class="row with-borders">
+                <div class="col align-center with-borders s12 m12 l12 xl12">
+                    <h1 class="title-font">Sign In</h1>
+                </div>
+            </div>
+            <form action="{{ url_for('login') }}" method="POST">
+                <div class=" align-center card-panel grey lighten-5 register-container with-borders">
 
-<!--USER FORM FOR GET INVOLVED-->
-<section class="login">
-    <form method="POST" action="{{ url_for('login') }}">
-        <div class="container align-center login-container ">
-            <div class="row sign-up-row  align-center ">
-                <div class="col-sign-up align-center lg-padding ">
-                    <h3>Sign in</h3>
-                </div>
-            </div>
-            <div class="row sign-up-row  align-center ">
-                <div class="col-sign-up  align-right  ">
-                    <label for="email">Email Address:</label>
-                </div>
-                <div class="col-sign-up  align-left ">
-                    <input type="email" class="sign-up" name="email_login" id="email_login"
-                        placeholder="Enter your email address" required>
-                </div>
-            </div>
-            <div class="row sign-up-row  align-center  ">
-                <div class="col-sign-up align-right lg-padding ">
-                    <label for="name">Password:</label>
-                </div>
-                <div class="col-sign-up  align-left ">
-                    <input type="password" class="sign-up" name="password_login" id="password_login"
-                        placeholder="Enter your password" required>
-                </div>
-            </div>
-
-            <div class="row sign-up-row  align-center">
-                <div class="col-sign-up align-center ">
-                    <input type="submit" class="submit-btn" name="submit_login" id="submit_login" value="Sign In">
-                </div>
-            </div>
+                    <div class="row ">
+                        <div class="col s12 m12 l12 xl12   leave-review-label-div">
+                            <h2 class="default-text-styling">All fields marked with * are required</h2>
+                        </div>
+                    </div>
+                    <div class="row md-padding">
+                        <div class="col s12 m12 l12 xl12   leave-review-label-div">
+                            <h2 class="default-text-styling"></h2>
+                        </div>
+                    </div>                    
+                    <div class="row ">
+                        <div class="col s12 m12 l6 xl6   leave-review-label-div align-left">
+                            <label for="email_login" class="default-text-styling align-left">
+                                * Email Address
+                            </label>
+                        </div>
+                        <div class="col s12 m12 l6 xl6  leave-review-select-div align-left">
+                            <input type="email" class="contact-us-input" id="email_login" name="email_login"
+                                required>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col s12 m12 l6 xl6   leave-review-label-div align-left">
+                            <label for="password_login" class="default-text-styling">
+                                * Password
+                            </label>
+                        </div>
+                        <div class="col s12 m12 l6 xl6  leave-review-select-div align-left">
+                            <input type="password" class="contact-us-input" id="password_login"
+                                name="password_login" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 center-align">
+                            <button type="submit" class="card-panel grey lighten-5">Register</button>
+                        </div>
+                    </div>
+            </form>
         </div>
-    </form>
-</section>
-
-
-
-
-
-
-
-
-
-
+    </div>
+</div>
+</div>
+</div>
+</div>
 {% endblock %}
