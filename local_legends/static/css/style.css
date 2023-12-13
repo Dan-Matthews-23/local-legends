@@ -1,222 +1,12 @@
 /*@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");*/
 
 /*---------- ROOT VARIABLES ----------*/
-:root {
-
-    /*---Font Colour---*/
-    --brown-darken-1: #6d4c41;
+:root {  
 
     /*---Welcome Banner Height---*/
     --height-preset: 35px;
-
-   
-    --body-text-size-default: 30px;
-
-
+    --brown-darken-1: #6d4c41;
 }
-
-.contact-us-container {
-    width: 70%;
-}
-
-
-.collapsible,
-.see-reviews
- {
-    
-    color: black;
-    cursor: pointer;
-    padding: 18px;
-    width: 50%;
-    border: none;
-    text-align: center;
-    float: center;
-    outline: none;
-    font-size: 15px;
-    
-}
-
-
-
-
-.contact-us-input {
-    color: grey;
-    font-style: italic;
-}
-
-.register-container {
-    width: 50%;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.title-font {
-    font-size: 36px;
-    color: black;
-    font-weight: bold;
-    letter-spacing: 2px;
-}
-
-
-.title-container {
-    max-height:fit-content;
-    width: 100%;
-    text-align: center;
-    vertical-align: middle;
-    padding: 0;
-    
-  
-}
-
-.button-container{
-max-height:fit-content;
-width: 100%;
-text-align: center;
-vertical-align: middle;
-padding-bottom: 100px;
-
-
-}
-
-
-
-.title-col {
-    text-align: center;
-    vertical-align: middle;
-    padding: 5px;
-}
-
-.title-row{
-    padding: 0;
-}
-
-.title-section {
-    
-    padding-bottom: 20px;
-}
-
-.active,
-.collapsible:hover,
-.see-reviews {
-    background-color: #555;
-}
-
-.collapsible:after {
-    content: '\002B';
-    color: black;
-    font-weight: bold;
-    float: right;
-    margin-left: 5px;
-}
-
-.active:after {
-    content: "\2212";
-}
-
-.content {
-    padding: 0 18px;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
-    background-color: #f1f1f1;
-}
-
-.col-radio-group,
-#rating1{
-    color: red;
-    font-size: 30px;
-}
-
-.default-text-size {
-
-    font-size: 16px;
-
-}
-
-.default-text-styling{
-    font-size: 16px;
-    color: black;
-
-}
-
-.btn-container {
-    width:100%;
-    text-align: center;
-        vertical-align: middle;
-
-}
-
-.btn-row {
-width: 100%;
-text-align: center;
-    vertical-align: middle;
-}
-
-.btn-col {
-text-align: center;
-    vertical-align: middle;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*<!-----------------------HEADER------------------------------------>*/
 /*<!-----------------------END OF HEADER------------------------------------>*/
@@ -224,7 +14,7 @@ text-align: center;
 
 /*<!-----------------------NAV BAR------------------------------------>*/
 
-#title{
+#title {
     font-size: 24px;
     font-weight: bold;
     color: var(--brown-darken-1);
@@ -246,13 +36,13 @@ text-align: center;
 #welcome-banner {
     padding: 10px 0px 10px 0px;
     margin: auto;
-    vertical-align: middle;   
+    vertical-align: middle;
 }
 
 #welcome-banner-central-div {
     padding-top: 5px;
     padding-bottom: 5px;
-    height:var(--height-preset);
+    height: var(--height-preset);
     width: 80%;
     background-color: #efebe9;
     margin: auto;
@@ -261,31 +51,32 @@ text-align: center;
     font-weight: bold;
     color: var(--brown-darken-1);
     letter-spacing: 5px;
-  }
+}
 
 #welcome-banner-left-div {
-border-radius: 80% 0% 0% 80%;
-height: var(--height-preset);
-width: 10%;
-background-color: #efebe9;
-margin: auto;
-vertical-align: middle;
+    border-radius: 80% 0% 0% 80%;
+    height: var(--height-preset);
+    width: 10%;
+    background-color: #efebe9;
+    margin: auto;
+    vertical-align: middle;
 }
 
 #welcome-banner-right-div {
-border-radius: 0% 80% 80% 0%;
-height: var(--height-preset);
-width: 10%;
-background-color: #efebe9;
-margin: auto;
-vertical-align: middle;
+    border-radius: 0% 80% 80% 0%;
+    height: var(--height-preset);
+    width: 10%;
+    background-color: #efebe9;
+    margin: auto;
+    vertical-align: middle;
 }
+
 /*<!-----------------------END OF WELCOME BANNER------------------------------------>*/
 
 
 /*<!-----------------------Error Bar------------------------------------>*/
 
-#error-bar-main-div{
+#error-bar-main-div {
     padding-top: 5px;
     padding-bottom: 5px;
     height: var(--height-preset);
@@ -296,7 +87,7 @@ vertical-align: middle;
     font-size: 16px;
     font-weight: bold;
     color: var(--brown-darken-1);
-    letter-spacing: 3px;   
+    letter-spacing: 3px;
 }
 
 #error-bar-exit {
@@ -311,36 +102,90 @@ vertical-align: middle;
     font-weight: bold;
     color: var(--brown-darken-1);
     letter-spacing: 3px;
-    
+
 
 }
 
 /*<!-----------------------END OF Error Bar------------------------------------>*/
-
-
-
-
-.ad-card{
-    height: 500px;
+/*---------- TITLE ----------*/
+.title-font {
+    font-size: 36px;
+    color: black;
+    font-weight: bold;
+    letter-spacing: 2px;
 }
 
-.thumbnail {
-    border: 1px solid #ddd;
-    /* Gray border */
-    border-radius: 4px;
-    /* Rounded border */
-    padding: 5px;
-    /* Some padding */
-    width: 10%;
-    width: 10%;
-    /* Set a small width */
+
+.title-container {
+    max-height: fit-content;
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0;
 }
 
+.intro-container {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0; 
+}
+
+.title-col {
+    text-align: center;
+    vertical-align: middle;
+    
+}
+
+.title-row {
+    padding: 0;
+}
+
+.title-section {
+
+    padding-bottom: 5px;
+}
+/*---------- END OF TITLE ----------*/
+
+
+/*---------- CONTACT US ----------*/
+
+.contact-us-container {
+    width: 70%;
+}
+
+.contact-us-input {
+    color: grey;
+    font-style: italic;
+}
+
+.contact-us {
+    font-size: 14px;
+}
+/*---------- END OF CONTACT US ----------*/
+
+/*---------- REVIEWS ----------*/
+.reviews-container {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 10px;
+}
+
+.reviews-collapse {
+    width: 100%;
+    margin: auto;
+
+}
+/*---------- END OF REVIEWS ----------*/
 
 /*<!-----------------------REGISTER/LOGIN PAGE------------------------------------>*/
+.register-container {
+    width: 50%;
+}
 
-.login-container{ 
-    margin:auto;
+.login-container {
+    margin: auto;
     border-style: solid;
     border-color: black;
 }
@@ -383,104 +228,15 @@ vertical-align: middle;
     margin: auto;
     text-align: center;
 }
+
 /*<!-----------------------END OF REGISTER.LOGIN PAGE------------------------------------>*/
 
-/* To override the Materialize radio button opacity class */
-#taste_one,
-#taste_two,
-#taste_three,
-#taste_four,
-#taste_five
- {
-    opacity: 1;
-    border: black;
-    border-color: black;
-    border-style: solid;
-    color: black;
-    padding: 5px;
-    position: relative;
-    box-sizing: content-box;
-    background-color: black;
-    
-
-}
-
-
-.review-heading {
-    font-size: 16px;
-}
-
-span {
-    display: inline-block;
-    vertical-align: middle;
-    line-height: normal;
-    padding: 5px;
-}
-
-.review-stars-row,
-.review-stars-div {
-    height: 50px;
-    line-height: 50px;
-    text-align: center;
-    border: 2px dashed #f69c55;
-    margin: auto;
-}
-
-
-.leave-review-select-div,
-.leave-review-label-div{ 
-    height: 40px;
-    vertical-align:text-top;
-}
-
-.input-text,
-.leave-review-select {
-height: 25px;
-vertical-align: text-top;
-}
-
-
-/*.leave-review-select {
-    padding-top: 10px;
-    padding-bottom: 10px;
-}*/
-
-.leave-review-textarea {
-    height: 200px;
-    
-}
-
-.review-container {
-    width: 100%;
-}
-
-#leave-review-btn-div {
-height: 70px;
-}
-
-
-.rating {
-    display: flex;
-}
-
-.rating input {
-    position: absolute;
-    left: -100vw;
-}
-
-.rating label {
-    width: 48px;
-    height: 48px;
-    padding: 48px 0 0;
-    overflow: hidden;
-    background: url('../images/stars.svg') no-repeat top left; 
-}
-
+/* RESTAURANTS PAGE */
 
 
 #thumb-col-heading-font {
-font-weight: bold;
-font-size: 20px;
+    font-weight: bold;
+    font-size: 20px;
 }
 
 
@@ -503,6 +259,10 @@ font-size: 20px;
     font-weight: bold;
 }
 
+.justify {
+    text-align: justify;
+}
+
 .larger-than-default-text {
     font-size: 24px;
 }
@@ -515,28 +275,260 @@ font-size: 20px;
     width: 100%;
 }
 
-.contact-us {
-    font-size: 14px;
+.thumbnail {
+    border: 1px solid #ddd;
+    /* Gray border */
+    border-radius: 4px;
+    /* Rounded border */
+    padding: 5px;
+    /* Some padding */
+    width: 10%;
+    width: 10%;
+    /* Set a small width */
+}
+.restaurant-details-container,
+.leave-review-container {
+    width: 100%;
+    height: 100%;
+
+}
+
+.restaurant-details-left-hero-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.hero-image {
+    width: 90%;
+    height: 90%;
+    max-width: 350px;
+    max-height: 350px;
+
+}
+
+
+.hero-image-thumb {
+    width: 90%;
+    height: 90%;
+    max-width: 350px;
+    max-height: 350px;
+
+}
+
+
+.restaurant-information,
+.leave-review-information {
+    font-size: 12px;
+}
+
+.info-div {
+    width: 50%;
+    padding-top: 10px;
+    padding-right: 30px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    margin: auto;
+    float: right;
 }
 
 
 
 
 
+.left-panel-container-thumb {
+    width: 60%;
+}
+
+
+.show-on-small {
+    display: hidden;
+}
+
+#see-more-container {
+    border-bottom: black;
+    border-style: dashed;
+    border-width: thick;
+    padding-bottom: 20px;
+}
+/* END OF RESTAURANTS PAGE */
+
+/* REVIEWS*/
+.review-heading {
+    font-size: 16px;
+}
+
+span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+    padding: 5px;
+}
+
+.review-stars-row,
+.review-stars-div {
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border: 2px dashed #f69c55;
+    margin: auto;
+}
+
+
+.leave-review-select-div,
+.leave-review-label-div {
+    height: 40px;
+    vertical-align: text-top;
+}
+
+.input-text,
+.leave-review-select {
+    height: 25px;
+    vertical-align: text-top;
+}
 
 
 
 
+.leave-review-textarea {
+    height: 200px;
+
+}
+
+.review-container {
+    width: 100%;
+}
+
+#leave-review-btn-div {
+    height: 70px;
+}
+
+
+.rating {
+    display: flex;
+}
+
+.rating input {
+    position: absolute;
+    left: -100vw;
+}
+
+.review-title-text {
+    font-size: 24px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.review-body-text {
+    font-size: 16px;
+    text-align: justify;
+}
+
+.review-display {
+    border-bottom: black;
+    border-bottom-style: solid;
+    border-bottom-width: 0.5px;
+}
+
+/* END OF REVIEWS*/
 
 
 
 
+/*---------- BUTTONS ----------*/
+.collapsible,
+.see-reviews {
+
+    color: black;
+    cursor: pointer;
+    padding: 18px;
+    width: 50%;
+    border: none;
+    text-align: center;
+    float: center;
+    outline: none;
+    font-size: 15px;
+
+}
+
+.button-container {
+    max-height: fit-content;
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+    padding-bottom: 100px;
+}
+
+.active,
+.collapsible:hover,
+.see-reviews {
+    background-color: #555;
+}
+
+.collapsible:after {
+    content: '\002B';
+    color: black;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2212";
+}
+
+.content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
+}
+
+.btn-container {
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+
+}
+
+.btn-row {
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.btn-col {
+    text-align: center;
+    vertical-align: middle;
+}
+/*---------- END OF BUTTONS ----------*/
 
 
 
+/* DEFAULTS*/
+.default-text-size {
 
+    font-size: 16px;
 
+}
 
+.default-text-styling {
+    font-size: 16px;
+    color: black;
+
+}
+
+.intro-text-styling {
+    font-size: 16px;
+    color: black;
+    text-align: justify;
+    
+
+}
 
 .lg-padding {
     padding: 100px;
@@ -566,8 +558,7 @@ font-size: 20px;
     margin: auto;
 }
 
-.with-borders
- {
+.with-borders {
     border-style: solid;
     border-color: black;
 }
@@ -578,13 +569,13 @@ h4 {
     font-size: 16px;
 }
 
-.input-container{
-    width:100%;
+.input-container {
+    width: 100%;
     margin: auto;
 }
 
-.input-row{
-    width:50%;
+.input-row {
+    width: 50%;
     padding: 2px;
     margin: auto;
 }
@@ -601,138 +592,15 @@ h4 {
     margin: auto;
 }
 
-.review-title-text {
-    font-size: 24px;
-    letter-spacing: 2px;
-    font-weight: bold;
-    text-align: center;
+.lg-padding {
+    padding: 20px;
 }
+/* END OF DEFAULTS*/
 
-.review-body-text {
-    font-size: 16px;    
-    text-align: justify;
+
+.ad-card{
+    height: 500px;
 }
-
-.review-display {
-border-bottom:black;
-border-bottom-style: solid;
-border-bottom-width: 0.5px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.restaurant-details-container,
-.leave-review-container { 
-    width: 100%; 
-    height: 100%;
-   
-}
-
-.restaurant-details-left-hero-image { 
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-}
-
-
-
-.hero-image { 
-    width: 90%;
-    height: 90%;
-    max-width: 350px;
-    max-height: 350px;  
-
-  }
-
-
-.hero-image-thumb {
-    width: 90%;
-    height: 90%;
-    max-width: 350px;
-    max-height: 350px;
-
-}
-
-
-  .restaurant-information,
-  .leave-review-information{ 
-    font-size: 12px;
-  }
-
-
-.lg-padding{ 
-padding: 20px;
-}
-
-
-
-
-
-
-
-.info-div {
-    width: 50%;
-    padding-top: 10px;
-    padding-right: 30px;
-    padding-bottom: 10px;
-    padding-left: 30px;
-    margin: auto;
-    float:right;
-}
-
-
-.reviews-container {
-    width: 100%;
-    height: 100%;
-    padding-bottom: 10px;
-}
-
-.reviews-collapse {
-    width: 100%;
-    margin: auto;
-   
-}
-
-
-.left-panel-container-thumb {
-    width: 60%;
-}
-
-
-.show-on-small {
-    display: hidden;
-}
-
-#see-more-container {
-    border-bottom: black;
-    border-style: dashed;
-    border-width: thick;
-    padding-bottom: 20px;
-}
-
-
-
 
 /*<!-----------------------FOOTER------------------------------------>*/
 .footer-head {
