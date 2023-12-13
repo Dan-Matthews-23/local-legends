@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
-<div class=" align-center contact-us-container with-borders">
-    <div class="row with-borders align-center">
-        <div class="col s12 m12 l12 xl12 card-panel grey lighten-5 with-borders align-center">
-            <div class="row with-borders">
-                <div class="col align-center with-borders s12 m12 l12 xl12">
+<div class=" align-center contact-us-container ">
+    <div class="row  align-center">
+        <div class="col s12 m12 l12 xl12 card-panel grey lighten-5  align-center">
+            <div class="row ">
+                <div class="col align-center  s12 m12 l12 xl12">
                     <h1 class="title-font">Sign In</h1>
                 </div>
             </div>
             <form action="{{ url_for('login') }}" method="POST">
-                <div class=" align-center card-panel grey lighten-5 register-container with-borders">
+                <div class=" align-center card-panel grey lighten-5 register-container ">
 
                     <div class="row ">
                         <div class="col s12 m12 l12 xl12   leave-review-label-div">
@@ -22,30 +22,35 @@
                         </div>
                     </div>                    
                     <div class="row ">
-                        <div class="col s12 m12 l6 xl6   leave-review-label-div align-left">
-                            <label for="email_login" class="default-text-styling align-left">
+                        <div class="col s12 m12 l12 xl6   leave-review-label-div align-left register-col">
+                            <label for="email_login" class="default-text-styling align-left register-col">
                                 * Email Address
                             </label>
                         </div>
-                        <div class="col s12 m12 l6 xl6  leave-review-select-div align-left">
-                            <input type="email" class="contact-us-input" id="email_login" name="email_login"
-                                required>
+                        <div class="col s12 m12 l12 xl6  leave-review-select-div align-left register-col">
+                            <input type="email" class="contact-us-input register-col" id="email_login" name="email_login" 
+                                 placeholder="Enter email address" required>
                         </div>
                     </div>
                     <div class="row ">
-                        <div class="col s12 m12 l6 xl6   leave-review-label-div align-left">
-                            <label for="password_login" class="default-text-styling">
+                        <div class="col s12 m12 l12 xl6   leave-review-label-div align-left register-col">
+                            <label for="password_login" class=" register-col default-text-styling">
                                 * Password
                             </label>
                         </div>
-                        <div class="col s12 m12 l6 xl6  leave-review-select-div align-left">
-                            <input type="password" class="contact-us-input" id="password_login"
-                                name="password_login" required>
+                        <div class="col s12 m12 l12 xl6  leave-review-select-div align-left register-col">
+                            <input type="password" class="register-col contact-us-input" id="password_login"
+                                name="password_login" placeholder="Enter your password" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s12 center-align">
-                            <button type="submit" class="card-panel grey lighten-5">Register</button>
+                            <button type="submit" class="card-panel grey lighten-5">Log In</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 center-align">
+                            <a href="{{ url_for('contact_us') }}">Forgot Password</a>
                         </div>
                     </div>
             </form>

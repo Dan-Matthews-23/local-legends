@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
-<div class=" align-center contact-us-container with-borders">
-    <div class="row with-borders align-center">
-        <div class="col s12 m12 l12 xl12 card-panel grey lighten-5 with-borders align-center">
-            <div class="row with-borders">
-                <div class="col align-center with-borders s12 m12 l12 xl12">
+<div class=" align-center contact-us-container ">
+    <div class="row  align-center">
+        <div class="col s12 m12 l12 xl12  align-center">
+            <div class="row ">
+                <div class="col align-center  s12 m12 l12 xl12">
                     <h1 class="title-font">Profile</h1>
                 </div>
             </div>
             <section class="change_password">
                 <form action="{{ url_for('change_password') }}" method="POST">
-                <div class=" align-center card-panel grey lighten-5 register-container with-borders">
+                <div class=" align-center card-panel grey lighten-5 register-container ">
 
                     <div class="row ">
                         <div class="col s12 m12 l6 xl6   leave-review-label-div align-left">
@@ -49,10 +49,11 @@
                     </div>
             </form>
         </section>
+        <div class="container lg-padding"></div>
 
         <section class="change_username">
             <form action="{{ url_for('change_username') }}" method="POST">
-                <div class=" align-center card-panel grey lighten-5 register-container with-borders">
+                <div class=" align-center card-panel grey lighten-5 register-container ">
         
                     <div class="row ">
                         <div class="col s12 m12 l6 xl6   leave-review-label-div align-left">
@@ -71,10 +72,11 @@
                     </div>
             </form>
         </section>
+        <div class="container lg-padding"></div>
 
         <section class="change_email">
             <form action="{{ url_for('change_email') }}" method="POST">
-                <div class=" align-center card-panel grey lighten-5 register-container with-borders">
+                <div class=" align-center card-panel grey lighten-5 register-container ">
         
                     <div class="row ">
                         <div class="col s12 m12 l6 xl6   leave-review-label-div align-left">
@@ -94,10 +96,11 @@
                     </div>
             </form>
         </section>
+        <div class="container lg-padding"></div>
 
         <section class="delete_user">
             <form action="{{ url_for('delete_user') }}" method="POST">
-                <div class=" align-center card-panel grey lighten-5 register-container with-borders">
+                <div class=" align-center card-panel grey lighten-5 register-container ">
         
                     <div class="row ">
                         <div class="col s12 m12 l6 xl6   leave-review-label-div align-left">
@@ -120,11 +123,12 @@
         {% for user in users %}
         {% if user.is_admin %}
         {% if not session.is_admin %}
+        <div class="container lg-padding"></div>
 
         <section class="admin-section">
 
            
-                <div class=" align-center card-panel grey lighten-5 register-container with-borders">
+                <div class=" align-center card-panel grey lighten-5 register-container ">
                     <form action="{{ url_for('check_admin_status') }}" method="POST">
                     <div class="row">
                         <div class="col s12 center-align">

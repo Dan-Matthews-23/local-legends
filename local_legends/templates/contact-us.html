@@ -1,17 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
-<div class=" align-center contact-us-container with-borders">
-    <div class="row with-borders align-center">
-        <div class="col s12 m12 l12 xl12 card-panel grey lighten-5 with-borders align-center">
-            <div class="row with-borders">
-                <div class="col align-center with-borders s12 m12 l12 xl12">
+<div class=" align-center contact-us-container ">
+    <div class="row  align-center">
+        <div class="col s12 m12 l12 xl12 card-panel grey lighten-5  align-center">
+            <div class="row ">
+                <div class="col align-center  s12 m12 l12 xl12">
                     <h1 class="title-font">Contact Us</h1>
                 </div>
             </div>
             <button type="button" class="collapsible bold">Become a legend</button>
             <div class="content ">
                 <form action="{{ url_for('become_legend') }}" method="POST">
-                    <div class=" align-center card-panel grey lighten-5 contact-us-container with-borders">
+                    <div class=" align-center card-panel grey lighten-5 contact-us-container ">
                         <div class="row ">
                             <div class="row ">
                                 <div class="col s12 m12 l12 xl12   leave-review-label-div">
@@ -168,7 +168,7 @@
             <button type="button" class="collapsible bold">Having problems?</button>
             <div class="content ">
                 <form action="{{ url_for('handle_contact_us') }}" method="POST">
-                    <div class=" align-center card-panel grey lighten-5 contact-us-container with-borders">
+                    <div class=" align-center card-panel grey lighten-5 contact-us-container ">
                         <div class="row ">
                             
                             <div class="row ">
@@ -209,6 +209,7 @@
                                 </div>
                                 <div class="col s12 m12 l6 xl6  leave-review-select-div align-left">
                                     <select name="problem_type" id="problem_type" class="leave-review-select ">
+                                        <option value="forgot-password">Forgot Password</option>
                                         <option value="technical">Technical</option>
                                         <option value="account">Issues with account</option>
                                         <option value="information">Incorrect information</option>

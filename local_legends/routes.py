@@ -172,7 +172,7 @@ def handle_contact_us():
 
         if new_problem:
             session.pop('user_email')
-            session['err'] = "Your request has been sent. Please allow 3-5 working days"
+            session['err'] = "Your request has been sent. Please allow 3-5 working days for an administrator to contact you. Please note if this is a 'Forgot Password' request, we will send a new password to your email account. Please remember to check your spam folder"
             redirect_url = request.referrer or url_for(home)
             return redirect(redirect_url)
         else: 

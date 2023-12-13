@@ -181,7 +181,7 @@
 
 /*<!-----------------------REGISTER/LOGIN PAGE------------------------------------>*/
 .register-container {
-    width: 50%;
+    width:60%;
 }
 
 .login-container {
@@ -454,6 +454,14 @@ span {
 
 }
 
+#collapsible-intro-content {
+    background-color: white;
+}
+
+.show-more-para-styling {
+    padding: 10px;
+}
+
 .button-container {
     max-height: fit-content;
     width: 100%;
@@ -640,6 +648,117 @@ h4 {
 
 
 /*<!-----------------------Media Queries------------------------------------>*/
+
+
+
+
+
+
+
+
+@media screen and (max-width: 1335px) {
+    .register-container {
+        width: 65%;
+    }
+    .register-col {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .register-container {
+        width: 50%;
+       
+    }
+        .register-col {
+            text-align: center;
+        }
+}
+
+@media screen and (max-width: 675px) {
+    .register-container {
+        width: 60%;
+
+    }
+
+    .register-col {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .register-container {
+        width: 70%;
+
+    }
+
+    .register-col {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .register-container {
+        width: 80%;
+
+    }
+
+    .register-col {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .register-container {
+        width: 90%;
+
+    }
+
+    .register-col {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 370px) {
+    .register-container {
+        width: 100%;
+    }
+
+    .register-col {
+        text-align: center;
+    }
+   
+}
+
+@media screen and (max-width: 320px) {
+    
+    #main-register-container {
+        width: 100%;
+    }
+}
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 365px) {
+    .intro-container {
+        height: 200px;
+    }
+}
+
+@media screen and (max-width: 319px) {
+    .intro-container {
+        height: 250px;
+    }
+}
+
+
+
 
 @media screen and (max-width: 1200px) {
     .restaurant-details-container {
