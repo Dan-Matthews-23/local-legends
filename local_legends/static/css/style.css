@@ -76,25 +76,27 @@
 
 /*<!-----------------------Error Bar------------------------------------>*/
 
+#error-bar-container {
+height: 100px;
+}
 #error-bar-main-div {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    height: var(--height-preset);
-    width: 90%;
-    background-color: #efebe9;
+   color: red;
     margin: auto;
     vertical-align: middle;
     font-size: 16px;
-    font-weight: bold;
-    color: var(--brown-darken-1);
+    font-weight: bold;   
     letter-spacing: 3px;
+}
+
+#error_exit{
+    color:red;
 }
 
 #error-bar-exit {
     padding-top: 5px;
     padding-bottom: 5px;
     height: var(--height-preset);
-    width: 10%;
+    
     background-color: #efebe9;
     margin: auto;
     vertical-align: middle;
@@ -148,7 +150,11 @@
 }
 /*---------- END OF TITLE ----------*/
 
+.italic { 
+    font-style: italic;
+}
 
+/*-
 /*---------- CONTACT US ----------*/
 
 .contact-us-container {

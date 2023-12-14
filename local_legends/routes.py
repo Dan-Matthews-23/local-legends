@@ -203,8 +203,7 @@ def register():
         username = request.form.get("username_register")
         email = request.form.get("email_register")
 
-        existing_username = Users.query.filter(
-            Users.username == username.lower()).all()
+        existing_username = Users.query.filter(Users.username == username.lower()).all()
         existing_email = Users.query.filter(Users.email == email.lower()).all()
 
         if existing_username:
@@ -614,8 +613,7 @@ def home():
 
 @app.route("/restaurants")
 def restaurants():
-    if session.get('err'):
-        session.pop('err')
+    
 
     restaurants = Restaurants.query.order_by(Restaurants.restaurant_id).all()  
 
@@ -701,7 +699,8 @@ def change_password():
                 return redirect(url_for('profile'))
             
             else:
-                hashed_password = generate_password_hash(request.form.get("current_password"))
+                hashed_password = generate_password_hash(
+                    request.form.get("confirm_password_change"))
                 update_query.password_hash = hashed_password
                 db.session.add(update_query)
             #db.session.commit()         
@@ -1170,8 +1169,9 @@ def delete_review(review_id):
                 db.session.commit()
         try:            
             db.session.commit()
-            session['err'] = "Review edited successfully"
-            return redirect(url_for('restaurants'))
+            session['err'] = "Review deleted successfully"           
+            redirect_url = url_for("restaurants") or url_for(home)            
+            return redirect(redirect_url)
         except Exception as e:
             print(e)
             session['err'] = f"An error occurred while editing the restaurant - the ID is {restaurant_id}"
@@ -1221,16 +1221,18 @@ def clear_error():
 @app.route("/signin", methods=["GET", "POST"])
 def login():
     password = request.form.get("password_login")
-    email = request.form.get("email_login")
+    email = request.form.get("email_login")   
+ 
 
     if request.method == "POST":
-        existing_user = Users.query.filter(Users.email == email).first()
+        existing_user = Users.query.filter(Users.email == email.lower()).first()
         if existing_user:
             if check_password_hash(existing_user.password_hash, password):
                 user_id = existing_user.user_id
                 session['user_id'] = user_id
                 session['username'] = existing_user.username
                 session['is_logged_in'] = True
+                session.pop('err')
                 #users = Users.query.order_by(Users.user_id).all()
                 #session['users'] = users
                 return redirect(url_for("profile", user_id=user_id))
@@ -1238,10 +1240,12 @@ def login():
                 # however for security purposes I have not done this (see README)
             else:
                 session['err'] = "Incorrect details. Please try again"
-                return redirect(url_for("login"))
+                redirect_url = request.referrer or url_for(home)
+            return redirect(redirect_url)
         else:
             session['err'] = "Incorrect details. Please try again"
-            return redirect(url_for("home"))
+            redirect_url = request.referrer or url_for(home)
+            return redirect(redirect_url)
     return render_template("signin.html")
 
 

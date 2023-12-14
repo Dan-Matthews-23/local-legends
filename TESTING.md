@@ -19,6 +19,7 @@
     - [Solved Bugs](#solved-bugs)
     - [Known Bugs](#known-bugs)
       - [Restaurants](#restaurants)
+      - [Delete Review](#delete-review)
 
 ## Testing
 
@@ -338,3 +339,7 @@ Under the Thumb section, there are a list of restaurant attributes. The 'See Mor
 ![001](/assets/testing/testing-images/known-bugs-image-a)
 
 ![001](/assets/testing/testing-images/known-bugs-image-b)
+
+#### Delete Review
+
+Across all functions I have a "redirect_url = request.referrer or url_for(home)" command for each. This means that the user is directed back to the page they were on previouisly. However for a delete review, the user cannot be redirected back to a page that no longer exists. I then tried to redirect the user back to the Restaurant Profile page using the restaurant ID. However I could not get this to work. Instead I've had to redirect the user back to Restaurants, displaying confirmation the review is deleted. This is not what I wanted but unfortunatly have no time to correct this error

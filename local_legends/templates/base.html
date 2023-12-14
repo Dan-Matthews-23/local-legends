@@ -46,14 +46,17 @@
         </div>
       </nav>
       <!--Nav bar for screens 992px and under-->
-      <ul class="sidenav" id="mobile-demo">
-        <li><a class="header-links" href="{{ url_for('home') }}">Home</a></li>
-        <li><a class="header-links" href="{{ url_for('register') }}">Register</a></li>
-        {% if session.is_logged_in %}<li><a class="header-links" href="{{ url_for('logout') }}">Sign Out</a></li>{% else %}<li>
-            <a class="header-links" href="{{ url_for('login') }}">Sign In</a></li>{% endif %}
-        <li><a class="header-links" href="{{ url_for('restaurants') }}">Restaurants</a></li>
-        <li><a class="header-links" href="{{ url_for('profile') }}">Profile</a></li>
-      </ul>
+      
+        <ul class="sidenav" id="mobile-demo">
+            <li><a class="header-links" href="{{ url_for('home') }}">Home</a></li>
+            <li><a class="header-links" href="{{ url_for('register') }}">Register</a></li>
+            {% if session.is_logged_in %}<li><a class="header-links" href="{{ url_for('logout') }}">Sign Out</a></li>{% else %}
+            <li><a class="header-links" href="{{ url_for('login') }}">Sign In</a></li>{% endif %}
+            <li><a class="header-links" href="{{ url_for('restaurants') }}">Restaurants</a></li>
+            <li><a class="header-links" href="{{ url_for('profile') }}">Profile</a></li>
+            {% if session.admin_id %}<li><a class="header-links" href="{{ url_for('admin_portal') }}">Admin portal</a></li>{%
+            endif %}
+        </ul>
     </header>
     
 
@@ -72,13 +75,16 @@
 </div>
 
 {% if session.err %}
-<div class="container align-center " id="error-bar">
+<div class="container align-center" id="error-bar-container">
     <div class="row ">
-        <div class="col " id="error-bar-main-div">{{session.err}}</div>
-        <div class="col " id="error-bar-exit">
+        <div class="col s12 m12 l12 xl12 " id="error-bar-main-div">
+            {{session.err}}
             <a href="{{ url_for('clear_error') }}">
-            <i class="fa-regular fa-circle-xmark fa-2xl" style="color: #6d4c41;"></i></a>
+            <i id="error_exit" class="fa-regular fa-circle-xmark fa-xl"></i></a>
+
+
         </div>
+        
     </div>
 </div>
 {% endif %}
