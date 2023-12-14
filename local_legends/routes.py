@@ -413,8 +413,7 @@ def create_restaurant():
         
         approval_restaurant_id = request.form.get("restaurant_id")
 
-        approval = Approvals.query.filter_by(
-                approval_id=approval_restaurant_id).first()
+        approval = Approvals.query.filter_by(approval_id=approval_restaurant_id).first()
             
 
         restaurant_name = approval.restaurant_name
@@ -1045,7 +1044,28 @@ def delete_user():
     return render_template("profile.html")
     
 
+@app.route("/admin_portal/problems", methods=["GET", "POST"])
+def archive_problem():
+    if session.get('err'):
+        session.pop('err')
     
+    problem_id = request.form.get("problem_id")
+
+    if request.method == "POST":
+        get_problem = Problems.query.filter(Problems.problem_id == problem_id).first()
+        if get_problem:
+            get_problem.solved = True
+            db.session.add(get_problem)
+            db.session.commit()
+            redirect_url = request.referrer or url_for(home)
+            return redirect(redirect_url)
+        else:
+            session['err'] = "There was an unknown error. Please try again"
+    render_template("admin_portal.html")
+
+
+            
+     
        
 
 
@@ -1290,7 +1310,7 @@ def check_admin_status():
 def admin_portal():
     approvals = list(Approvals.query.order_by(Approvals.approval_id).all())                                
     restaurants = list(Restaurants.query.order_by(Restaurants.restaurant_id).all())
-    problems = list(Problems.query.order_by(Problems.problem_id).all())
+    problems = Problems.query.filter_by(solved=False).all()
     return render_template("admin_portal.html", approvals=approvals, restaurants=restaurants, problems=problems)
 
 
@@ -1315,7 +1335,7 @@ def admin_login():
                 admin_id = admin_id_check.user_id
                 # Seventh line of defense - checking if user_id matches the user_id stored in Admins table
                 if user_id == admin_id:
-                    if request.form.get("username") == user.username and request.form.get("email") == user.email:
+                    if request.form.get("username") == user.username and request.form.get("email").lower() == user.email:
                         test_pword = request.form.get("password")
                         admin_pass = request.form.get("admin_password")
                         if check_password_hash(user.password_hash, test_pword):

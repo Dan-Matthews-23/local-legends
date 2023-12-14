@@ -100,6 +100,7 @@ class Problems(db.Model):
     email = db.Column(db.String(25), nullable=False)
     detail = db.Column(db.String(1000), nullable=False)
     date = db.Column(db.DateTime, nullable=False)
+    solved = db.Column(db.Boolean, default=False)
     
 
     def __repr__(self):
