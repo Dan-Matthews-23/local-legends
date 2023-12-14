@@ -146,47 +146,13 @@ This is the biggest project I've undertaken to date. While I've little developer
 
 Wireframes were created for desktop, tablet and mobile (1200px, 758px, and 476px respectively).
 
-[User Selection Screen Section Wireframe in Mobile View](/assets/images/wireframes/index.html-mobile.webp)
-
-[User Selection Screen Section Wireframe in Tablet View](/assets/images/wireframes/index.html-tablet.webp)
-
-[User Selection Screen Section Wireframe in Desktop View](/assets/images/wireframes/index.html.webp)
-
-[Username Section Wireframe in Mobile View](/assets/images/wireframes/username.html-mobile.webp)
-
-[Username Section Wireframe in Tablet View](/assets/images/wireframes/username.html-tablet.webp)
-
-[Username Section Wireframe in Desktop View](/assets/images/wireframes/username.html.webp)
-
-[Quiz Section Wireframe in Mobile View](/assets/images/wireframes/game.html-mobile.webp)
-
-[Quiz Section Wireframe in Tablet View](/assets/images/wireframes/game.html-tablet.webp)
-
-[Quiz Section Wireframe in Desktop View](/assets/images/wireframes/game.html.webp)
-
-[Game Over Section Wireframe in Mobile View](/assets/images/wireframes/game.html-mobile.webp)
-
-[Game Over Section Wireframe in Tablet View](/assets/images/wireframes/game-over.html-tablet.webp)
-
-[Game Over Section Wireframe in Desktop View](/assets//images/wireframes/game-over.html.webp)
-
-[Hall of Fame Section Wireframe in Mobile View](/assets/images/wireframes/high-scores.html-mobile.webp)
-
-[Hall of Fame Section Wireframe in Tablet View](/assets/images/wireframes/high-scores.html-tablet.webp)
-
-[Hall of Fame Section Wireframe in Desktop View](/assets/images/wireframes/high-scores.html.webp)
-
-[Instructions Section Wireframe in Mobile View](/assets/images/wireframes/instructions.html-mobile.webp)
-
-[Instructions Section Wireframe in Tablet View](/assets/images/wireframes/instructions.html-tablet.webp)
-
-[Instructions Section Wireframe in Desktop View](/assets/images/wireframes/instructions.html.webp)
+WIREFRAMES HERE
 
 #### Database Design
 
 The initial plans for the database were designed in Microsoft Access. I used this program because I was quite familiar with it, having taught its use for years. My project will use a Relational Database design. There will be three tables for users, restaraunts and reviews, each with a primary key.
 
-![Local Legends Database Design](/assets/images/database-design-users)
+![Local Legends Database Design](/assets/images/testing/)
 
 ![Local Legends Database Design](/assets/images/database-design-restaurants)
 
@@ -554,16 +520,7 @@ I have introduced a multi-stage defensive approach to logging in as admin, check
 Ordinarily, protocol discates that the error message the customer receieves should give clear reasons why they have not been able to do what they expected. In def login, the script checks for an email address. If it's not found, the user is supposed to be told this. However I don't want anyone unauthorised to know that one of the fields is correct, which they would do if I were to give specirfic feedback on why the login failed. To mitigate this I have a generic failure reason. 
 
 
-### Stage Ten - Making User-Friendly changes
-
-At this final stage, all forseeable programming has been completed, and the entire project has seen rigorous testing from all three user types (guest, registered user, admin). There are quite a few changes that need to be implemented to make the interfaces user-friendly. I will document these as I go. I will not be providing screenshots due to the sheer number expected 
-
-|      Page          |   Issue              | Change Made | 
-| ------------       | ---------            | ---------  |
-|  Restaurants       | The title is too big and unresponsive   | I've used four media queries to make the title responsive      | 
-|  Restaurants       | There is not enough information on the thumbnail view (view before 'See More' button is clicked)   | I've reworded the information      |
-|  Restaurants       | The font is hard to see. It needs to be bigger    | I've adjusted the font size to 16px as default     |
-|  Restaurants       | The 'See More' button is left-aligned    | I've adjusted the font size to 16px as default     |
+This completes all stages of design and implementation
 
 
 
@@ -579,7 +536,7 @@ At this final stage, all forseeable programming has been completed, and the enti
 
 ![Master Template](/assets/images/am-i-responsive-base.webp)
 
-Base.html is the master template upon which all other pages are based. It contains the nav bars (larger and smaller) the header and the footer
+Base.html is the master template upon which all other pages are based. It contains the nav bars (larger and smaller) the header and the footer and main container
 
 ### Nav Bar
 
@@ -587,13 +544,77 @@ Base.html is the master template upon which all other pages are based. It contai
 
 ![Nav Bar Small](/assets/images/am-i-responsive-nav-a.webp)
 
-The Nav Bar is contained within the MAster Template (base.html). It is fully responsive. IF a user's viewport is ?? or more, the larger nav bar is presented. This is designed for tablets and desktops. However if a user's viewport is ?? or less, the necond nav bar is displayed. Both nav bars are complete examples available on Materialize and refereced in #Acknwoegements.
+The Nav Bar is contained within the Master Template (base.html). It is fully responsive. IF a user's viewport is 993 or more, the larger nav bar is presented. This is designed for tablets and desktops. However if a user's viewport is 992 or less, the second nav bar is displayed. Both nav bars are complete examples available on Materialize and refereced in #Acknwoegements. It has links to Home, Profile, Sign In (if not logged in), Sign Out (if logged in), Register and Admin Portal (if an admin). The Admin Portal link is activated by the "is_admin" boolean in the user table. This is one of the defensive programming measures I have implemented. 
 
 ### Profile
 
 ![Profile](/assets/images/am-i-responsive-profile.webp)
 
-This section will allow the user, once logged in, to perform Update and Delete (CRUD) functions. This cannot be done if the user is not logged in. If the user clicks Profile and they are not logged in, they will be directed to the Register or Login screens.
+This section will allow the user, once logged in, to perform Update and Delete (CRUD) functions. This cannot be done if the user is not logged in. If the user clicks Profile and they are not logged in, they will be directed to the Register or Login screens. There are several user options for this page. 
+
+#### Change Password
+
+This option will allow the user to change their password by entering their current password (an extra safety measure), their desired password and then to confirm their desired password again (another safety measure). The new password and confirm new password fields must match, the current password must match the password in the users table exacly, and passwords must be at least 10 characters in length. Passwords stored in the user table are hashed. The user is advised on the best password type to use, but ultimetly I have chosen not to restrict the content of the password (see #Justifications)
+
+#### Change Email
+
+This option will allow the user to change their email address. They are presented with a warning about the dangers of entering an incorrect email address. There is validation on this field that will check the email address is the correct format. 
+
+#### Change Username
+
+This will allow the user to change their Username. The username is used for review purposes only (shown only when a user leaves a review). A user cannot choose a username that already exists in the users table, and must be at least 3 characters long. Convention dictates that this should be longer, but I have chosen to disgegard (see #Justifications)
+
+#### Delete Account
+
+This option will allow the user to delete their accounts along with all personal information. Users must enter their password to confirm. They are told that account deletion is permenant and cannot be undone. It also tells them that while all personal information (that can identify them) will be delete, reviews will not be deleted. This is because to do so will change the ratings of the restaurant, and could compromise what the website is trying to achieve. This is why the only thing on the review that can be linked to a person is a username.
+
+#### Admin Login
+
+The user (if "is_admin" in user table is True) will have a button not visible to other users. They click this to enter a series of checks to check the user is authorised to access admin pages (see Defensive Programming)
+
+#### Admin Portal
+
+Once an admin has logged in, they have three sections on the dashboard: Problems, Approvals, Edit Restaurant.
+
+##### Problems
+
+If a user (guest, registered user or business) is havint problems they report this on Contact Us. Once they've submitted a ticket, the Problems section will have each problem as a list. The Admin can resolve the issue then click "Archive Problem" once actions are completed. 
+
+##### Approvals
+
+This section is to approve all reqwuests by businesses to have their restaurant feature on Local Legends. Again this can be done via COntact Us. Once a restaurant is submitted, it comes to the Admin Portal to approve. The Admin must read the details carefully and then click Approve. To make any amendments, they must approve then move on to the next section
+
+##### Edit Restaurant
+
+Once a restaurant is approved by an admin the admin can then change aspects of the restaurant, from the image URL to the address. This could be to correct an error or a request from the restaurant using COntact Us
+
+### Contact Us
+
+This is a simple form that the user, guest or business owner can fill out to contact the admin team. It is used to report a problem, ask a question or make a request, including to ask their restaurant to be placed on Local Legends. Each request is sent to the Admin portal
+
+#### Restaurants
+
+Once a restaurant has been approved by an admin, it will appear on the Restaurants page. The user will select the restaurant then click different sections to see more, and also have the ability to leave a review.
+
+#### Restaurant Profile / Leave Review
+
+This page is more information about the restaurant and this is where a user or guest can view all reviews for that restaurant. 
+
+### Home
+
+The home screen introduces the user to the site. It explains the website aims and how to use it. It also has a small selection of restaurants to get the user started. It's a trimmed-down version of the Restaurants page. From here the user can link to almost all parts of the website (except admin portal)
+
+### Register
+
+This page is one of the simplist. It asks the user for an email address, username and password. They all have the same validation as described above
+
+### Sign In
+
+The user will enter their email address and password to log in. If they have forgotten the password, they click "Forgot Password". It will then link them to Contact Us, where they select the Forgot Password selection. The request is then stored in the Problems table to flash up on the Admin Portal
+
+
+
+
 
 ### Register and Login sections
 
@@ -616,15 +637,13 @@ The Registration section will ask the user for five peices of information:
 
 ### 500 page
 
-![500 page](/assets/images/five-hundred-error.webp)
 
-This is a seperate script to index.html. It should only be shown to the user if and when the connection to the API fails or times out. The user is presented with a button that directs back to the homepage.
 
-### 404 p
+### 404 
 
-![404 page](/assets/images/four-hundred-four-error.webp)
 
-This is a seperate script to index.html. It should only be shown to the user if and when they are directed to a page that does not exist, although I do not expect this tp occur even accidentally since the project is only on one page. The user is presented with a button that directs back to the homepage.
+
+
 
 ## Accessibility
 
