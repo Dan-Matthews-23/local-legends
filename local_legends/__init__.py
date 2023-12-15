@@ -21,4 +21,4 @@ app = Flask(__name__)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-from local_legends import routes  # noqa
+from local_legends import routes  #noqa 
