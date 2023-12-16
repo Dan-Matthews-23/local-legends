@@ -395,12 +395,12 @@ The permissions for this project will follow CRUD design and will be set out as 
 
 | CRUD   | Guests | Registered Accounts |
 | ------ | ------ | ------------------- |
-| Create | No*     | Yes                 |
+| Create | No\*   | Yes                 |
 | Read   | Yes    | Yes                 |
 | Update | No     | Yes                 |
 | Delete | No     | Yes                 |
 
-* except to create account
+- except to create account
 
 While Registered Accounts will have permission to create, update and delete their own reviews, they will not have the permission to alter other user's reviews.
 
@@ -638,9 +638,7 @@ As part of my drive to make sure this project is as accessible as possible, and 
 ## Justifications and reflections
 
 - **Relational v Non-relational database choice** - I spent some time pouring through the theory and practise around both forms of database design. [Scaler.com](https://www.scaler.com/topics/dbms/relational-and-non-relational-databases/) are quite thorough in their comparison between both database designs. After having compared my designs and purpose with their reccomendations (advantages and disadvantages for both), it seemed logical that I choose a non-relational database design for my own project. However, although perhaps controversial, I have chosen a relational database design for this project. Ultimetly that choice was based on my own personal preference, having first made sure there was no sense of taboo around which design to use for the purpose of this project. I am familiar with relational databases, having taught them for many years to children. I am also familiar with the syntax around the query lanaguages (SQL) and much prefer a structured method to interrogating data. I do note that if this project were to grow to the size of some of the projects upon which I have taken inspiration (such as Tripadvisor, who have taken over a billion reviews), I would need to carefully consider migrating to a non-relational database, simply because relational database queries are slower and require more server space, ultimatly negativley affecting user experience. However for the purposes of this project a relational database design will not affect user experience.
--
-
----
+- ***
 
 ## Technologies Used
 
