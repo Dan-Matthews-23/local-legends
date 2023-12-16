@@ -414,81 +414,58 @@ def handle_leave_review(restaurant_id):
 @app.route("/admin_login/create", methods=["GET", "POST"])
 def create_restaurant():
 
-    if session.get('err'):
-        session.pop('err')
-
     if session.get('is_logged_in', False):
-        
-        approval_restaurant_id = request.form.get("restaurant_id")
+        if request.method == "POST":  
 
-        approval = Approvals.query.filter_by(approval_id=approval_restaurant_id).first()
-            
-
-        restaurant_name = approval.restaurant_name
-        restaurant_add_one = approval.restaurant_address_one
-        restaurant_add_two = approval.restaurant_address_two
-        restaurant_add_three = approval.restaurant_address_three
-        restaurant_add_four = approval.restaurant_address_four
-        restaurant_postcode = approval.restaurant_address_postcode
-        restaurant_thumbnail = approval.restaurant_image_url
-        restaurant_delivery = approval.restaurant_delivery
-        restaurant_week = approval.restaurant_week
-        restaurant_cuisine_one = approval.restaurant_cuisine_one
-        restaurant_cuisine_two = approval.restaurant_cuisine_two
-        restaurant_cuisine_three = approval.restaurant_cuisine_three          
-        todays_date = datetime.datetime.now()
-        date_only = todays_date.date()
-
-        if not approval:
-            session['err'] = f"Error - the approval is {approval}"
-            redirect_url = request.referrer or url_for(home)
-            return redirect(redirect_url)
-            
-        if not restaurant_name:
-            session['err'] = f"Error - the name is {restaurant_name}"
-            redirect_url = request.referrer or url_for(home)
-            return redirect(redirect_url)
-            
-        if not restaurant_add_one:
-            session['err'] = f"Error - the add_one is {restaurant_add_one}"
-            redirect_url = request.referrer or url_for(home)
-            return redirect(redirect_url)
-            
-        if not restaurant_add_two:
-            session['err'] = f"Error - the add_two is {restaurant_add_one}"
-            redirect_url = request.referrer or url_for(home)
-            return redirect(redirect_url)
-            
-       
-            
-        if not restaurant_postcode:
-            session['err'] = f"Error - the restaurant_postcode is {restaurant_postcode}"
-            redirect_url = request.referrer or url_for(home)
-            return redirect(redirect_url)
-            
-        if not restaurant_thumbnail:
-            session['err'] = f"Error - the restaurant_thumbnail is {restaurant_thumbnail}"
-            redirect_url = request.referrer or url_for(home)
-            return redirect(redirect_url)
-            
-      
-            
-        if not restaurant_cuisine_one:
-            session['err'] = f"Error - the restaurant_cuisine_one is {restaurant_cuisine_one}"
-            redirect_url = request.referrer or url_for(home)
-            return redirect(redirect_url)
-            
-    
-            
-        if not date_only:
-            session['err'] = f"Error - the date_only is {date_only}"
-            redirect_url = request.referrer or url_for(home)
-            return redirect(redirect_url)
-
-
-                    
-
-        new_restaurant = Restaurants(restaurant_name=restaurant_name,
+            approval_restaurant_id = request.form.get("restaurant_id")
+            approval = Approvals.query.filter_by(approval_id=approval_restaurant_id).first()
+            restaurant_name = approval.restaurant_name
+            restaurant_add_one = approval.restaurant_address_one
+            restaurant_add_two = approval.restaurant_address_two
+            restaurant_add_three = approval.restaurant_address_three
+            restaurant_add_four = approval.restaurant_address_four
+            restaurant_postcode = approval.restaurant_address_postcode
+            restaurant_thumbnail = approval.restaurant_image_url
+            restaurant_delivery = approval.restaurant_delivery
+            restaurant_week = approval.restaurant_week
+            restaurant_cuisine_one = approval.restaurant_cuisine_one
+            restaurant_cuisine_two = approval.restaurant_cuisine_two
+            restaurant_cuisine_three = approval.restaurant_cuisine_three          
+            todays_date = datetime.datetime.now()
+            date_only = todays_date.date()
+            if not approval:
+                session['err'] = f"Error - the approval is {approval}"
+                redirect_url = request.referrer or url_for(home)
+                return redirect(redirect_url)            
+            if not restaurant_name:
+                session['err'] = f"Error - the name is {restaurant_name}"
+                redirect_url = request.referrer or url_for(home)
+                return redirect(redirect_url)            
+            if not restaurant_add_one:
+                session['err'] = f"Error - the add_one is {restaurant_add_one}"
+                redirect_url = request.referrer or url_for(home)
+                return redirect(redirect_url)            
+            if not restaurant_add_two:
+                session['err'] = f"Error - the add_two is {restaurant_add_one}"
+                redirect_url = request.referrer or url_for(home)
+                return redirect(redirect_url)           
+            if not restaurant_postcode:
+                session['err'] = f"Error - the restaurant_postcode is {restaurant_postcode}"
+                redirect_url = request.referrer or url_for(home)
+                return redirect(redirect_url)            
+            if not restaurant_thumbnail:
+                session['err'] = f"Error - the restaurant_thumbnail is {restaurant_thumbnail}"
+                redirect_url = request.referrer or url_for(home)
+                return redirect(redirect_url)          
+            if not restaurant_cuisine_one:
+                session['err'] = f"Error - the restaurant_cuisine_one is {restaurant_cuisine_one}"
+                redirect_url = request.referrer or url_for(home)
+                return redirect(redirect_url)           
+            if not date_only:
+                session['err'] = f"Error - the date_only is {date_only}"
+                redirect_url = request.referrer or url_for(home)
+                return redirect(redirect_url)
+                new_restaurant = Restaurants(restaurant_name=restaurant_name,
                                          restaurant_address_one=restaurant_add_one,
                                          restaurant_address_two=restaurant_add_two,
                                          restaurant_address_three=restaurant_add_three,
@@ -503,16 +480,18 @@ def create_restaurant():
                                          restaurant_week=restaurant_week
                                          )
 
-        db.session.add(new_restaurant)
-        db.session.commit()
-
-        delete_approval = Approvals.query.filter_by(approval_id=approval_restaurant_id).first()
-        db.session.delete(delete_approval)
-        db.session.commit()
-
-        restaurants = Restaurants.query.order_by(Restaurants.restaurant_id).all()
-          
+            db.session.add(new_restaurant)
+            db.session.commit()
+            delete_approval = Approvals.query.filter_by(approval_id=approval_restaurant_id).first()
+            db.session.delete(delete_approval)
+            db.session.commit()
+            session['err'] = "Review created successfully"
+            redirect_url = request.referrer or url_for(home)
+            return redirect(redirect_url)
+            restaurants = Restaurants.query.order_by(Restaurants.restaurant_id).all()          
         return render_template("admin_portal.html", restaurants=restaurants)
+    return redirect("login")
+
 
 
         
