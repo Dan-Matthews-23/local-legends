@@ -127,9 +127,7 @@
         <div class="col" id="welcome-banner-central-div">
           {% if session.is_logged_in %} Welcome back, {{session.username}} {%
           else %} Welcome, Guest.
-          <a class="header-links" href="{{ url_for('register') }}"
-            >Register In</a
-          >
+          <a class="header-links" href="{{ url_for('register') }}">Register</a>
           or
           <a class="header-links" href="{{ url_for('login') }}">Sign In</a> {%
           endif %}
