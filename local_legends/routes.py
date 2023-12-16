@@ -32,6 +32,14 @@ def become_legend():
         session.pop('err')
 
     if request.method == "POST":
+
+        posted_email = request.form.get("email_restaurant")
+        if (posted_restaurant_name == "" or not posted_email):
+            session['err'] = "You must enter an email address"
+            redirect_url = request.referrer or url_for(home)
+            return redirect(redirect_url)
+        else:
+            email = posted_email
         
         posted_restaurant_name = request.form.get("restaurant_name")
         if (posted_restaurant_name == "" or posted_restaurant_name == "e.g. The Burger Bar"):
@@ -130,7 +138,9 @@ def become_legend():
                                        restaurant_cuisine_two=restaurant_cuisine_two,
                                        restaurant_cuisine_three=restaurant_cuisine_three,
                                        restaurant_delivery=restaurant_delivery,
-                                       restaurant_week=restaurant_week
+                                       restaurant_week=restaurant_week,
+                                       email=email
+                                       
                                        )
 
         db.session.add(new_restaurant)

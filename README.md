@@ -705,6 +705,75 @@ To clone this repository:
 
 ---
 
+### How to maintain
+
+#### Giving admin access
+
+Given that I intend to release this project to the public, I strongly believe that in order to maintain proper functionality and accuracy, an administrator is required. Flask does not come with an addon with this facility, so I have built my own. This means that for business owners to get their restaurant on Local Legends, they must submit a request through Contact Us.
+
+Once an administrator has logged in, they are presented with three sections: Support Requests, Approval Requests and Edit Restaurant.
+
+Before any maintainance begins, the administrator will need full access to Heroku, Elephant SQL and the Local Legends administrator permissions. Given that I will be the only administrator, I have these tools already. However should there be a need to give another user all of thesem you must follow these instructions:
+
+To give administrator permissions for Elephant SQL:
+
+- Access <https://www.elephantsql.com/>
+- Log in as the main administrator by clicking "Sign in with GitHub"
+- Enter the "instances" section
+- Select "local_legends"
+- Select "Team Settings" from the drop-down menu at the top-right
+- Click "Add Member" button
+- Select "Admin" and enter the email address of the user you want to make an admin
+- Click "Send Invite"
+
+After the user accepts the invite, they will now have access to the admin settings for Elephant SQL. This is essential to become an admin for Local Legends
+
+To give administrator permissions for an existing Local Legends Registered Account:
+
+- Access and log in to Elephant SQL
+- Enter the Local Legends instance
+- From the options on the left sidebar, select "Browser" to enter the Browser-based SQL command console
+- In the console, enter the following SQL query: SELECT \* FROM "public"."users"
+- This will bring a full list of registered users. Find the user you want to make an admin and note their user_id.
+- Then enter the following command: UPDATE "public"."users" SET is_admin = True WHERE user_id=THEIR_USER_ID
+- This will update the users table and give that user an 'is_admin' marker.
+- Next, enter the following command: INSERT INTO "public"."admins" (user_id, admin_password_hash) VALUES (THEIR_USER_ID, 'TEMPORARY_PASSWORD')
+- This will create a new admin record for later authentication checks.
+- To complete the process, the user must log in, access Profile and then access "Hash Password" button at the bottom of the screen. The user will enter their desired admin password that must be different to their user password. It is essential this step is completed as soon as possible to ensure security.
+
+To remove admin permissions for a user:
+
+- Access and log in to Elephant SQL
+- Enter the Local Legends instance
+- From the options on the left sidebar, select "Browser" to enter the Browser-based SQL command console
+- In the console, enter the following SQL query: SELECT \* FROM "public"."admins"
+- This will bring a full list of admins. Find the admin you want to remove and note the user_id.
+- Enter the following command into the console: DELETE FROM "public"."admins" WHERE user_id = THEIR_USER_ID
+- Then, enter the following query: UPDATE "public"."users" SET is_admin = False WHERE user_id=THEIR_USER_ID
+- This will remove all admin permissions for that user
+
+For extra security reasons I have not given the main admin (me) the option of making a user an admin within the Admin Portal I built. Instead I chose to reply on the security of Elephant SQL to make it less likely that if the site was breached, the intruder could give themselves admin access through the portal. I accept that the Admin Portal I have created will not be as secure as Elephant SQL. While I have not found any obvious flaws, some may remain that I can't see due to my experience. I take security very seriously and leave nothing to chance.
+
+Once an admin has full admin access, they can access the Admin Portal and will be able to maintain the site
+
+#### Support Requests
+
+If a user with any permission types is having technical problems, they will submit a request through Contact Us for support
+SCREENSHOT HERE
+
+That request will then come through to the Admin Portal for action.
+SCREENSHOT HERE
+
+The administrator can then use a combination of Elephant SQL's Browser function to reset a password and the contact email address of the user to support with any technical problems, or anything else that's required.
+
+Once the support request is fufilled, the admin can then archive the request by clicking "Issue Resolved - Archive Problem". I do not want to delete the request from the database as similar problems in the future could indicate a pattern, and may require site maintainance. The archived problem will not display on the dashboard and will only be accessible by entering the ElephantSQL Browser Console with the following command: SELECT \* FROM "public"."problems" WHERE solved = False. To display all problems, simply ommit the WHERE solved = False and run the command.
+
+#### Approval Requests
+
+The only Approval Request that will appear on this dashboard is where a restaurant has requested their restaurant be displayed on Local Legends. Dona via Contact Us, the submitted request will display under the APproval Requests section of the Admin Portal.
+
+The admin will read through the request and approve. There is currently no function to deny a request. Because this is a community project, I believe every restaurant has the right to Local Legends. The only reason this requires approval is to ensure the details have been submitted correctly. There are several safety measures in place to ensure the
+
 ## Testing
 
 Please see [Testing Readme](/TESTING.md) for all testing for this project
