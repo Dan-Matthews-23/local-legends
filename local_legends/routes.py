@@ -465,7 +465,7 @@ def create_restaurant():
                 session['err'] = f"Error - the date_only is {date_only}"
                 redirect_url = request.referrer or url_for(home)
                 return redirect(redirect_url)
-                new_restaurant = Restaurants(restaurant_name=restaurant_name,
+            new_restaurant = Restaurants(restaurant_name=restaurant_name,
                                          restaurant_address_one=restaurant_add_one,
                                          restaurant_address_two=restaurant_add_two,
                                          restaurant_address_three=restaurant_add_three,
