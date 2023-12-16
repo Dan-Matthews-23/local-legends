@@ -34,7 +34,7 @@ def become_legend():
     if request.method == "POST":
 
         posted_email = request.form.get("email_restaurant")
-        if (posted_restaurant_name == "" or not posted_email):
+        if (posted_email == "" or not posted_email):
             session['err'] = "You must enter an email address"
             redirect_url = request.referrer or url_for(home)
             return redirect(redirect_url)
