@@ -1252,7 +1252,8 @@ def login():
                 session['user_id'] = user_id
                 session['username'] = existing_user.username
                 session['is_logged_in'] = True
-                session.pop('err')
+                if session.get('err'):
+                    session.pop('err')
                 #users = Users.query.order_by(Users.user_id).all()
                 #session['users'] = users
                 return redirect(url_for("profile", user_id=user_id))

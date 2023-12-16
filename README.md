@@ -49,13 +49,15 @@
   - [Code Used]
 - [Acknowledgments
 
-  - - -
+  ***
 
 ## Local Legends
 
-![Am I responsive](/assets/images/responsive.webp)
+[View deployed site on Heroku](https://local-legends-b79317926fd9.herokuapp.com)
 
 [View Local Legends on Github](https://dan-matthews-23.github.io/local-legends/)
+
+![Am I responsive](/assets/images/responsive.webp)
 
 Local Legends is a new product designed for restaurant users in the area of Sunderland that allows customers to review their experience on five key aspects:
 
@@ -85,9 +87,7 @@ Local Legends has several aims:
 ### Key information
 
 - A Restaurants section, where the user can view all available restaurants's details and reviews
-  
 - A Register / Login section, where the user can, optionally, create an account or log into their account
-  
 - A Profile section, where the user can amend details of their account
 
 ### About the user
@@ -95,7 +95,6 @@ Local Legends has several aims:
 This project has been designed with two end users in mind:
 
 - A new customer and visitor to the area who would like to follow reccomendations on which restaurants to visit
-  
 - An existing user and previous diner, who would like to leave a review based on their own experiences for others to follow
 
 ### User Goals
@@ -106,35 +105,33 @@ The new customer / visitor:
 - To be able to register an account and log in
 - To be able to create, read, edit and delete reviews
 - To be able to delete my account
--   
 
 The existing user and previous diner:
 
 - To be able to Read reviews.
 - To be able to register an account and log in
 - To be able to create, read, edit and delete reviews
-- To be able to delete my account  
-
+- To be able to delete my account
 
 ### First Time Visitor Goals
 
 - To be able to read reviews that other users have left
 - To be able to create an account then log in
-- To be able to Create, Read, Update and Delete reviews
+- To be able to Create, Read, Update and Delete reviews and an account
 
 ### Returning Visitor Goals
 
 - To be able to read reviews that other users have left
 - To be able to create an account then log in
-- To be able to Create, Read, Update and Delete reviews
+- To be able to Create, Read, Update and Delete reviews and an account
 
 ### Frequent Visitor Goals
 
 - To be able to read reviews that other users have left
 - To be able to create an account then log in
-- To be able to Create, Read, Update and Delete reviews
+- To be able to Create, Read, Update and Delete reviews and an account
 
-- - -
+---
 
 ## Design Stages
 
@@ -178,7 +175,7 @@ Both are available at [Materialize](https://materializecss.com/color.html)
 
 #### Font
 
- The font I have chosen to use for this project is one called Poppins, which is part of the Sans Sarif family. It can be found [here](https://fonts.google.com/specimen/Poppins). I chose the 'Light 300' weighting as I felt that it would stand out a little more than the 'thin' preset.
+The font I have chosen to use for this project is one called Poppins, which is part of the Sans Sarif family. It can be found [here](https://fonts.google.com/specimen/Poppins). I chose the 'Light 300' weighting as I felt that it would stand out a little more than the 'thin' preset.
 
 #### Images
 
@@ -186,7 +183,7 @@ I expect to include an image for every restaurant I have. An estimate will be ar
 
 ### Stage Two - Master Template
 
-The Master Template, called base.html, will be used as a template for all pages in this project. 
+The Master Template, called base.html, will be used as a template for all pages in this project.
 
 #### Header
 
@@ -196,7 +193,7 @@ At this stage, the header is very simple. To the left I have included the title 
 
 #### Navbar
 
-The navbar, along with every other part of this project, has been designed in a mobile-first view. This means that the navbar is responsive. I have chosen to heavily utilize the front-end framework -  Materialize, for the main naviagtion bars. The documentation for the nav bars can be found [here](https://materializecss.com/navbar.html), and is called Right Aligned Links. At this stage, the response trigger is at a much higher viewport than I planned. I intend to amend this with a media query at a later date once I can see the impact on content from other pages.
+The navbar, along with every other part of this project, has been designed in a mobile-first view. This means that the navbar is responsive. I have chosen to heavily utilize the front-end framework - Materialize, for the main naviagtion bars. The documentation for the nav bars can be found [here](https://materializecss.com/navbar.html), and is called Right Aligned Links. At this stage, the response trigger is at a much higher viewport than I planned. I intend to amend this with a media query at a later date once I can see the impact on content from other pages.
 
 Navbar on larger viewports: ![Local Legends Large Viewport Navbar](/assets/images/stage-two-design-b)
 
@@ -224,10 +221,9 @@ The homepage will consist of a series of four to eight different restaurants wit
 
 Homepage Design: ![Homepage Design](/assets/images/stage-three-design-a)
 
-
 #### Register / login (register.html)
 
-The Register / Login page will be in two sections. For ease, I will be importing code from my first project as a placeholder, although I may choose to replicate the form completley. There is no code attached to the subit buttons below, only placeholder text, although data validation and formatting are present only because I imported code that I'd already written for Project One. 
+The Register / Login page will be in two sections. For ease, I will be importing code from my first project as a placeholder, although I may choose to replicate the form completley. There is no code attached to the subit buttons below, only placeholder text, although data validation and formatting are present only because I imported code that I'd already written for Project One.
 
 Homepage Design: ![Homepage Design](/assets/images/stage-three-design-b)
 
@@ -237,19 +233,17 @@ The Profile page will allow the users to carry out Update and Delete functions f
 
 Homepage Design: ![Homepage Design](/assets/images/stage-three-design-d)
 
-
 #### Restaurants
 
-I have replicated index.html for restaurants.html at Stage Three, simply because Restaurants will be an extention of index.html. I intend on displaying all restaurants on this page, and only a random selection of four on index. 
+I have replicated index.html for restaurants.html at Stage Three, simply because Restaurants will be an extention of index.html. I intend on displaying all restaurants on this page, and only a random selection of four on index.
 
 Homepage Design: ![Homepage Design](/assets/images/stage-three-design-c)
-
 
 ### Stage Four - Creating the database structure
 
 #### PostgreSQL
 
-I will be using PostgreSQL to create the structure and of the database and tables. My database structure, tables, columns and keys have all been approved by my mentor. I will be using commandline interface to perform these tasks. 
+I will be using PostgreSQL to create the structure and of the database and tables. My database structure, tables, columns and keys have all been approved by my mentor. I will be using commandline interface to perform these tasks.
 
 I created the database which was sucessful on the second attempt (see testing).
 
@@ -275,19 +269,17 @@ You may have noticed some errors with the queries I've used so far. It was at th
 
 ![Create reviews table](/assets/images/stage-three-design-i)
 
-
 That completes Stage Four
-
 
 EDIT: I have made the mistake here of waiting until Stage Five before learning how to use SQL Alchemy. Had I learned this before Stage Four, I'd have known that creating the schema using SQL (PSQL command line) was a mistake. I should have used an SQL Alchemy model. I have therefore dropped the previous tables and started again using a models.py file, then initialised the schema through the command line as shown below
 
 ![Models DB import](/assets/images/stage-three-design-j)
 
-Then I checked to make sure the tables were set up correctly. 
+Then I checked to make sure the tables were set up correctly.
 
 ![Checking tables set up](/assets/images/stage-three-design-k)
 
-I have done this using the models.py script, although this code was based on the examples given in Lesson 18: Creating the database on the Code Institute walkthrough tutorial. It wasn't possible to completley write my own code here as the syntax for this particluar function is more or less identical across the spectrum. 
+I have done this using the models.py script, although this code was based on the examples given in Lesson 18: Creating the database on the Code Institute walkthrough tutorial. It wasn't possible to completley write my own code here as the syntax for this particluar function is more or less identical across the spectrum.
 
 ![Modals.py](/assets/images/stage-three-design-l)
 
@@ -313,17 +305,17 @@ The restaurants page is now complete, and I can see a list of everything in the 
 
 ![Adding a row to restaurants using command line](/assets/images/stage-five-design-j)
 
-The Creating and Reading of CRUD is now complete. 
+The Creating and Reading of CRUD is now complete.
 
 ### Stage Six - CR[u]U[/u]D
 
-There will be two ways to update details in this project; user details and review edits. 
+There will be two ways to update details in this project; user details and review edits.
 
-I did start this stage by creating routes for user details, but realised that I would first need to create the session. To update user details, it's essential the user is able to log in. However it's not essential for the user to be logged in to leave a review, at least not in this stage (it will be at a later stage). For now I need to do the minimum to ensure this project meets CRUD design. 
+I did start this stage by creating routes for user details, but realised that I would first need to create the session. To update user details, it's essential the user is able to log in. However it's not essential for the user to be logged in to leave a review, at least not in this stage (it will be at a later stage). For now I need to do the minimum to ensure this project meets CRUD design.
 
 #### Reviews
 
-At this stage I will allow a 'guest' to leave a review just so we can pass the Update aspect of CRUD. This is possible with the new Restaurants page. I will add a button to each restaurant section and attempt to pass the restaurant ID through the URL, then display the reviews for that particular restaurant. I will then allow a guest to edit any review they see for CRUD purposes (a login system will be created at a later date and will allow only the author to edit their own reviews). 
+At this stage I will allow a 'guest' to leave a review just so we can pass the Update aspect of CRUD. This is possible with the new Restaurants page. I will add a button to each restaurant section and attempt to pass the restaurant ID through the URL, then display the reviews for that particular restaurant. I will then allow a guest to edit any review they see for CRUD purposes (a login system will be created at a later date and will allow only the author to edit their own reviews).
 
 This script is now operational. Observe the first review available:
 
@@ -335,7 +327,6 @@ This script is now operational. Observe the first review available:
 
 ![Adding a row to restaurants using command line](/assets/images/stage-six-design-d)
 
-
 ### Stage Seven - CRU[u]D[/u]
 
 Stage Seven will focus on the last aspect of CRUD design, and will allow a guest to delete from the database. In this example I will be using edit_review.html so that the user can delete a review. At this stage I have not yet created a login system, so I will need to allow anyone to delete a review. The function will not check requests against a user ID at this stage
@@ -344,7 +335,7 @@ Stage Seven will focus on the last aspect of CRUD design, and will allow a guest
 
 In this example I will delete the firt review in the table assigned to Monster Munch.
 
-Here, ee can see the rvview in the list
+Here, we can see the rvview in the list
 
 ![Adding a row to restaurants using command line](/assets/images/stage-seven-design-a)
 
@@ -358,8 +349,7 @@ Now we can see the review is no longer displayed. The record has been deleted fr
 
 ![Adding a row to restaurants using command line](/assets/images/stage-seven-design-a)
 
-Stage Seven is now complete. My next stage will focus on creating the login system so that I can add some validation to stop guests editing and deleting reviews. 
-
+Stage Seven is now complete. My next stage will focus on creating the login system so that I can add some validation to stop guests editing and deleting reviews.
 
 ### Stage Eight - Creating the login system
 
@@ -367,7 +357,7 @@ For design purposes I will be using the following login details:
 
 ![Adding a row to restaurants using command line](/assets/images/stage-eight-design-a)
 
-This stage has been very difficult to create. I tested a few different methods, but in the end I had to settle for a step by step approach that forced the user to redirect to certain pages at each stage, just so I could see where it was working and where it was going wrong. I will document these stages as I go. 
+This stage has been very difficult to create. I tested a few different methods, but in the end I had to settle for a step by step approach that forced the user to redirect to certain pages at each stage, just so I could see where it was working and where it was going wrong. I will document these stages as I go.
 
 At this stage, the form only redirects when it detects a form submission. This redirect means that the form is working, and so is the syntax of the function so far
 
@@ -377,7 +367,6 @@ At this stage, the form only redirects when it detects a form submission. This r
 Now I've added a section to redirect if the email is matched and the query works, which it does. Next is the password check
 
 ![Adding a row to restaurants using command line](/assets/images/stage-eight-design-d)
-
 
 The structure of the function works when hard-coded
 
@@ -396,7 +385,7 @@ To test the sessions were working correctly, I updated the Welcome Banner to sho
 
 ![Adding a row to restaurants using command line](/assets/images/stage-eight-design-j)
 
-This now completes Stage Eight. 
+This now completes Stage Eight.
 
 ### Stage Nine - Defensive Programming
 
@@ -404,20 +393,20 @@ This now completes Stage Eight.
 
 The permissions for this project will follow CRUD design and will be set out as follows:
 
-|      CRUD       |   Guests  | Registered Accounts |
-| ------------    | --------- | ---------           |
-|  Create         | No *       | Yes                 |
-|  Read           | Yes       | Yes                 |
-|  Update         | No        | Yes                 |
-|  Delete         | No        | Yes                 |
-* except to create account
+| CRUD   | Guests | Registered Accounts |
+| ------ | ------ | ------------------- |
+| Create | No*     | Yes                 |
+| Read   | Yes    | Yes                 |
+| Update | No     | Yes                 |
+| Delete | No     | Yes                 |
 
+* except to create account
 
 While Registered Accounts will have permission to create, update and delete their own reviews, they will not have the permission to alter other user's reviews.
 
-The next stage will centre around defensive 
+The next stage will centre around defensive
 
-Is Logged In is one of the sessions that is created when the user logs in. I will amend each function to check for this being set before the function executes, else the user is directed back to the sign in page. 
+Is Logged In is one of the sessions that is created when the user logs in. I will amend each function to check for this being set before the function executes, else the user is directed back to the sign in page.
 
 ![Adding a row to restaurants using command line](/assets/images/stage-nine-design-a)
 
@@ -427,7 +416,7 @@ I want to add another failsafe to my project, so I will amend the templates to o
 
 #### Leave Review
 
-As it stands, guests are able to type in their review (see below). Although the function will not work, and will redirect to login page, I want to remove the ability to leave a review entirely. It'll make it better for the user journey. 
+As it stands, guests are able to type in their review (see below). Although the function will not work, and will redirect to login page, I want to remove the ability to leave a review entirely. It'll make it better for the user journey.
 
 Before:
 
@@ -443,8 +432,7 @@ Testing to see impact:
 
 ![Adding a row to restaurants using command line](/assets/images/stage-nine-design-e)
 
-Now we have it so that only registered accounts aee given the option of leaving a review. 
-
+Now we have it so that only registered accounts aee given the option of leaving a review.
 
 #### Edit Review
 
@@ -459,18 +447,16 @@ Register Account View:
 
 ![Adding a row to restaurants using command line](/assets/images/stage-nine-design-i)
 
-
 #### Handle Edit Review
 
 I will now amend the code above to check that the user_id associated with that review is the same user_id that's logged in. This will prevent registered users from editing each other's review
 
 ![Adding a row to restaurants using command line](/assets/images/stage-nine-design-j)
 
-I've added this section to aid me in the testing of this code, and added an 'error' session. 
+I've added this section to aid me in the testing of this code, and added an 'error' session.
 
 You can see below what happens when I try to edit a review that I did not leave:
 ![Adding a row to restaurants using command line](/assets/images/stage-nine-design-k)
-
 
 #### Delete Review
 
@@ -480,55 +466,41 @@ This code will be edited in much the same way to prevent anyone other than the a
 
 ![Adding a row to restaurants using command line](/assets/images/stage-nine-design-m)
 
-
 #### Password Hashing
 
-At this stage the password is easily manipulated. I will need to secure the password with hash. 
+At this stage the password is easily manipulated. I will need to secure the password with hash.
 
-I'm having difficulty with this stage due to my db models no longer migrating. 
-
+I'm having difficulty with this stage due to my db models no longer migrating.
 
 #### Administrator Privilages
 
 The Administrator will have additional permissions in order to maintain this project, as set out below:
 
-|      CRUD                             |   Guests  | Registered Accounts | Administrators |
-| ------------                          | --------- | ---------           |----------      |
-|  Create Accounts                      | Yes       | Yes                 | No             |
-|  Create reviews                       | Yes       | Yes                 | No |
-|  Create restaurants                   | No        | No                  | Yes|
-|  Read user Details                    | No        | Yes                 | Yes|
-|  Read reviews                         | Yes        | Yes                 | Yes|
-|  Read restaurant information          | Yes        | Yes                 | Yes|
-|  Edit/Update account details          | No        | Yes                 | No|
-|  Edit/Update reviews                  | No        | Yes                 | No|
-|  Delete user accounts details         | No        | No                 | No|
-|  Delete reviews                       | No        | No                 | No|
-|  Delete restaurant details            | No        | No                 | Yes|
+| CRUD                         | Guests | Registered Accounts | Administrators |
+| ---------------------------- | ------ | ------------------- | -------------- |
+| Create Accounts              | Yes    | Yes                 | No             |
+| Create reviews               | Yes    | Yes                 | No             |
+| Create restaurants           | No     | No                  | Yes            |
+| Read user Details            | No     | Yes                 | Yes            |
+| Read reviews                 | Yes    | Yes                 | Yes            |
+| Read restaurant information  | Yes    | Yes                 | Yes            |
+| Edit/Update account details  | No     | Yes                 | No             |
+| Edit/Update reviews          | No     | Yes                 | No             |
+| Delete user accounts details | No     | No                  | No             |
+| Delete reviews               | No     | No                  | No             |
+| Delete restaurant details    | No     | No                  | Yes            |
 
-I have introduced a multi-stage defensive approach to logging in as admin, checking authentication and forcing the user to enter their full account details in order to login. 
+I have introduced a multi-stage defensive approach to logging in as admin, checking authentication and forcing the user to enter their full account details in order to login.
 
 - First Stage: Each function checks a user is logged in. Functions will not execute without this authentication
-  
 - Second Stage: The administrator uses their profile page to log in. There is a button at the bottom of the page that will not be displayed unless that user has admin prviliages. This is marked in the users table under the "is_admin" field, and is set to true.
-   
-- Third stage: The check_admin_status is executed each time the user initiates a task that only the admin can perform. It checks not only if the above marker is set in the users table, but also if the user_id matches the user_id stored in the admins table. If it does not match, the user is not authenticated. 
-
+- Third stage: The check_admin_status is executed each time the user initiates a task that only the admin can perform. It checks not only if the above marker is set in the users table, but also if the user_id matches the user_id stored in the admins table. If it does not match, the user is not authenticated.
 
 #### Login
 
-Ordinarily, protocol discates that the error message the customer receieves should give clear reasons why they have not been able to do what they expected. In def login, the script checks for an email address. If it's not found, the user is supposed to be told this. However I don't want anyone unauthorised to know that one of the fields is correct, which they would do if I were to give specirfic feedback on why the login failed. To mitigate this I have a generic failure reason. 
-
+Ordinarily, protocol discates that the error message the customer receieves should give clear reasons why they have not been able to do what they expected. In def login, the script checks for an email address. If it's not found, the user is supposed to be told this. However I don't want anyone unauthorised to know that one of the fields is correct, which they would do if I were to give specirfic feedback on why the login failed. To mitigate this I have a generic failure reason.
 
 This completes all stages of design and implementation
-
-
-
-
-
-
-
-
 
 ## Features
 
@@ -544,13 +516,13 @@ Base.html is the master template upon which all other pages are based. It contai
 
 ![Nav Bar Small](/assets/images/am-i-responsive-nav-a.webp)
 
-The Nav Bar is contained within the Master Template (base.html). It is fully responsive. IF a user's viewport is 993 or more, the larger nav bar is presented. This is designed for tablets and desktops. However if a user's viewport is 992 or less, the second nav bar is displayed. Both nav bars are complete examples available on Materialize and refereced in #Acknwoegements. It has links to Home, Profile, Sign In (if not logged in), Sign Out (if logged in), Register and Admin Portal (if an admin). The Admin Portal link is activated by the "is_admin" boolean in the user table. This is one of the defensive programming measures I have implemented. 
+The Nav Bar is contained within the Master Template (base.html). It is fully responsive. IF a user's viewport is 993 or more, the larger nav bar is presented. This is designed for tablets and desktops. However if a user's viewport is 992 or less, the second nav bar is displayed. Both nav bars are complete examples available on Materialize and refereced in #Acknwoegements. It has links to Home, Profile, Sign In (if not logged in), Sign Out (if logged in), Register and Admin Portal (if an admin). The Admin Portal link is activated by the "is_admin" boolean in the user table. This is one of the defensive programming measures I have implemented.
 
 ### Profile
 
 ![Profile](/assets/images/am-i-responsive-profile.webp)
 
-This section will allow the user, once logged in, to perform Update and Delete (CRUD) functions. This cannot be done if the user is not logged in. If the user clicks Profile and they are not logged in, they will be directed to the Register or Login screens. There are several user options for this page. 
+This section will allow the user, once logged in, to perform Update and Delete (CRUD) functions. This cannot be done if the user is not logged in. If the user clicks Profile and they are not logged in, they will be directed to the Register or Login screens. There are several user options for this page.
 
 #### Change Password
 
@@ -558,7 +530,7 @@ This option will allow the user to change their password by entering their curre
 
 #### Change Email
 
-This option will allow the user to change their email address. They are presented with a warning about the dangers of entering an incorrect email address. There is validation on this field that will check the email address is the correct format. 
+This option will allow the user to change their email address. They are presented with a warning about the dangers of entering an incorrect email address. There is validation on this field that will check the email address is the correct format.
 
 #### Change Username
 
@@ -578,7 +550,7 @@ Once an admin has logged in, they have three sections on the dashboard: Problems
 
 ##### Problems
 
-If a user (guest, registered user or business) is havint problems they report this on Contact Us. Once they've submitted a ticket, the Problems section will have each problem as a list. The Admin can resolve the issue then click "Archive Problem" once actions are completed. 
+If a user (guest, registered user or business) is havint problems they report this on Contact Us. Once they've submitted a ticket, the Problems section will have each problem as a list. The Admin can resolve the issue then click "Archive Problem" once actions are completed.
 
 ##### Approvals
 
@@ -598,7 +570,7 @@ Once a restaurant has been approved by an admin, it will appear on the Restauran
 
 #### Restaurant Profile / Leave Review
 
-This page is more information about the restaurant and this is where a user or guest can view all reviews for that restaurant. 
+This page is more information about the restaurant and this is where a user or guest can view all reviews for that restaurant.
 
 ### Home
 
@@ -612,15 +584,11 @@ This page is one of the simplist. It asks the user for an email address, usernam
 
 The user will enter their email address and password to log in. If they have forgotten the password, they click "Forgot Password". It will then link them to Contact Us, where they select the Forgot Password selection. The request is then stored in the Problems table to flash up on the Admin Portal
 
-
-
-
-
 ### Register and Login sections
 
 ![Quiz Screen](/assets/images/am-i-responsive-register.webp)
 
-The Register and login page will be contained on the same page under seperate sections. 
+The Register and login page will be contained on the same page under seperate sections.
 
 #### Register
 
@@ -637,13 +605,7 @@ The Registration section will ask the user for five peices of information:
 
 ### 500 page
 
-
-
-### 404 
-
-
-
-
+### 404
 
 ## Accessibility
 
@@ -673,43 +635,42 @@ I have used [WebAIM's WAVE report](https://wave.webaim.org/) to assess the acces
 
 As part of my drive to make sure this project is as accessible as possible, and to act upon feedback from previous project, I have used [WebAIM's contrast checker](https://webaim.org/resources/contrastchecker/bookmarklet). I have used this tool to test the Coolers template I used after it failed the contrast ratio tests to improve upon the contrast of background/foreground colours and ran the test again, which passed (see Justifications > Background Colour)
 
-
-
 ## Justifications and reflections
 
 - **Relational v Non-relational database choice** - I spent some time pouring through the theory and practise around both forms of database design. [Scaler.com](https://www.scaler.com/topics/dbms/relational-and-non-relational-databases/) are quite thorough in their comparison between both database designs. After having compared my designs and purpose with their reccomendations (advantages and disadvantages for both), it seemed logical that I choose a non-relational database design for my own project. However, although perhaps controversial, I have chosen a relational database design for this project. Ultimetly that choice was based on my own personal preference, having first made sure there was no sense of taboo around which design to use for the purpose of this project. I am familiar with relational databases, having taught them for many years to children. I am also familiar with the syntax around the query lanaguages (SQL) and much prefer a structured method to interrogating data. I do note that if this project were to grow to the size of some of the projects upon which I have taken inspiration (such as Tripadvisor, who have taken over a billion reviews), I would need to carefully consider migrating to a non-relational database, simply because relational database queries are slower and require more server space, ultimatly negativley affecting user experience. However for the purposes of this project a relational database design will not affect user experience.
-- 
-- - -
+-
+
+---
 
 ## Technologies Used
 
-|      Programme / feature      |   Technology used                                                                         | 
-| ------------------------      | -------------------                                                                       | 
-|  Languages                    | HTML and CSS                                                                              |
-|  Framework                    | [Materialize 0.100.0](https://materializecss.com/about.html)                               |
-|  Colour Scheme                | [Materialize](https://materializecss.com/color.html)                                                      |
-|  Contrast Ratio               | [webAIM](https://webaim.org/)                                                             |
-|  Accessibility (WAVE report)  | [webAIM](https://webaim.org/)                                                             |
-|  Fonts                        | [Google Fonts](https://fonts.google.com/)                                                 |
-|  **Images**                   |                                                                                           |
-|                               |                                                                                           |
-|  *Images*                     | [Pexels](https://www.pexels.com/)                                                         |
-|  *Image Compression tools*    | [Image Resizer](https://imageresizer.com/)                                                |
-|  *Image editing*              | [Image Resizer](https://imageresizer.com/)                                                |
-|  *Responsiveness testing*     | [Am I Responsive?](http://ami.responsivedesign.is/)                                       |
-|                               |                                                                                           |
-|  Version control              | Git                                                                                       |
-|  IDE / file storing           | [Code Anywhere](https://app.codeanywhere.com/)                                                 |
-|  Wireframes                   | [Balsamiq](https://balsamiq.com/)                                                         |
-|  HTML Code Validation         | [W3C Schools](https://validator.w3.org/)                                                  |
-|  CSS Code Validation          | [W3C Schools](https://validator.w3.org/)                                                  |
-|  JavaScript Code Validation   | [JS Hint](https://jshint.com/)                                                            |
-|  Developer Tools              | Chrome Developer Tools                                                                    |
-|  HTML Formatting              | [Free Formater](https://www.freeformatter.com)                                            |
-|  CSS Formatting               | [Free Formater](https://www.freeformatter.com)                                            |
-|  JavaScript Formatting        | [Free Formater](https://www.freeformatter.com)                                            |
+| Programme / feature         | Technology used                                              |
+| --------------------------- | ------------------------------------------------------------ |
+| Languages                   | HTML and CSS                                                 |
+| Framework                   | [Materialize 0.100.0](https://materializecss.com/about.html) |
+| Colour Scheme               | [Materialize](https://materializecss.com/color.html)         |
+| Contrast Ratio              | [webAIM](https://webaim.org/)                                |
+| Accessibility (WAVE report) | [webAIM](https://webaim.org/)                                |
+| Fonts                       | [Google Fonts](https://fonts.google.com/)                    |
+| **Images**                  |                                                              |
+|                             |                                                              |
+| _Images_                    | [Pexels](https://www.pexels.com/)                            |
+| _Image Compression tools_   | [Image Resizer](https://imageresizer.com/)                   |
+| _Image editing_             | [Image Resizer](https://imageresizer.com/)                   |
+| _Responsiveness testing_    | [Am I Responsive?](http://ami.responsivedesign.is/)          |
+|                             |                                                              |
+| Version control             | Git                                                          |
+| IDE / file storing          | [Code Anywhere](https://app.codeanywhere.com/)               |
+| Wireframes                  | [Balsamiq](https://balsamiq.com/)                            |
+| HTML Code Validation        | [W3C Schools](https://validator.w3.org/)                     |
+| CSS Code Validation         | [W3C Schools](https://validator.w3.org/)                     |
+| JavaScript Code Validation  | [JS Hint](https://jshint.com/)                               |
+| Developer Tools             | Chrome Developer Tools                                       |
+| HTML Formatting             | [Free Formater](https://www.freeformatter.com)               |
+| CSS Formatting              | [Free Formater](https://www.freeformatter.com)               |
+| JavaScript Formatting       | [Free Formater](https://www.freeformatter.com)               |
 
-- - -
+---
 
 ## Deployment & Local Development
 
@@ -744,7 +705,7 @@ To clone this repository:
 4. Open the terminal in your code editor and change the current working directory to the location you want to use for the cloned directory.
 5. Type 'git clone' into the terminal and then paste the link you copied in step 3. Press enter.
 
-- - -
+---
 
 ## Testing
 
@@ -756,22 +717,17 @@ Please see [Testing Readme](/TESTING.md) for all testing for this project
 
 I have worked closely with my peers on testing this product rigorously for any errors. The feedback is as follows:
 
-
-
 ### Responding to Peer Feedback
 
 I have taken the following actions in response to feedback:
 
-
 ### Feedback from previous projects
-
-
 
 ### Responding to feedback from previous projects
 
 I have taken the following actions in response to feedback:
 
-1) Because I am partially colour-blind, I've had to build this project using a tool called [WebAIM](https://webaim.org/resources/contrastchecker/bookmarklet) to aid me in checking the contrast ratio. I continue to use alternative text. However, I have also made the following adjustments to my Coolers template. The adjustments pass all validator tests and can be found in the Design section:
+1. Because I am partially colour-blind, I've had to build this project using a tool called [WebAIM](https://webaim.org/resources/contrastchecker/bookmarklet) to aid me in checking the contrast ratio. I continue to use alternative text. However, I have also made the following adjustments to my Coolers template. The adjustments pass all validator tests and can be found in the Design section:
 
 - Answer Buttons: Background: #9A6A4C, text: #FFFFFF
 
@@ -781,48 +737,42 @@ I have taken the following actions in response to feedback:
 
 ![678px ratio](/assets/testing/contrast-ratio-b.webp)
 
- - Score Section: Background: #1D110F, text: #a37451
+- Score Section: Background: #1D110F, text: #a37451
 
- ![678px ratio](/assets/testing/contrast-ratio-c.webp)
+![678px ratio](/assets/testing/contrast-ratio-c.webp)
 
- I have also included a WAVE report, which passes all tests.
+I have also included a WAVE report, which passes all tests.
 
-2) I have ensured that every filename contains no numbers, capital letters or underscores. Each file has been placed in an appropriate folder, and I've ensured each file is named correctly and appropriately. 
+2. I have ensured that every filename contains no numbers, capital letters or underscores. Each file has been placed in an appropriate folder, and I've ensured each file is named correctly and appropriately.
 
-3) I have ensured that along with details of all of my testing, I've included as many before and after screenshots as possible. In some cases, it wasn't always possible to include both, but these tests are clearly marked with justification
+3. I have ensured that along with details of all of my testing, I've included as many before and after screenshots as possible. In some cases, it wasn't always possible to include both, but these tests are clearly marked with justification
 
-4) Throughout the testing stages, I have included snippets of code along with screenshots of visual output of that code. 
+4. Throughout the testing stages, I have included snippets of code along with screenshots of visual output of that code.
 
-5) I have attempted to be as thorough as possible throughout the development of this project.
+5. I have attempted to be as thorough as possible throughout the development of this project.
 
 ### Other Feedback
 
-
-
-- - -
+---
 
 ## Functions Explained
 
-The following section will explain in detail how each function works. All functions can be found in /assets/js/script.js. This section has been written with the aid of [Google Bard](https://bard.google.com/) and checked thoroughly for errors. 
+The following section will explain in detail how each function works. All functions can be found in /assets/js/script.js. This section has been written with the aid of [Google Bard](https://bard.google.com/) and checked thoroughly for errors.
 
-|      Function   |   Explanation    |
-| ------------    | ------------     |
+| Function | Explanation |
+| -------- | ----------- |
 
-- - -
+---
 
- ## Future Developments
+## Future Developments
 
-- - -
+---
 
 ## Credits
 
-
-
 ### W3 Schools
 
-
 ### Pexels
-
 
 ### Content
 
@@ -830,75 +780,18 @@ Content for the website was written by Dan Matthews.
 
 ### Code Used
 
-
-- - -
+---
 
 ## Acknowledgments
 
 Finally, I want to take the opportunity to thank and acknowledge the following for their support and patience in helping me create my first-ever project:
 
-- [Harry Dhillon](https://github.com/Harry-Leepz), who is my mentor at the Code Institute, for their continued support and guidance. 
+- [Harry Dhillon](https://github.com/Harry-Leepz), who is my mentor at the Code Institute, for their continued support and guidance.
 - Kofi Afriyie, who is my facilitator from West Herts College, for their time, patience and encouragement in helping me develop this project.
-  
-- - -
 
+---
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-https://www.w3schools.com/howto/howto_js_collapsible.asp - collapse
-
-
-
-
-
+<https://www.w3schools.com/howto/howto_js_collapsible.asp> - collapse
 
 Photo by Michelle Riach: <https://www.pexels.com/photo/clear-glass-plates-with-vegetable-dish-995743/>
 
@@ -932,7 +825,6 @@ Learned how to install and configure flask on VS code
 
 16/10/2023 - decided to scrap colour plaett so that I could use Materialize colour pla instead. Original colours not present in new col range
 
-
 Stage One: Creation of template
 Insert screenshots of this
 
@@ -944,4 +836,4 @@ Stage Four: Creating and testing database with queries
 
 Stage Five: Begin CRUD (Creating) by register and login scripts. Test to ensure db is working
 
-Stage Six: 
+Stage Six:
