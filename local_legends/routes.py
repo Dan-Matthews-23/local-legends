@@ -485,7 +485,7 @@ def create_restaurant():
             delete_approval = Approvals.query.filter_by(approval_id=approval_restaurant_id).first()
             db.session.delete(delete_approval)
             db.session.commit()
-            session['err'] = "Review created successfully"
+            session['err'] = "Review approved"
             redirect_url = request.referrer or url_for(home)
             return redirect(redirect_url)
             restaurants = Restaurants.query.order_by(Restaurants.restaurant_id).all()          
