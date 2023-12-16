@@ -165,7 +165,7 @@ def handle_contact_us():
         posted_user_type = request.form.get("user_type")
         if (posted_user_type == "user"):
             user_id = session.get('user_id')
-            #user_details = Users.query.filter(Users.user_id == user_id).first()
+          
         elif (posted_user_type == "guest") or (posted_user_type == "business"):
             user_id = 0
             
@@ -239,15 +239,13 @@ def register():
 
 
 @app.route("/restaurant_profile/<int:restaurant_id>/leave_review", methods=["POST"])
-def handle_leave_review(restaurant_id):
-    #if session.get('err'):
-        #session.pop('err')
+def handle_leave_review(restaurant_id):   
 
     if not session.get('is_logged_in'):
         session['err'] = "You are not logged in"
         return redirect(url_for('login'))
     else:
-        #review_id = review_id
+        
         user_id = session.get('user_id')
         restaurant_id = request.form.get("restaurant_id")
         review_title = request.form.get("written_review_title")
@@ -267,43 +265,43 @@ def handle_leave_review(restaurant_id):
 
 
 
-        #existing_reviews = Reviews.query.filter(Reviews.restaurant_id == restaurant_id and Reviews.user_id == user_id).first()
+       
         existing_reviews = Reviews.query.filter(Reviews.restaurant_id == restaurant_id).all()
         
         if existing_reviews:
 
             posted_taste_stars = int(request.form.get("select_taste"))
-            average_taste_stars = [posted_taste_stars]  # Include posted taste stars
+            average_taste_stars = [posted_taste_stars]  
             for review in existing_reviews:
                 average_taste_stars.append(review.taste_stars)
             average_taste_stars = mean(average_taste_stars)            
           
             posted_presentation_stars = int(request.form.get("select_presentation"))
-            average_presentation_stars = [posted_presentation_stars]  # Include posted presentation stars
+            average_presentation_stars = [posted_presentation_stars] 
             for review in existing_reviews:
                 average_presentation_stars.append(review.presentation_stars)
             average_presentation_stars = mean(average_presentation_stars)
          
             posted_friendliness_stars = int(request.form.get("select_friendliness"))
-            average_friendliness_stars = [posted_friendliness_stars]  # Include posted friendliness stars
+            average_friendliness_stars = [posted_friendliness_stars]  
             for review in existing_reviews:
                 average_friendliness_stars.append(review.friendliness_stars)
             average_friendliness_stars = mean(average_friendliness_stars)
             
             posted_ambience_stars = int(request.form.get("select_ambience"))
-            average_ambience_stars = [posted_ambience_stars]  # Include posted ambience stars
+            average_ambience_stars = [posted_ambience_stars]  
             for review in existing_reviews:
                 average_ambience_stars.append(review.ambience_stars)
             average_ambience_stars = mean(average_ambience_stars)
             
             posted_price_stars = int(request.form.get("select_price"))
-            average_price_stars = [posted_price_stars]  # Include posted price stars
+            average_price_stars = [posted_price_stars]  
             for review in existing_reviews:
                 average_price_stars.append(review.price_stars)
             average_price_stars = mean(average_price_stars)    
 
             posted_overall_stars = (posted_taste_stars + posted_presentation_stars + posted_friendliness_stars + posted_ambience_stars + posted_price_stars) / 5
-            # Include posted price stars
+            
             average_overall_stars = [posted_overall_stars]
             for review in existing_reviews:
                 average_overall_stars.append(review.overall_stars)
@@ -461,15 +459,7 @@ def create_restaurant():
             redirect_url = request.referrer or url_for(home)
             return redirect(redirect_url)
             
-        #if not restaurant_add_three:
-            #session['err'] = f"Error - the add_three is {restaurant_add_three}"
-            #redirect_url = request.referrer or url_for(home)
-            #return redirect(redirect_url)
-            
-        #if not restaurant_add_four:
-           # session['err'] = f"Error - the add_four is {restaurant_add_four}"
-            #redirect_url = request.referrer or url_for(home)
-            #return redirect(redirect_url)
+       
             
         if not restaurant_postcode:
             session['err'] = f"Error - the restaurant_postcode is {restaurant_postcode}"
@@ -481,30 +471,14 @@ def create_restaurant():
             redirect_url = request.referrer or url_for(home)
             return redirect(redirect_url)
             
-        #if not restaurant_delivery:
-            #session['err'] = f"Error - the restaurant_delivery is {restaurant_delivery}"
-            #redirect_url = request.referrer or url_for(home)
-            #return redirect(redirect_url)
-            
-        #if not restaurant_week:
-            #session['err'] = f"Error - the restaurant_week is {restaurant_week}"
-            #redirect_url = request.referrer or url_for(home)
-            #return redirect(redirect_url)
+      
             
         if not restaurant_cuisine_one:
             session['err'] = f"Error - the restaurant_cuisine_one is {restaurant_cuisine_one}"
             redirect_url = request.referrer or url_for(home)
             return redirect(redirect_url)
             
-        #if not restaurant_cuisine_two:
-            #session['err'] = f"Error - the restaurant_cuisine_two is {restaurant_cuisine_two}"
-            #redirect_url = request.referrer or url_for(home)
-            #return redirect(redirect_url)
-            
-       # if not restaurant_cuisine_three:
-            #session['err'] = f"Error - the restaurant_cuisine_three is {restaurant_cuisine_three}"
-            #redirect_url = request.referrer or url_for(home)
-            #return redirect(redirect_url)
+    
             
         if not date_only:
             session['err'] = f"Error - the date_only is {date_only}"
@@ -654,8 +628,7 @@ def restaurant_profile(restaurant_id):
 
 @app.route("/profile", methods=["GET", "POST"])
 def profile():
-    #if session.get('err'):
-        #session.pop('err')
+   
     if session.get('is_logged_in', False):
         user_id = session.get('user_id')
         users = Users.query.filter_by(user_id=user_id)
@@ -712,7 +685,7 @@ def change_password():
                     request.form.get("confirm_password_change"))
                 update_query.password_hash = hashed_password
                 db.session.add(update_query)
-            #db.session.commit()         
+                 
             try:
                 db.session.commit()
                 session['err'] = "Password edited successfully"
@@ -871,7 +844,7 @@ def handle_edit_review(review_id):
         if update_review is None:
             session['err'] = "There was an error in retriving the review. Please try again"
             redirect_url = request.referrer or url_for(home)
-            # Send a redirect response to the browser
+        
             return redirect(redirect_url)
         else:
             update_review.written_review_title = review_title
@@ -978,23 +951,23 @@ def handle_edit_review(review_id):
 
 @app.route("/admin_portal/", methods=["GET", "POST"])
 def edit_restaurant():
-    # Check if the user is logged in
+   
     if not session.get('is_logged_in'):
         session['err'] = "You are not logged in"
         return redirect(url_for('login'))
 
-    # Get the restaurant ID from the form
+   
     restaurant_id = request.args.get('restaurant_id')
 
-    # Fetch the restaurant from the database
+   
     restaurant = Restaurants.query.get_or_404(restaurant_id)
 
-    # If the restaurant is not found, display an error message
+   
     if not restaurant:
         session['err'] = f"Restaurant not found - the ID is {restaurant_id}"
         return render_template('admin_login.html')
 
-    # Validate and sanitize user input
+   
     edit_restaurant_name = request.form.get("edit_restaurant_name")
     edit_address_one = request.form.get("edit_address_one")
     edit_address_two = request.form.get("edit_address_two")
@@ -1004,7 +977,7 @@ def edit_restaurant():
     edit_thumbnail = request.form.get("edit_thumbnail")
     
 
-    # Update the restaurant's information
+  
     restaurant.restaurant_name = edit_restaurant_name
     restaurant.restaurant_address_one = edit_address_one
     restaurant.restaurant_address_two = edit_address_two
@@ -1014,7 +987,8 @@ def edit_restaurant():
     restaurant.restaurant_image_url = edit_thumbnail
     restaurant.restaurant_date_registered = restaurant.restaurant_date_registered
 
-    # Commit the changes to the database
+  
+
     try:
         db.session.commit()
         session['err'] = "Restaurant edited successfully"
@@ -1116,7 +1090,7 @@ def delete_review(review_id):
             if existing_reviews:
 
                 posted_taste_stars = int(request.form.get("select_taste"))
-                # Include posted taste stars
+              
                 average_taste_stars = [posted_taste_stars]
                 for review in existing_reviews:
                     average_taste_stars.append(review.taste_stars)
@@ -1124,7 +1098,7 @@ def delete_review(review_id):
 
                 posted_presentation_stars = int(
                     request.form.get("select_presentation"))
-                # Include posted presentation stars
+              
                 average_presentation_stars = [posted_presentation_stars]
                 for review in existing_reviews:
                     average_presentation_stars.append(review.presentation_stars)
@@ -1132,21 +1106,21 @@ def delete_review(review_id):
 
                 posted_friendliness_stars = int(
                     request.form.get("select_friendliness"))
-                # Include posted friendliness stars
+               
                 average_friendliness_stars = [posted_friendliness_stars]
                 for review in existing_reviews:
                     average_friendliness_stars.append(review.friendliness_stars)
                 average_friendliness_stars = mean(average_friendliness_stars)
 
                 posted_ambience_stars = int(request.form.get("select_ambience"))
-                # Include posted ambience stars
+               
                 average_ambience_stars = [posted_ambience_stars]
                 for review in existing_reviews:
                     average_ambience_stars.append(review.ambience_stars)
                 average_ambience_stars = mean(average_ambience_stars)
 
                 posted_price_stars = int(request.form.get("select_price"))
-                # Include posted price stars
+                
                 average_price_stars = [posted_price_stars]
                 for review in existing_reviews:
                     average_price_stars.append(review.price_stars)
@@ -1154,7 +1128,7 @@ def delete_review(review_id):
 
                 posted_overall_stars = (posted_taste_stars + posted_presentation_stars +
                                     posted_friendliness_stars + posted_ambience_stars + posted_price_stars) / 5
-                # Include posted price stars
+               
                 average_overall_stars = [posted_overall_stars]
                 for review in existing_reviews:
                     average_overall_stars.append(review.overall_stars)
@@ -1264,11 +1238,9 @@ def login():
                 session['is_logged_in'] = True
                 if session.get('err'):
                     session.pop('err')
-                #users = Users.query.order_by(Users.user_id).all()
-                #session['users'] = users
+               
                 return redirect(url_for("profile", user_id=user_id))
-                # I could have given seperate feedback errors to email and password,
-                # however for security purposes I have not done this (see README)
+               
             else:
                 session['err'] = "Incorrect details. Please try again"
                 redirect_url = request.referrer or url_for(home)
@@ -1316,7 +1288,7 @@ def check_admin_status():
             return redirect(url_for("home"))
         return redirect(url_for("home"))
 
-## DELETE THIS ONE
+
 @app.route("/admin_portal", methods=["GET", "POST"])
 def admin_portal():
     approvals = list(Approvals.query.order_by(Approvals.approval_id).all())                                

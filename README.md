@@ -703,8 +703,6 @@ To clone this repository:
 4. Open the terminal in your code editor and change the current working directory to the location you want to use for the cloned directory.
 5. Type 'git clone' into the terminal and then paste the link you copied in step 3. Press enter.
 
----
-
 ### How to maintain
 
 #### Giving admin access
@@ -772,7 +770,27 @@ Once the support request is fufilled, the admin can then archive the request by 
 
 The only Approval Request that will appear on this dashboard is where a restaurant has requested their restaurant be displayed on Local Legends. Dona via Contact Us, the submitted request will display under the APproval Requests section of the Admin Portal.
 
-The admin will read through the request and approve. There is currently no function to deny a request. Because this is a community project, I believe every restaurant has the right to Local Legends. The only reason this requires approval is to ensure the details have been submitted correctly. There are several safety measures in place to ensure the
+The admin will read through the request and approve. There is currently no function to deny a request. Because this is a community project, I believe every restaurant has the right to Local Legends (assuming they fit the basic criterea, see Approval Checklist below). The only reason this requires approval is to ensure the details have been submitted correctly. There are several safety measures in place to ensure the request is complete, such as form validation, and also a default link to a Pexels image if the Image URL is incomplete. However several things need to be checked before approval:
+
+Admin Approval Checklist:
+
+- Are all entries on the request complete? Although form validation should prevent this from happening, it's possible these errors could still occur
+  If not, you must click "Approve", then scroll down to "Edit Restaurant" and make the adjustments needed.
+
+- Is the Image URL complete? Copy and paste the URL into your browser to ensure it's a live link. It's okay if this is blank, but it could cause problems if the link does not work
+  If not, you must click "Approve", then scroll down to "Edit Restaurant" and make the adjustments needed
+
+- Are there any obvious spelling mistakes, including misused capital letters?
+  If not, you must click "Approve", then scroll down to "Edit Restaurant" and make the adjustments needed
+
+- Is the restaurant located in Sunderland? Look at the address they have given. While I would like to expand Local Legends to neighbouring cities, but as it stands this project will focus on Sunderland only
+  If the restaurant is not located in Sunderland, you must send an email to the contact email address and ask them to confirm the restaurant's address. If a response is recieved advising you that they had made an error, you may approve then edit as per the other steps. However if they confirm they are outside of Sunderland, you must respond with the following: "Thank you so much for your interest in Local Legends. We are planning to expand our service to other cities soon. We will hold your details on record and will contact you directly as soon as we're able to serve you. We look forward to working with you soon."
+
+#### Edit Restaurants
+
+This section is the last action an admin can take. This section should only be used to correct an error.
+
+I have intentionally disallowed any admin to edit or delete other user's posts. As I've said before I strongly believe in free expression. Of course that does not extend to bullying or harrassment, any instances of such should be reported directly to me.
 
 ## Testing
 
