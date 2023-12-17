@@ -217,7 +217,7 @@ restaurants.html / restaurantse (Mobile View)
 
 #### Database Design
 
-The initial plans for the database were designed in Microsoft Access. I used this program because I was quite familiar with it, having taught its use for years. My project will use a Relational Database design. There will be three tables for users, restaraunts and reviews, each with a primary key.
+The initial plans for the database were designed in Microsoft Access. I used this program because I was quite familiar with it, having taught its use for years. My project will use a Relational Database design. There will be five tables for admins, users, approvals, restaraunts and reviews, each with a primary key.
 
 ![Local Legends Relationships Database Design](/local_legends/static/images/design-stages/db-design.png)
 
@@ -225,17 +225,17 @@ The initial plans for the database were designed in Microsoft Access. I used thi
 
 ![Local Legends Users Design](/local_legends/static/images/design-stages/users-structure.png)
 
-![Local Legends Approvals Design](/local_legends/static/images/design-stages/approvals-structure)
+![Local Legends Approvals Design](/local_legends/static/images/design-stages/approvals-structure.png)
 
-![Local Legends Reviews Design](/local_legends/static/images/design-stages/reviews-structure)
+![Local Legends Reviews Design](/local_legends/static/images/design-stages/reviews-structure.png)
 
-![Local Legends Restaurants Design](/local_legends/static/images/design-stages/restaurants-structure)
+![Local Legends Restaurants Design](/local_legends/static/images/design-stages/restaurants-structure.png)
 
 It should be noted here that although the designs say 'Number' on several data types, the data types in the final product will be Integer. In addition, the 'Text' and 'Long Text' types will be limited by character limits which is not visible on these designs.
 
 #### Colour
 
-![Local Legends COLOUR PALETTE](/local_legends/static/images/design-stages/coolers-palette.png)
+![Local Legends COLOUR PALETTE](/local_legends/static/images/design-stages/coolors-palette.png)
 
 [Also available as Coolors palette](https://coolors.co/222222-ffffff-1c5d99-639fab-bbcde5)
 
@@ -268,9 +268,9 @@ At this stage, the header is very simple. To the left I have included the title 
 
 The navbar, along with every other part of this project, has been designed in a mobile-first view. This means that the navbar is responsive. I have chosen to heavily utilize the front-end framework - Materialize, for the main naviagtion bars. The documentation for the nav bars can be found [here](https://materializecss.com/navbar.html), and is called Right Aligned Links. At this stage, the response trigger is at a much higher viewport than I planned. I intend to amend this with a media query at a later date once I can see the impact on content from other pages.
 
-Navbar on larger viewports: ![Local Legends Large Viewport Navbar](/assets/images/stage-two-design-b)
+Navbar on larger viewports: ![Local Legends Large Viewport Navbar](/local_legends/static/images/stage-two-design-b)
 
-Navbar on larger viewports: ![Local Legends Small Viewport Navbar](/assets/images/stage-two-design-c)
+Navbar on larger viewports: ![Local Legends Small Viewport Navbar](/local_legends/static/stage-two-design-c)
 
 #### Footer
 
