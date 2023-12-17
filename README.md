@@ -57,7 +57,7 @@
 
 [View Local Legends on Github](https://dan-matthews-23.github.io/local-legends/)
 
-![Am I responsive](/assets/images/responsive.webp)
+![Am I responsive](/local_legends/static/responsive.webp)
 
 Local Legends is a new product designed for restaurant users in the area of Sunderland that allows customers to review their experience on five key aspects:
 
@@ -276,13 +276,13 @@ Navbar on larger viewports: ![Local Legends Small Viewport Navbar](/local_legend
 
 At this stage, the footer holds external links so that the user can find the project or author on GitHub, Facebook, X and Linked In. I do intend to make changes to the colour and size of the icons at a later date.
 
-Footer: ![Footer](/assets/images/stage-two-design-d)
+Footer: ![Footer](/local_legends/static/stage-two-design-d)
 
 #### Welcome Banner
 
 At this stage, the welcome banner is made up of three sections: left div, central div and right div. The left and right divs are for layout purposes only and have rounded corners to give the whole bar a rounded look. The central bar holds the text: "Welcome back,". This is placeholder only. Once my connections to the database and scripts for sessions are running, this will either say "Welcome back, {username}", or will say "Welcome, Guest. Login {here}".
 
-Welcome Banner: ![Welcome Banner](/assets/images/stage-two-design-d)
+Welcome Banner: ![Welcome Banner](/local_legends/static/stage-two-design-d)
 
 ### Stage Three - Skeleton layout for all pages
 
@@ -292,25 +292,25 @@ Stage Three will be to setup all other pages of this project using a skeleton la
 
 The homepage will consist of a series of four to eight different restaurants with a description, image and button for each. At this stage the text and image are placeholder only, the button will link to register.html, and will not have any data handling behind it.
 
-Homepage Design: ![Homepage Design](/assets/images/stage-three-design-a)
+Homepage Design: ![Homepage Design](/local_legends/static/stage-three-design-a)
 
 #### Register / login (register.html)
 
 The Register / Login page will be in two sections. For ease, I will be importing code from my first project as a placeholder, although I may choose to replicate the form completley. There is no code attached to the subit buttons below, only placeholder text, although data validation and formatting are present only because I imported code that I'd already written for Project One.
 
-Homepage Design: ![Homepage Design](/assets/images/stage-three-design-b)
+Homepage Design: ![Homepage Design](/local_legends/static/stage-three-design-b)
 
 #### Profile
 
 The Profile page will allow the users to carry out Update and Delete functions from the CRUD design. At this stage, none of the codebehind the buttons or data validation work, and I would later like to add a small table for stats on how many stars and reviews the user has left. I've left this out of Stage Three design as this is something I will add only if I get time.
 
-Homepage Design: ![Homepage Design](/assets/images/stage-three-design-d)
+Homepage Design: ![Homepage Design](/local_legends/static/stage-three-design-d)
 
 #### Restaurants
 
 I have replicated index.html for restaurants.html at Stage Three, simply because Restaurants will be an extention of index.html. I intend on displaying all restaurants on this page, and only a random selection of four on index.
 
-Homepage Design: ![Homepage Design](/assets/images/stage-three-design-c)
+Homepage Design: ![Homepage Design](/local_legends/static/stage-three-design-c)
 
 ### Stage Four - Creating the database structure
 
@@ -320,41 +320,41 @@ I will be using PostgreSQL to create the structure and of the database and table
 
 I created the database which was sucessful on the second attempt (see testing).
 
-Creating DB using PostgeSQL Design: ![Create DB](/assets/images/stage-three-design-b)
+Creating DB using PostgeSQL Design: ![Create DB](/local_legends/static/stage-three-design-b)
 
 Then using the [PostgreSQL documentation](https://www.postgresql.org/docs/current/tutorial-table.html) to ensure I my SQL statement was correct, I created the users table
 
-![Create users table](/assets/images/stage-three-design-c)
+![Create users table](/local_legends/static/stage-three-design-c)
 
 I did try to enter the database to make sure the table was create sucessfully, however nothing has shown. I will attempt to inset data into the table and then try to pull the data, which will show if it has worked or not. After several attempts this worked
 
-![Pulling row from users table](/assets/images/stage-three-design-d)
+![Pulling row from users table](/local_legends/static/stage-three-design-d)
 
 I used the same method to create the restaurants table
 
-![Create restaurants table](/assets/images/stage-three-design-f)
+![Create restaurants table](/local_legends/static/stage-three-design-f)
 
 You may have noticed some errors with the queries I've used so far. It was at this point I realised that I'd set all of my tables up incorrectly. I decided to drop my database and start again using carefulyl formulated SQL queries and the PostgreSQL documentation. These were my final queries, where I created the tables, inserted a test row then pulled the data from it to make ture everything (in particular the auto-increment for primary keys) were working fine:
 
-![Create restaurants table](/assets/images/stage-three-design-g)
+![Create restaurants table](/local_legends/static/stage-three-design-g)
 
-![Create users table](/assets/images/stage-three-design-h)
+![Create users table](/local_legends/static/stage-three-design-h)
 
-![Create reviews table](/assets/images/stage-three-design-i)
+![Create reviews table](/local_legends/static/stage-three-design-i)
 
 That completes Stage Four
 
 EDIT: I have made the mistake here of waiting until Stage Five before learning how to use SQL Alchemy. Had I learned this before Stage Four, I'd have known that creating the schema using SQL (PSQL command line) was a mistake. I should have used an SQL Alchemy model. I have therefore dropped the previous tables and started again using a models.py file, then initialised the schema through the command line as shown below
 
-![Models DB import](/assets/images/stage-three-design-j)
+![Models DB import](/local_legends/static/stage-three-design-j)
 
 Then I checked to make sure the tables were set up correctly.
 
-![Checking tables set up](/assets/images/stage-three-design-k)
+![Checking tables set up](/local_legends/static/stage-three-design-k)
 
 I have done this using the models.py script, although this code was based on the examples given in Lesson 18: Creating the database on the Code Institute walkthrough tutorial. It wasn't possible to completley write my own code here as the syntax for this particluar function is more or less identical across the spectrum.
 
-![Modals.py](/assets/images/stage-three-design-l)
+![Modals.py](/local_legends/static/stage-three-design-l)
 
 ### Stage Five: [u]CR[/u]UD
 
@@ -364,19 +364,19 @@ This stage will focus on using SQL Alchemy to insert placeholder data into the l
 
 The first 15 tests all failed (see tests 004 to 009 in testing readme). I had to request support from Tutor Support having exhausted the documentation and attempts to use AI. However the connection is now working:
 
-![Adding values to database](/assets/images/stage-five-design-g)
+![Adding values to database](/local_legends/static/stage-five-design-g)
 
 #### Create a review
 
 This section will focus on leaving only one review for only one restaurant. But to do that I first need to create a record in the Restaurants table so I can build the visual aspects of restaurants.html around that. I will document this as I go. For ease, I am going to use command line controls to populate the restaurants table with one row:
 
-![Adding a row to restaurants using command line](/assets/images/stage-five-design-h)
+![Adding a row to restaurants using command line](/local_legends/static/stage-five-design-h)
 
 The restaurants page is now complete, and I can see a list of everything in the Restaurants database
 
-![Adding a row to restaurants using command line](/assets/images/stage-five-design-i)
+![Adding a row to restaurants using command line](/local_legends/static/stage-five-design-i)
 
-![Adding a row to restaurants using command line](/assets/images/stage-five-design-j)
+![Adding a row to restaurants using command line](/local_legends/static/stage-five-design-j)
 
 The Creating and Reading of CRUD is now complete.
 
@@ -392,13 +392,13 @@ At this stage I will allow a 'guest' to leave a review just so we can pass the U
 
 This script is now operational. Observe the first review available:
 
-![Adding a row to restaurants using command line](/assets/images/stage-six-design-1)
+![Adding a row to restaurants using command line](/local_legends/static/stage-six-design-1)
 
-![Adding a row to restaurants using command line](/assets/images/stage-six-design-b)
+![Adding a row to restaurants using command line](/local_legends/static/stage-six-design-b)
 
-![Adding a row to restaurants using command line](/assets/images/stage-six-design-c)
+![Adding a row to restaurants using command line](/local_legends/static/stage-six-design-c)
 
-![Adding a row to restaurants using command line](/assets/images/stage-six-design-d)
+![Adding a row to restaurants using command line](/local_legends/static/stage-six-design-d)
 
 ### Stage Seven - CRU[u]D[/u]
 
@@ -410,17 +410,17 @@ In this example I will delete the firt review in the table assigned to Monster M
 
 Here, we can see the rvview in the list
 
-![Adding a row to restaurants using command line](/assets/images/stage-seven-design-a)
+![Adding a row to restaurants using command line](/local_legends/static/stage-seven-design-a)
 
 We click 'Edit Review' to enter the edit screen
 
 Then we click 'Delete Review'.
 
-![Adding a row to restaurants using command line](/assets/images/stage-seven-design-b)
+![Adding a row to restaurants using command line](/local_legends/static/stage-seven-design-b)
 
 Now we can see the review is no longer displayed. The record has been deleted from the database
 
-![Adding a row to restaurants using command line](/assets/images/stage-seven-design-a)
+![Adding a row to restaurants using command line](/local_legends/static/stage-seven-design-a)
 
 Stage Seven is now complete. My next stage will focus on creating the login system so that I can add some validation to stop guests editing and deleting reviews.
 
@@ -428,35 +428,35 @@ Stage Seven is now complete. My next stage will focus on creating the login syst
 
 For design purposes I will be using the following login details:
 
-![Adding a row to restaurants using command line](/assets/images/stage-eight-design-a)
+![Adding a row to restaurants using command line](/local_legends/static/stage-eight-design-a)
 
 This stage has been very difficult to create. I tested a few different methods, but in the end I had to settle for a step by step approach that forced the user to redirect to certain pages at each stage, just so I could see where it was working and where it was going wrong. I will document these stages as I go.
 
 At this stage, the form only redirects when it detects a form submission. This redirect means that the form is working, and so is the syntax of the function so far
 
-![Adding a row to restaurants using command line](/assets/images/stage-eight-design-b)
-![Adding a row to restaurants using command line](/assets/images/stage-eight-design-c)
+![Adding a row to restaurants using command line](/local_legends/static/stage-eight-design-b)
+![Adding a row to restaurants using command line](/local_legends/static/stage-eight-design-c)
 
 Now I've added a section to redirect if the email is matched and the query works, which it does. Next is the password check
 
-![Adding a row to restaurants using command line](/assets/images/stage-eight-design-d)
+![Adding a row to restaurants using command line](/local_legends/static/stage-eight-design-d)
 
 The structure of the function works when hard-coded
 
-![Adding a row to restaurants using command line](/assets/images/stage-eight-design-e)
+![Adding a row to restaurants using command line](/local_legends/static/stage-eight-design-e)
 
 Now it works when form submitted
-![Adding a row to restaurants using command line](/assets/images/stage-eight-design-f)
+![Adding a row to restaurants using command line](/local_legends/static/stage-eight-design-f)
 
 To test the sessions were working correctly, I updated the Welcome Banner to show the username when logged in, and amended the nav bar to incorperate a check to see if the is_logged_in session was set, then display Sign In / Sign Out
 
-![Adding a row to restaurants using command line](/assets/images/stage-eight-design-g)
+![Adding a row to restaurants using command line](/local_legends/static/stage-eight-design-g)
 
-![Adding a row to restaurants using command line](/assets/images/stage-eight-design-h)
+![Adding a row to restaurants using command line](/local_legends/static/stage-eight-design-h)
 
-![Adding a row to restaurants using command line](/assets/images/stage-eight-design-i)
+![Adding a row to restaurants using command line](/local_legends/static/stage-eight-design-i)
 
-![Adding a row to restaurants using command line](/assets/images/stage-eight-design-j)
+![Adding a row to restaurants using command line](/local_legends/static/stage-eight-design-j)
 
 This now completes Stage Eight.
 
@@ -481,7 +481,7 @@ The next stage will centre around defensive
 
 Is Logged In is one of the sessions that is created when the user logs in. I will amend each function to check for this being set before the function executes, else the user is directed back to the sign in page.
 
-![Adding a row to restaurants using command line](/assets/images/stage-nine-design-a)
+![Adding a row to restaurants using command line](/local_legends/static/stage-nine-design-a)
 
 I've added this code to every function with update and delete design aspects.
 
@@ -493,51 +493,51 @@ As it stands, guests are able to type in their review (see below). Although the 
 
 Before:
 
-![Adding a row to restaurants using command line](/assets/images/stage-nine-design-b)
+![Adding a row to restaurants using command line](/local_legends/static/stage-nine-design-b)
 
 After:
 
-![Adding a row to restaurants using command line](/assets/images/stage-nine-design-c)
+![Adding a row to restaurants using command line](/local_legends/static/stage-nine-design-c)
 
 Testing to see impact:
 
-![Adding a row to restaurants using command line](/assets/images/stage-nine-design-d)
+![Adding a row to restaurants using command line](/local_legends/static/stage-nine-design-d)
 
-![Adding a row to restaurants using command line](/assets/images/stage-nine-design-e)
+![Adding a row to restaurants using command line](/local_legends/static/stage-nine-design-e)
 
 Now we have it so that only registered accounts aee given the option of leaving a review.
 
 #### Edit Review
 
 Before (guest view):
-![Adding a row to restaurants using command line](/assets/images/stage-nine-design-f)
+![Adding a row to restaurants using command line](/local_legends/static/stage-nine-design-f)
 
 After (guest view):
-![Adding a row to restaurants using command line](/assets/images/stage-nine-design-g)
+![Adding a row to restaurants using command line](/local_legends/static/stage-nine-design-g)
 
 Register Account View:
-![Adding a row to restaurants using command line](/assets/images/stage-nine-design-h)
+![Adding a row to restaurants using command line](/local_legends/static/stage-nine-design-h)
 
-![Adding a row to restaurants using command line](/assets/images/stage-nine-design-i)
+![Adding a row to restaurants using command line](/local_legends/static/stage-nine-design-i)
 
 #### Handle Edit Review
 
 I will now amend the code above to check that the user_id associated with that review is the same user_id that's logged in. This will prevent registered users from editing each other's review
 
-![Adding a row to restaurants using command line](/assets/images/stage-nine-design-j)
+![Adding a row to restaurants using command line](/local_legends/static/stage-nine-design-j)
 
 I've added this section to aid me in the testing of this code, and added an 'error' session.
 
 You can see below what happens when I try to edit a review that I did not leave:
-![Adding a row to restaurants using command line](/assets/images/stage-nine-design-k)
+![Adding a row to restaurants using command line](/local_legends/static/stage-nine-design-k)
 
 #### Delete Review
 
 This code will be edited in much the same way to prevent anyone other than the author from deleting reviews
 
-![Adding a row to restaurants using command line](/assets/images/stage-nine-design-l)
+![Adding a row to restaurants using command line](/local_legends/static/stage-nine-design-l)
 
-![Adding a row to restaurants using command line](/assets/images/stage-nine-design-m)
+![Adding a row to restaurants using command line](/local_legends/static/stage-nine-design-m)
 
 #### Password Hashing
 
@@ -579,21 +579,21 @@ This completes all stages of design and implementation
 
 ### Base Template
 
-![Master Template](/assets/images/am-i-responsive-base.webp)
+![Master Template](/local_legends/static/am-i-responsive-base.webp)
 
 Base.html is the master template upon which all other pages are based. It contains the nav bars (larger and smaller) the header and the footer and main container
 
 ### Nav Bar
 
-![Nav Bar Large](/assets/images/am-i-responsive-nav-a.webp)
+![Nav Bar Large](/local_legends/static/am-i-responsive-nav-a.webp)
 
-![Nav Bar Small](/assets/images/am-i-responsive-nav-a.webp)
+![Nav Bar Small](/local_legends/static/am-i-responsive-nav-a.webp)
 
 The Nav Bar is contained within the Master Template (base.html). It is fully responsive. IF a user's viewport is 993 or more, the larger nav bar is presented. This is designed for tablets and desktops. However if a user's viewport is 992 or less, the second nav bar is displayed. Both nav bars are complete examples available on Materialize and refereced in #Acknwoegements. It has links to Home, Profile, Sign In (if not logged in), Sign Out (if logged in), Register and Admin Portal (if an admin). The Admin Portal link is activated by the "is_admin" boolean in the user table. This is one of the defensive programming measures I have implemented.
 
 ### Profile
 
-![Profile](/assets/images/am-i-responsive-profile.webp)
+![Profile](/local_legends/static/am-i-responsive-profile.webp)
 
 This section will allow the user, once logged in, to perform Update and Delete (CRUD) functions. This cannot be done if the user is not logged in. If the user clicks Profile and they are not logged in, they will be directed to the Register or Login screens. There are several user options for this page.
 
@@ -659,7 +659,7 @@ The user will enter their email address and password to log in. If they have for
 
 ### Register and Login sections
 
-![Quiz Screen](/assets/images/am-i-responsive-register.webp)
+![Quiz Screen](/local_legends/static/am-i-responsive-register.webp)
 
 The Register and login page will be contained on the same page under seperate sections.
 
@@ -694,15 +694,15 @@ I have been mindful during coding to ensure that the website is as accessible an
 
 I have used [WebAIM's WAVE report](https://wave.webaim.org/) to assess the accessibility of my project against set guidelines. For reference please see the WAVE report below:
 
-![Summary](/assets/images/accessibility/wave-report-summary.webp)
+![Summary](/local_legends/static/accessibility/wave-report-summary.webp)
 
-![Details](/assets/images/accessibility/wave-report-details.webp)
+![Details](/local_legends/static/accessibility/wave-report-details.webp)
 
-![Structure](/assets/images/accessibility/wave-report-structure.webp)
+![Structure](/local_legends/static/accessibility/wave-report-structure.webp)
 
-![Underline](/assets/images/accessibility/wave-report-underline.webp)
+![Underline](/local_legends/static/accessibility/wave-report-underline.webp)
 
-![Contrast](/assets/images/accessibility/wave-report-contrast.webp)
+![Contrast](/local_legends/static/accessibility/wave-report-contrast.webp)
 
 ### Contrast Ratio
 
