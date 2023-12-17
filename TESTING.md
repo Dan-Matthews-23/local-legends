@@ -19,6 +19,9 @@
       - [Contact Us](#contact-us)
       - [Restauants](#restauants)
       - [REstaurant Profile](#restaurant-profile)
+      - [Edit Review](#edit-review-1)
+        - [Admin Login](#admin-login)
+        - [Admin Portal](#admin-portal)
       - [JavaScript](#javascript)
       - [Python Validation](#python-validation)
       - [Lighthouse Report](#lighthouse-report)
@@ -328,7 +331,18 @@ There were no errors with this page
 
 #### REstaurant Profile
 
+There were no issues in this page
 
+#### Edit Review
+
+There were some unexpected errors in this page. I was using two seperate forms to submit the value of Restaurant ID based on thefor() loop for reviews. However the HTML validator did not like this. Instead inside the handle_leave_review function I've create a seperate check to pull the restaurant ID from the Reviews table based o dot notation. Thin I delete  the second call to post the restaurant ID
+
+##### Admin Login
+There were severall errors with this page relating to unmatching labels/div_ids
+
+##### Admin Portal
+
+There were several errors here with nesting <h4> elements within a label which is not allowed
 
 
 

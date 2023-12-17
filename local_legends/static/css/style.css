@@ -383,7 +383,8 @@ span {
   width: 100%;
 }
 
-#leave-review-btn-div {
+#leave-review-btn-div,
+#edit-review-btn-div {
   height: 70px;
 }
 
