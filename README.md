@@ -131,7 +131,7 @@ The existing user and previous diner:
 - To be able to create an account then log in
 - To be able to Create, Read, Update and Delete reviews and an account
 
----
+***
 
 ## Design Stages
 
@@ -143,7 +143,7 @@ This is the biggest project I've undertaken to date. While I've little developer
 
 Wireframes were created for desktop, tablet and mobile (1200px, 758px, and 476px respectively).
 
-WIREFRAMES HERE
+![Local Legends Index Desktop](/local_legends/static/images/wireframes/index.html.png)
 
 #### Database Design
 
