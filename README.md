@@ -705,13 +705,19 @@ I have used [WebAIM's WAVE report](https://wave.webaim.org/) to assess the acces
 ![Contrast](/local_legends/static/accessibility/wave-report-contrast.webp)
 
 ### Contrast Ratio
-
+DO THIS!!!
 As part of my drive to make sure this project is as accessible as possible, and to act upon feedback from previous project, I have used [WebAIM's contrast checker](https://webaim.org/resources/contrastchecker/bookmarklet). I have used this tool to test the Coolers template I used after it failed the contrast ratio tests to improve upon the contrast of background/foreground colours and ran the test again, which passed (see Justifications > Background Colour)
 
 ## Justifications and reflections
 
 - **Relational v Non-relational database choice** - I spent some time pouring through the theory and practise around both forms of database design. [Scaler.com](https://www.scaler.com/topics/dbms/relational-and-non-relational-databases/) are quite thorough in their comparison between both database designs. After having compared my designs and purpose with their reccomendations (advantages and disadvantages for both), it seemed logical that I choose a non-relational database design for my own project. However, although perhaps controversial, I have chosen a relational database design for this project. Ultimetly that choice was based on my own personal preference, having first made sure there was no sense of taboo around which design to use for the purpose of this project. I am familiar with relational databases, having taught them for many years to children. I am also familiar with the syntax around the query lanaguages (SQL) and much prefer a structured method to interrogating data. I do note that if this project were to grow to the size of some of the projects upon which I have taken inspiration (such as Tripadvisor, who have taken over a billion reviews), I would need to carefully consider migrating to a non-relational database, simply because relational database queries are slower and require more server space, ultimatly negativley affecting user experience. However for the purposes of this project a relational database design will not affect user experience.
-- ***
+
+- **PEP8 reccomendations** - I have used [Code Institue's Linter](https://pep8ci.herokuapp.com/) with all of my python code. However when I follow every possible suggestion, it causes errors with my routes.py. For example seperating some of my longer lines of code such as database queries with parentheses does not always work depending on the expression I'm using. Some of my queries are long and complex. However in keeping with PEP8's recomendations in their [documentation](https://peps.python.org/pep-0008/), I have kept all of my code at a 80-character limit. But to do this I've had to use backslahes in some places. 
+
+The documentation says: "The preferred way of wrapping long lines is by using Python’s implied line continuation inside parentheses, brackets and braces. Long lines can be broken over multiple lines by wrapping expressions in parentheses. These should be used in preference to using a backslash for line continuation. Backslashes may still be appropriate at times."
+
+While it's not the ideal method I believe I have no other choice, and from the research I've done they're not against the rules to use. As a future development I do intend on revisiting my queries (which number in around a dozen) to see if further development can be done. 
+
 
 ## Technologies Used
 
