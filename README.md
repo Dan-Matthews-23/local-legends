@@ -143,43 +143,116 @@ This is the biggest project I've undertaken to date. While I've little developer
 
 Wireframes were created for desktop, tablet and mobile (1200px, 758px, and 476px respectively).
 
-![Local Legends Index Desktop](/local_legends/static/images/wireframes/index.html.png)
+Index.html / Home (Desktop View)
+
+[Local Legends Index Desktop](/local_legends/static/images/wireframes/index.html.png)
+
+Index.html / Home (Tablet View)
+
+[Local Legends Index Tablet](/local_legends/static/images/wireframes/index-tablet.png)
+
+Index.html / Home (Mobile View)
+
+[Local Legends Index Mobile](/local_legends/static/images/wireframes/index-mobile)
+
+register.html / Register (Desktop View)
+
+[Local Legends Register Desktop](/local_legends/static/images/wireframes/register.png)
+
+register.html / Register (Tablet View)
+
+[Local Legends Register Tablet](/local_legends/static/images/wireframes/register-tablet.png)
+
+register.html / Register (Mobile View)
+
+[Local Legends Register Mobile](/local_legends/static/images/wireframes/register-mobile.png)
+
+contact-us.html / Contact_us (Desktop View)
+
+[Local Legends Contact Us Desktop](/local_legends/static/images/wireframes/contact-us.png)
+
+contact-us.html / Contact_us (Tablet View)
+
+[Local Legends Contact Us Tablet](/local_legends/static/images/wireframes/contact-us-tablet.png)
+
+contact-us.html / Contact_us (Mobile View)
+
+[Local Legends Contact Us Mobile](/local_legends/static/images/wireframes/contact-us-mobile.png)
+
+leave_review.html / leave_review (Desktop View)
+
+[Local Legends Leave Review Desktop](/local_legends/static/images/wireframes/leave-review.png)
+
+leave_review.html / leave_review (Tablet View)
+
+[Local Legends Leave Review Tablet](/local_legends/static/images/wireframes/leave-review-tablet.png)
+
+leave_review.html / leave_review (Mobile View)
+
+[Local Legends Leave Review Mobile](/local_legends/static/images/wireframes/leave-review-mobile.png)
+
+profile.html / profile (Desktop View)
+
+[Local Legends Profile Desktop](/local_legends/static/images/wireframes/profile.png)
+
+profile.html / profile (Tablet View)
+
+[Local Legends Profile Tablet](/local_legends/static/images/wireframes/profile-tablet.png)
+
+profile.html / profile (Mobile View)
+
+[Local Legends Profile Mobile](/local_legends/static/images/wireframes/profile-mobile.png)
+
+restaurants.html / restaurants (Desktop View)
+
+[Local Legends Restaurants Desktop](/local_legends/static/images/wireframes/restaurants.png)
+
+restaurants.html / restaurants (Tablet View)
+
+[Local Legends Restaurants Tablet](/local_legends/static/images/wireframes/restaurants-tablet.png)
+
+restaurants.html / restaurantse (Mobile View)
+
+[Local Legends Restaurants Mobile](/local_legends/static/images/wireframes/restaurants-mobile.png)
 
 #### Database Design
 
 The initial plans for the database were designed in Microsoft Access. I used this program because I was quite familiar with it, having taught its use for years. My project will use a Relational Database design. There will be three tables for users, restaraunts and reviews, each with a primary key.
 
-![Local Legends Database Design](/assets/images/testing/)
+![Local Legends Relationships Database Design](/local_legends/static/images/design-stages/db-design.png)
 
-![Local Legends Database Design](/assets/images/database-design-restaurants)
+![Local Legends Admins Table Design](/local_legends/static/images/design-stages/admins-structure.png)
 
-![Local Legends Database Design](/assets/images/database-design-reviews)
+![Local Legends Users Design](/local_legends/static/images/design-stages/users-structure.png)
 
-![Local Legends Database Design](/assets/images/database-design-relationships)
+![Local Legends Approvals Design](/local_legends/static/images/design-stages/approvals-structure)
+
+![Local Legends Reviews Design](/local_legends/static/images/design-stages/reviews-structure)
+
+![Local Legends Restaurants Design](/local_legends/static/images/design-stages/restaurants-structure)
 
 It should be noted here that although the designs say 'Number' on several data types, the data types in the final product will be Integer. In addition, the 'Text' and 'Long Text' types will be limited by character limits which is not visible on these designs.
 
 #### Colour
 
-![TLocal Legends COLOUR PALETTE](/assets/images/colour-palette.webp)
+![Local Legends COLOUR PALETTE](/local_legends/static/images/design-stages/coolers-palette.png)
 
-[Also available as Coolors palette](https://coolors.co/1d110f-a37451-0e0807-8b5f48-67442c)
+[Also available as Coolors palette](https://coolors.co/222222-ffffff-1c5d99-639fab-bbcde5)
 
 This was the original colour palette I had chosen for this project during the design stage. However after setting up the CSS file I decided to use the design language [Materialize](https://materializecss.com/color.html), by [Google](http://google.com). The Coolors palette I selected is not supported by Materialize and instead has its own colour scheme. To that end, I have selected the following colours for this project:
 
-![Local Legends COLOUR PALETTE](/assets/images/)
-
-![Local Legends COLOUR PALETTE](/assets/images/)
+"# 6d4c41 brown darken-1"
+"#efebe9 brown lighten-5"
 
 Both are available at [Materialize](https://materializecss.com/color.html)
 
 #### Font
 
-The font I have chosen to use for this project is one called Poppins, which is part of the Sans Sarif family. It can be found [here](https://fonts.google.com/specimen/Poppins). I chose the 'Light 300' weighting as I felt that it would stand out a little more than the 'thin' preset.
+The font I have chosen to use for this project is one called Poppins, which is part of the Sans Sarif family. It can be found [here](https://fonts.google.com/specimen/Poppins). I chose the 'Light 300' weighting as I felt that it would stand out a little more than the 'thin' preset. I have used this font in my other projects and feel it's just right
 
 #### Images
 
-I expect to include an image for every restaurant I have. An estimate will be around twenty. These images I intend to source on Pexels and iwll credit them fully in the #Credits section.
+I have chosen to do something different to my other projects. I plan for the images to run alongside restaurant details to be stored in the database as a URL, not an image. 
 
 ### Stage Two - Master Template
 
@@ -189,7 +262,7 @@ The Master Template, called base.html, will be used as a template for all pages 
 
 At this stage, the header is very simple. To the left I have included the title of the project - Local Legends. I have decided not to incorperate a logo in this project for a much smiliar reason as my previous projects - I do not feel there is a need for a logo unless I were to mimic another company, which is not something I'm prepared to do. I do have plans to change the font type and size of the title at a later stage once I see how the layout interacts with the other pages. The Navbars are included in the header.
 
-![Local Legends COLOUR PALETTE](/assets/images/stage-two-design-a)
+![Local Legends COLOUR PALETTE](/local_legends/static/images/stage-two-design-a)
 
 #### Navbar
 
