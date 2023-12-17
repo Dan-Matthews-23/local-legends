@@ -1,20 +1,10 @@
-
-
-
-
-
-
-
 document.addEventListener("DOMContentLoaded", function () {
-  let smallerNavBar = document.querySelectorAll(".sidenav");
-  M.Sidenav.init(smallerNavBar);
+    let smallerNavBar = document.querySelectorAll(".sidenav");
+    M.Sidenav.init(smallerNavBar);
 });
 
-
-
-
-var coll = document.getElementsByClassName("collapsible");
-var i;
+let coll = document.getElementsByClassName("collapsible");
+let i;
 
 for (i = 0; i < coll.length; i++) {
     coll[i].addEventListener("click", function () {
@@ -27,8 +17,3 @@ for (i = 0; i < coll.length; i++) {
         }
     });
 }
-
-
-
-
-

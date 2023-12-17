@@ -34,6 +34,7 @@
   padding: 10px 0px 10px 0px;
   margin: auto;
   vertical-align: middle;
+  width:100%;
 }
 
 #welcome-banner-central-div {
@@ -770,25 +771,42 @@ h4 {
 }
 
 @media screen and (max-width: 996px) {
-  #contact-us-container {
+  #contact-us-container,
+  #profile-container,
+  #register-container,
+  #report-problems,
+  #sign-in-container
+  {
     width: 80%;
   }
 }
 
 @media screen and (max-width: 950px) {
-  #contact-us-container {
+  #contact-us-container,
+  #profile-container,
+  #report-problems,
+  #register-container,
+  #sign-in-container {
     width: 90%;
   }
 }
 
 @media screen and (max-width: 900px) {
-  #contact-us-container {
+  #contact-us-container,
+  #profile-container,
+  #report-problems,
+  #register-container,
+  #sign-in-container {
     width: 100%;
   }
 }
 
 @media screen and (max-width: 850px) {
-  #contact-us-container {
+  #contact-us-container,
+  #profile-container,
+  #report-problems,
+  #register-container,
+  #sign-in-container {
     width: 100%;
   }
   .default-text-styling
@@ -798,7 +816,11 @@ h4 {
 }
 
 @media screen and (max-width: 530px) {
-  #contact-us-main-container {
+  #contact-us-main-container,
+  #profile-container,
+  #report-problems,
+  #register-container,
+  #sign-in-container {
     width: 100%;
   }
 
@@ -810,3 +832,15 @@ h4 {
     display: block;
   }
 }
+
+@media screen and (max-width: 470px) {
+    #more_info
+     {
+        height: 100%;
+        width:100%;
+    }
+  
+  }
+
+
+

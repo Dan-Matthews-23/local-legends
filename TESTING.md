@@ -12,7 +12,15 @@
     - [Automated Testing](#automated-testing)
     - [Validation and formatting](#validation-and-formatting)
       - [HTML and CSS](#html-and-css)
+        - [Base.html](#basehtml)
+        - [Home / Index.html](#home--indexhtml)
+        - [Registration](#registration)
+        - [Sign In](#sign-in)
+      - [Contact Us](#contact-us)
+      - [Restauants](#restauants)
+      - [REstaurant Profile](#restaurant-profile)
       - [JavaScript](#javascript)
+      - [Python Validation](#python-validation)
       - [Lighthouse Report](#lighthouse-report)
       - [Formatting](#formatting)
     - [Testing User Stories](#testing-user-stories)
@@ -291,17 +299,50 @@ I used W3 School's Jigsaw Validator for my CSS.
 
 I also used Jigsaw for my HTML and tested each page seperatly by right-clicking and selecting View Page Source
 
+There were several errors regarding misused <p> and <heading> elements. I've fixed there. However one error that keeps popping up is in base.html, in the style tags. Whenever I save the file, Prettier replaces an end tag ">" with " />", causing an error. I've manually disabled auto-format but it does keep changing it each time I'm ready to finalize formatting. I will put this in the Bugs section. 
+
+
 ##### Base.html
 
 The Jigsaw validator identified 6 errors. I corrected these errors.
 
 ##### Home / Index.html
 
-The Jigsaw validator identified 93 errors. At first glance it appears almost all of them are real errors, not warnings.
+The Jigsaw validator identified 93 errors. I correct these. 
+
+##### Registration
+
+The Jigsaw validator identified 12 errors. I correct these. They showed because I had not correctly closed tags, and my form was placed incorrectly
+
+##### Sign In
+
+There were three errors for this page relating to misplaced form close tag and two misued div cloee tags. I have corrected these
+
+#### Contact Us
+
+There were 9 errors in this code due to misplaced divs. These are now corrected
+
+#### Restauants
+
+There were no errors with this page
+
+#### REstaurant Profile
+
+
+
+
+
+
+
 
 #### JavaScript
 
 For my JavaScript validation, I used JsHint.
+
+#### Python Validation
+
+For validation I used a combination of Code Institute's [PEP8 Python Linter](https://pep8ci.herokuapp.com/) and the PEP8 documentation
+There were several hundred errors of varying nature, however I've fixed all errors.
 
 #### Lighthouse Report
 

@@ -207,8 +207,8 @@ def register():
         username = request.form.get("username_register")
         email = request.form.get("email_register")
 
-        existing_username = Users.query.filter
-        (Users.username == username.lower()).all()
+        existing_username = (Users.query.filter
+        (Users.username == username.lower()).all())
         existing_email = Users.query.filter(Users.email == email.lower()).all()
 
         if existing_username:
@@ -231,12 +231,15 @@ def register():
                 Your password must be at least 10 characters long
                 """
             else:
-                new_password = generate_password_hash
-                (request.form.get("password_register"))
+                new_password = (generate_password_hash
+                (request.form.get("password_register")))
+                
                 todays_date = datetime.datetime.now()
+                
                 new_user = Users(username=username, email=email,
                                  password_hash=new_password,
                                  user_date_registered=todays_date)
+                                 
                 db.session.add(new_user)
                 db.session.commit()
                 session['err'] = "Registration successful!"
@@ -244,9 +247,9 @@ def register():
     return render_template("register.html")
 
 
-@app.route("/restaurant_profile/<int:restaurant_id>/leave_review",\
-methods=["POST"])
-
+@app.route(
+    """/restaurant_profile/{restaurant_id}/leave_review""", methods=["POST"]
+)
 def handle_leave_review(restaurant_id):
     if not session.get('is_logged_in'):
         session['err'] = "You are not logged in"
@@ -789,16 +792,16 @@ def handle_edit_review(review_id):
                                               ("select_ambience")))
                 average_price_stars = (int(request.form.get("select_price")))
 
-                #calculated_overall_stars_for_review = (average_ambience_stars
-                                                       + average_price_stars +
-                                                       average_friendliness_
-                                                       stars + 
-                                                       average_
-                                                       presentation_stars +
-                                                       average_taste_
-                                                       stars) / 5
-                calculated_overall_stars_for_restaurant =
-                calculated_overall_stars_for_review
+                calculated_overall_stars_for_review = (
+                    average_ambience_stars) + (
+                        average_price_stars) + (
+                            average_friendliness_stars) + (
+                                average_resentation_stars) + (
+                                    average_taste_stars / 5)
+
+            calculated_overall_stars_for_restaurant = (
+                calculated_overall_stars_for_review)
+
             restaurant = Restaurants.query.filter
             (Restaurants.restaurant_id == restaurant_id).first()
             get_reviews_by_restaurant_id = Reviews.query.filter
@@ -809,19 +812,24 @@ def handle_edit_review(review_id):
                 session['err'] = "Restaurant could not be edited"
             else:
                 restaurant.restaurant_average_taste_stars = average_taste_stars
-                (restaurant.restaurant_average_presentation_stars=(average_
-                                                                   presentatio
-                                                                   n_stars))
-                restaurant.restaurant_average_friendliness_stars =\
-                    average_friendliness_stars
-                restaurant.restaurant_average_price_stars = average_price_stars
-                (restaurant.restaurant_average_ambience_stars=(average_ambience
-                                                               _stars))
-                (restaurant.restaurant_average_overall_stars=(calculated_
-                                                              overall_stars_
-                                                              for_restaurant))
-                (restaurant.restaurant_review_count=(review_count_by_
-                                                     restaurant_id))
+                restaurant.restaurant_average_presentation_stars = (
+                    average_presentation_stars
+                        )
+                restaurant.restaurant_average_friendliness_stars = (
+                    average_friendliness_stars)
+
+                restaurant.restaurant_average_price_stars = (
+                    average_price_stars)
+
+                restaurant.restaurant_average_ambience_stars = (
+                    average_ambience_stars)
+
+                restaurant.restaurant_average_overall_stars = (
+                    calculated_overall_stars_for_restaurant)
+
+                restaurant.restaurant_review_count = (
+                    review_count_by_restaurant_id)
+
                 db.session.add(restaurant)
                 db.session.commit()
         try:
@@ -863,8 +871,8 @@ def edit_restaurant():
     restaurant.restaurant_address_four = edit_address_four
     restaurant.restaurant_address_postcode = edit_postcode
     restaurant.restaurant_image_url = edit_thumbnail
-    (restaurant.restaurant_date_registered=(restaurant.
-                                            restaurant_date_registered))
+    restaurant.restaurant_date_registered = (
+        restaurant.restaurant_date_registered)
     try:
         db.session.commit()
         session['err'] = "Restaurant edited successfully"
@@ -1011,13 +1019,15 @@ def delete_review(review_id):
                 average_ambience_stars = 0
                 average_price_stars = 0
 
-            calculated_overall_stars_for_review = (average_ambience_stars +
-                                                   average_price_stars +
-                                                   average_friendliness_stars +
-                                                   average_presentation_stars +
-                                                   average_taste_stars) / 5
-            (calculated_overall_stars_for_restaurant=(calculated_overall_stars_
-                                                      for_review))
+            calculated_overall_stars_for_review = (
+                average_ambience_stars) + (
+                    average_price_stars) + (
+                        average_friendliness_stars) + (
+                            average_presentation_stars) + (
+                                average_taste_stars) / 5
+
+            calculated_overall_stars_for_restaurant = (
+                calculated_overall_stars_for_review)
 
             restaurant = (Restaurants.query.filter
                           (Restaurants.restaurant_id == restaurant_id).first())
@@ -1033,20 +1043,21 @@ def delete_review(review_id):
             if not restaurant:
                 session['err'] = "Restaurant could not be edited"
             else:
-                (restaurant.restaurant_average_
-                    taste_stars=(average_taste_stars))
-                (restaurant.restaurant_average_
-                    presentation_stars=(average_presentation_stars))
-                (restaurant.restaurant_average_
-                    friendliness_stars=(average_friendliness_stars))
-                (restaurant.restaurant_average_
-                    price_stars=(average_price_stars))
-                (restaurant.restaurant_average_
-                    ambience_stars=(average_ambience_stars))
-                (restaurant.restaurant_average_
-                    overall_stars=(calculated_overall_stars_for_restaurant))
-                (restaurant.restaurant_review_
-                    count=(review_count_by_restaurant_id))
+                restaurant.restaurant_average_taste_stars = (
+                    average_taste_stars)
+
+                restaurant.restaurant_average_presentation_stars = (
+                    average_presentation_stars)
+                restaurant.restaurant_average_friendliness_stars = (
+                    average_friendliness_stars)
+                restaurant.restaurant_average_price_stars = (
+                    average_price_stars)
+                restaurant.restaurant_average_ambience_stars = (
+                    average_ambience_stars)
+                restaurant.restaurant_average_overall_stars = (
+                    calculated_overall_stars_for_restaurant)
+                restaurant.restaurant_review_count = (
+                    review_count_by_restaurant_id)
                 db.session.commit()
         try:
             db.session.commit()
@@ -1080,11 +1091,12 @@ def clear_error():
 
 @app.route("/signin", methods=["GET", "POST"])
 def login():
-    password = request.form.get("password_login")
-    email = request.form.get("email_login")
+    
     if request.method == "POST":
-        existing_user = Users.query.filter
-        (Users.email == email.lower()).first()
+        password = request.form.get("password_login")
+        posted_email = request.form.get("email_login")
+        email = posted_email.lower()
+        existing_user = Users.query.filter(Users.email == email).first()
         if existing_user:
             if check_password_hash(existing_user.password_hash, password):
                 user_id = existing_user.user_id
@@ -1124,7 +1136,7 @@ def check_admin_status():
             user = Users.query.filter(Users.user_id == user_id).first()
         # Fifth line of defense - checking the user has admin status
             is_admin = user.is_admin
-            if is_admin == True:
+            if isinstance(is_admin, bool) and is_admin:
                 admin_id_check = Admins.query.filter(
                     Admins.user_id == user_id).first()
             # Sixth line of defense - checking the user's user_id is
@@ -1166,7 +1178,7 @@ def admin_login():
         user = Users.query.filter(Users.user_id == user_id).first()
         # Fifth line of defense - checking the user has admin status
         is_admin = user.is_admin
-        if is_admin == True:
+        if isinstance(is_admin, bool) and is_admin:
             admin_id_check = Admins.query.filter(
                 Admins.user_id == user_id).first()
             # Sixth line of defense - checking the user's user_id is stored

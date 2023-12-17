@@ -1,45 +1,43 @@
 {% extends "base.html" %}
 {% block content %}
-<div class=" align-center contact-us-container ">
+<form action="{{ url_for('login') }}" method="POST">
+    <div class=" align-center contact-us-container  " id="sign-in-container">
     <div class="row  align-center">
-        <div class="col s12 m12 l12 xl12 card-panel grey lighten-5  align-center">
+        <div class="col s12 m12 l12 xl12 align-center">
             <div class="row ">
                 <div class="col align-center  s12 m12 l12 xl12">
                     <h1 class="title-font">Sign In</h1>
                 </div>
             </div>
-            <form action="{{ url_for('login') }}" method="POST">
-                <div class=" align-center card-panel grey lighten-5 register-container ">
+            
+                <div class=" align-center card-panel grey lighten-5 register-container " >
 
                     <div class="row ">
                         <div class="col s12 m12 l12 xl12   leave-review-label-div">
                             <h2 class="default-text-styling">All fields marked with * are required</h2>
                         </div>
                     </div>
-                    <div class="row md-padding">
-                        <div class="col s12 m12 l12 xl12   leave-review-label-div">
-                            <h2 class="default-text-styling"></h2>
-                        </div>
+                    <div class="row sm-padding"><div class="col s12 m12 l12 xl12"></div>
                     </div>                    
                     <div class="row ">
-                        <div class="col s12 m12 l12 xl6   leave-review-label-div align-left register-col">
-                            <label for="email_login" class="default-text-styling align-left register-col">
+                        <div class="col s12 m12 l12 xl6   leave-review-label-div align-center">
+                            <label for="email_login" class="default-text-styling align-center ">
                                 * Email Address
                             </label>
                         </div>
-                        <div class="col s12 m12 l12 xl6  leave-review-select-div align-left register-col">
-                            <input type="email" class="contact-us-input register-col" id="email_login" name="email_login" 
+                        <div class="col s12 m12 l12 xl6  leave-review-select-div align-center  ">
+                            <input type="email" class="contact-us-input " id="email_login" name="email_login" 
                                  placeholder="Enter email address" required>
                         </div>
                     </div>
                     <div class="row ">
-                        <div class="col s12 m12 l12 xl6   leave-review-label-div align-left register-col">
-                            <label for="password_login" class=" register-col default-text-styling">
+                        <div class="col s12 m12 l12 xl6   leave-review-label-div  ">
+                            <label for="password_login" class="  default-text-styling">
                                 * Password
                             </label>
                         </div>
-                        <div class="col s12 m12 l12 xl6  leave-review-select-div align-left register-col">
-                            <input type="password" class="register-col contact-us-input" id="password_login"
+                        <div class="col s12 m12 l12 xl6  leave-review-select-div  ">
+                            <input type="password" class=" contact-us-input" id="password_login"
                                 name="password_login" placeholder="Enter your password" required>
                         </div>
                     </div>
@@ -53,11 +51,9 @@
                             <a href="{{ url_for('contact_us') }}">Forgot Password</a>
                         </div>
                     </div>
-            </form>
+            
         </div>
     </div>
 </div>
-</div>
-</div>
-</div>
+</div></form>
 {% endblock %}
