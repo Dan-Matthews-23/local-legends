@@ -60,7 +60,11 @@ class Reviews(db.Model):
     restaurant_id = db.Column(db.Integer, db.ForeignKey("restaurants.restaurant_id", ondelete="CASCADE"), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id", 
     ondelete="CASCADE"), nullable=False)
+    username = db.Column(db.String(150), nullable=False)
     review_date = db.Column(db.DateTime, nullable=False)
+    review_edit_date = db.Column(db.DateTime)
+    edited = db.Column(db.Boolean, default=False)
+
    
 
     def __repr__(self):
