@@ -1007,9 +1007,44 @@ The following section will explain in detail how each function works. All functi
 
 | Function | Explanation |
 | -------- | ----------- |
-| def contact_us | When a GET request is received, the route checks if the user is logged in by checking the is_logged_in key in the session. If the user is not logged in, it sets the user_email session key to an empty string. Otherwise, it retrieves the user's ID from the user_id session key and queries the database for the user's email using the Users model. Finally, it sets the user_email session key to the retrieved email address. The contact_us route doesn't explicitly handle POST requests at this point. This suggests that it might involve processing form data submitted from a contact form on the contact-us.html template. The form data would likely include the user's name, email address, and message. The route would need to extract this data from the request, validate it, and then perform some action, such as sending an email to the contact form's recipient.To handle POST requests, the route would need to check the request's method using request.method and perform the necessary actions accordingly. |
+| def contact_us | The @app.route decorator:
 
-| def contact_us | Purpose:
+This decorator associates the contact_us function with the URL pattern /contact-us. This means that when a request is made to /contact-us, the contact_us function will be called. The methods parameter specifies that the function can be called with GET or POST requests.
+
+Conditional logic for logged-in users:
+
+The first part of the function checks whether the user is logged in. If the user is not logged in, it sets the user_email session variable to an empty string. Otherwise, it retrieves the user's ID from the session and uses it to query the Users table in the database. The query object is then used to get the user's email address, which is stored in the session.
+
+Rendering the contact-us template:
+
+The return render_template("contact-us.html") statement renders the contact-us.html template. This template is responsible for displaying the contact form to the user.
+
+Overall summary:
+
+The contact_us function handles requests to the /contact-us URL. It checks whether the user is logged in and sets the user_email session variable accordingly. It then renders the contact-us.html template, which displays the contact form to the user. |
+| def handle_contact_us |
+This function handles the handling of user-submitted contact information for a problem report. It is associated with the URL route /contact-us/problem and can handle both GET and POST requests.
+
+GET Request:
+
+If the request is a GET request, it simply renders the contact-us.html template, which provides the user with a form to submit their problem report information.
+
+POST Request:
+
+If the request is a POST request, the function retrieves the submitted data from the request.form dictionary. It extracts the user type, email address, problem type, and additional information provided in the form.
+
+It then checks the posted_user_type to determine the user's account type. If it's "user", it retrieves the user ID from the current session. If not, it assigns a user ID of 0, indicating a guest or business user.
+
+Finally, it creates a new Problems object using the collected data, including the current date. It adds this object to the database session and commits the changes.
+
+If the object is successfully created, it sets an error message in the session indicating that the request has been sent and an administrator will contact the user within 3-5 working days. It also checks if the request is a "Forgot Password" request and mentions that a new password will be sent to the user's email address.
+
+If the creation fails, it sets an error message indicating that the request failed and the user should try again later.
+
+In either case, it redirects the user to the URL from which they came, or to the home page if the referrer is not available.
+
+Overall, this function handles the submission of user contact information for a problem report, storing the data in a database and sending a notification to an administrator |
+| def become_legend | Purpose:
 
 This function handles the submission of a restaurant registration form on the website. It checks the validity of the user's input, creates a new Approvals object in the database, and sends an email to an administrator for approval.
 
