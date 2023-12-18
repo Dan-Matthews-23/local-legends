@@ -710,13 +710,46 @@ As part of my drive to make sure this project is as accessible as possible, and 
 
 ## Justifications and reflections
 
+### Justifications
+
 - **Relational v Non-relational database choice** - I spent some time pouring through the theory and practise around both forms of database design. [Scaler.com](https://www.scaler.com/topics/dbms/relational-and-non-relational-databases/) are quite thorough in their comparison between both database designs. After having compared my designs and purpose with their reccomendations (advantages and disadvantages for both), it seemed logical that I choose a non-relational database design for my own project. However, although perhaps controversial, I have chosen a relational database design for this project. Ultimetly that choice was based on my own personal preference, having first made sure there was no sense of taboo around which design to use for the purpose of this project. I am familiar with relational databases, having taught them for many years to children. I am also familiar with the syntax around the query lanaguages (SQL) and much prefer a structured method to interrogating data. I do note that if this project were to grow to the size of some of the projects upon which I have taken inspiration (such as Tripadvisor, who have taken over a billion reviews), I would need to carefully consider migrating to a non-relational database, simply because relational database queries are slower and require more server space, ultimatly negativley affecting user experience. However for the purposes of this project a relational database design will not affect user experience.
 
 - **PEP8 reccomendations** - I have used [Code Institue's Linter](https://pep8ci.herokuapp.com/) with all of my python code. However when I follow every possible suggestion, it causes errors with my routes.py. For example seperating some of my longer lines of code such as database queries with parentheses does not always work depending on the expression I'm using. Some of my queries are long and complex. However in keeping with PEP8's recomendations in their [documentation](https://peps.python.org/pep-0008/), I have kept all of my code at a 80-character limit. But to do this I've had to use backslahes in some places. 
 
 The documentation says: "The preferred way of wrapping long lines is by using Python’s implied line continuation inside parentheses, brackets and braces. Long lines can be broken over multiple lines by wrapping expressions in parentheses. These should be used in preference to using a backslash for line continuation. Backslashes may still be appropriate at times."
 
-While it's not the ideal method I believe I have no other choice, and from the research I've done they're not against the rules to use. As a future development I do intend on revisiting my queries (which number in around a dozen) to see if further development can be done. 
+While it's not the ideal method I believe I have no other choice, and from the research I've done they're not against the rules to use. As a future development I do intend on revisiting my queries (which number in around a dozen) to see if further development can be done.
+
+- **Admin Login**
+
+I have multiple layers of security to confirm Admin authorisation. However I believe it’s important to note here that I created this portal myself, meaning although I have attempted to mitigate any foreseeable security risks, some may remain.
+
+A separate table for admins with User ID as foreign Key. No personal information is stored in the table
+An is_admin marker for the users table
+A number of checks on Admin Login that redirect at any stage where the user is not authorised to access the admin page
+On Admin Login, an admin must enter all of their user credentials (username, email address, password and admin password). This checks the users table based on a search criteria of the user_id stored in admin table
+A Hash Admin Password button that will hash the admin password for extra security. Only shows if the user has is_admin marker. Designed so that the admin must hash this password when they are given admin access for the first time. In a future development I will force the admin to hash this password before they can enter the Admin Portal for an extra layer of security.
+
+
+
+
+### Reflections
+
+- **Datbase setup**
+
+When setting up the database I made a lot of mistakes that ended up costing me weeks of work. I tried to connect Local Legends to an external database (azure) before I’d fully understood how it should have been done. PostGreSQL is an excellent tool and I should have started with that first.  On the next project I will be mindful of this and ensure I carefully consider all of my options before I start building database structure.
+
+- **Flask environment in Desktop VS Code**
+
+I spent another week trying to get VS code to work properly with the Flask environment and in an appropriate environment. I tried to use this because of the constant downtime of Code Anywhere which continues to this date. The errors I was getting was that the Flask application could not be found. I still don’t know what was causing this error but because it was not an online IDE I could not ask for Tutor Support. In the end I had to use Code Anywhere as it already had the templates built in. If I had to do this again I will go straight for a cloud-based IDE.
+
+- **Downtime for Code Academy**
+
+For my next project I will be using GitPod, as I believe Code Anywhere is not reliable in any way. I had many, many wasted days waiting for the services to be up and running again. My repository was corrupted several times after downtime, so recreating it all again took time because I had not saved the env file (although this was my fault, not the fault of Code Anywhere).
+
+- **Admin Portal**
+
+Flask does not come with a built-in admin access portal. While it may seem controversial, I’ve built my own portal. The reason for this is simply that once it’s released and live, my only way to manage the requests from Restaurants and technical queries would be for these to be emailed to me. This assumes that my spam filter would not interfere. It also means that I would need to create new records manually using SQL console on Elephant SQL. I believe having this portal available so that all I need to do is review the request then click ‘Approve’ would make my job easier. It will also make the customer journey better as they will essentially be in control of what comes to me for approval
 
 
 ## Technologies Used
@@ -777,10 +810,51 @@ To fork this repository:
 To clone this repository:
 
 1. Log in (or sign up) to GitHub.
-2. Go to the repository for this project, Dan-Matthews-23/.
+2. Go to the repository for this project, Dan-Matthews-23/local_legends.
 3. Click on the code button, select whether you would like to clone with HTTPS, SSH or GitHub CLI and copy the link shown.
 4. Open the terminal in your code editor and change the current working directory to the location you want to use for the cloned directory.
 5. Type 'git clone' into the terminal and then paste the link you copied in step 3. Press enter.
+
+### How to deploy
+
+The Local Legends database structure comes from the models help in models.py. It holds all the tables and each individual column, data type and lengtyh limit as well as any other essential notations. This model is exported to the database. In this project I have used Elephant SQL to store the database. Here's how to use it:
+
+#### Elephant SQL
+1. Create an account with [Elephant SQL](https://www.elephantsql.com/)
+2. Log in (prefebly with Gut Hub)
+3. Click Create Instance, using "local_legends" as an Instance name
+4. View the full Instance list and click into local_legends
+5. Copy the URL shown for URL ![Elephant SQL URL link](/local_legends/static/images/design-stages/elephant_sql_url.png)
+   
+#### Heroku
+
+6. Create an account with [Heroku](https://dashboard.heroku.com/)
+7. Log in
+8. Click New, then Create New App. Give the name of local-legends
+9. Click local-legends
+10. Click Settings
+11. Click Reveal Config Bars
+12. Replicate the following:
+![Heroku Config Vars](/local_legends/static/images/design-stages/deploy_heroku.png)
+
+(DATABASE_URL should be the link you copied from Elephant SQL)
+Important: Delete the DEBUG var before final deployment
+
+12. Click Deploy
+13. Scroll down and select Manual Deployment, then Deploy. 
+14. Once the process has stopped running, click MOre in the top-right corner and select Run Console
+15. Enter Python then click Run
+16. Enter the following commands:
+
+from local_legends import app, db
+app.app_context().push()
+db.create_all()
+
+Note: you may be able to run only lines one and three. However this is how I've deployed Local Legends
+
+17. Type exit() and close the console
+18. Scroll back to the bottom and click Deploy. The live Heroku project will then open in a new tab
+19. 
 
 ### How to maintain
 
@@ -810,7 +884,7 @@ To give administrator permissions for an existing Local Legends Registered Accou
 - Access and log in to Elephant SQL
 - Enter the Local Legends instance
 - From the options on the left sidebar, select "Browser" to enter the Browser-based SQL command console
-- In the console, enter the following SQL query: SELECT \* FROM "public"."users"
+- In the console, enter the following SQL query: SELECT * FROM "public"."users"
 - This will bring a full list of registered users. Find the user you want to make an admin and note their user_id.
 - Then enter the following command: UPDATE "public"."users" SET is_admin = True WHERE user_id=THEIR_USER_ID
 - This will update the users table and give that user an 'is_admin' marker.
@@ -823,7 +897,7 @@ To remove admin permissions for a user:
 - Access and log in to Elephant SQL
 - Enter the Local Legends instance
 - From the options on the left sidebar, select "Browser" to enter the Browser-based SQL command console
-- In the console, enter the following SQL query: SELECT \* FROM "public"."admins"
+- In the console, enter the following SQL query: SELECT * FROM "public"."admins"
 - This will bring a full list of admins. Find the admin you want to remove and note the user_id.
 - Enter the following command into the console: DELETE FROM "public"."admins" WHERE user_id = THEIR_USER_ID
 - Then, enter the following query: UPDATE "public"."users" SET is_admin = False WHERE user_id=THEIR_USER_ID
@@ -881,9 +955,16 @@ Please see [Testing Readme](/TESTING.md) for all testing for this project
 
 I have worked closely with my peers on testing this product rigorously for any errors. The feedback is as follows:
 
+- Some of the pages do not seem to be responding well on smaller screens. The input boxes seem to come out of the container
+
+- The footer seems to float on Contact Us and Register on smaller screens
+
 ### Responding to Peer Feedback
 
 I have taken the following actions in response to feedback:
+
+- Used multiple media queries to adjust the mpaent container so that the input boxes are never out of the container. 
+- Applied a 'position: fixed' style t the main footer container
 
 ### Feedback from previous projects
 
@@ -917,18 +998,60 @@ I have also included a WAVE report, which passes all tests.
 
 ### Other Feedback
 
+My mentor suggested that I display a warning to a user about the impact of deleting a review or account. I have incvluded this just above the submit button on both elements. 
 ---
 
 ## Functions Explained
 
-The following section will explain in detail how each function works. All functions can be found in /assets/js/script.js. This section has been written with the aid of [Google Bard](https://bard.google.com/) and checked thoroughly for errors.
+The following section will explain in detail how each function works. All functions can be found in /local-legends/templates/routes.py. This section has been written with the aid of [Google Bard](https://bard.google.com/) and checked thoroughly for errors.
 
 | Function | Explanation |
 | -------- | ----------- |
+| def contact_us | When a GET request is received, the route checks if the user is logged in by checking the is_logged_in key in the session. If the user is not logged in, it sets the user_email session key to an empty string. Otherwise, it retrieves the user's ID from the user_id session key and queries the database for the user's email using the Users model. Finally, it sets the user_email session key to the retrieved email address. The contact_us route doesn't explicitly handle POST requests at this point. This suggests that it might involve processing form data submitted from a contact form on the contact-us.html template. The form data would likely include the user's name, email address, and message. The route would need to extract this data from the request, validate it, and then perform some action, such as sending an email to the contact form's recipient.To handle POST requests, the route would need to check the request's method using request.method and perform the necessary actions accordingly. |
+
+| def contact_us | Purpose:
+
+This function handles the submission of a restaurant registration form on the website. It checks the validity of the user's input, creates a new Approvals object in the database, and sends an email to an administrator for approval.
+
+Breakdown:
+
+Initialization:
+
+The function starts by checking if there's an error message stored in the session from a previous submission. If so, it removes it to prevent it from displaying again.
+Form Submission:
+
+If the request method is POST, it indicates that the form has been submitted. The function proceeds to extract the submitted data from the request form.
+It retrieves the email address, restaurant name, address lines, postcode, thumbnail, cuisine types, delivery availability, and restaurant week availability.
+Data Validation:
+
+Each piece of data is validated to ensure it meets the required criteria. For instance, the email address must not be empty, the restaurant name must be completed, the address lines must have at least one line filled, the postcode must be valid, and the cuisine types must not be left blank.
+Data Processing and Object Creation:
+
+If all data is valid, the function constructs a new Approvals object from the extracted data. This object represents the restaurant registration information.
+It sets the restaurant name, address lines, postcode, thumbnail, date registered, cuisine types, delivery availability, restaurant week availability, and email address based on the submitted data.
+Database Insertion and Email Notification:
+
+The function adds the newly created Approvals object to the database using the db.session.add() method.
+It commits the database changes to ensure the data is persisted.
+It creates an email message informing the administrator that a new restaurant registration request has been submitted.
+The message includes the restaurant name, address, and email address.
+It sends the email using the provided email functionality.
+Error Handling and Redirect:
+
+If any data validation fails, an error message is stored in the session.
+The function redirects the user back to the contact-us.html page to display the error message.
+Default Render:
+
+If the request method is GET, indicating a regular page load, the function simply renders the contact-us.html template.
+In summary, the become_legend function handles the restaurant registration process, ensuring data validation, database operations, and email notifications to administrators. |
 
 ---
 
 ## Future Developments
+
+**Expansion of Local Legends to neighbouring areas** - Local Legends is primarily focussed on Sunderland. At the moment only restaurants in this city can participate. But I would like to expand this at a future date if Local Legends proves popular. 
+
+**Development of Python code in routes.py** - I believe in strong, robust code that is accurate and efficient. However there are certain parts of my python code I’m not happy with. This code can be found in routes.py in the handle_leave_review, handle_edit_review and delete_review sections. When the customer leaves, edits or deletes a review, the restaurant ratings are recalculated. There is a large block of code in each of those three functions that does the same thing in slightly different ways. I would rewrite this code to make it more efficient. I did initially have one function that recalculated this code in all three functions, however because it had to vary slightly across all three this made it very difficult and in the end I could not find a way. The way the functions are written now is difficult to follow, difficult to read and was very difficult to write. Given more time I will develop these functions
 
 ---
 
