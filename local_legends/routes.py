@@ -41,7 +41,6 @@ def become_legend():
             return redirect(redirect_url)
         else:
             email = posted_email
-        
         posted_restaurant_name = request.form.get("restaurant_name")
         if (posted_restaurant_name == ""
                 or posted_restaurant_name == "e.g. The Burger Bar"):
@@ -217,29 +216,21 @@ def register():
             session['err'] = """
             That username is already taken. Please choose another
             """
-            redirect_url = request.referrer or url_for(home)
-            return redirect(redirect_url)
         elif existing_email:
             session['err'] = """
             That email address is already taken. Please choose another
             """
-            redirect_url = request.referrer or url_for(home)
-            return redirect(redirect_url)
         elif existing_username and existing_email:
             session['err'] = """
             Both the username and the email address have already been
             registered
             """
-            redirect_url = request.referrer or url_for(home)
-            return redirect(redirect_url)
         else:
             post_password = (len(request.form.get("password_register")))
             if (post_password < 10):
                 session['err'] = """
                 Your password must be at least 10 characters long
                 """
-                redirect_url = request.referrer or url_for(home)
-                return redirect(redirect_url)
             else:
                 new_password = generate_password_hash(
                     (request.form.get("password_register")))
@@ -255,8 +246,7 @@ def register():
                 db.session.add(new_user)
                 db.session.commit()
                 session['err'] = "Registration successful!"
-                redirect_url = request.referrer or url_for(home)
-                return redirect(redirect_url)
+                return redirect(url_for("login"))
     return render_template("register.html")
 
 
@@ -374,9 +364,7 @@ def handle_leave_review(restaurant_id):
             Reviews.restaurant_id == restaurant_id).all()
         review_count_by_restaurant_id = len(get_reviews_by_restaurant_id) + 1
         if not restaurant:
-            session['err'] = "The review could not be edited"
-            redirect_url = request.referrer or url_for(home)
-            return redirect(redirect_url)
+            session['err'] = "Restaurant could not be edited"
         else:
             restaurant.restaurant_average_taste_stars = (
                 average_taste_stars)
@@ -541,8 +529,8 @@ def profile():
             update_user_password = Users(password=password)
             db.session.update(update_user_password)
             db.session.commit()
-            redirect_url = request.referrer or url_for(home)
-            return redirect(redirect_url)
+            flash("Password Updated!")
+            return redirect(url_for("profile"))
         return render_template("profile.html", users=users)
     else:
         return redirect(url_for('login'))
@@ -563,34 +551,29 @@ def change_password():
         user_id = session.get('user_id')
         update_query = Users.query.filter(Users.user_id == user_id).first()
         if update_query is None:
-            session['err'] = "There was an error finding your details"
-            redirect_url = request.referrer or url_for(home)
-            return redirect(redirect_url)
+            session['err'] = "Review could not be found"
+            return redirect(url_for('restaurants'))
         else:
             if (len(request.form.get("current_password"))) < 11:
                 session['err'] = "You must enter your current password"
-                redirect_url = request.referrer or url_for(home)
-                return redirect(redirect_url)
+                return redirect(url_for('profile'))
 
             elif (len(request.form.get("password_change"))) < 11:
                 session['err'] = """
                 Your new password must be at least 10 characters
                 """
-                redirect_url = request.referrer or url_for(home)
-                return redirect(redirect_url)
+                return redirect(url_for('profile'))
             elif (len(request.form.get("confirm_password_change"))) < 11:
                 session['err'] = """
                 Your new password must be at least 10 characters
                 """
-                redirect_url = request.referrer or url_for(home)
-                return redirect(redirect_url)
+                return redirect(url_for('profile'))
             elif (request.form.get("password_change") !=
                   request.form.get("confirm_password_change")):
                 session['err'] = """
                 Your new password and confirm new password did not match
                 """
-                redirect_url = request.referrer or url_for(home)
-                return redirect(redirect_url)
+                return redirect(url_for('profile'))
             else:
                 hashed_password = (generate_password_hash(request.form.get
                                    ("confirm_password_change")))
@@ -599,8 +582,7 @@ def change_password():
             try:
                 db.session.commit()
                 session['err'] = "Password edited successfully"
-                redirect_url = request.referrer or url_for(home)
-                return redirect(redirect_url)
+                return redirect(url_for('profile'))
             except Exception as e:
                 print(e)
                 session['err'] = str(e)
@@ -618,9 +600,8 @@ def change_email():
         user_id = session.get('user_id')
         update_query = Users.query.filter(Users.user_id == user_id).first()
         if update_query is None:
-            session['err'] = "There was an error retriving your details"
-            redirect_url = request.referrer or url_for(home)
-            return redirect(redirect_url)
+            session['err'] = "Review could not be found"
+            return redirect(url_for('restaurants'))
         else:
             # ---
             # This Email Validator was adapted from Geeks for Geeks
@@ -636,23 +617,20 @@ def change_email():
             # ---
             if checked_email == "":
                 session['err'] = "You must enter a correct email address"
-                redirect_url = request.referrer or url_for(home)
-                return redirect(redirect_url)
+                return redirect(url_for('profile'))
             else:
                 check_email_exists = Users.query.filter
                 (Users.email == email).all()
                 if check_email_exists:
                     session['err'] = "That email address is already taken"
-                    redirect_url = request.referrer or url_for(home)
-                    return redirect(redirect_url)
+                    return redirect(url_for('profile'))
                 else:
                     update_query.email = checked_email
                     db.session.add(update_query)
                 try:
                     db.session.commit()
                     session['err'] = "Email address edited successfully"
-                    redirect_url = request.referrer or url_for(home)
-                    return redirect(redirect_url)
+                    return redirect(url_for('profile'))
                 except Exception as e:
                     print(e)
                     session['err'] = str(e)
@@ -671,8 +649,7 @@ def change_username():
         update_query = Users.query.filter(Users.user_id == user_id).first()
         if update_query is None:
             session['err'] = "Review could not be found"
-            redirect_url = request.referrer or url_for(home)
-            return redirect(redirect_url)
+            return redirect(url_for('restaurants'))
         else:
             if (len(request.form.get("change_username"))) < 3:
                 session['err'] = """
@@ -685,8 +662,7 @@ def change_username():
                 (Users.username == username).all()
                 if check_username_exists:
                     session['err'] = "That username address is already taken"
-                    redirect_url = request.referrer or url_for(home)
-                    return redirect(redirect_url)
+                    return redirect(url_for('profile'))
                 else:
                     update_query.username = username
                     db.session.add(update_query)
@@ -696,8 +672,7 @@ def change_username():
                     refresh_username_session = Users.query.filter
                     (Users.user_id == user_id).first()
                     session['username'] = refresh_username_session.username
-                    redirect_url = request.referrer or url_for(home)
-                    return redirect(redirect_url)
+                    return redirect(url_for('profile'))
                 except Exception as e:
                     print(e)
                     session['err'] = str(e)
@@ -934,8 +909,7 @@ def edit_restaurant():
     try:
         db.session.commit()
         session['err'] = "Restaurant edited successfully"
-        redirect_url = request.referrer or url_for(home)
-        return redirect(redirect_url)
+        return render_template('admin_login.html')
     except Exception as e:
         print(e)
         session['err'] = f"An error occurred while editing the restaurant"
@@ -964,12 +938,10 @@ def delete_user():
                 return redirect(url_for('home'))
             else:
                 session['err'] = "That password was incorrect"
-                redirect_url = request.referrer or url_for(home)
-                return redirect(redirect_url)
+                return redirect(url_for("profile"))
         else:
             session['err'] = "Those details were incorect"
-            redirect_url = request.referrer or url_for(home)
-            return redirect(redirect_url)
+            return redirect(url_for("profile"))
     return render_template("profile.html")
 
 
@@ -1280,10 +1252,8 @@ def handle_hash():
             query.admin_password_hash = new_password
             db.session.commit()
             session['err'] = "Password hashed!"
-            redirect_url = request.referrer or url_for(home)
-            return redirect(redirect_url)
+            return redirect(url_for("home"))
         else:
             session['err'] = "Did not work"
-            redirect_url = request.referrer or url_for(home)
-            return redirect(redirect_url)
+            return redirect(url_for("profile"))
     return render_template("temp_admin_access.html")

@@ -280,7 +280,7 @@ Footer: ![Footer](/local_legends/static/images/testing/stage-two-design-d)
 
 #### Welcome Banner
 
-At this stage, the welcome banner is made up of three sections: left div, central div and right div. The left and right divs are for layout purposes only and have rounded corners to give the whole bar a rounded look. The central bar holds the text: "Welcome back,". This is placeholder only. Once my connections to the database and scripts for sessions are running, this will either say "Welcome back, {username}", or will say "Welcome, Guest. Login {here}".
+At this stage, the welcome banner is made up of three sections: left div, central div and right div. The left and right divs are for layout purposes only and have rounded corners to give the whole bar a rounded look. The central bar holds the text: "Welcome back,". This is placeholder only. Once my connections to the database and scripts for sessions are running, this will either say "Welcome back, {username}", or will say "Welcome, Guest".
 
 Welcome Banner: ![Welcome Banner](/local_legends/static/images/testing/stage-two-design-d)
 
