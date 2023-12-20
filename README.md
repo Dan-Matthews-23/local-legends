@@ -724,7 +724,7 @@ The user will enter their email address and password to log in. If they have for
 
 ### Register and Login sections
 
-![Quiz Screen](/local_legends/static/am-i-responsive-register.webp)
+![Quiz Screen](/local_legends/static/am-i-responsive-register.png)
 
 The Register and login page will be contained on the same page under seperate sections.
 
