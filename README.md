@@ -22,19 +22,19 @@
       - [Navbar](#navbar)
       - [Footer](#footer)
       - [Welcome Banner](#welcome-banner)
-    - [Stage Three - Skeleton layout for all pages](#stage-three---skeleton-layout-for-all-pages)
-      - [Homepage (index.html)](#homepage-indexhtml)
-      - [Register / login (register.html)](#register--login-registerhtml)
+    - [Stage Three - Skeleton layout](#stage-three---skeleton-layout)
+      - [Index](#index)
+      - [Register and Login](#register-and-login)
       - [Profile](#profile)
       - [Restaurants](#restaurants)
     - [Stage Four - Creating the database structure](#stage-four---creating-the-database-structure)
       - [PostgreSQL](#postgresql)
-    - [Stage Five: \[u\]CR\[/u\]UD](#stage-five-ucruud)
+    - [Stage Five: Create and Read (CRUD)](#stage-five-create-and-read-crud)
       - [Register account](#register-account)
       - [Create a review](#create-a-review)
-    - [Stage Six - CR\[u\]U\[/u\]D](#stage-six---cruuud)
+    - [Stage Six - Update (CRUD)](#stage-six---update-crud)
       - [Reviews](#reviews)
-    - [Stage Seven - CRU\[u\]D\[/u\]](#stage-seven---cruudu)
+    - [Stage Seven - Delete (CRUD)](#stage-seven---delete-crud)
       - [Delete Review](#delete-review)
     - [Stage Eight - Creating the login system](#stage-eight---creating-the-login-system)
     - [Stage Nine - Defensive Programming](#stage-nine---defensive-programming)
@@ -98,7 +98,6 @@
     - [Feedback from previous projects](#feedback-from-previous-projects)
     - [Responding to feedback from previous projects](#responding-to-feedback-from-previous-projects)
     - [Other Feedback](#other-feedback)
-  - [My mentor suggested that I display a warning to a user about the impact of deleting a review or account. I have incvluded this just above the submit button on both elements.](#my-mentor-suggested-that-i-display-a-warning-to-a-user-about-the-impact-of-deleting-a-review-or-account-i-have-incvluded-this-just-above-the-submit-button-on-both-elements)
   - [Future Developments](#future-developments)
   - [Credits](#credits)
     - [W3 Schools](#w3-schools)
@@ -345,17 +344,17 @@ At this stage, the welcome banner is made up of three sections: left div, centra
 
 Welcome Banner: ![Welcome Banner](/local_legends/static/images/design-stages/stage-two-design-e.png)
 
-### Stage Three - Skeleton layout for all pages
+### Stage Three - Skeleton layout
 
 Stage Three will be to setup all other pages of this project using a skeleton layout with placeholder text.
 
-#### Homepage (index.html)
+#### Index
 
 The homepage will consist of a series of four to eight different restaurants with a description, image and button for each. At this stage the text and image are placeholder only, the button will link to register.html, and will not have any data handling behind it.
 
 Homepage Design: ![Homepage Design](/local_legends/static/images/design-stages/stage-three-design-a/png)
 
-#### Register / login (register.html)
+#### Register and Login
 
 The Register / Login page will be in two sections. For ease, I will be importing code from my first project as a placeholder, although I may choose to replicate the form completley. There is no code attached to the subit buttons below, only placeholder text, although data validation and formatting are present only because I imported code that I'd already written for Project One.
 
@@ -381,43 +380,43 @@ I will be using PostgreSQL to create the structure and of the database and table
 
 I created the database which was sucessful on the second attempt (see testing).
 
-Creating DB using PostgeSQL Design: ![Create DB](/local_legends/static/images/design-stages/stage-three-design-b.png)
+Creating DB using PostgeSQL Design: ![Create DB](/local_legends/static/images/design-stages/stage-four-design-b.png)
 
 Then using the [PostgreSQL documentation](https://www.postgresql.org/docs/current/tutorial-table.html) to ensure I my SQL statement was correct, I created the users table
 
-![Create users table](/local_legends/static/images/design-stages/stage-three-design-c.png)
+![Create users table](/local_legends/static/images/design-stages/stage-four-design-c.png)
 
 I did try to enter the database to make sure the table was create sucessfully, however nothing has shown. I will attempt to inset data into the table and then try to pull the data, which will show if it has worked or not. After several attempts this worked
 
-![Pulling row from users table](/local_legends/static/images/design-stages/stage-three-design-d.png)
+![Pulling row from users table](/local_legends/static/images/design-stages/stage-four-design-d.png)
 
 I used the same method to create the restaurants table
 
-![Create restaurants table](/local_legends/static/images/design-stages/stage-three-design-f.png)
+![Create restaurants table](/local_legends/static/images/design-stages/stage-four-design-f.png)
 
 You may have noticed some errors with the queries I've used so far. It was at this point I realised that I'd set all of my tables up incorrectly. I decided to drop my database and start again using carefulyl formulated SQL queries and the PostgreSQL documentation. These were my final queries, where I created the tables, inserted a test row then pulled the data from it to make ture everything (in particular the auto-increment for primary keys) were working fine:
 
-![Create restaurants table](/local_legends/static/images/design-stages/stage-three-design-g.png)
+![Create restaurants table](/local_legends/static/images/design-stages/stage-four-design-g.png)
 
-![Create users table](/local_legends/static/images/design-stages/stage-three-design-h.png)
+![Create users table](/local_legends/static/images/design-stages/stage-four-design-h.png)
 
-![Create reviews table](/local_legends/static/images/design-stages/stage-three-design-i.png)
+![Create reviews table](/local_legends/static/images/design-stages/stage-four-design-i.png)
 
 That completes Stage Four
 
 EDIT: I have made the mistake here of waiting until Stage Five before learning how to use SQL Alchemy. Had I learned this before Stage Four, I'd have known that creating the schema using SQL (PSQL command line) was a mistake. I should have used an SQL Alchemy model. I have therefore dropped the previous tables and started again using a models.py file, then initialised the schema through the command line as shown below
 
-![Models DB import](/local_legends/static/images/design-stages/stage-three-design-j.png)
+![Models DB import](/local_legends/static/images/design-stages/stage-four-design-j.png)
 
 Then I checked to make sure the tables were set up correctly.
 
-![Checking tables set up](/local_legends/static/images/design-stages/stage-three-design-k.png)
+![Checking tables set up](/local_legends/static/images/design-stages/stage-four-design-k.png)
 
 I have done this using the models.py script, although this code was based on the examples given in Lesson 18: Creating the database on the Code Institute walkthrough tutorial. It wasn't possible to completley write my own code here as the syntax for this particluar function is more or less identical across the spectrum.
 
-![Modals.py](/local_legends/static/images/design-stages/stage-three-design-l.png)
+![Modals.py](/local_legends/static/images/design-stages/stage-four-design-l.png)
 
-### Stage Five: [u]CR[/u]UD
+### Stage Five: Create and Read (CRUD)
 
 #### Register account
 
@@ -441,7 +440,7 @@ The restaurants page is now complete, and I can see a list of everything in the 
 
 The Creating and Reading of CRUD is now complete.
 
-### Stage Six - CR[u]U[/u]D
+### Stage Six - Update (CRUD)
 
 There will be two ways to update details in this project; user details and review edits.
 
@@ -453,15 +452,15 @@ At this stage I will allow a 'guest' to leave a review just so we can pass the U
 
 This script is now operational. Observe the first review available:
 
-![Adding a row to restaurants using command line](/local_legends/static/images/design-stages/stage-six-design-1.png)
+![Adding a row to restaurants using command line](/local_legends/static/images/design-stages/stage-six-a.png)
 
-![Adding a row to restaurants using command line](/local_legends/static/images/design-stages/stage-six-design-b.png)
+![Adding a row to restaurants using command line](/local_legends/static/images/design-stages/stage-six-b.png)
 
-![Adding a row to restaurants using command line](/local_legends/static/images/design-stages/stage-six-design-c.png)
+![Adding a row to restaurants using command line](/local_legends/static/images/design-stages/stage-six-c.png)
 
-![Adding a row to restaurants using command line](/local_legends/static/images/design-stages/stage-six-design-d.png)
+![Adding a row to restaurants using command line](/local_legends/static/images/design-stages/stage-six-d.png)
 
-### Stage Seven - CRU[u]D[/u]
+### Stage Seven - Delete (CRUD)
 
 Stage Seven will focus on the last aspect of CRUD design, and will allow a guest to delete from the database. In this example I will be using edit_review.html so that the user can delete a review. At this stage I have not yet created a login system, so I will need to allow anyone to delete a review. The function will not check requests against a user ID at this stage
 
@@ -471,17 +470,17 @@ In this example I will delete the firt review in the table assigned to Monster M
 
 Here, we can see the rvview in the list
 
-![Adding a row to restaurants using command line](/local_legends/static/images/design-stages/stage-seven-design-a.png)
+![Adding a row to restaurants using command line](/local_legends/static/images/design-stages/stage-seven-a.png)
 
 We click 'Edit Review' to enter the edit screen
 
 Then we click 'Delete Review'.
 
-![Adding a row to restaurants using command line](/local_legends/static/images/design-stages/stage-seven-design-b.png)
+![Adding a row to restaurants using command line](/local_legends/static/images/design-stages/stage-seven-b.png)
 
 Now we can see the review is no longer displayed. The record has been deleted from the database
 
-![Adding a row to restaurants using command line](/local_legends/static/images/design-stages/stage-seven-design-a.png)
+![Adding a row to restaurants using command line](/local_legends/static/images/design-stages/stage-seven-a.png)
 
 Stage Seven is now complete. My next stage will focus on creating the login system so that I can add some validation to stop guests editing and deleting reviews.
 
@@ -564,7 +563,7 @@ Testing to see impact:
 
 ![Adding a row to restaurants using command line](/local_legends/static/images/design-stages/stage-nine-design-d.png)
 
-![Adding a row to restaurants using command line](/local_legends/static/images/design-stages/stage-nine-design-e.png)
+![Adding a row to restaurants using command line](/local_legends/static/images/design-stages/stage-nine-e.png)
 
 Now we have it so that only registered accounts aee given the option of leaving a review.
 
@@ -1065,7 +1064,7 @@ I have also included a WAVE report, which passes all tests.
 ### Other Feedback
 
 My mentor suggested that I display a warning to a user about the impact of deleting a review or account. I have incvluded this just above the submit button on both elements. 
----
+
 
 
 
