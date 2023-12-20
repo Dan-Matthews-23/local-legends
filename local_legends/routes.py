@@ -206,13 +206,10 @@ def register():
     if request.method == "POST":
         username = request.form.get("username_register")        
         email = request.form.get("email_register")
+        existing_user = Users.query.filter(Users.username == username).first()
+        existing_email = Users.query.filter(Users.email == email).first()
 
-        check_username = username.lower()
-        check_email = email.lower()
-        existing_username = Users.query.filter((str(Users.username)).lower() == str(check_username.lower()).lower()).all()
-        existing_email = Users.query.filter((str(Users.email)).lower() == str(check_email.lower()).lower()).all()
-
-        if existing_username:
+        if existing_user:
             session['err'] = """
             That username is already taken. Please choose another
             """
@@ -220,7 +217,7 @@ def register():
             session['err'] = """
             That email address is already taken. Please choose another
             """
-        elif existing_username and existing_email:
+        elif existing_user and existing_email:
             session['err'] = """
             Both the username and the email address have already been
             registered
