@@ -98,12 +98,15 @@
     - [Feedback from previous projects](#feedback-from-previous-projects)
     - [Responding to feedback from previous projects](#responding-to-feedback-from-previous-projects)
     - [Other Feedback](#other-feedback)
+    - [Responding to other feedback](#responding-to-other-feedback)
   - [Future Developments](#future-developments)
   - [Credits](#credits)
     - [W3 Schools](#w3-schools)
     - [Pexels](#pexels)
     - [Content](#content)
     - [Code Used](#code-used)
+      - [Hamburger Bar](#hamburger-bar)
+      - [Email Validator](#email-validator)
   - [Acknowledgments](#acknowledgments)
 
 ## Local Legends
@@ -527,7 +530,7 @@ This now completes Stage Eight.
 The permissions for this project will follow CRUD design and will be set out as follows:
 
 | CRUD   | Guests | Registered Accounts |
-| ------ | ------ | ------------------- |
+| ****** | ****** | ******************- |
 | Create | No\*   | Yes                 |
 | Read   | Yes    | Yes                 |
 | Update | No     | Yes                 |
@@ -610,7 +613,7 @@ I'm having difficulty with this stage due to my db models no longer migrating.
 The Administrator will have additional permissions in order to maintain this project, as set out below:
 
 | CRUD                         | Guests | Registered Accounts | Administrators |
-| ---------------------------- | ------ | ------------------- | -------------- |
+| ***************************- | ****** | ******************- | ************-- |
 | Create Accounts              | Yes    | Yes                 | No             |
 | Create reviews               | Yes    | Yes                 | No             |
 | Create restaurants           | No     | No                  | Yes            |
@@ -672,7 +675,6 @@ This will allow the user to change their Username. The username is used for revi
 #### Delete Account
 
 This option will allow the user to delete their accounts along with all personal information. Users must enter their password to confirm. They are told that account deletion is permenant and cannot be undone. It also tells them that while all personal information (that can identify them) will be delete, reviews will not be deleted. This is because to do so will change the ratings of the restaurant, and could compromise what the website is trying to achieve. This is why the only thing on the review that can be linked to a person is a username.
-
 
 #### Admin Password Hash
 
@@ -770,7 +772,7 @@ I have used [WebAIM's WAVE report](https://wave.webaim.org/) to assess the acces
 ![Contrast](/local_legends/static/accessibility/wave-report-contrast.webp)
 
 ### Contrast Ratio
-DO THIS!!!
+
 As part of my drive to make sure this project is as accessible as possible, and to act upon feedback from previous project, I have used [WebAIM's contrast checker](https://webaim.org/resources/contrastchecker/bookmarklet). I have used this tool to test the Coolers template I used after it failed the contrast ratio tests to improve upon the contrast of background/foreground colours and ran the test again, which passed (see Justifications > Background Colour)
 
 ## Justifications and reflections
@@ -779,7 +781,7 @@ As part of my drive to make sure this project is as accessible as possible, and 
 
 - **Relational v Non-relational database choice** - I spent some time pouring through the theory and practise around both forms of database design. [Scaler.com](https://www.scaler.com/topics/dbms/relational-and-non-relational-databases/) are quite thorough in their comparison between both database designs. After having compared my designs and purpose with their reccomendations (advantages and disadvantages for both), it seemed logical that I choose a non-relational database design for my own project. However, although perhaps controversial, I have chosen a relational database design for this project. Ultimetly that choice was based on my own personal preference, having first made sure there was no sense of taboo around which design to use for the purpose of this project. I am familiar with relational databases, having taught them for many years to children. I am also familiar with the syntax around the query lanaguages (SQL) and much prefer a structured method to interrogating data. I do note that if this project were to grow to the size of some of the projects upon which I have taken inspiration (such as Tripadvisor, who have taken over a billion reviews), I would need to carefully consider migrating to a non-relational database, simply because relational database queries are slower and require more server space, ultimatly negativley affecting user experience. However for the purposes of this project a relational database design will not affect user experience.
 
-- **PEP8 reccomendations** - I have used [Code Institue's Linter](https://pep8ci.herokuapp.com/) with all of my python code. However when I follow every possible suggestion, it causes errors with my routes.py. For example seperating some of my longer lines of code such as database queries with parentheses does not always work depending on the expression I'm using. Some of my queries are long and complex. However in keeping with PEP8's recomendations in their [documentation](https://peps.python.org/pep-0008/), I have kept all of my code at a 80-character limit. But to do this I've had to use backslahes in some places. 
+- **PEP8 reccomendations** - I have used [Code Institue's Linter](https://pep8ci.herokuapp.com/) with all of my python code. However when I follow every possible suggestion, it causes errors with my routes.py. For example seperating some of my longer lines of code such as database queries with parentheses does not always work depending on the expression I'm using. Some of my queries are long and complex. However in keeping with PEP8's recomendations in their [documentation](https://peps.python.org/pep-0008/), I have kept all of my code at a 80-character limit. But to do this I've had to use backslahes in some places.
 
 The documentation says: "The preferred way of wrapping long lines is by using Python’s implied line continuation inside parentheses, brackets and braces. Long lines can be broken over multiple lines by wrapping expressions in parentheses. These should be used in preference to using a backslash for line continuation. Backslashes may still be appropriate at times."
 
@@ -795,14 +797,11 @@ A number of checks on Admin Login that redirect at any stage where the user is n
 On Admin Login, an admin must enter all of their user credentials (username, email address, password and admin password). This checks the users table based on a search criteria of the user_id stored in admin table
 A Hash Admin Password button that will hash the admin password for extra security. Only shows if the user has is_admin marker. Designed so that the admin must hash this password when they are given admin access for the first time. In a future development I will force the admin to hash this password before they can enter the Admin Portal for an extra layer of security.
 
-
-
-
 ### Reflections
 
 - **Datbase setup**
 
-When setting up the database I made a lot of mistakes that ended up costing me weeks of work. I tried to connect Local Legends to an external database (azure) before I’d fully understood how it should have been done. PostGreSQL is an excellent tool and I should have started with that first.  On the next project I will be mindful of this and ensure I carefully consider all of my options before I start building database structure.
+When setting up the database I made a lot of mistakes that ended up costing me weeks of work. I tried to connect Local Legends to an external database (azure) before I had fully understood how it should have been done. PostGreSQL is an excellent tool and I should have started with that first.  On the next project I will be mindful of this and ensure I carefully consider all of my options before I start building database structure.
 
 - **Flask environment in Desktop VS Code**
 
@@ -820,7 +819,7 @@ Flask does not come with a built-in admin access portal. While it may seem contr
 ## Technologies Used
 
 | Programme / feature         | Technology used                                              |
-| --------------------------- | ------------------------------------------------------------ |
+| *************************** | ************************************************************ |
 | Languages                   | HTML and CSS                                                 |
 | Framework                   | [Materialize 0.100.0](https://materializecss.com/about.html) |
 | Colour Scheme               | [Materialize](https://materializecss.com/color.html)         |
@@ -845,7 +844,7 @@ Flask does not come with a built-in admin access portal. While it may seem contr
 | CSS Formatting              | [Free Formater](https://www.freeformatter.com)               |
 | JavaScript Formatting       | [Free Formater](https://www.freeformatter.com)               |
 
----
+***
 
 ## Deployment & Local Development
 
@@ -885,6 +884,7 @@ To clone this repository:
 The Local Legends database structure comes from the models help in models.py. It holds all the tables and each individual column, data type and lengtyh limit as well as any other essential notations. This model is exported to the database. In this project I have used Elephant SQL to store the database. Here's how to use it:
 
 #### Elephant SQL
+
 1. Create an account with [Elephant SQL](https://www.elephantsql.com/)
 2. Log in (prefebly with Gut Hub)
 3. Click Create Instance, using "local_legends" as an Instance name
@@ -893,13 +893,13 @@ The Local Legends database structure comes from the models help in models.py. It
    
 #### Heroku
 
-6. Create an account with [Heroku](https://dashboard.heroku.com/)
-7. Log in
-8. Click New, then Create New App. Give the name of local-legends
-9. Click local-legends
-10. Click Settings
-11. Click Reveal Config Bars
-12. Replicate the following:
+1. Create an account with [Heroku](https://dashboard.heroku.com/)
+2. Log in
+3. Click New, then Create New App. Give the name of local-legends
+4. Click local-legends
+5.  Click Settings
+6.  Click Reveal Config Bars
+7.  Replicate the following:
 ![Heroku Config Vars](/local_legends/static/images/design-stages/deploy_heroku.png)
 
 (DATABASE_URL should be the link you copied from Elephant SQL)
@@ -1028,7 +1028,7 @@ I have worked closely with my peers on testing this product rigorously for any e
 
 I have taken the following actions in response to feedback:
 
-- Used multiple media queries to adjust the mpaent container so that the input boxes are never out of the container. 
+- Used multiple media queries to adjust the mpaent container so that the input boxes are never out of the container.
 - Applied a 'position: fixed' style t the main footer container
 
 ### Feedback from previous projects
@@ -1063,26 +1063,46 @@ I have also included a WAVE report, which passes all tests.
 
 ### Other Feedback
 
-My mentor suggested that I display a warning to a user about the impact of deleting a review or account. I have incvluded this just above the submit button on both elements. 
+My mentor suggested that I display a warning to a user about the impact of deleting a review or account. I have incvluded this just above the submit button on both elements.
 
+### Responding to other feedback
 
+I have created a warning for the user when accessing any Delete functionality. However I could not get a modal pop-up to work, so instead I have put the warning in the form itself as a block of text
 
-
----
+***
 
 ## Future Developments
 
-**Expansion of Local Legends to neighbouring areas** - Local Legends is primarily focussed on Sunderland. At the moment only restaurants in this city can participate. But I would like to expand this at a future date if Local Legends proves popular. 
+**Expansion of Local Legends to neighbouring areas** - Local Legends is primarily focussed on Sunderland. At the moment only restaurants in this city can participate. But I would like to expand this at a future date if Local Legends proves popular.
 
-**Development of Python code in routes.py** - I believe in strong, robust code that is accurate and efficient. However there are certain parts of my python code I’m not happy with. This code can be found in routes.py in the handle_leave_review, handle_edit_review and delete_review sections. When the customer leaves, edits or deletes a review, the restaurant ratings are recalculated. There is a large block of code in each of those three functions that does the same thing in slightly different ways. I would rewrite this code to make it more efficient. I did initially have one function that recalculated this code in all three functions, however because it had to vary slightly across all three this made it very difficult and in the end I could not find a way. The way the functions are written now is difficult to follow, difficult to read and was very difficult to write. Given more time I will develop these functions
+**Development of Python code in routes.py** - I believe in strong, robust code that is accurate and efficient. However there are certain parts of my python code I am not happy with. This code can be found in routes.py in the handle_leave_review, handle_edit_review and delete_review sections. When the customer leaves, edits or deletes a review, the restaurant ratings are recalculated. There is a large block of code in each of those three functions that does the same thing in slightly different ways. I would rewrite this code to make it more efficient. I did initially have one function that recalculated this code in all three functions, however because it had to vary slightly across all three this made it very difficult and in the end I could not find a way. The way the functions are written now is difficult to follow, difficult to read and was very difficult to write. Given more time I will develop these functions
 
----
+***
 
 ## Credits
 
 ### W3 Schools
 
+There are several features in this project that I learned from W3 schools. My adaptations of their templates will be quite similiar
+
+- [Collapsible Buttons](https://www.w3schools.com/howto/howto_js_collapsible.asp), used in almost every HTML page, script.js and styled to suit my purposes in style.css
+  
+- [W3 Schools: How to do a hamburger bar](https://www.w3schools.com/howto/howto_js_mobile_navbar.asp), which features in base.html and was part of my responsive design 
+
 ### Pexels
+
+This project uses several images from Pexels as templates for the restaurants I have created. In time these will be replaced by the images of the restaurants in question.
+
+[Photo by Jorge Zapata from Pexels](https://www.pexels.com/photo/person-making-pasta-tagliatelle-1398688/)
+[Photo by Engin Akyurt from Pexels](https://www.pexels.com/photo/closes-up-photo-of-macaroni-1437267/)
+[Photo by ROMAN ODINTSOV from Pexels](https://www.pexels.com/photo/a-person-holding-tortilla-wraps-with-lettuce-and-beef-5837108/)
+[Photo by Valeria Boltneva from Pexels](https://www.pexels.com/photo/ham-burger-with-vegetables-1639557/)
+[Photo by Vincent Rivaud from Pexels](https://www.pexels.com/photo/top-view-photo-of-baked-pizza-2147491/)
+[Photo by Engin Akyurt from Pexels](https://www.pexels.com/photo/stir-fry-noodles-in-bowl-2347311/)
+[Photo by Chan Walrus from Pexels](https://www.pexels.com/photo/white-and-brown-cooked-dish-on-white-ceramic-bowls-958545/)
+[Photo by Marvin Ozz from Pexels](https://www.pexels.com/photo/bread-with-soup-2474661/)
+[Photo by Malidate Van from Pexels](https://www.pexels.com/photo/person-making-dough-784633/)
+[Photo by Pixabay from Pexels](https://www.pexels.com/photo/person-holding-pastry-dishes-on-white-ceramic-plates-262978/)
 
 ### Content
 
@@ -1090,60 +1110,24 @@ Content for the website was written by Dan Matthews.
 
 ### Code Used
 
----
+#### Hamburger Bar
+
+#### Email Validator
+
+I have used a piece of code in def change_email that validates the email input. The original code is availble on their [website](https://www.geeksforgeeks.org/check-if-email-address-valid-or-not-in-python/)
+
+![Geeks for geeks email validation](/local_legends/static/images/design-stages/used-code.png)
+
+***
 
 ## Acknowledgments
 
 Finally, I want to take the opportunity to thank and acknowledge the following for their support and patience in helping me create my first-ever project:
 
 - [Harry Dhillon](https://github.com/Harry-Leepz), who is my mentor at the Code Institute, for their continued support and guidance.
-- Kofi Afriyie, who is my facilitator from West Herts College, for their time, patience and encouragement in helping me develop this project.
-
----
-
-<https://www.w3schools.com/howto/howto_js_collapsible.asp> - collapse
-
-Photo by Michelle Riach: <https://www.pexels.com/photo/clear-glass-plates-with-vegetable-dish-995743/>
-
-Photo by Helena Lopes: <https://www.pexels.com/photo/wine-in-clear-glass-near-food-on-plate-on-table-1861785/>
-
-Photo by Ksenia Chernaya: <https://www.pexels.com/photo/interior-of-stylish-contemporary-restaurant-with-big-windows-4450334/>
-
-Photo by Lina Kivaka: <https://www.pexels.com/photo/number-1-table-with-dinnerware-ste-1741285/>
-
-Photo by Rachel Claire: <https://www.pexels.com/photo/food-on-top-of-a-wooden-table-5865071/>
-
-Photo by Athena: <https://www.pexels.com/photo/close-up-photo-of-table-setting-set-2961968/>
-
-<https://coolors.co/d6dcce-b3b396-74551f-e8eeea-140702>
-
-CSS VARIABLES: <https://www.w3schools.com/Css/css3_variables.asp>
-
-ICONS font awesome: <https://fontawesome.com/icons/utensils?f=classic&s=solid&sz=2xl&pc=%23000000>
-
-Mentor meeting:
-
-When designing just remember the basic criterea (what do you need to pass). Add the Profile and Filter options if you have time. Just focus on
-Consider cutting down the user table and only add the stars given etc if you add the Profile section
-Pop-uo modal for "Are you sure you want to delete that post", not for sign-in/register. Seperate page for this
-When clicking on a restatrunt on index, have the page link to restataunt.html and pass the restaurant_id through. The fields will fill based on that ID (think of the excel tool you made for Kickstart and drop-down menu)
-
-HAMBURGER BAR - <https://www.w3schools.com/howto/howto_js_mobile_navbar.asp>
-
-Learned how to install and configure flask on VS code
-<https://code.visualstudio.com/docs/python/tutorial-flask>
-
-16/10/2023 - decided to scrap colour plaett so that I could use Materialize colour pla instead. Original colours not present in new col range
-
-Stage One: Creation of template
-Insert screenshots of this
-
-Stage Two: Main container with placeholders text
-
-Stage Three: Register / login with placeholder text
-
-Stage Four: Creating and testing database with queries
-
-Stage Five: Begin CRUD (Creating) by register and login scripts. Test to ensure db is working
-
-Stage Six:
+  
+- Kofi Afriyie and Meena Mengle, who are my facilitators from West Herts College, for their time, patience and encouragement in helping me develop this project.
+  
+- Craig Hudson, for his patience and pep-talks throughout, and for helping to test my finished project
+  
+- Jordan Cooper, for helping to test my finished project and suggestions along the way

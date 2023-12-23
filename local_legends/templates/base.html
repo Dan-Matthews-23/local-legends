@@ -27,7 +27,12 @@
   <body>
     <header>
       <!--Nav bar for screens 993px and above-->
-
+      
+      <!--This section of code was adapted from W3 schools
+        tutorial on Hamburger Bar. See Readme
+        for more info-->
+    
+      <!--Start of adapted code-->
       <nav class="brown lighten-5">
         <div class="nav-wrapper top-nav-wrapper">
           <a class="header-links" id="title" href="{{ url_for('home') }}"
@@ -79,9 +84,11 @@
           </ul>
         </div>
       </nav>
+      
       <!--Nav bar for screens 992px and under-->
 
       <ul class="sidenav" id="mobile-demo">
+        <!--End of adapted code-->
         <li>
           <a class="header-links" href="{{ url_for('register') }}">Register</a>
         </li>
