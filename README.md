@@ -115,7 +115,7 @@
 
 [View Local Legends on Github](https://dan-matthews-23.github.io/local-legends/)
 
-![Am I responsive](/local_legends/static/responsive.webp) - NOT DONE
+![Am I responsive](/local_legends/static/images/responsive/responsive-overall.png)
 
 Local Legends is a new product designed for restaurant users in the area of Sunderland that allows customers to review their experience on five key aspects:
 
@@ -207,7 +207,7 @@ Wireframes were created for desktop, tablet and mobile (1200px, 758px, and 476px
 
 Index.html / Home (Desktop View)
 
-[Local Legends Index Desktop](/local_legends/static/images/wireframes/index.html.png)
+[Local Legends Index Desktop](/local_legends/static/images/wireframes/index-desktop.png)
 
 Index.html / Home (Tablet View)
 
@@ -315,11 +315,11 @@ The font I have chosen to use for this project is one called Poppins, which is p
 
 #### Images
 
-Rather than store the images in folders as I've done in previous projects, I 've decided to allow the restaurant owner to specify which image they would like to use. The URL is stored in the database rather than the file itself.
+There are several images in this project that are used as temporary placeholders. Once this project is launched I will contact the restaurasnts and replace these images with their own images pending approval. Images in use are from [pexels](https://www.pexels.com/)
 
 ### Stage Two - Master Template
 
-The Master Template, called base.html, will be used as a template for all pages in this project.
+The Master Template, called base.html, will be used as a template for all pages in this project. It will hold the header, footer, welcome bar and and nav bar.
 
 #### Header
 
@@ -337,7 +337,7 @@ Navbar on larger viewports: ![Local Legends Small Viewport Navbar](/local_legend
 
 #### Footer
 
-At this stage, the footer holds external links so that the user can find the project or author on GitHub, Facebook, X and Linked In. I do intend to make changes to the colour and size of the icons at a later date.
+At this stage, the footer holds external links so that the user can find the project or author on GitHub, Facebook, X and Linked In.
 
 Footer: ![Footer](/local_legends/static/images/design-stages/stage-two-design-d.png)
 
@@ -355,11 +355,11 @@ Stage Three will be to setup all other pages of this project using a skeleton la
 
 The homepage will consist of a series of four to eight different restaurants with a description, image and button for each. At this stage the text and image are placeholder only, the button will link to register.html, and will not have any data handling behind it.
 
-Homepage Design: ![Homepage Design](/local_legends/static/images/design-stages/stage-three-design-a/png)
+Homepage Design: ![Homepage Design](/local_legends/static/images/design-stages/stage-three-design-a.png)
 
 #### Register and Login
 
-The Register / Login page will be in two sections. For ease, I will be importing code from my first project as a placeholder, although I may choose to replicate the form completley. There is no code attached to the subit buttons below, only placeholder text, although data validation and formatting are present only because I imported code that I'd already written for Project One.
+The Register / Login page will be in two sections. For ease, I will be importing code from my first project as a placeholder, although I may choose to replicate the form completley. There is no code attached to the submit buttons below, only placeholder text, although data validation and formatting are present only because I imported code that I'd already written for Project One.
 
 Homepage Design: ![Homepage Design](/local_legends/static/images/design-stages/stage-three-design-b.png)
 
@@ -530,17 +530,17 @@ This now completes Stage Eight.
 The permissions for this project will follow CRUD design and will be set out as follows:
 
 | CRUD   | Guests | Registered Accounts |
-| ****** | ****** | ******************- |
-| Create | No\*   | Yes                 |
+| --- | --- | ---  |
+| Create | No*   | Yes                 |
 | Read   | Yes    | Yes                 |
 | Update | No     | Yes                 |
 | Delete | No     | Yes                 |
 
-- except to create account
+* except to create account
 
 While Registered Accounts will have permission to create, update and delete their own reviews, they will not have the permission to alter other user's reviews.
 
-The next stage will centre around defensive
+The next stage will centre around defensive programming
 
 Is Logged In is one of the sessions that is created when the user logs in. I will amend each function to check for this being set before the function executes, else the user is directed back to the sign in page.
 
@@ -613,11 +613,10 @@ I'm having difficulty with this stage due to my db models no longer migrating.
 The Administrator will have additional permissions in order to maintain this project, as set out below:
 
 | CRUD                         | Guests | Registered Accounts | Administrators |
-| ***************************- | ****** | ******************- | ************-- |
+| --- | --- | --- | --- |
 | Create Accounts              | Yes    | Yes                 | No             |
 | Create reviews               | Yes    | Yes                 | No             |
 | Create restaurants           | No     | No                  | Yes            |
-| Read user Details            | No     | Yes                 | Yes            |
 | Read reviews                 | Yes    | Yes                 | Yes            |
 | Read restaurant information  | Yes    | Yes                 | Yes            |
 | Edit/Update account details  | No     | Yes                 | No             |
@@ -642,13 +641,13 @@ This completes all stages of design and implementation
 
 ### Base Template
 
-![Master Template](/local_legends/static/am-i-responsive-base.webp.png)
+![Master Template](/local_legends/static/am-i-responsive-base.png)
 
 Base.html is the master template upon which all other pages are based. It contains the nav bars (larger and smaller) the header and the footer and main container
 
 ### Nav Bar
 
-![Nav Bar Large](/local_legends/static/am-i-responsive-nav-a.webp.png)
+![Nav Bar Large](/local_legends/static/am-i-responsive-nav-a.png)
 
 ![Nav Bar Small](/local_legends/static/am-i-responsive-nav-a.webp.png)
 
