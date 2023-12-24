@@ -746,6 +746,8 @@ The Registration section will ask the user for five peices of information:
 
 ### 404
 
+Using [GitHub's](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-custom-404-page-for-your-github-pages-site) documtation on creating a 404 page, I have plavced this file in te root directory. 
+
 ## Accessibility
 
 I have been mindful during coding to ensure that the website is as accessible and friendly as possible. I have achieved this by:
