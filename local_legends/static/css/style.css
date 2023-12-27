@@ -301,18 +301,18 @@ color: var(--brown-darken-1);
   justify-content: center;
 }
 
+.hero-image-div {
+  width: 300px;
+  height: 300px;
+}
+
+.hero-image-thumb,
 .hero-image {
   width: 90%;
   height: 90%;
-  max-width: 350px;
-  max-height: 350px;
-}
-
-.hero-image-thumb {
-  width: 90%;
-  height: 90%;
-  max-width: 350px;
-  max-height: 350px;
+  max-width: 300px;
+  max-height: 300px;  
+  vertical-align: middle;
 }
 
 .restaurant-information,

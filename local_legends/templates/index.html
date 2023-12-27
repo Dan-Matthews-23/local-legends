@@ -137,10 +137,12 @@
 <div class="container s12 m12 l12 xl6 left-panel-container-thumb">
   <div class="row">
     <div class="col align-center s12 m12 l6 xl6">
-      <img
-        class="hero-image-thumb"
-        src="{{ restaurants_snippet.restaurant_image_url }}"
-      />
+      <div class="col hero-image-div">
+        <img
+          class="hero-image-thumb"
+          src="{{ restaurants_snippet.restaurant_image_url }}"
+        />
+      </div>
     </div>
     <div
       id="thumb-col-heading"
@@ -195,7 +197,7 @@
             <div class="col lg-padding restaurant-details-container align-left">
               <!--THIS IS THE START OF THE FIRST HALF OF THE CONTAINER-->
               <div class="col s12 m12 l12 xl6 left-panel-container">
-                <div class="col align-center s12">
+                <div class="col align-center s12 hero-image-div">
                   <img
                     class="hero-image"
                     src="{{ restaurants_snippet.restaurant_image_url }}"
