@@ -69,6 +69,7 @@
   - [Accessibility](#accessibility)
     - [WAVE Report](#wave-report)
       - [Errors](#errors)
+      - [Empty Links](#empty-links)
     - [Contrast Ratio](#contrast-ratio)
   - [Justifications and reflections](#justifications-and-reflections)
     - [Justifications](#justifications)
@@ -749,7 +750,11 @@ I have used [WebAIM's WAVE report](https://wave.webaim.org/) to assess the acces
 
 #### Errors
 
-- 9 errors related to missing aria labels for the image of each restaurant. 
+9 errors related to missing aria labels for the image of each restaurant (bearing in mind thisonly related to one error as there were 9 restaurants in th e for loop). I corrected this error and ran again. No errors were found
+
+#### Empty Links
+
+This error was picked up in the nav bar that is activated only oin smaller screens. The WAVE checker thought that the link was empty. However this was not the case, as the link activated the JavaScript when clicked, and had the "fa fas bars" i class attached to it. This gave the user something to click. I've added an aria-label to this element 
 
 
 
