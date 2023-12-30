@@ -46,7 +46,7 @@
       - [Password Hashing](#password-hashing)
       - [Administrator Privilages](#administrator-privilages)
       - [Login](#login)
-  - [Features](#features)
+  - [Features in Final Version](#features-in-final-version)
     - [Base Template](#base-template)
     - [Nav Bar](#nav-bar)
     - [Profile](#profile-1)
@@ -301,7 +301,9 @@ It should be noted here that although the designs say 'Number' on several data t
 
 [Also available as Coolors palette](https://coolors.co/222222-ffffff-1c5d99-639fab-bbcde5)
 
-This was the original colour palette I had chosen for this project during the design stage. However after setting up the CSS file I decided to use the design language [Materialize](https://materializecss.com/color.html), by [Google](http://google.com). The Coolors palette I selected is not supported by Materialize and instead has its own colour scheme. To that end, I have selected the following colours for this project:
+This was the original colour palette I had chosen for this project during the design stage. However after setting up the CSS file I decided to use the design language [Materialize](https://materializecss.com/color.html), by [Google](http://google.com).
+
+The Coolors palette I selected is not supported by Materialize and instead has its own colour scheme. To that end, I have selected the following colours for this project:
 
 "# 6d4c41 brown darken-1"
 
@@ -333,7 +335,7 @@ The navbar, along with every other part of this project, has been designed in a 
 
 Navbar on larger viewports: ![Local Legends Large Viewport Navbar](/local_legends/static/images/design-stages/stage-two-design-b.png)
 
-Navbar on larger viewports: ![Local Legends Small Viewport Navbar](/local_legends/static/images/design-stages/stage-two-design-c.png)
+Navbar on smaller viewports: ![Local Legends Small Viewport Navbar](/local_legends/static/images/design-stages/stage-two-design-c.png)
 
 #### Footer
 
@@ -637,7 +639,11 @@ Ordinarily, protocol discates that the error message the customer receieves shou
 
 This completes all stages of design and implementation
 
-## Features
+***
+
+## Features in Final Version
+
+Now that the design stage has been completed, I will now share the results of the final project
 
 ### Base Template
 
