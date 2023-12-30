@@ -65,10 +65,10 @@
       - [Home](#home)
     - [Register](#register)
     - [Sign In](#sign-in)
-    - [500 page](#500-page)
     - [404 page](#404-page)
   - [Accessibility](#accessibility)
     - [WAVE Report](#wave-report)
+      - [Errors](#errors)
     - [Contrast Ratio](#contrast-ratio)
   - [Justifications and reflections](#justifications-and-reflections)
     - [Justifications](#justifications)
@@ -725,8 +725,6 @@ This page is one of the simplist. It asks the user for an email address, usernam
 
 The user will enter their email address and password to log in. If they have forgotten the password, they click "Forgot Password". It will then link them to Contact Us, where they select the Forgot Password selection. The request is then stored in the Problems table to flash up on the Admin Portal
 
-### 500 page
-
 ### 404 page
 
 Using [GitHub's](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-custom-404-page-for-your-github-pages-site) documtation on creating a 404 page, I have placced this file in the root directory.
@@ -745,7 +743,37 @@ I have been mindful during coding to ensure that the website is as accessible an
 
 ### WAVE Report
 
-I have used [WebAIM's WAVE report](https://wave.webaim.org/) to assess the accessibility of my project against set guidelines. For reference please see the WAVE report below:
+I have used [WebAIM's WAVE report](https://wave.webaim.org/) to assess the accessibility of my project against set guidelines.
+
+![Wave Report Summary](/local_legends/static/images/wave/wave-report-summary.png)
+
+#### Errors
+
+- 9 errors related to missing aria labels for the image of each restaurant. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+There were 9 errors that required attention. The completed actions were taken then the report ran again.
+
+For reference please see the WAVE report below:
 
 ![Summary](/local_legends/static/accessibility/wave-report-summary.webp)
 
