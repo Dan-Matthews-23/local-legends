@@ -65,11 +65,8 @@
       - [Home](#home)
     - [Register](#register)
     - [Sign In](#sign-in)
-    - [Register and Login sections](#register-and-login-sections)
-      - [Register](#register-1)
-      - [Log in](#log-in)
     - [500 page](#500-page)
-    - [404](#404)
+    - [404 page](#404-page)
   - [Accessibility](#accessibility)
     - [WAVE Report](#wave-report)
     - [Contrast Ratio](#contrast-ratio)
@@ -654,7 +651,13 @@ The Nav Bar is contained within the Master Template (base.html). It is fully res
 
 ### Profile
 
-![Profile](/local_legends/static/images/responsive/responsive-profile.png)
+(because this page can only be accessed while logged in, and Am I Responsive does not allow login, I've had to include screenshots from different viewports on Heroku)
+
+![Profile Desktop](/local_legends/static/images/responsive/responsive-profile-desktop.png)
+
+![Profile Tablet](/local_legends/static/images/responsive/responsive-profile-tablet.png)
+
+![Profile Mobile](/local_legends/static/images/responsive/responsive-profile-mobile.png)
 
 This section will allow the user, once logged in, to perform Update and Delete (CRUD) functions. This cannot be done if the user is not logged in. If the user clicks Profile and they are not logged in, they will be directed to the Register or Login screens. There are several user options for this page.
 
@@ -722,30 +725,13 @@ This page is one of the simplist. It asks the user for an email address, usernam
 
 The user will enter their email address and password to log in. If they have forgotten the password, they click "Forgot Password". It will then link them to Contact Us, where they select the Forgot Password selection. The request is then stored in the Problems table to flash up on the Admin Portal
 
-### Register and Login sections
-
-![Quiz Screen](/local_legends/static/am-i-responsive-register.png)
-
-The Register and login page will be contained on the same page under seperate sections.
-
-#### Register
-
-The Registration section will ask the user for five peices of information:
-
-- Email address (this is to use to log in)
-- Username (this is to use to log in)
-- Preferences of restaurant type (this is to personalise the user experience)
-- Once the user has clicked Register, they will be emailed their password
-
-#### Log in
-
-- The Login section will ask the user for their email address and password. There will be an option for 'Forgot Password'
-
 ### 500 page
 
-### 404
+### 404 page
 
-Using [GitHub's](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-custom-404-page-for-your-github-pages-site) documtation on creating a 404 page, I have plavced this file in te root directory. 
+Using [GitHub's](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-custom-404-page-for-your-github-pages-site) documtation on creating a 404 page, I have placced this file in the root directory.
+
+***
 
 ## Accessibility
 
