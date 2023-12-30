@@ -48,7 +48,6 @@
       - [Login](#login)
   - [Features in Final Version](#features-in-final-version)
     - [Base Template](#base-template)
-    - [Nav Bar](#nav-bar)
     - [Profile](#profile-1)
       - [Change Password](#change-password)
       - [Change Email](#change-email)
@@ -647,21 +646,15 @@ Now that the design stage has been completed, I will now share the results of th
 
 ### Base Template
 
-![Master Template](/local_legends/static/am-i-responsive-base.png)
+![Master Template](/local_legends/static/images/responsive/responsive-base.png)
 
-Base.html is the master template upon which all other pages are based. It contains the nav bars (larger and smaller) the header and the footer and main container
-
-### Nav Bar
-
-![Nav Bar Large](/local_legends/static/am-i-responsive-nav-a.png)
-
-![Nav Bar Small](/local_legends/static/am-i-responsive-nav-a.webp.png)
+Base.html is the master template upon which all other pages are based. It contains the nav bars (larger and smaller) the header and the footer and main container.
 
 The Nav Bar is contained within the Master Template (base.html). It is fully responsive. IF a user's viewport is 993 or more, the larger nav bar is presented. This is designed for tablets and desktops. However if a user's viewport is 992 or less, the second nav bar is displayed. Both nav bars are complete examples available on Materialize and refereced in #Acknwoegements. It has links to Home, Profile, Sign In (if not logged in), Sign Out (if logged in), Register and Admin Portal (if an admin). The Admin Portal link is activated by the "is_admin" boolean in the user table. This is one of the defensive programming measures I have implemented.
 
 ### Profile
 
-![Profile](/local_legends/static/am-i-responsive-profile.png)
+![Profile](/local_legends/static/images/responsive/responsive-profile.png)
 
 This section will allow the user, once logged in, to perform Update and Delete (CRUD) functions. This cannot be done if the user is not logged in. If the user clicks Profile and they are not logged in, they will be directed to the Register or Login screens. There are several user options for this page.
 
