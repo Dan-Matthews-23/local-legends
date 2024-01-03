@@ -147,7 +147,7 @@
     </div>
     <div
       id="thumb-col-heading"
-      class="col align-center s12 m12 l12 xl6 bold larger-than-default-text"
+      class="col with-borders align-center s12 m12 l12 xl6 bold larger-than-default-text"
     >
       {{ restaurants_snippet.restaurant_name }}
     </div>
@@ -157,25 +157,25 @@
       id="restaurant_id"
       value="{{restaurants_snippet.restaurant_id }}"
     />
-    <div id="thumb-col-stars" class="col s12 m12 l6 xl6 default-text-size">
+    <div id="thumb-col-stars" class="col with-borders s12 m12 l6 xl6 default-text-size">
       {% if restaurants_snippet.restaurant_average_overall_stars %} Average {{
       restaurants_snippet.restaurant_average_overall_stars }} stars out of 5 (<a
         href="{{ url_for('restaurant_profile', restaurant_id=restaurants_snippet.restaurant_id) }}"
         >{{ restaurants_snippet.restaurant_review_count }} reviews in total</a
       >) {% else %} This restaurant has no reviews {% endif %}
     </div>
-    <div id="thumb-col-keyword" class="col s12 m12 l6 xl6 default-text-size">
+    <div id="thumb-col-keyword" class="col with-borders s12 m12 l6 xl6 default-text-size">
       {{ restaurants_snippet.restaurant_cuisine_one }} - {{
       restaurants_snippet.restaurant_cuisine_two }} - {{
       restaurants_snippet.restaurant_cuisine_three }}
     </div>
-    <div id="thumb-col-delivery" class="col s12 m12 l6 xl6 default-text-size">
+    <div id="thumb-col-delivery" class="col with-borders s12 m12 l6 xl6 default-text-size">
       {% if restaurants_snippet.restaurant_delivery == True %} Delivery
       Available {% else %} Delivery Not Available {% endif %}
     </div>
     <div
       id="thumb-col-restaurant-week"
-      class="col s12 m12 l6 xl6 default-text-size"
+      class="col with-borders s12 m12 l6 xl6 default-text-size"
     >
       <a
         target="_blank"
