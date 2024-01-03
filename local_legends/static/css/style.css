@@ -312,6 +312,8 @@ font-weight: bold;
 
 .hero-image-thumb,
 .hero-image {
+  height: 90%;
+  width: 90%;
   
   max-width: 300px;
   max-height: 300px;  
