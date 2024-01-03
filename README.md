@@ -68,10 +68,11 @@
     - [404 page](#404-page)
   - [Accessibility](#accessibility)
     - [WAVE Report](#wave-report)
-      - [Errors](#errors)
-      - [Empty Links](#empty-links)
-      - [Justified Text](#justified-text)
-      - [Nearby image has same alt text](#nearby-image-has-same-alt-text)
+      - [Home](#home-1)
+        - [Errors](#errors)
+        - [Empty Links](#empty-links)
+        - [Justified Text](#justified-text)
+        - [Nearby image has same alt text](#nearby-image-has-same-alt-text)
     - [Contrast Ratio](#contrast-ratio)
   - [Justifications and reflections](#justifications-and-reflections)
     - [Justifications](#justifications)
@@ -771,19 +772,21 @@ I have used [WebAIM's WAVE report](https://wave.webaim.org/) to assess the acces
 
 ![Wave Report Summary](/local_legends/static/images/wave/wave-report-summary.png)
 
-#### Errors
+#### Home
+
+##### Errors
 
 9 errors related to missing aria labels for the image of each restaurant (bearing in mind thisonly related to one error as there were 9 restaurants in th e for loop). I corrected this error and ran again. No errors were found
 
-#### Empty Links
+##### Empty Links
 
 This error was picked up in the nav bar that is activated only oin smaller screens. The WAVE checker thought that the link was empty. However this was not the case, as the link activated the JavaScript when clicked, and had the "fa fas bars" i class attached to it. This gave the user something to click. I've added an aria-label to this element.
 
-#### Justified Text
+##### Justified Text
 
 The report suggests that I remove the justified text as it can sometimes be difficult to read paragraphs of text with fully-justified blocks. However it also mentions that there are no guidelines or standards for this. Therefore, it's only a suggestion and not something my text is required to adhere to. To that end, I have decided not to take that suggestion onboard.
 
-#### Nearby image has same alt text
+##### Nearby image has same alt text
 
 This alert was telling me that the alt text for the restaurant images was the same. This is correct. Each restaurant image has the following text
 
