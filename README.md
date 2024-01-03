@@ -59,10 +59,10 @@
         - [Problems](#problems)
         - [Approvals](#approvals)
         - [Edit Restaurant](#edit-restaurant)
-      - [Contact Us](#contact-us)
-      - [Restaurants](#restaurants-1)
-      - [Restaurant Profile / Leave Review](#restaurant-profile--leave-review)
-      - [Home](#home)
+    - [Contact Us](#contact-us)
+    - [Restaurants](#restaurants-1)
+    - [Restaurant Profile / Leave Review](#restaurant-profile--leave-review)
+    - [Home](#home)
     - [Register](#register)
     - [Sign In](#sign-in)
     - [404 page](#404-page)
@@ -70,6 +70,8 @@
     - [WAVE Report](#wave-report)
       - [Errors](#errors)
       - [Empty Links](#empty-links)
+      - [Justified Text](#justified-text)
+      - [Nearby image has same alt text](#nearby-image-has-same-alt-text)
     - [Contrast Ratio](#contrast-ratio)
   - [Justifications and reflections](#justifications-and-reflections)
     - [Justifications](#justifications)
@@ -702,33 +704,54 @@ This section is to approve all reqwuests by businesses to have their restaurant 
 
 Once a restaurant is approved by an admin the admin can then change aspects of the restaurant, from the image URL to the address. This could be to correct an error or a request from the restaurant using COntact Us
 
-#### Contact Us
+### Contact Us
 
-This is a simple form that the user, guest or business owner can fill out to contact the admin team. It is used to report a problem, ask a question or make a request, including to ask their restaurant to be placed on Local Legends. Each request is sent to the Admin portal
+![Contact Us](/local_legends/static/images/responsive/responsive-contact.png)
 
-#### Restaurants
+This is a simple form that the user, guest or business owner can fill out to contact the admin team. It is used to report a problem, ask a question or make a request, including to ask their restaurant to be placed on Local Legends. Each request is sent to the Admin portal. It does not require the user to login and is guided by user choice where each section expands depending on this
 
-Once a restaurant has been approved by an admin, it will appear on the Restaurants page. The user will select the restaurant then click different sections to see more, and also have the ability to leave a review.
+### Restaurants
 
-#### Restaurant Profile / Leave Review
+![Contact Us](/local_legends/static/images/responsive/responsive-restaurants.png)
 
-This page is more information about the restaurant and this is where a user or guest can view all reviews for that restaurant.
+Once a restaurant has been approved by an admin, it will appear on the Restaurants page. The user will select the restaurant then click different sections to see more, and also have the ability to leave a review. Again, it is very much user-selection-centered
 
-#### Home
+### Restaurant Profile / Leave Review
+
+(Again, I have not been able to show this page via 'Am I Responsive' as the user is required to login to leave a review)
+
+![Leave Review Desktop](/local_legends/static/images/responsive/responsive-leave-review-desktop.png)
+
+![Leave Review Tablet](/local_legends/static/images/responsive/responsive-leave-review-tablet.png)
+
+![Leave Review Mobile](/local_legends/static/images/responsive/responsive-leave-review-mobile.png)
+
+![See Reviews](/local_legends/static/images/responsive/responsive-leave-review-see-reviews.png)
+
+After selecting 'Leave Review' on the Restaurants or Home selections, the user is directed to restauran-profile.html / Leave Review. It will allow the user to leave their own review and view other reviews for that restaurant
+
+
+### Home
+
+![Home](/local_legends/static/images/responsive/responsive-home.png)
 
 The home screen introduces the user to the site. It explains the website aims and how to use it. It also has a small selection of restaurants to get the user started. It's a trimmed-down version of the Restaurants page. From here the user can link to almost all parts of the website (except admin portal)
 
 ### Register
 
+![Register](/local_legends/static/images/responsive/responsive-register.png)
+
 This page is one of the simplist. It asks the user for an email address, username and password. They all have the same validation as described above
 
 ### Sign In
+
+![Sign In](/local_legends/static/images/responsive/responsive-login.png)
 
 The user will enter their email address and password to log in. If they have forgotten the password, they click "Forgot Password". It will then link them to Contact Us, where they select the Forgot Password selection. The request is then stored in the Problems table to flash up on the Admin Portal
 
 ### 404 page
 
-Using [GitHub's](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-custom-404-page-for-your-github-pages-site) documtation on creating a 404 page, I have placced this file in the root directory.
+Using [GitHub's](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-custom-404-page-for-your-github-pages-site) documtation on creating a 404 page, I have placced this file in the root directory. It will present the user with a notification telling them that an error occured. It still contains the full template and nav bar so the user can choose where to navigate.
 
 ***
 
@@ -754,33 +777,21 @@ I have used [WebAIM's WAVE report](https://wave.webaim.org/) to assess the acces
 
 #### Empty Links
 
-This error was picked up in the nav bar that is activated only oin smaller screens. The WAVE checker thought that the link was empty. However this was not the case, as the link activated the JavaScript when clicked, and had the "fa fas bars" i class attached to it. This gave the user something to click. I've added an aria-label to this element 
+This error was picked up in the nav bar that is activated only oin smaller screens. The WAVE checker thought that the link was empty. However this was not the case, as the link activated the JavaScript when clicked, and had the "fa fas bars" i class attached to it. This gave the user something to click. I've added an aria-label to this element.
 
+#### Justified Text
 
+The report suggests that I remove the justified text as it can sometimes be difficult to read paragraphs of text with fully-justified blocks. However it also mentions that there are no guidelines or standards for this. Therefore, it's only a suggestion and not something my text is required to adhere to. To that end, I have decided not to take that suggestion onboard.
 
+#### Nearby image has same alt text
 
+This alert was telling me that the alt text for the restaurant images was the same. This is correct. Each restaurant image has the following text
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-There were 9 errors that required attention. The completed actions were taken then the report ran again.
+There were no other errors identified.
 
 For reference please see the WAVE report below:
 
-![Summary](/local_legends/static/accessibility/wave-report-summary.webp)
+![Summary](/local_legends/static/accessibility/wave-report-summary-final.webp)
 
 ![Details](/local_legends/static/accessibility/wave-report-details.webp)
 
