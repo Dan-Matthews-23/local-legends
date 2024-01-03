@@ -804,19 +804,25 @@ However that code is not a list. I did not want it to be a list. I believe the r
 
 
 
-There were no other errors identified. I have attached the final report below:
+There were no other errors identified. I have attached the final report below for each page:
 
-For reference please see the WAVE report below:
+![Home](/local_legends/static/images/wave/wave-report-home.png)
 
-![Summary](/local_legends/static/accessibility/wave-report-summary-final.webp)
+![Register](/local_legends/static/images/wave/wave-report-register.png)
 
+![Login](/local_legends/static/images/wave/wave-report-login.png)
 
+![Restaurants](/local_legends/static/images/wave/wave-report-restaurants.png)
 
+![Leave Review](/local_legends/static/images/wave/wave-report-restaurant-profile.png)
 
+It has not been possible to run WAVE reports on Profile or Admin Portal as both require the user to log in which the WAVE report does not support. However I have taken extra care to make suggested changes to these pages based on the other suggestions
 
 ### Contrast Ratio
 
-As part of my drive to make sure this project is as accessible as possible, and to act upon feedback from previous project, I have used [WebAIM's contrast checker](https://webaim.org/resources/contrastchecker/bookmarklet). I have used this tool to test the Coolers template I used after it failed the contrast ratio tests to improve upon the contrast of background/foreground colours and ran the test again, which passed (see Justifications > Background Colour)
+As part of my drive to make sure this project is as accessible as possible, and to act upon feedback from previous project, I have used [WebAIM's contrast checker](https://webaim.org/resources/contrastchecker/bookmarklet). 
+
+As you can see above from the WEBAIM summaries above, each page was tested and passed first time.
 
 ## Justifications and reflections
 
@@ -839,6 +845,10 @@ An is_admin marker for the users table
 A number of checks on Admin Login that redirect at any stage where the user is not authorised to access the admin page
 On Admin Login, an admin must enter all of their user credentials (username, email address, password and admin password). This checks the users table based on a search criteria of the user_id stored in admin table
 A Hash Admin Password button that will hash the admin password for extra security. Only shows if the user has is_admin marker. Designed so that the admin must hash this password when they are given admin access for the first time. In a future development I will force the admin to hash this password before they can enter the Admin Portal for an extra layer of security.
+
+- **Username Length**
+
+A lot of websites I've personally used over the years dictate that usernames should be at least 5-10 characters long with an upper limit. I've found this irritating. I've done a lot of research on [Google Cloud Community](https://www.googlecloudcommunity.com/gc/Workspace-Forums/ct-p/workspace-spaces), [Security Stack Exchange](https://security.stackexchange.com/) and [UX Stack Exchange](https://ux.stackexchange.com/) and can find no reason that I can't choose my own lower limit. Therefore I have decided to set a lower limit of 3 with an upper limit of 20 (stanard appears to be upper 64)
 
 ### Reflections
 

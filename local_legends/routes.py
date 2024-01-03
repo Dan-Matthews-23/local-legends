@@ -224,11 +224,18 @@ def register():
             """
         else:
             post_password = (len(request.form.get("password_register")))
+            post_username = (len(request.form.get("username_register")))
+
             if (post_password < 10):
                 session['err'] = """
                 Your password must be at least 10 characters long
                 """
+            elif (post_username < 3 or post_username > 20 ):
+                session['err'] = """
+                Your username must be between 3 and 20 characters
+                """
             else:
+
                 new_password = generate_password_hash(
                     (request.form.get("password_register")))
 
