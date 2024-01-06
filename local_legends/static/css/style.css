@@ -305,15 +305,15 @@ font-weight: bold;
   justify-content: center;
 }
 
-.hero-image-div {
+/*.hero-image-div {
   width: 300px;
   height: 300px;
-}
+}*/
 
 .hero-image-thumb,
 .hero-image {
-  height: 100%;
-  width: 100%;  
+  width: 100%;
+  height: 100%; 
   max-width: 300px;
   max-height: 300px;  
   vertical-align: middle;
@@ -383,8 +383,10 @@ span {
   vertical-align: text-top;
 }
 
-.leave-review-textarea {
+.text-area {
   height: 200px;
+  width: 100%;
+ 
 }
 
 .review-container {
@@ -517,6 +519,14 @@ span {
 
 .lg-padding {
   padding: 100px;
+}
+
+.md-padding-top {
+padding-top: 10px;
+}
+
+.md-padding-bottom {
+    padding-bottom: 10px;
 }
 
 .md-padding {
@@ -782,8 +792,33 @@ h4 {
   }
 }
 
+
+@media screen and (max-width: 1375px) {
+
+    #contact-us-container
+     {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 1220px) {
+
+    #contact-us-container {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 1220px) {
+
+    #contact-us-container {
+        width: 100%;
+    }
+}
+
+
+
 @media screen and (max-width: 996px) {
-  #contact-us-container,
+  
   #profile-container,
   #register-container,
   #report-problems,
@@ -794,7 +829,7 @@ h4 {
 }
 
 @media screen and (max-width: 950px) {
-  #contact-us-container,
+  
   #profile-container,
   #report-problems,
   #register-container,
@@ -811,6 +846,9 @@ h4 {
   #sign-in-container {
     width: 100%;
   }
+  .default-text-styling {
+      font-size: 14px;
+  }
 }
 
 @media screen and (max-width: 850px) {
@@ -821,10 +859,7 @@ h4 {
   #sign-in-container {
     width: 100%;
   }
-  .default-text-styling
-  {
-    font-size: 14px;
-  }
+  
 }
 
 @media screen and (max-width: 530px) {
@@ -845,14 +880,7 @@ h4 {
   }
 }
 
-@media screen and (max-width: 470px) {
-    #more_info
-     {
-        height: 100%;
-        width:100%;
-    }
-  
-  }
+
 
 
 
