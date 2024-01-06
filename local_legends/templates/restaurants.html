@@ -20,23 +20,19 @@
 			<img
 				alt="An image unique to this {{ restaurants.restaurant_name }}"
 				class="hero-image-thumb"
-				src="{{ restaurants.restaurant_image_url }}"
-			/>
+				src="{{ restaurants.restaurant_image_url }}" />
 		</div>
 		<div
-			class="thumb-col-headingcol align-center s12 m12 l6 xl6 bold larger-than-default-text"
-		>
+			class="thumb-col-headingcol align-center s12 m12 l6 xl6 bold larger-than-default-text">
 			{{ restaurants.restaurant_name }}
 		</div>
 		<input
 			type="hidden"
 			name="restaurant_id"
 			id="restaurant_id"
-			value="{{restaurants.restaurant_id }}"
-		/>
+			value="{{restaurants.restaurant_id }}" />
 		<div
-			class="thumb-col-stars col s12 m12 l6 xl6 default-text-size align-center-on-small-vw"
-		>
+			class="thumb-col-stars col s12 m12 l6 xl6 default-text-size align-center-on-small-vw">
 			{% if restaurants.restaurant_average_overall_stars %} Average {{
 			restaurants.restaurant_average_overall_stars }} stars out of 5 (<a
 				href="{{ url_for('restaurant_profile', restaurant_id=restaurants.restaurant_id) }}"
@@ -44,27 +40,21 @@
 			>) {% else %} This restaurant has no reviews {% endif %}
 		</div>
 		<div
-			
-			class="col s12 m12 l6 xl6 default-text-size align-center-on-small-vw thumb-col-keyword"
-		>
+			class="col s12 m12 l6 xl6 default-text-size align-center-on-small-vw thumb-col-keyword">
 			{{ restaurants.restaurant_cuisine_one }} - {{
 			restaurants.restaurant_cuisine_two }} - {{
 			restaurants.restaurant_cuisine_three }}
 		</div>
 		<div
-			
-			class="col s12 m12 l6 xl6 default-text-size align-center-on-small-vw thumb-col-delivery"
-		>
+			class="col s12 m12 l6 xl6 default-text-size align-center-on-small-vw thumb-col-delivery">
 			{% if restaurants.restaurant_delivery == True %} Delivery Available
 			{% else %} Delivery Not Available {% endif %}
 		</div>
-		<div			
-			class="col s12 m12 l6 xl6 default-text-size align-center-on-small-vw thumb-col-restaurant-week"
-		>
+		<div
+			class="col s12 m12 l6 xl6 default-text-size align-center-on-small-vw thumb-col-restaurant-week">
 			<a
 				target="_blank"
-				href="https://www.sunderlandbid.co.uk/events/sunderland-restaurant-week-3"
-			>
+				href="https://www.sunderlandbid.co.uk/events/sunderland-restaurant-week-3">
 				{% if restaurants.restaurant_week == True %} Member of
 				Sunderland Restaurant Week {% else %} Not a member of Sunderland
 				Restaurant Week {% endif %}
@@ -81,36 +71,28 @@
 				<div class="restaurant-details-container lg-padding">
 					<div class="row">
 						<div
-							class="col lg-padding restaurant-details-container align-left"
-						>
+							class="col lg-padding restaurant-details-container align-left">
 							<!--THIS IS THE START OF THE FIRST HALF OF THE CONTAINER-->
 							<div
-								class="col s12 m12 l12 xl6 left-panel-container"
-							>
+								class="col s12 m12 l12 xl6 left-panel-container">
 								<div
-									class="col align-center s12 hero-image-div"
-								>
+									class="col align-center s12 hero-image-div">
 									<img
 										alt="An image unique to this {{ restaurants.restaurant_name }}"
 										class="hero-image"
-										src="{{ restaurants.restaurant_image_url }}"
-									/>
+										src="{{ restaurants.restaurant_image_url }}" />
 								</div>
 								<div class="col s2 m2 l2 xl2"></div>
 								<div
-									class="col s8 m8 l8 xl8 stars-div card-panel"
-								>
+									class="col s8 m8 l8 xl8 stars-div card-panel">
 									<div
-										class="row restaurant-stars-display-row"
-									>
+										class="row restaurant-stars-display-row">
 										<div
-											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											Overall
 										</div>
 										<div
-											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											{{
 											restaurants.restaurant_average_overall_stars
 											}}
@@ -118,29 +100,24 @@
 									</div>
 									<div class="row">
 										<div
-											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											Taste
 										</div>
 										<div
-											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											{{
 											restaurants.restaurant_average_taste_stars
 											}}
 										</div>
 									</div>
 									<div
-										class="row row display-table-row-border"
-									>
+										class="row row display-table-row-border">
 										<div
-											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											Presentation
 										</div>
 										<div
-											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											{{
 											restaurants.restaurant_average_presentation_stars
 											}}
@@ -148,13 +125,11 @@
 									</div>
 									<div class="row">
 										<div
-											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											Friendliness
 										</div>
 										<div
-											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											{{
 											restaurants.restaurant_average_friendliness_stars
 											}}
@@ -162,13 +137,11 @@
 									</div>
 									<div class="row">
 										<div
-											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											Price
 										</div>
 										<div
-											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											{{
 											restaurants.restaurant_average_price_stars
 											}}
@@ -176,13 +149,11 @@
 									</div>
 									<div class="row">
 										<div
-											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											Ambience
 										</div>
 										<div
-											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											{{
 											restaurants.restaurant_average_ambience_stars
 											}}
@@ -192,42 +163,34 @@
 								<div class="col s2 m2 l2 xl2"></div>
 							</div>
 							<div
-								class="col s12 m12 l12 xl6 left-panel-container align-left"
-							>
+								class="col s12 m12 l12 xl6 left-panel-container align-left">
 								<div class="col align-center s12">
-									<h2 id="thumb-col-heading-font">
+									<h2 class="thumb-col-heading-font">
 										Restaurant Details
 									</h2>
 								</div>
 
 								<div
-									class="col s10 m10 l10 xl10 stars-div card-panel"
-								>
+									class="col s10 m10 l10 xl10 stars-div card-panel">
 									<div
-										class="row restaurant-stars-display-row"
-									>
+										class="row restaurant-stars-display-row">
 										<div
-											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											Name
 										</div>
 										<div
-											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											{{ restaurants.restaurant_name }}
 										</div>
 									</div>
 									<div
-										class="row row display-table-row-border"
-									>
+										class="row row display-table-row-border">
 										<div
-											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											First line of address
 										</div>
 										<div
-											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											{{
 											restaurants.restaurant_address_one
 											}}
@@ -235,13 +198,11 @@
 									</div>
 									<div class="row">
 										<div
-											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											Second line of address
 										</div>
 										<div
-											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											{{
 											restaurants.restaurant_address_two
 											}}
@@ -249,13 +210,11 @@
 									</div>
 									<div class="row">
 										<div
-											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											Third line of address
 										</div>
 										<div
-											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											{% if
 											restaurants.restaurant_address_three
 											%} {{
@@ -265,13 +224,11 @@
 									</div>
 									<div class="row">
 										<div
-											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											Fourth line of address
 										</div>
 										<div
-											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											{% if
 											restaurants.restaurant_address_four
 											%} {{
@@ -281,13 +238,11 @@
 									</div>
 									<div class="row">
 										<div
-											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											Postcode
 										</div>
 										<div
-											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											{{
 											restaurants.restaurant_address_postcode
 											}}
@@ -295,13 +250,11 @@
 									</div>
 									<div class="row">
 										<div
-											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											Date Registered
 										</div>
 										<div
-											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											{{
 											restaurants.restaurant_date_registered
 											}}
@@ -317,14 +270,12 @@
 						<div class="col s12 m12 l12 xl12 align-center">
 							<form
 								action="{{ url_for('restaurant_profile', restaurant_id=restaurants.restaurant_id) }}"
-								method="POST"
-							>
+								method="POST">
 								<input
 									type="hidden"
 									name="restaurant_id"
 									id="restaurant_id"
-									value="{{restaurants.restaurant_id }}"
-								/>
+									value="{{restaurants.restaurant_id }}" />
 								<button type="submit" class="card-panel">
 									Leave a review for {{
 									restaurants.restaurant_name }}
@@ -339,5 +290,6 @@
 			</div>
 		</div>
 	</div>
-	{% endfor %} {% endblock %}
 </div>
+{% endfor %}
+{% endblock %}

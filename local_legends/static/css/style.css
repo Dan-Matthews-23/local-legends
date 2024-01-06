@@ -243,7 +243,7 @@ a,
 
 /* RESTAURANTS PAGE */
 
-#thumb-col-heading-font {
+.thumb-col-heading-font {
 	font-weight: bold;
 	font-size: 20px;
 }

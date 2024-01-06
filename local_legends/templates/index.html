@@ -46,8 +46,7 @@
 									<div class="row">
 										<div class="col s12 m12 l12 xl12">
 											<p
-												class="show-more-para-styling intro-text-styling"
-											>
+												class="show-more-para-styling intro-text-styling">
 												When you leave a review for a
 												restaurant, you don't just leave
 												a review - you leave an
@@ -57,8 +56,7 @@
 												Local Legends.
 											</p>
 											<p
-												class="show-more-para-styling intro-text-styling"
-											>
+												class="show-more-para-styling intro-text-styling">
 												Leaving an experience is simple.
 												Simply choose the restaurant you
 												want from the Restaurants list.
@@ -67,16 +65,14 @@
 												the screen.
 											</p>
 											<p
-												class="show-more-para-styling intro-text-styling"
-											>
+												class="show-more-para-styling intro-text-styling">
 												For details on the restaurant,
 												click 'Show More'. At the bottom
 												of the restaurant details, you
 												can select 'Leave a Review'.
 											</p>
 											<p
-												class="show-more-para-styling intro-text-styling"
-											>
+												class="show-more-para-styling intro-text-styling">
 												The first thing we will ask when
 												you share an experience is to
 												summarize your experience in a
@@ -84,62 +80,53 @@
 												your experience.
 											</p>
 											<p
-												class="show-more-para-styling intro-text-styling"
-											>
+												class="show-more-para-styling intro-text-styling">
 												We have broken down each
 												experience to make it easy for
 												you. These are:
 											</p>
 											<p
-												class="show-more-para-styling intro-text-styling"
-											>
+												class="show-more-para-styling intro-text-styling">
 												- Taste of your food (in
 												general)
 											</p>
 											<p
-												class="show-more-para-styling intro-text-styling"
-											>
+												class="show-more-para-styling intro-text-styling">
 												- Presentation of your dish (how
 												it looked)
 											</p>
 											<p
-												class="show-more-para-styling intro-text-styling"
-											>
+												class="show-more-para-styling intro-text-styling">
 												- Friendliness of the staff (how
 												you were treated or valued)
 											</p>
 											<p
-												class="show-more-para-styling intro-text-styling"
-											>
+												class="show-more-para-styling intro-text-styling">
 												- Ambience of the restaurant
 												(the atmosphere, lighting,
 												music, general feel for the
 												restaurant)
 											</p>
 											<p
-												class="show-more-para-styling intro-text-styling"
-											>
+												class="show-more-para-styling intro-text-styling">
 												- Price of your meal (was it
 												expensive, cheap, worth the
 												money)
 											</p>
 											<p
-												class="show-more-para-styling intro-text-styling"
-											>
+												class="show-more-para-styling intro-text-styling">
 												Each part of the experience is
 												rated from 1 (being poor) to 5
 												(being excellent).
 											</p>
 											<p
-												class="show-more-para-styling intro-text-styling"
-											>
+												class="show-more-para-styling intro-text-styling">
 												Finally, we ask you to tell us a
 												little more about your
 												experience.
 											</p>
 											<p
-												class="show-more-para-styling intro-text-styling"
-											>
+												class="show-more-para-styling intro-text-styling">
 												Once you've submitted your
 												experience, we calculate your
 												overall experience of the Taste,
@@ -148,8 +135,7 @@
 												overall rating.
 											</p>
 											<p
-												class="show-more-para-styling intro-text-styling"
-											>
+												class="show-more-para-styling intro-text-styling">
 												Lastly, the restaurant's ratings
 												are then recalculated to factor
 												in your own experience
@@ -186,26 +172,22 @@
 <div class="container s12 m12 l12 xl12 left-panel-container-thumb">
 	<div class="row">
 		<div class="col with-borders align-center s12 m12 l12 xl6">
-			<!--<div class="col with-borders hero-image-div">-->
 			<img
 				alt="An image unique to this {{ restaurants_snippet.restaurant_name }}"
 				class="hero-image-thumb"
-				src="{{ restaurants_snippet.restaurant_image_url }}"
-			/>
-			<!--</div>-->
+				src="{{ restaurants_snippet.restaurant_image_url }}" />
 		</div>
 		<div
-			class="thumb-col-heading col align-center s12 m12 l12 xl6 bold larger-than-default-text align-center-on-small-vw"
-		>
+			class="thumb-col-heading col align-center s12 m12 l12 xl6 bold larger-than-default-text align-center-on-small-vw">
 			{{ restaurants_snippet.restaurant_name }}
 		</div>
 		<input
 			type="hidden"
 			name="restaurant_id"
 			id="restaurant_id"
-			value="{{restaurants_snippet.restaurant_id }}"
-		/>
-		<div class=" thumb-col-stars col s12 m12 l12 xl6 default-text-size align-center-on-small-vw">
+			value="{{restaurants_snippet.restaurant_id }}" />
+		<div
+			class="thumb-col-stars col s12 m12 l12 xl6 default-text-size align-center-on-small-vw">
 			{% if restaurants_snippet.restaurant_average_overall_stars %}
 			Average {{ restaurants_snippet.restaurant_average_overall_stars }}
 			stars out of 5 (<a
@@ -215,27 +197,21 @@
 			>) {% else %} This restaurant has no reviews {% endif %}
 		</div>
 		<div
-			
-			class="col s12 m12 l12 xl6 default-text-size align-center-on-small-vw thumb-col-keyword"
-		>
+			class="col s12 m12 l12 xl6 default-text-size align-center-on-small-vw thumb-col-keyword">
 			{{ restaurants_snippet.restaurant_cuisine_one }} - {{
 			restaurants_snippet.restaurant_cuisine_two }} - {{
 			restaurants_snippet.restaurant_cuisine_three }}
 		</div>
-		<div		
-			class="col s12 m12 l12 xl6 default-text-size align-center-on-small-vw thumb-col-delivery"
-		>
+		<div
+			class="col s12 m12 l12 xl6 default-text-size align-center-on-small-vw thumb-col-delivery">
 			{% if restaurants_snippet.restaurant_delivery == True %} Delivery
 			Available {% else %} Delivery Not Available {% endif %}
 		</div>
 		<div
-			
-			class="col s12 m12 l12 xl6 default-text-size align-center-on-small-vw thumb-col-restaurant-week"
-		>
+			class="col s12 m12 l12 xl6 default-text-size align-center-on-small-vw thumb-col-restaurant-week">
 			<a
 				target="_blank"
-				href="https://www.sunderlandbid.co.uk/events/sunderland-restaurant-week-3"
-			>
+				href="https://www.sunderlandbid.co.uk/events/sunderland-restaurant-week-3">
 				{% if restaurants_snippet.restaurant_week == True %} Member of
 				Sunderland Restaurant Week {% else %} Not a member of Sunderland
 				Restaurant Week {% endif %}
@@ -243,7 +219,7 @@
 		</div>
 	</div>
 </div>
-<div class="container button-container ">
+<div class="container button-container">
 	<div class="row">
 		<div class="col s12 m12 l12 xl12">
 			<button type="button" class="collapsible">See more</button>
@@ -251,36 +227,27 @@
 				<div class="restaurant-details-container lg-padding s">
 					<div class="row">
 						<div
-							class="col lg-padding restaurant-details-container align-left "
-						>
-
-                        
+							class="col lg-padding restaurant-details-container align-left">
 							<!--THIS IS THE START OF THE FIRST HALF OF THE CONTAINER-->
 							<div
-								class="col s12 m12 l12 xl6 left-panel-container  "
-							>
+								class="col s12 m12 l12 xl6 left-panel-container">
 								<div class="col align-center s12">
 									<img
 										alt="An image unique to this {{ restaurants_snippet.restaurant_name }}"
 										class="hero-image"
-										src="{{ restaurants_snippet.restaurant_image_url }}"
-									/>
+										src="{{ restaurants_snippet.restaurant_image_url }}" />
 								</div>
 								<div class="col s2 m2 l2 xl2"></div>
 								<div
-									class="col s8 m8 l8 xl8 stars-div card-panel "
-								>
+									class="col s8 m8 l8 xl8 stars-div card-panel">
 									<div
-										class="row restaurant-stars-display-row"
-									>
+										class="row restaurant-stars-display-row">
 										<div
-											class="col bold s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col bold s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											Overall
 										</div>
 										<div
-											class="col s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											{{
 											restaurants_snippet.restaurant_average_overall_stars
 											}}
@@ -288,29 +255,24 @@
 									</div>
 									<div class="row">
 										<div
-											class="col bold s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col bold s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											Taste
 										</div>
 										<div
-											class="col s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											{{
 											restaurants_snippet.restaurant_average_taste_stars
 											}}
 										</div>
 									</div>
 									<div
-										class="row row display-table-row-border"
-									>
+										class="row row display-table-row-border">
 										<div
-											class="col bold s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col bold s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											Presentation
 										</div>
 										<div
-											class="col s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											{{
 											restaurants_snippet.restaurant_average_presentation_stars
 											}}
@@ -318,13 +280,11 @@
 									</div>
 									<div class="row">
 										<div
-											class="col bold s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col bold s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											Friendliness
 										</div>
 										<div
-											class="col s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											{{
 											restaurants_snippet.restaurant_average_friendliness_stars
 											}}
@@ -332,13 +292,11 @@
 									</div>
 									<div class="row">
 										<div
-											class="col bold s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col bold s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											Price
 										</div>
 										<div
-											class="col s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											{{
 											restaurants_snippet.restaurant_average_price_stars
 											}}
@@ -346,13 +304,11 @@
 									</div>
 									<div class="row">
 										<div
-											class="col bold s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col bold s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											Ambience
 										</div>
 										<div
-											class="col s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											{{
 											restaurants_snippet.restaurant_average_ambience_stars
 											}}
@@ -363,44 +319,36 @@
 							</div>
 							<!--THIS IS THE START OF THE SECOND HALF OF THE CONTAINER-->
 							<div
-								class="col s12 m12 l12 xl6 left-panel-container align-left"
-							>
+								class="col s12 m12 l12 xl6 left-panel-container align-left">
 								<div class="col align-center s12">
-									<h2 id="thumb-col-heading-font">
+									<h2 class="thumb-col-heading-font">
 										Restaurant Details
 									</h2>
 								</div>
 								<!--<div class="col s1 m1 l1 xl1"></div>-->
 								<div
-									class="col s12 m12 l12 xl12 stars-div card-panel with-borders"
-								>
+									class="col s12 m12 l12 xl12 stars-div card-panel with-borders">
 									<div
-										class="row restaurant-stars-display-row"
-									>
+										class="row restaurant-stars-display-row">
 										<div
-											class="col bold s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col bold s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											Name
 										</div>
 										<div
-											class="col s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											{{
 											restaurants_snippet.restaurant_name
 											}}
 										</div>
 									</div>
 									<div
-										class="row row display-table-row-border"
-									>
+										class="row row display-table-row-border">
 										<div
-											class="col bold s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col bold s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											First line of address
 										</div>
 										<div
-											class="col s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											{{
 											restaurants_snippet.restaurant_address_one
 											}}
@@ -408,13 +356,11 @@
 									</div>
 									<div class="row">
 										<div
-											class="col bold s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col bold s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											Second line of address
 										</div>
 										<div
-											class="col s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											{{
 											restaurants_snippet.restaurant_address_two
 											}}
@@ -422,13 +368,11 @@
 									</div>
 									<div class="row">
 										<div
-											class="col bold s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col bold s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											Third line of address
 										</div>
 										<div
-											class="col s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											{% if
 											restaurants_snippet.restaurant_address_three
 											%} {{
@@ -438,13 +382,11 @@
 									</div>
 									<div class="row">
 										<div
-											class="col bold s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col bold s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											Fourth line of address
 										</div>
 										<div
-											class="col s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											{% if
 											restaurants_snippet.restaurant_address_four
 											%} {{
@@ -454,13 +396,11 @@
 									</div>
 									<div class="row">
 										<div
-											class="col bold s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col bold s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											Postcode
 										</div>
 										<div
-											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											{{
 											restaurants_snippet.restaurant_address_postcode
 											}}
@@ -468,20 +408,18 @@
 									</div>
 									<div class="row">
 										<div
-											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											Date Registered
 										</div>
 										<div
-											class="col s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
-										>
+											class="col s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw">
 											{{
 											restaurants_snippet.restaurant_date_registered
 											}}
 										</div>
 									</div>
 								</div>
-                                <!--<div class="col s1 m1 l1 xl1"></div>-->
+								<!--<div class="col s1 m1 l1 xl1"></div>-->
 							</div>
 						</div>
 					</div>
@@ -491,14 +429,12 @@
 						<div class="col s12 m12 l12 xl12 align-center">
 							<form
 								action="{{ url_for('restaurant_profile', restaurant_id=restaurants_snippet.restaurant_id) }}"
-								method="POST"
-							>
+								method="POST">
 								<input
 									type="hidden"
 									name="restaurant_id"
 									id="restaurant_id"
-									value="{{restaurants_snippet.restaurant_id }}"
-								/>
+									value="{{restaurants_snippet.restaurant_id }}" />
 								<button type="submit" class="card-panel">
 									Leave a review for {{
 									restaurants_snippet.restaurant_name }}
@@ -512,7 +448,7 @@
 				</div>
 			</div>
 		</div>
-		<!--THIS IS THE START OF THE SECOND HALF OF THE CONTAINER-->
-		{% endfor %} {% endblock %}
 	</div>
 </div>
+{% endfor %}
+{% endblock %}
