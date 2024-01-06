@@ -217,13 +217,14 @@ def handle_contact_us():
         elif (posted_user_type == "guest") or (posted_user_type == "business"):
             user_id = 0
         
+        # Gather input fields
         posted_email = request.form.get("email")
         posted_problem_type = request.form.get("problem_type")
         posted_more_info = request.form.get("more_info")
         todays_date = datetime.datetime.now()
         date_only = todays_date.date()
         
-        # Insert posted data into Problems table
+        # Insert data into Problems table
         new_problem = Problems(user_type=posted_user_type,
                                problem_type=posted_problem_type,
                                user_id=user_id, email=posted_email,
@@ -262,11 +263,16 @@ def register():
 
     # Checks to see if the form has been submitted
     if request.method == "POST":
+        
+        # Gather posted inputs
         username = request.form.get("username_register")        
         email = request.form.get("email_register")
+        
+        # Check for existing details
         existing_user = Users.query.filter(Users.username == username).first()
         existing_email = Users.query.filter(Users.email == email).first()
 
+        # Display errors if existing user
         if existing_user:
             session['err'] = """
             That username is already taken. Please choose another
@@ -319,10 +325,14 @@ def register():
 
 @app.route("/restaurant_profile/<int:restaurant_id>/review", methods=["POST"])
 def handle_leave_review(restaurant_id):
+    
+    # Check user is logged in. If not, redirect to login
     if not session.get('is_logged_in'):
         session['err'] = "You are not logged in"
         return redirect(url_for('login'))
     else:
+        
+        # Else, gather posted values
         user_id = session.get('user_id')
         username = session.get('username')
         restaurant_id = request.form.get("restaurant_id")
@@ -343,24 +353,39 @@ def handle_leave_review(restaurant_id):
         # --
         # End of code section
 
-        # If 
+        # If written summary or title is blank, display error
         if review_title == "" or written_review == "":
             session['err'] = """
             Error: The summary and written review must not be blank
             """
             redirect_url = request.referrer or url_for(home)
             return redirect(redirect_url)
+        
+        # Pull restaurant details from table
         existing_reviews = Reviews.query.filter\
         (Reviews.restaurant_id == restaurant_id).all()
         
+        # If result was found
         if existing_reviews:
+
+            # Get value of user-selected Taste Stars and converts to integer
             posted_taste_stars = int(request.form.get("select_taste"))
+            
+            # Creates a list and adds user-selected stars to list
             average_taste_stars = [posted_taste_stars]
-            for review in existing_reviews:
+
+            # Iterates over list of existing reviews to add all existing
+            # values in table to list
+            for review in existing_reviews:                
                 average_taste_stars.append(review.taste_stars)
+
+            # Calculate average of list            
             before_round_average_taste_stars = mean(average_taste_stars)
+
+            # Round value of list to 1dp and add back into list
             average_taste_stars = round(before_round_average_taste_stars, 1)
             
+            # This calculation functions the same way as above
             posted_presentation_stars = (
                 (int(request.form.get("select_presentation"))))
             average_presentation_stars = [posted_presentation_stars]
@@ -391,6 +416,7 @@ def handle_leave_review(restaurant_id):
             before_round_average_price_stars = mean(average_price_stars)
             average_price_stars = round(before_round_average_price_stars, 1)
             
+            # Calculate the overall stars for the review calculation
             posted_overall_stars = (posted_taste_stars +
                                     posted_presentation_stars +
                                     posted_friendliness_stars +
@@ -408,6 +434,7 @@ def handle_leave_review(restaurant_id):
             posted_ambience_stars + posted_price_stars) / 5
             calculated_overall_stars_for_restaurant = round(before_round_calculated_overall_stars_for_restaurant, 1)
         else:
+            # Else if there are no other reviews for that restaurant
             average_taste_stars = (int(request.form.get("select_taste")))
             average_presentation_stars = (int(request.form.get("select_presentation")))
             average_friendliness_stars = (int(request.form.get("select_friendliness")))
@@ -418,6 +445,8 @@ def handle_leave_review(restaurant_id):
             average_presentation_stars + average_taste_stars) / 5
             calculated_overall_stars_for_restaurant = \
             calculated_overall_stars_for_review
+        
+        # Add review values to the database
         new_review = Reviews(
             taste_stars=int(request.form.get("select_taste")),
             presentation_stars=int(request.form.get("select_presentation")),
@@ -432,6 +461,7 @@ def handle_leave_review(restaurant_id):
             review_date=todays_date,
             username=username)
 
+        # Calculate new restaurant rating
         restaurant = Restaurants.query.filter(
             Restaurants.restaurant_id == restaurant_id).first()
         get_reviews_by_restaurant_id = Reviews.query.filter(
@@ -481,9 +511,14 @@ def create_restaurant():
         
         # Checks to see if the form has been submitted
         if request.method == "POST":
+            
+            # Pull the new restaurant details from the Approvals table
             approval_restaurant_id = request.form.get("restaurant_id")
             approval = (Approvals.query.filter_by
                         (approval_id=approval_restaurant_id).first())
+            
+            # Assign a new row into the restaurants table with values equal
+            # to the values from the Approvals table
             restaurant_name = approval.restaurant_name
             restaurant_add_one = approval.restaurant_address_one
             restaurant_add_two = approval.restaurant_address_two
@@ -498,22 +533,27 @@ def create_restaurant():
             restaurant_cuisine_three = approval.restaurant_cuisine_three
             todays_date = datetime.datetime.now()
             date_only = todays_date.date()
+            
             if not approval:
                 session['err'] = f"Error - the approval is {approval}"
                 redirect_url = request.referrer or url_for(home)
                 return redirect(redirect_url)
+            
             if not restaurant_name:
                 session['err'] = f"Error - the name is {restaurant_name}"
                 redirect_url = request.referrer or url_for(home)
                 return redirect(redirect_url)
+            
             if not restaurant_add_one:
                 session['err'] = f"Error - the add_one is {restaurant_add_one}"
                 redirect_url = request.referrer or url_for(home)
                 return redirect(redirect_url)
+            
             if not restaurant_add_two:
                 session['err'] = f"Error - the add_two is {restaurant_add_one}"
                 redirect_url = request.referrer or url_for(home)
                 return redirect(redirect_url)
+            
             if not restaurant_postcode:
                 session['err'] = """
                 Error - the restaurant_postcode is
@@ -1251,13 +1291,22 @@ def clear_error():
 def login():
     # Checks to see if the form has been submitted
     if request.method == "POST":
+
         password = request.form.get("password_login")
         posted_email = request.form.get("email_login")
+        
+        # Removes all casing from posted email address
         email = posted_email.lower()
+
+        # Search database for email address
         existing_user = Users.query.filter(Users.email == email).first()
         if existing_user:
+
+            # If there was a match, check the password matches
             if check_password_hash(existing_user.password_hash, password):
                 user_id = existing_user.user_id
+                
+                # If email address and password match, create login sessions
                 session['user_id'] = user_id
                 session['username'] = existing_user.username
                 session['is_logged_in'] = True
@@ -1277,8 +1326,6 @@ def login():
 
 
 @app.route("/profile/check", methods=["GET", "POST"])
-# Third line of defense is checking for admin status before the
-# admin login to make sure they have admin status
 def check_admin_status():
     # Checks to see if error session is active and deactivates it
     if session.get('err'):
@@ -1318,10 +1365,18 @@ def check_admin_status():
 
 @app.route("/admin_portal", methods=["GET", "POST"])
 def admin_portal():
+
+    # Get a list of approvals awaiting admin action
     approvals = list(Approvals.query.order_by(Approvals.approval_id).all())
+
+    # Get a list of all restaurants so they can be edited    
     restaurants = list(Restaurants.query.order_by
                        (Restaurants.restaurant_id).all())
+    
+    #Get a list of all problems awaiting admin action
     problems = Problems.query.filter_by(solved=False).all()
+
+    # Render template with all information    
     return render_template("admin_portal.html",
                            approvals=approvals,
                            restaurants=restaurants,
@@ -1330,27 +1385,30 @@ def admin_portal():
 
 @app.route("/admin_login", methods=["GET", "POST"])
 def admin_login():
+
     # Checks to see if error session is active and deactivates it
     if session.get('err'):
         session.pop('err')
-    # Fourth line of defense - checking user is logged in
+
+    # Checking user is logged in
     if session.get('is_logged_in', False):
         user_id = session.get('user_id')
         user = Users.query.filter(Users.user_id == user_id).first()
-        # Fifth line of defense - checking the user has admin status
+        
+        # Checking the user has admin status
         is_admin = user.is_admin
         if isinstance(is_admin, bool) and is_admin:
             admin_id_check = Admins.query.filter(
                 Admins.user_id == user_id).first()
-            # Sixth line of defense - checking the user's user_id is stored
-            # in the admin database
+            
+            # Checking the user's user_id is stored in the admin database
             if admin_id_check is None:
                 session['err'] = "Your user ID is not in the admin list"
                 return redirect(url_for("home"))
             else:
                 admin_id = admin_id_check.user_id
-                # Seventh line of defense - checking if user_id matches the
-                # user_id stored in Admins table
+                
+                # Checking if user_id matches the user_id stored in Admin table
                 if user_id == admin_id:
                     if ((request.form.get("username") == user.username and
                          request.form.get("email").lower() == user.email)):
@@ -1361,9 +1419,7 @@ def admin_login():
                                 (admin_id_check.admin_password_hash,
                                     admin_pass)):
 
-                                # Not setting admin_id to user_id as a final
-                                # line of defense, as this could be easily
-                                # intercepted if the user_id is known.
+                                # Set admin_id session
                                 session['admin_id'] = admin_id_check.admin_id
                                 return redirect(url_for("admin_portal"))
                             else:
@@ -1383,10 +1439,10 @@ def admin_login():
     return redirect(url_for("home"))
 
 
-# DELETE THIS ONCE USED##
-
 @app.route("/profile/admin", methods=["GET", "POST"])
 def hash():
+    
+    # Render template
     return render_template("hash_admin_password.html")
 
 
@@ -1396,6 +1452,8 @@ def handle_hash():
     # Checks to see if the form has been submitted
     if request.method == "POST":
         query = Admins.query.filter(Admins.user_id == user_id).first()
+        
+        # If user_id matches admin_id, hash password
         if query:
             new_password = generate_password_hash(
                 request.form.get("password_register"))
