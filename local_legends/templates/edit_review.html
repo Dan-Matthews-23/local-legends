@@ -2,12 +2,14 @@
 {% block content %}
 
 
-    <div class="container align-center  ">
+    <div class="container align-center">
         <div class="row ">
             <div class="col  align-center s12 m12 l12 xl12">
                 <h3 class="larger-than-default-text bold">Edit Review</h3>
             </div>
         </div>
+
+        <!--Introduction section with collapsible content-->
         <div class="row">
             <button type="button" class="collapsible bold">How does it work?</button>
             <div class="content" id="collapsible-intro-content">
@@ -83,6 +85,8 @@
             </div>
         </div>
     </div>
+
+    <!--Only users who are logged in can leave a review-->
     {% if not session.is_logged_in %}
     <div class="container align-center card-panel grey lighten-5 ">
         <div class="row ">
@@ -95,6 +99,8 @@
         </div>
     </div>
     {% else %}
+
+    <!--If user is logged in, this section is shown-->
     {% for reviews in reviews %}
     <form action="{{ url_for('handle_edit_review', review_id=reviews.review_id) }}" method="POST">
         <input type="hidden" name="restaurant_id" id="restaurant_id" value="{{reviews.restaurant_id }}">
@@ -210,10 +216,8 @@
     </form>  
 {% endfor %}
 
-
-
-{% for reviews in reviews %}
-<form action="{{ url_for('delete_review', review_id=reviews.review_id) }}" method="POST">    
+    {% for reviews in reviews %}
+    <form action="{{ url_for('delete_review', review_id=reviews.review_id) }}" method="POST">    
         <input type="hidden" name="review_id" id="review_id" value="{{reviews.review_id }}">
             <div class="row">
                 <div class="col s12 m12 l12 xl12 " id="leave-review-btn-div">
@@ -221,11 +225,14 @@
                 </div>
             </div>
             <div class="row">
+                
+                <!--Warning issued to user about dangers of deleting review-->
                 <div class="col s12 align-center bold italic">
                     Warning: Deleting a review is permanent. It cannot be undone. The effect your review had on the restaurant ratings will also permanently change
                 </div>
             </div>    
-</form></div>
+    </form>
+</div>
 {% endfor %}
 {% endif %}
 {% endblock %}

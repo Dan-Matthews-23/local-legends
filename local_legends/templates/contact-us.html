@@ -1,271 +1,523 @@
-{% extends "base.html" %}
-{% block content %}
-<div class=" align-center contact-us-container with-borders" id="contact-us-main-container">
-    <div class="row  align-center">
-        <div class="col s12 m12 l12 xl12 card-panel grey lighten-5  align-center">
-            <div class="row ">
-                <div class="col align-center  s12 m12 l12 xl12">
-                    <h1 class="title-font">Contact Us</h1>
-                </div>
-            </div>
+{% extends "base.html" %} {% block content %}
+<div
+	class="align-center contact-us-container with-borders"
+	id="contact-us-main-container"
+>
+	<div class="row align-center">
+		<div
+			class="col s12 m12 l12 xl12 card-panel grey lighten-5 align-center"
+		>
+			<div class="row">
+				<div class="col align-center s12 m12 l12 xl12">
+					<h1 class="title-font">Contact Us</h1>
+				</div>
+			</div>
 
-            <form action="{{ url_for('become_legend') }}" method="POST">
-                <button type="button" class="collapsible bold">Become a legend</button>
-                    <div class="content ">            
-                        <div class=" align-center card-panel grey lighten-5 contact-us-container" id="contact-us-container">
-                            <div class="row ">
-                                <div class="row ">
-                                    <div class="col s12 m12 l12 xl12   leave-review-label-div">
-                                        <h2 class="default-text-styling">All fields marked with * are required</h2>
-                                    </div>
-                                </div>
-                                <div class="row ">
-                                    <div class="col s12 m12 l12 xl12   leave-review-label-div">                                    
-                                    </div>
-                                </div>
-                                <div class="row ">
-                                    <div class="col s12 m12 l12 xl6   leave-review-label-div">
-                                        <label for="restaurant_name" class="default-text-styling">
-                                        *Name of your restaurant
-                                        </label>
-                                    </div>
-                                    <div class="col line-break sm-padding"></div>
-                                    <div class="col s12 m12 l12 xl6  leave-review-select-div">
-                                        <input type="text" class="contact-us-input" id="restaurant_name" name="restaurant_name" placeholder="e.g. The Burger Bar">
-                                    </div>
-                                </div>
-                                <div class="row ">
-                                    <div class="col s12 m12 l12 xl6   leave-review-label-div">
-                                        <label for="first_cuisine" class="default-text-styling">
-                                        *Restaurant Cuisine Type
-                                        </label>
-                                    </div>
-                                    <div class="col  line-break sm-padding"></div>
-                                    <div class="col s12 m12 l12 xl6   leave-review-select-div">
-                                        <input type="text" class="contact-us-input" id="first_cuisine" name="first_cuisine" placeholder="e.g. Burgers">
-                                    </div>
-                                </div>
-                                <div class="row ">
-                                    <div class="col s12 m12 l12 xl6   leave-review-label-div">
-                                        <label for="second_cuisine" class="default-text-styling">
-                                            Another Cuisine Type
-                                        </label>
-                                    </div>
-                                    <div class="col  line-break sm-padding"></div>
-                                    <div class="col s12 m12 l12 xl6   leave-review-select-div">
-                                        <input type="text" class="contact-us-input" id="second_cuisine" name="second_cuisine" placeholder="e.g. Fries">
-                                    </div>
-                                </div>
-                                <div class="row ">
-                                    <div class="col s12 m12 l12 xl6   leave-review-label-div">
-                                        <label for="third_cuisine" class="default-text-styling">
-                                        Another Cuisine Type
-                                        </label>
-                                    </div>
-                                    <div class="col  line-break sm-padding"></div>
-                                    <div class="col s12 m12 l12 xl6   leave-review-select-div">
-                                        <input type="text" class="contact-us-input" id="third_cuisine" name="third_cuisine" placeholder="e.g. Wraps" >
-                                    </div>
-                                </div>
-                                <div class="row ">
-                                    <div class="col s12 m12 l12 xl6   leave-review-label-div">
-                                        <label for="delivery_available" class="default-text-styling">
-                                        *Is delivery available?
-                                        </label>
-                                    </div>
-                                    <div class="col  line-break sm-padding"></div>
-                                    <div class="col s12 m12 l12 xl6   leave-review-select-div">
-                                        <select name="delivery_available" id="delivery_available" class="leave-review-select ">
-                                            <option value="No">No</option>
-                                            <option value="Yes">Yes</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row md-padding-top md-padding-bottom">
-                                    <div class="col s12 m12 l12 xl6   leave-review-label-div">
-                                        <label for="restaurant_week" class="default-text-styling">
-                                        *Participant in <a href="https://www.sunderlandbid.co.uk/events/sunderland-restaurant-week-3" target="_blank">Sunderland Restaurant Week?</a>
-                                        </label>
-                                    </div>
-                                    <div class="col  line-break sm-padding"></div>
-                                    <div class="col s12 m12 l12 xl6 md-padding-top md-padding-bottom  leave-review-select-div">
-                                        <select name="restaurant_week" id="restaurant_week" class="leave-review-select ">
-                                            <option value="No">No</option>
-                                            <option value="Yes">Yes</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row ">
-                                    <div class="col s12 m12 l12 xl6   leave-review-label-div">
-                                        <label for="first_address" class="default-text-styling">
-                                        *First Line of business address
-                                        </label>
-                                    </div>
-                                    <div class="col  line-break sm-padding"></div>
-                                    <div class="col s12 m12 l12 xl6   leave-review-select-div">
-                                        <input type="text" class="contact-us-input" id="first_address" name="first_address" placeholder="e.g. 123 Sunderland Road" >
-                                    </div>
-                                </div>
-                                <div class="row ">
-                                    <div class="col s12 m12 l12 xl6   leave-review-label-div">
-                                        <label for="second_address" class="default-text-styling">
-                                        *Second Line of business address
-                                        </label>
-                                    </div>
-                                    <div class="col  line-break sm-padding"></div>
-                                    <div class="col s12 m12 l12 xl6   leave-review-select-div">
-                                        <input type="text" class="contact-us-input" id="second_address" name="second_address" placeholder="e.g. Sunderland Street" >
-                                    </div>
-                                </div>
-                                <div class="row ">
-                                    <div class="col s12 m12 l12 xl6   leave-review-label-div">
-                                        <label for="third_address" class="default-text-styling">
-                                            Third Line of business address
-                                        </label>
-                                    </div>
-                                    <div class="col  line-break sm-padding"></div>
-                                    <div class="col s12 m12 l12 xl6   leave-review-select-div">
-                                        <input type="text" class="contact-us-input" id="third_address" name="third_address" >
-                                    </div>
-                                </div>
-                                <div class="row ">
-                                    <div class="col s12 m12 l12 xl6   leave-review-label-div">
-                                        <label for="fourth_address" class="default-text-styling">
-                                        Last line of business address
-                                        </label>
-                                    </div>
-                                    <div class="col  line-break sm-padding"></div>
-                                    <div class="col s12 m12 l12 xl6   leave-review-select-div">
-                                        <input type="text" class="contact-us-input" id="fourth_address" name="fourth_address">
-                                    </div>
-                                </div>
-                                <div class="row ">
-                                    <div class="col s12 m12 l12 xl6   leave-review-label-div">
-                                        <label for="postcode" class="default-text-styling">
-                                            *Postcode of business address
-                                        </label>
-                                    </div>
-                                    <div class="col  line-break sm-padding"></div>
-                                    <div class="col s12 m12 l12 xl6   leave-review-select-div">
-                                        <input type="text" class="contact-us-input" id="postcode" name="postcode" placeholder="e.g. SR1 1AL" >
-                                    </div>
-                                </div>
-                                <div class="row ">
-                                    <div class="col s12 m12 l12 xl6   leave-review-label-div">
-                                        <label for="thumbnail" class="default-text-styling">
-                                        Link to your online main business image
-                                        </label>
-                                    </div>
-                                    <div class="col  line-break sm-padding"></div>
-                                    <div class="col s12 m12 l12 xl6   leave-review-select-div">
-                                        <input type="text" class="contact-us-input" id="thumbnail" name="thumbnail" placeholder="e.g. https://images.pexels.com/photos/269257/pexels-photo-269257.jpeg?auto=compress&cs=tinysrgb&w=600">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col s12 m12 l12 xl12">
-                                        (There is a facility to paste the website link to your main image, if you have one. You may leave this blank)
-                                    </div>
-                                </div>
-                                <div class="row ">
-                                    <div class="col s12 m12 l12 xl6   leave-review-label-div">
-                                        <label for="email_restaurant" class="default-text-styling">
-                                            Email Address
-                                        </label>
-                                    </div>
-                                    <div class="col  line-break sm-padding"></div>
-                                    <div class="col s12 m12 l12 xl6  leave-review-select-div ">
-                                        <input type="email" class="contact-us-input" id="email_restaurant" name="email_restaurant" placeholder="Enter a contact email address" required>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col s12 center-align">
-                                        <button type="submit" class="card-panel grey lighten-5">Submit Request</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-            </form>
+			<!--Become a Legend where restaurant requests to be displayed on site-->
+			<form action="{{ url_for('become_legend') }}" method="POST">
+				<button type="button" class="collapsible bold">
+					Become a legend
+				</button>
+				<div class="content">
+					<div
+						class="align-center card-panel grey lighten-5 contact-us-container"
+						id="contact-us-container"
+					>
+						<div class="row">
+							<div class="row">
+								<div
+									class="col s12 m12 l12 xl12 leave-review-label-div"
+								>
+									<h2 class="default-text-styling">
+										All fields marked with * are required
+									</h2>
+								</div>
+							</div>
+							<div class="row">
+								<div
+									class="col s12 m12 l12 xl12 leave-review-label-div"
+								></div>
+							</div>
+							<div class="row">
+								<div
+									class="col s12 m12 l12 xl6 leave-review-label-div"
+								>
+									<label
+										for="restaurant_name"
+										class="default-text-styling"
+									>
+										*Name of your restaurant
+									</label>
+								</div>
+								<div class="col line-break sm-padding"></div>
+								<div
+									class="col s12 m12 l12 xl6 leave-review-select-div"
+								>
+									<input
+										type="text"
+										class="contact-us-input"
+										id="restaurant_name"
+										name="restaurant_name"
+										placeholder="e.g. The Burger Bar"
+									/>
+								</div>
+							</div>
+							<div class="row">
+								<div
+									class="col s12 m12 l12 xl6 leave-review-label-div"
+								>
+									<label
+										for="first_cuisine"
+										class="default-text-styling"
+									>
+										*Restaurant Cuisine Type
+									</label>
+								</div>
+								<div class="col line-break sm-padding"></div>
+								<div
+									class="col s12 m12 l12 xl6 leave-review-select-div"
+								>
+									<input
+										type="text"
+										class="contact-us-input"
+										id="first_cuisine"
+										name="first_cuisine"
+										placeholder="e.g. Burgers"
+									/>
+								</div>
+							</div>
+							<div class="row">
+								<div
+									class="col s12 m12 l12 xl6 leave-review-label-div"
+								>
+									<label
+										for="second_cuisine"
+										class="default-text-styling"
+									>
+										Another Cuisine Type
+									</label>
+								</div>
+								<div class="col line-break sm-padding"></div>
+								<div
+									class="col s12 m12 l12 xl6 leave-review-select-div"
+								>
+									<input
+										type="text"
+										class="contact-us-input"
+										id="second_cuisine"
+										name="second_cuisine"
+										placeholder="e.g. Fries"
+									/>
+								</div>
+							</div>
+							<div class="row">
+								<div
+									class="col s12 m12 l12 xl6 leave-review-label-div"
+								>
+									<label
+										for="third_cuisine"
+										class="default-text-styling"
+									>
+										Another Cuisine Type
+									</label>
+								</div>
+								<div class="col line-break sm-padding"></div>
+								<div
+									class="col s12 m12 l12 xl6 leave-review-select-div"
+								>
+									<input
+										type="text"
+										class="contact-us-input"
+										id="third_cuisine"
+										name="third_cuisine"
+										placeholder="e.g. Wraps"
+									/>
+								</div>
+							</div>
+							<div class="row">
+								<div
+									class="col s12 m12 l12 xl6 leave-review-label-div"
+								>
+									<label
+										for="delivery_available"
+										class="default-text-styling"
+									>
+										*Is delivery available?
+									</label>
+								</div>
+								<div class="col line-break sm-padding"></div>
+								<div
+									class="col s12 m12 l12 xl6 leave-review-select-div"
+								>
+									<select
+										name="delivery_available"
+										id="delivery_available"
+										class="leave-review-select"
+									>
+										<option value="No">No</option>
+										<option value="Yes">Yes</option>
+									</select>
+								</div>
+							</div>
+							<div class="row md-padding-top md-padding-bottom">
+								<div
+									class="col s12 m12 l12 xl6 leave-review-label-div"
+								>
+									<label
+										for="restaurant_week"
+										class="default-text-styling"
+									>
+										*Participant in
+										<a
+											href="https://www.sunderlandbid.co.uk/events/sunderland-restaurant-week-3"
+											target="_blank"
+											>Sunderland Restaurant Week?</a
+										>
+									</label>
+								</div>
+								<div class="col line-break sm-padding"></div>
+								<div
+									class="col s12 m12 l12 xl6 md-padding-top md-padding-bottom leave-review-select-div"
+								>
+									<select
+										name="restaurant_week"
+										id="restaurant_week"
+										class="leave-review-select"
+									>
+										<option value="No">No</option>
+										<option value="Yes">Yes</option>
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div
+									class="col s12 m12 l12 xl6 leave-review-label-div"
+								>
+									<label
+										for="first_address"
+										class="default-text-styling"
+									>
+										*First Line of business address
+									</label>
+								</div>
+								<div class="col line-break sm-padding"></div>
+								<div
+									class="col s12 m12 l12 xl6 leave-review-select-div"
+								>
+									<input
+										type="text"
+										class="contact-us-input"
+										id="first_address"
+										name="first_address"
+										placeholder="e.g. 123 Sunderland Road"
+									/>
+								</div>
+							</div>
+							<div class="row">
+								<div
+									class="col s12 m12 l12 xl6 leave-review-label-div"
+								>
+									<label
+										for="second_address"
+										class="default-text-styling"
+									>
+										*Second Line of business address
+									</label>
+								</div>
+								<div class="col line-break sm-padding"></div>
+								<div
+									class="col s12 m12 l12 xl6 leave-review-select-div"
+								>
+									<input
+										type="text"
+										class="contact-us-input"
+										id="second_address"
+										name="second_address"
+										placeholder="e.g. Sunderland Street"
+									/>
+								</div>
+							</div>
+							<div class="row">
+								<div
+									class="col s12 m12 l12 xl6 leave-review-label-div"
+								>
+									<label
+										for="third_address"
+										class="default-text-styling"
+									>
+										Third Line of business address
+									</label>
+								</div>
+								<div class="col line-break sm-padding"></div>
+								<div
+									class="col s12 m12 l12 xl6 leave-review-select-div"
+								>
+									<input
+										type="text"
+										class="contact-us-input"
+										id="third_address"
+										name="third_address"
+									/>
+								</div>
+							</div>
+							<div class="row">
+								<div
+									class="col s12 m12 l12 xl6 leave-review-label-div"
+								>
+									<label
+										for="fourth_address"
+										class="default-text-styling"
+									>
+										Last line of business address
+									</label>
+								</div>
+								<div class="col line-break sm-padding"></div>
+								<div
+									class="col s12 m12 l12 xl6 leave-review-select-div"
+								>
+									<input
+										type="text"
+										class="contact-us-input"
+										id="fourth_address"
+										name="fourth_address"
+									/>
+								</div>
+							</div>
+							<div class="row">
+								<div
+									class="col s12 m12 l12 xl6 leave-review-label-div"
+								>
+									<label
+										for="postcode"
+										class="default-text-styling"
+									>
+										*Postcode of business address
+									</label>
+								</div>
+								<div class="col line-break sm-padding"></div>
+								<div
+									class="col s12 m12 l12 xl6 leave-review-select-div"
+								>
+									<input
+										type="text"
+										class="contact-us-input"
+										id="postcode"
+										name="postcode"
+										placeholder="e.g. SR1 1AL"
+									/>
+								</div>
+							</div>
+							<div class="row">
+								<div
+									class="col s12 m12 l12 xl6 leave-review-label-div"
+								>
+									<label
+										for="thumbnail"
+										class="default-text-styling"
+									>
+										Link to your online main business image
+									</label>
+								</div>
+								<div class="col line-break sm-padding"></div>
+								<div
+									class="col s12 m12 l12 xl6 leave-review-select-div"
+								>
+									<input
+										type="text"
+										class="contact-us-input"
+										id="thumbnail"
+										name="thumbnail"
+										placeholder="e.g. https://images.pexels.com/photos/269257/pexels-photo-269257.jpeg?auto=compress&cs=tinysrgb&w=600"
+									/>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col s12 m12 l12 xl12">
+									(There is a facility to paste the website
+									link to your main image, if you have one.
+									You may leave this blank)
+								</div>
+							</div>
+							<div class="row">
+								<div
+									class="col s12 m12 l12 xl6 leave-review-label-div"
+								>
+									<label
+										for="email_restaurant"
+										class="default-text-styling"
+									>
+										Email Address
+									</label>
+								</div>
+								<div class="col line-break sm-padding"></div>
+								<div
+									class="col s12 m12 l12 xl6 leave-review-select-div"
+								>
+									<input
+										type="email"
+										class="contact-us-input"
+										id="email_restaurant"
+										name="email_restaurant"
+										placeholder="Enter a contact email address"
+										required
+									/>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col s12 center-align">
+									<button
+										type="submit"
+										class="card-panel grey lighten-5"
+									>
+										Submit Request
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+            <!--End of Become a Legend section-->
             
-        
-    
-   
-                                
-            
-        
-        <form action="{{ url_for('handle_contact_us') }}" method="POST">
-            <button type="button" class="collapsible bold">Having problems?</button>
-                <div class="content ">
-                    <div class=" align-center card-panel grey lighten-5 contact-us-container " id="report-problems">
-                        <div class="row ">
-                            <div class="row ">
-                                <div class="col s12 m12 l12 xl6   leave-review-label-div">
-                                    <label for="user_type" class="default-text-styling">
-                                        Who are you?
-                                    </label>
-                                </div>
-                                <div class="col s12 m12 l12 xl6  leave-review-select-div ">
-                                    <select name="user_type" id="user_type" class="leave-review-select">
-                                        <option value="user">
-                                            {% if session.is_logged_in %}
-                                            User ({{session.username}})                                            
-                                            {% else %}
-                                            Guest
-                                            {% endif %}
-                                        </option>                                        
-                                        <option value="business">Business</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row ">
-                                <div class="col s12 m12 l12 xl6   leave-review-label-div">
-                                    <label for="email" class="default-text-styling">
-                                    Email Address
-                                    </label>
-                                </div>
-                                <div class="col s12 m12 l12 xl6  leave-review-select-div ">
-                                    <input type="text" class="contact-us-input" id="email" name="email" value="{{session.user_email}}">
-                                </div>
-                            </div>
-                            <div class="row ">
-                                <div class="col s12 m12 l12 xl6   leave-review-label-div">
-                                    <label for="problem_type" class="default-text-styling">
-                                    Problem Type
-                                    </label>
-                                    </div>
-                                <div class="col s12 m12 l12 xl6  leave-review-select-div ">
-                                <select name="problem_type" id="problem_type" class="leave-review-select ">
-                                    <option value="forgot-password">Forgot Password</option>
-                                    <option value="technical">Technical</option>
-                                    <option value="account">Issues with account</option>
-                                    <option value="information">Incorrect information</option>
-                                    <option value="something-else">Something else</option>
-                                </select>
-                                </div>
-                            </div>
-                            <div class="row ">
-                                <div class="col s12 m12 l12 xl12 leave-review-select-div ">
-                                    <label class="default-text-styling" for="more_info">
-                                    Please tell us more about your query in as much detail as possible
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="row ">
-                                <div class="col s12 m12 l12 xl12 align-center">
-                                    <textarea class="text-area" name="more_info" id="more_info"></textarea>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col s12 center-align">
-                                    <button type="submit" class="card-panel grey lighten-5">Submit Request</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form></div>
-        
-    </div>        
+            <!--Report Problems section-->
+			<form action="{{ url_for('handle_contact_us') }}" method="POST">
+				<button type="button" class="collapsible bold">
+					Having problems?
+				</button>
+				<div class="content">
+					<div
+						class="align-center card-panel grey lighten-5 contact-us-container"
+						id="report-problems"
+					>
+						<div class="row">
+							<div class="row">
+								<div
+									class="col s12 m12 l12 xl6 leave-review-label-div"
+								>
+									<label
+										for="user_type"
+										class="default-text-styling"
+									>
+										Who are you?
+									</label>
+								</div>
+								<div
+									class="col s12 m12 l12 xl6 leave-review-select-div"
+								>
+									<select
+										name="user_type"
+										id="user_type"
+										class="leave-review-select"
+									>
+										<option value="user">
+											{% if session.is_logged_in %} User
+											({{session.username}}) {% else %}
+											Guest {% endif %}
+										</option>
+										<option value="business">
+											Business
+										</option>
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div
+									class="col s12 m12 l12 xl6 leave-review-label-div"
+								>
+									<label
+										for="email"
+										class="default-text-styling"
+									>
+										Email Address
+									</label>
+								</div>
+								<div
+									class="col s12 m12 l12 xl6 leave-review-select-div"
+								>
+									<input
+										type="text"
+										class="contact-us-input"
+										id="email"
+										name="email"
+										value="{{session.user_email}}"
+									/>
+								</div>
+							</div>
+							<div class="row">
+								<div
+									class="col s12 m12 l12 xl6 leave-review-label-div"
+								>
+									<label
+										for="problem_type"
+										class="default-text-styling"
+									>
+										Problem Type
+									</label>
+								</div>
+								<div
+									class="col s12 m12 l12 xl6 leave-review-select-div"
+								>
+									<select
+										name="problem_type"
+										id="problem_type"
+										class="leave-review-select"
+									>
+										<option value="forgot-password">
+											Forgot Password
+										</option>
+										<option value="technical">
+											Technical
+										</option>
+										<option value="account">
+											Issues with account
+										</option>
+										<option value="information">
+											Incorrect information
+										</option>
+										<option value="something-else">
+											Something else
+										</option>
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div
+									class="col s12 m12 l12 xl12 leave-review-select-div"
+								>
+									<label
+										class="default-text-styling"
+										for="more_info"
+									>
+										Please tell us more about your query in
+										as much detail as possible
+									</label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col s12 m12 l12 xl12 align-center">
+									<textarea
+										class="text-area"
+										name="more_info"
+										id="more_info"
+									></textarea>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col s12 center-align">
+									<button
+										type="submit"
+										class="card-panel grey lighten-5"
+									>
+										Submit Request
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
 </div>
 
 {% endblock %}

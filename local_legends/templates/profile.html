@@ -8,6 +8,8 @@
                     <h1 class="title-font">Profile</h1>
                 </div>
             </div>
+            
+            <!--Change Password section-->
             <section class="change_password">
                 <form action="{{ url_for('change_password') }}" method="POST">
                 <div class=" align-center card-panel grey lighten-5 register-container ">
@@ -56,6 +58,7 @@
         </section>
         <div class="container lg-padding"></div>
 
+        <!--Change Username section-->
         <section class="change_username">
             <form action="{{ url_for('change_username') }}" method="POST">
                 <div class=" align-center card-panel grey lighten-5 register-container ">
@@ -84,6 +87,7 @@
         </section>
         <div class="container lg-padding"></div>
 
+        <!--Change email address section-->
         <section class="change_email">
             <form action="{{ url_for('change_email') }}" method="POST">
                 <div class=" align-center card-panel grey lighten-5 register-container ">
@@ -113,6 +117,7 @@
         </section>
         <div class="container lg-padding"></div>
 
+        <!--Delete account section-->
         <section class="delete_user">
             <form action="{{ url_for('delete_user') }}" method="POST">
                 <div class=" align-center card-panel grey lighten-5 register-container ">
@@ -145,9 +150,8 @@
         {% if not session.is_admin %}
         <div class="container lg-padding"></div>
 
-        <section class="admin-section">
-
-           
+        <!--If user is admin, show this section-->
+        <section class="admin-section">           
                 <div class=" align-center card-panel grey lighten-5 register-container ">
                     <form action="{{ url_for('check_admin_status') }}" method="POST">
                     <div class="row">

@@ -1,59 +1,95 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
+<!--This page allows an existing user to log in-->
 <form action="{{ url_for('login') }}" method="POST">
-    <div class=" align-center contact-us-container  " id="sign-in-container">
-    <div class="row  align-center">
-        <div class="col s12 m12 l12 xl12 align-center">
-            <div class="row ">
-                <div class="col align-center  s12 m12 l12 xl12">
-                    <h1 class="title-font">Sign In</h1>
-                </div>
-            </div>
-            
-                <div class=" align-center card-panel grey lighten-5 register-container " >
-
-                    <div class="row ">
-                        <div class="col s12 m12 l12 xl12   leave-review-label-div">
-                            <h2 class="default-text-styling">All fields marked with * are required</h2>
-                        </div>
-                    </div>
-                    <div class="row sm-padding"><div class="col s12 m12 l12 xl12"></div>
-                    </div>                    
-                    <div class="row ">
-                        <div class="col s12 m12 l12 xl6   leave-review-label-div align-center">
-                            <label for="email_login" class="default-text-styling align-center ">
-                                * Email Address
-                            </label>
-                        </div>
-                        <div class="col s12 m12 l12 xl6  leave-review-select-div align-center  ">
-                            <input type="email" class="contact-us-input " id="email_login" name="email_login" 
-                                 placeholder="Enter email address" required>
-                        </div>
-                    </div>
-                    <div class="row ">
-                        <div class="col s12 m12 l12 xl6   leave-review-label-div  ">
-                            <label for="password_login" class="  default-text-styling">
-                                * Password
-                            </label>
-                        </div>
-                        <div class="col s12 m12 l12 xl6  leave-review-select-div  ">
-                            <input type="password" class=" contact-us-input" id="password_login"
-                                name="password_login" placeholder="Enter your password" required>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s12 center-align">
-                            <button type="submit" class="card-panel grey lighten-5">Log In</button>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s12 center-align">
-                            <a href="{{ url_for('contact_us') }}">Forgot Password</a>
-                        </div>
-                    </div>
-            
-        </div>
-    </div>
-</div>
-</div></form>
+	<div class="align-center contact-us-container" id="sign-in-container">
+		<div class="row align-center">
+			<div class="col s12 m12 l12 xl12 align-center">
+				<div class="row">
+					<div class="col align-center s12 m12 l12 xl12">
+						<h1 class="title-font">Sign In</h1>
+					</div>
+				</div>
+				<div
+					class="align-center card-panel grey lighten-5 register-container"
+				>
+					<div class="row">
+						<div
+							class="col s12 m12 l12 xl12 leave-review-label-div"
+						>
+							<h2 class="default-text-styling">
+								All fields marked with * are required
+							</h2>
+						</div>
+					</div>
+					<div class="row sm-padding">
+						<div class="col s12 m12 l12 xl12"></div>
+					</div>
+					<div class="row">
+						<div
+							class="col s12 m12 l12 xl6 leave-review-label-div align-center"
+						>
+							<label
+								for="email_login"
+								class="default-text-styling align-center"
+							>
+								* Email Address
+							</label>
+						</div>
+						<div
+							class="col s12 m12 l12 xl6 leave-review-select-div align-center"
+						>
+							<input
+								type="email"
+								class="contact-us-input"
+								id="email_login"
+								name="email_login"
+								placeholder="Enter email address"
+								required
+							/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s12 m12 l12 xl6 leave-review-label-div">
+							<label
+								for="password_login"
+								class="default-text-styling"
+							>
+								* Password
+							</label>
+						</div>
+						<div
+							class="col s12 m12 l12 xl6 leave-review-select-div"
+						>
+							<input
+								type="password"
+								class="contact-us-input"
+								id="password_login"
+								name="password_login"
+								placeholder="Enter your password"
+								required
+							/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s12 center-align">
+							<button
+								type="submit"
+								class="card-panel grey lighten-5"
+							>
+								Log In
+							</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s12 center-align">
+							<a href="{{ url_for('contact_us') }}"
+								>Forgot Password</a
+							>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
 {% endblock %}

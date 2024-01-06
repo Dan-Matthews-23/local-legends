@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 {% if session.is_logged_in %}
-<!--Started check for session BEFORE form so that the handle_leave_review 
-   is never executed if the user is not logged in - another attempt at 
-   defensive programming-->
+
+<!--This page only displays once the user has logged in 
+and then also logged in as admin -->
+
+<!--Support Requests (from Contact Us)-->
 <div class="container ">
     <div class="row ">
         <div class="col align-center  s12 m12 l12 xl12">
@@ -95,6 +97,8 @@
         </div>
     </div>
 </div>
+
+<!--Restaurant Approval Requests-->
 <div class="container  align-center">
     <div class="row ">
         <div class="col align-center   s12 m12 l12 xl12">
@@ -248,6 +252,8 @@
         </div>
     </div>
 </div>
+
+<!--Edit Restaurant Details-->
 <div class="container align-center  ">
     <div class="row ">
         <div class="col  align-center s12 m12 l12 xl12">
