@@ -1,6 +1,6 @@
 {
     "[css]": {
-        "editor.defaultFormatter": "davidanson.vscode-markdownlint"
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[markdown]": {
         "editor.defaultFormatter": "davidanson.vscode-markdownlint"

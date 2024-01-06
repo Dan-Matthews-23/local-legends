@@ -1,369 +1,492 @@
-{% extends "base.html" %}
-{% block content %}
-{% if session.is_logged_in %}
-
+{% extends "base.html" %} {% block content %} {% if session.is_logged_in %}
 <!--This page only displays once the user has logged in 
-and then also logged in as admin -->
-
+    and then also logged in as admin -->
 <!--Support Requests (from Contact Us)-->
-<div class="container ">
-    <div class="row ">
-        <div class="col align-center  s12 m12 l12 xl12">
-            <h3 class="larger-than-default-text bold">Support Requests</h3>
-        </div>
-    </div>
+<div class="container">
+	<div class="row">
+		<div class="col align-center s12 m12 l12 xl12">
+			<h3 class="larger-than-default-text bold">Support Requests</h3>
+		</div>
+	</div>
 </div>
-<div class=" align-center contact-us-container ">
-    <div class="row  ">
-        <div class="col s12 m12 l12 xl12 card-panel grey lighten-5  ">
-            {% for problems in problems %}
-            <form action="{{ url_for('archive_problem') }}" method="POST">
-                <input type="hidden" id="problem_id" name="problem_id" value="{{problems.problem_id }}">
-                    <button type="button" class="collapsible bold">Request type: {{problems.problem_type }}</button>
-                    <div class="content ">
-                        <div class="row   ">
-                            <div class="col s4 m4 l4 xl4">
-                                <label class="default-text-styling" for="user_type">
-                                    User Type
-                                </label>
-                            </div>
-                            <div class="col s8 m8 l8 xl8 default-text-styling">{{problems.user_type }}</div>
-                        </div>
-                        
-                        <div class="row ">
-                            <div class="col s4 m4 l4 xl4">
-                            <label class="default-text-styling" for="first_cuisine">
-                                Problem Type
-                            </label>
-                        </div>
-                        <div class="col s8 m8 l8 xl8 default-text-styling">
-                            {{problems.problem_type }}
-                        </div>
-                    </div>
-                    <div class="row   ">
-                        <div class="col s4 m4 l4 xl4  ">
-                            <label class="default-text-styling" for="first_cuisine">
-                                User Id
-                            </label>
-                        </div>
-                        <div class="col s8 m8 l8 xl8 default-text-styling">
-                            {{problems.user_id }}
-                        </div>
-                    </div>
-                    <div class="row   ">
-                        <div class="col s4 m4 l4 xl4  ">
-                            <label class="default-text-styling" for="first_cuisine">
-                                Email
-                            </label>
-                        </div>
-                        <div class="col s8 m8 l8 xl8  default-text-styling">
-                            {{problems.email }}
-                        </div>
-                    </div>
-                    <div class="row   ">
-                        <div class="col s4 m4 l4 xl4  ">
-                            <label class="default-text-styling" for="first_cuisine">
-                                Date of request
-                            </label>
-                        </div>
-                        <div class="col s8 m8 l8 xl8 default-text-styling">
-                            {{problems.date }}
-                        </div>
-                    </div>
-                    <div class="row   ">
-                        <div class="col s4 m4 l4 xl4  ">
-                            <label class="default-text-styling" for="first_cuisine">
-                                Further Information
-                            </label>
-                        </div>
-                    </div>
-                    <div class="row   ">
-                        <div class="col s8 m8 l8 xl8  default-text-styling">
-                            {{problems.detail }}
-                        </div>
-                    </div>
-                    <div class="row   ">
-                        <button type="submit" class="card-panel grey lighten-5">Issue Resolved - Archive Problem</button>
-                    </div>
-                </div>
-            </form>
-            {% endfor %}
-        </div>
-    </div>
+<div class="align-center contact-us-container">
+	<div class="row">
+		<div class="col s12 m12 l12 xl12 card-panel grey lighten-5">
+			{% for problems in problems %}
+			<form action="{{ url_for('archive_problem') }}" method="POST">
+				<input
+					type="hidden"
+					id="problem_id"
+					name="problem_id"
+					value="{{problems.problem_id }}"
+				/>
+				<button type="button" class="collapsible bold">
+					Request type: {{problems.problem_type }}
+				</button>
+				<div class="content">
+					<div class="row">
+						<div class="col s4 m4 l4 xl4">
+							<label class="default-text-styling" for="user_type">
+								User Type
+							</label>
+						</div>
+						<div class="col s8 m8 l8 xl8 default-text-styling">
+							{{problems.user_type }}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s4 m4 l4 xl4">
+							<label
+								class="default-text-styling"
+								for="first_cuisine"
+							>
+								Problem Type
+							</label>
+						</div>
+						<div class="col s8 m8 l8 xl8 default-text-styling">
+							{{problems.problem_type }}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s4 m4 l4 xl4">
+							<label
+								class="default-text-styling"
+								for="first_cuisine"
+							>
+								User Id
+							</label>
+						</div>
+						<div class="col s8 m8 l8 xl8 default-text-styling">
+							{{problems.user_id }}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s4 m4 l4 xl4">
+							<label
+								class="default-text-styling"
+								for="first_cuisine"
+							>
+								Email
+							</label>
+						</div>
+						<div class="col s8 m8 l8 xl8 default-text-styling">
+							{{problems.email }}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s4 m4 l4 xl4">
+							<label
+								class="default-text-styling"
+								for="first_cuisine"
+							>
+								Date of request
+							</label>
+						</div>
+						<div class="col s8 m8 l8 xl8 default-text-styling">
+							{{problems.date }}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s4 m4 l4 xl4">
+							<label
+								class="default-text-styling"
+								for="first_cuisine"
+							>
+								Further Information
+							</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s8 m8 l8 xl8 default-text-styling">
+							{{problems.detail }}
+						</div>
+					</div>
+					<div class="row">
+						<button type="submit" class="card-panel grey lighten-5">
+							Issue Resolved - Archive Problem
+						</button>
+					</div>
+				</div>
+			</form>
+			{% endfor %}
+		</div>
+	</div>
 </div>
 <div class="container lg-padding">
-    <div class="row">
-        <div class="col ">
-        </div>
-    </div>
+	<div class="row">
+		<div class="col"></div>
+	</div>
 </div>
-
 <!--Restaurant Approval Requests-->
-<div class="container  align-center">
-    <div class="row ">
-        <div class="col align-center   s12 m12 l12 xl12">
-            <h3 class="larger-than-default-text bold">Approval Requests</h3>
-        </div>
-    </div>
+<div class="container align-center">
+	<div class="row">
+		<div class="col align-center s12 m12 l12 xl12">
+			<h3 class="larger-than-default-text bold">Approval Requests</h3>
+		</div>
+	</div>
 </div>
-<div class=" align-center contact-us-container ">
-    <div class="row  ">
-        <div class="col s12 m12 l12 xl12 card-panel grey lighten-5  ">
-            {% for approvals in approvals %}
-            <form action="{{ url_for('create_restaurant') }}" method="POST">
-                <input type="hidden" id="restaurant_id" name="restaurant_id" value="{{approvals.approval_id }}">
-                <button type="button" class="collapsible bold">Request for action: {{approvals.restaurant_name
-                    }}</button>
-                <div class="content ">
-                    <div class="container  input-container ">
-                        <div class="row   ">
-                            <div class="col s4 m4 l4 xl4  ">
-                                <label class="default-text-styling" for="restaurant_name">
-                                    Restaurant Name
-                                </label>
-                            </div>
-                            <div class="col s8 m8 l8 xl8 default-text-styling">
-                                {{approvals.restaurant_name }}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row   ">
-                        <div class="col s4 m4 l4 xl4  ">
-                            <label class="default-text-styling" for="first_cuisine">
-                                Cuisine Type One
-                            </label>
-                        </div>
-                        <div class="col s8 m8 l8 xl8 default-text-styling">
-                            {{approvals.restaurant_cuisine_one }}
-                        </div>
-                    </div>
-                    <div class="row   ">
-                        <div class="col s4 m4 l4 xl4  ">
-                            <label class="default-text-styling" for="second_cuisine">
-                                Cuisine Type Two
-                            </label>
-                        </div>
-                        <div class="col s8 m8 l8 xl8 default-text-styling">
-                            {{approvals.restaurant_cuisine_two }}
-                        </div>
-                    </div>
-                    <div class="row   ">
-                        <div class="col s4 m4 l4 xl4  ">
-                            <label class="default-text-styling" for="third_cuisine">
-                                Cuisine Type Three
-                            </label>
-                        </div>
-                        <div class="col s8 m8 l8 xl8  default-text-styling">
-                            {{approvals.restaurant_cuisine_three }}
-                        </div>
-                    </div>
-                    <div class="row   ">
-                        <div class="col s4 m4 l4 xl4  ">
-                            <label class="default-text-styling" for="delivery_available">
-                                Delivery Available?
-                            </label>
-                        </div>
-                        <div class="col s8 m8 l8 xl8 default-text-styling">
-                            {{approvals.restaurant_delivery }}
-                        </div>
-                    </div>
-                    <div class="row   ">
-                        <div class="col s4 m4 l4 xl4  ">
-                            <label class="default-text-styling" for="restaurant_week">
-                                Sunderland Restaurant Week Participant?
-                            </label>
-                        </div>
-                        <div class="col s8 m8 l8 xl8 default-text-styling">
-                            {{approvals.restaurant_week }}
-                        </div>
-                    </div>
-                    <div class="row   ">
-                        <div class="col s4 m4 l4 xl4  ">
-                            <label class="default-text-styling" for="first_address">
-                                First Line of Address Name
-                            </label>
-                        </div>
-                        <div class="col s8 m8 l8 xl8 default-text-styling">
-                            {{approvals.restaurant_address_one }}
-                        </div>
-                    </div>
-                    <div class="row   ">
-                        <div class="col  s4 m4 l4 xl4 ">
-                            <label class="default-text-styling" for="second_address">
-                                Second Line of Address
-                            </label>
-                        </div>
-                        <div class="col s8 m8 l8 xl8 default-text-styling">
-                            {{approvals.restaurant_address_two }}
-                        </div>
-                    </div>
-                    <div class="row   ">
-                        <div class="col  s4 m4 l4 xl4 ">
-                            <label class="default-text-styling" for="third_address">
-                                Third Line of Address
-                            </label>
-                        </div>
-                        <div class="col s8 m8 l8 xl8  default-text-styling">
-                            {{approvals.restaurant_address_three }}
-                        </div>
-                    </div>
-                    <div class="row   ">
-                        <div class="col s4 m4 l4 xl4  ">
-                            <label class="default-text-styling" for="fourth_address">
-                                Fourth Line of Address
-                            </label>
-                        </div>
-                        <div class="col s8 m8 l8 xl8 default-text-styling">
-                            {{approvals.restaurant_address_four }}
-                        </div>
-                    </div>
-                    <div class="row   ">
-                        <div class="col s4 m4 l4 xl4  ">
-                            <label class="default-text-styling" for="postcode">
-                                Postcode
-                            </label>
-                        </div>
-                        <div class="col s8 m8 l8 xl8 default-text-styling">
-                            {{approvals.restaurant_address_postode }}
-                        </div>
-                    </div>
-                    <div class="row   ">
-                        <div class="col s4 m4 l4 xl4  ">
-                            <label class="default-text-styling" for="thumbnail">
-                                Thumbnail URL
-                            </label>
-                        </div>
-                        <div class="col s8 m8 l8 xl8 default-text-styling">
-                            {{approvals.restaurant_image_url }}
-                        </div>
-                    </div>
-                    <div class="row   ">
-                        <button type="submit" class="card-panel grey lighten-5">Approve Request</button>
-                    </div>
-                </div>
-            </form>
-            {% endfor %}
-        </div>
-    </div>
+<div class="align-center contact-us-container">
+	<div class="row">
+		<div class="col s12 m12 l12 xl12 card-panel grey lighten-5">
+			{% for approvals in approvals %}
+			<form action="{{ url_for('create_restaurant') }}" method="POST">
+				<input
+					type="hidden"
+					id="restaurant_id"
+					name="restaurant_id"
+					value="{{approvals.approval_id }}"
+				/>
+				<button type="button" class="collapsible bold">
+					Request for action: {{approvals.restaurant_name }}
+				</button>
+				<div class="content">
+					<div class="container input-container">
+						<div class="row">
+							<div class="col s4 m4 l4 xl4">
+								<label
+									class="default-text-styling"
+									for="restaurant_name"
+								>
+									Restaurant Name
+								</label>
+							</div>
+							<div class="col s8 m8 l8 xl8 default-text-styling">
+								{{approvals.restaurant_name }}
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s4 m4 l4 xl4">
+							<label
+								class="default-text-styling"
+								for="first_cuisine"
+							>
+								Cuisine Type One
+							</label>
+						</div>
+						<div class="col s8 m8 l8 xl8 default-text-styling">
+							{{approvals.restaurant_cuisine_one }}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s4 m4 l4 xl4">
+							<label
+								class="default-text-styling"
+								for="second_cuisine"
+							>
+								Cuisine Type Two
+							</label>
+						</div>
+						<div class="col s8 m8 l8 xl8 default-text-styling">
+							{{approvals.restaurant_cuisine_two }}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s4 m4 l4 xl4">
+							<label
+								class="default-text-styling"
+								for="third_cuisine"
+							>
+								Cuisine Type Three
+							</label>
+						</div>
+						<div class="col s8 m8 l8 xl8 default-text-styling">
+							{{approvals.restaurant_cuisine_three }}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s4 m4 l4 xl4">
+							<label
+								class="default-text-styling"
+								for="delivery_available"
+							>
+								Delivery Available?
+							</label>
+						</div>
+						<div class="col s8 m8 l8 xl8 default-text-styling">
+							{{approvals.restaurant_delivery }}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s4 m4 l4 xl4">
+							<label
+								class="default-text-styling"
+								for="restaurant_week"
+							>
+								Sunderland Restaurant Week Participant?
+							</label>
+						</div>
+						<div class="col s8 m8 l8 xl8 default-text-styling">
+							{{approvals.restaurant_week }}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s4 m4 l4 xl4">
+							<label
+								class="default-text-styling"
+								for="first_address"
+							>
+								First Line of Address Name
+							</label>
+						</div>
+						<div class="col s8 m8 l8 xl8 default-text-styling">
+							{{approvals.restaurant_address_one }}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s4 m4 l4 xl4">
+							<label
+								class="default-text-styling"
+								for="second_address"
+							>
+								Second Line of Address
+							</label>
+						</div>
+						<div class="col s8 m8 l8 xl8 default-text-styling">
+							{{approvals.restaurant_address_two }}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s4 m4 l4 xl4">
+							<label
+								class="default-text-styling"
+								for="third_address"
+							>
+								Third Line of Address
+							</label>
+						</div>
+						<div class="col s8 m8 l8 xl8 default-text-styling">
+							{{approvals.restaurant_address_three }}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s4 m4 l4 xl4">
+							<label
+								class="default-text-styling"
+								for="fourth_address"
+							>
+								Fourth Line of Address
+							</label>
+						</div>
+						<div class="col s8 m8 l8 xl8 default-text-styling">
+							{{approvals.restaurant_address_four }}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s4 m4 l4 xl4">
+							<label class="default-text-styling" for="postcode">
+								Postcode
+							</label>
+						</div>
+						<div class="col s8 m8 l8 xl8 default-text-styling">
+							{{approvals.restaurant_address_postode }}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s4 m4 l4 xl4">
+							<label class="default-text-styling" for="thumbnail">
+								Thumbnail URL
+							</label>
+						</div>
+						<div class="col s8 m8 l8 xl8 default-text-styling">
+							{{approvals.restaurant_image_url }}
+						</div>
+					</div>
+					<div class="row">
+						<button type="submit" class="card-panel grey lighten-5">
+							Approve Request
+						</button>
+					</div>
+				</div>
+			</form>
+			{% endfor %}
+		</div>
+	</div>
 </div>
 <div class="container lg-padding">
-    <div class="row">
-        <div class="col">
-        </div>
-    </div>
+	<div class="row">
+		<div class="col"></div>
+	</div>
 </div>
-
 <!--Edit Restaurant Details-->
-<div class="container align-center  ">
-    <div class="row ">
-        <div class="col  align-center s12 m12 l12 xl12">
-            <h3 class="larger-than-default-text bold">Edit Restaurant Details</h3>
-        </div>
-    </div>
+<div class="container align-center">
+	<div class="row">
+		<div class="col align-center s12 m12 l12 xl12">
+			<h3 class="larger-than-default-text bold">
+				Edit Restaurant Details
+			</h3>
+		</div>
+	</div>
 </div>
-<div class="align-center card-panel grey lighten-5 contact-us-container ">
-    <div class="row  ">
-        <div class="col s12 m12 l12 xl12   ">
-            {% for restaurants in restaurants %}
-            <form action="{{ url_for('edit_restaurant') }}?restaurant_id={{ restaurants.restaurant_id }}" method="POST">
-                <input type="hidden" name="{{ restaurants.restaurant_id }}" id="{{ restaurants.restaurant_id }}"
-                    value="{{ restaurants.restaurant_id }}">
-                <button type="button" class="collapsible">{{ restaurants.restaurant_name }}</button>
-                <div class="content ">
-                    <div class="container  input-container">
-                        <div class="row   ">
-                            <div class="col s4 m4 l4 xl4  ">
-                                <label class="default-text-styling" for="edit_restaurant_name">
-                                    Restaurant Name
-                                </label>
-                            </div>
-                            <div class="col s8 m8 l8 xl8 default-text-styling">
-                                <input type="text" class="collapse-input" name="edit_restaurant_name"
-                                    id="edit_restaurant_name" value="{{ restaurants.restaurant_name }}"
-                                    placeholder="{{ restaurants.restaurant_name }}">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row   ">
-                        <div class="col s4 m4 l4 xl4  ">
-                            <label class="default-text-styling" for="edit_address_one">
-                                First Line of Address Name
-                            </label>
-                        </div>
-                        <div class="col s8 m8 l8 xl8 default-text-styling">
-                            <input type="text" class="collapse-input" name="edit_address_one" id="edit_address_one"
-                                value="{{ restaurants.restaurant_address_one }}"
-                                placeholder="{{ restaurants.restaurant_address_one }}">
-                        </div>
-                    </div>
-                    <div class="row   ">
-                        <div class="col s4 m4 l4 xl4  ">
-                            <label class="default-text-styling" for="edit_address_two">
-                                Second Line of Address
-                            </label>
-                        </div>
-                        <div class="col s8 m8 l8 xl8 default-text-styling">
-                            <input type="text" class="collapse-input" name="edit_address_two" id="edit_address_two"
-                                value="{{ restaurants.restaurant_address_two }}"
-                                placeholder="{{ restaurants.restaurant_address_two }}">
-                        </div>
-                    </div>
-                    <div class="row   ">
-                        <div class="col s4 m4 l4 xl4  ">
-                            <label class="default-text-styling" for="edit_address_three">
-                                Third Line of Address
-                            </label>
-                        </div>
-                        <div class="col s8 m8 l8 xl8 default-text-styling">
-                            <input type="text" class="collapse-input" name="edit_address_three" id="edit_address_three"
-                                value="{{ restaurants.restaurant_address_three }}"
-                                placeholder="{{ restaurants.restaurant_address_three }}">
-                        </div>
-                    </div>
-                    <div class="row   ">
-                        <div class="col  s4 m4 l4 xl4 ">
-                            <label class="default-text-styling" for="edit_address_four">
-                                Fourth Line of Address
-                            </label>
-                        </div>
-                        <div class="col s8 m8 l8 xl8 default-text-styling">
-                            <input type="text" class="collapse-input" name="edit_address_four" id="edit_address_four"
-                                value="{{ restaurants.restaurant_address_four }}"
-                                placeholder="{{ restaurants.restaurant_address_four }}">
-                        </div>
-                    </div>
-                    <div class="row   ">
-                        <div class="col s4 m4 l4 xl4  ">
-                            <label class="default-text-styling" for="edit_postcode">
-                                Postcode
-                            </label>
-                        </div>
-                        <div class="col s8 m8 l8 xl8 default-text-styling">
-                            <input type="text" class="collapse-input" name="edit_postcode" id="edit_postcode"
-                                value="{{ restaurants.restaurant_address_postcode }}"
-                                placeholder="{{ restaurants.restaurant_address_postcode }}">
-                        </div>
-                    </div>
-                    <div class="row   ">
-                        <div class="col s4 m4 l4 xl4  ">
-                            <label class="default-text-styling" for="edit_thumbnail">
-                                Thumbnail URL
-                            </label>
-                        </div>
-                        <div class="col s8 m8 l8 xl8 default-text-styling">
-                            <input type="text" class="collapse-input" name="edit_thumbnail" id="edit_thumbnail"
-                                value="{{ restaurants.restaurant_image_url }}"
-                                placeholder="{{ restaurants.restaurant_image_url }}">
-                        </div>
-                    </div>
-                    <div class="row   ">
-                        <button type="submit" class="card-panel grey lighten-5">Edit Restaurant</button>
-                    </div>
-                </div>
-            </form>
-            {% endfor %}
-        </div>
-    </div>
+<div class="align-center card-panel grey lighten-5 contact-us-container">
+	<div class="row">
+		<div class="col s12 m12 l12 xl12">
+			{% for restaurants in restaurants %}
+			<form
+				action="{{ url_for('edit_restaurant') }}?restaurant_id={{ restaurants.restaurant_id }}"
+				method="POST"
+			>
+				<input
+					type="hidden"
+					name="{{ restaurants.restaurant_id }}"
+					id="{{ restaurants.restaurant_id }}"
+					value="{{ restaurants.restaurant_id }}"
+				/>
+				<button type="button" class="collapsible">
+					{{ restaurants.restaurant_name }}
+				</button>
+				<div class="content">
+					<div class="container input-container">
+						<div class="row">
+							<div class="col s4 m4 l4 xl4">
+								<label
+									class="default-text-styling"
+									for="edit_restaurant_name"
+								>
+									Restaurant Name
+								</label>
+							</div>
+							<div class="col s8 m8 l8 xl8 default-text-styling">
+								<input
+									type="text"
+									class="collapse-input"
+									name="edit_restaurant_name"
+									id="edit_restaurant_name"
+									value="{{ restaurants.restaurant_name }}"
+									placeholder="{{ restaurants.restaurant_name }}"
+								/>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s4 m4 l4 xl4">
+							<label
+								class="default-text-styling"
+								for="edit_address_one"
+							>
+								First Line of Address Name
+							</label>
+						</div>
+						<div class="col s8 m8 l8 xl8 default-text-styling">
+							<input
+								type="text"
+								class="collapse-input"
+								name="edit_address_one"
+								id="edit_address_one"
+								value="{{ restaurants.restaurant_address_one }}"
+								placeholder="{{ restaurants.restaurant_address_one }}"
+							/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s4 m4 l4 xl4">
+							<label
+								class="default-text-styling"
+								for="edit_address_two"
+							>
+								Second Line of Address
+							</label>
+						</div>
+						<div class="col s8 m8 l8 xl8 default-text-styling">
+							<input
+								type="text"
+								class="collapse-input"
+								name="edit_address_two"
+								id="edit_address_two"
+								value="{{ restaurants.restaurant_address_two }}"
+								placeholder="{{ restaurants.restaurant_address_two }}"
+							/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s4 m4 l4 xl4">
+							<label
+								class="default-text-styling"
+								for="edit_address_three"
+							>
+								Third Line of Address
+							</label>
+						</div>
+						<div class="col s8 m8 l8 xl8 default-text-styling">
+							<input
+								type="text"
+								class="collapse-input"
+								name="edit_address_three"
+								id="edit_address_three"
+								value="{{ restaurants.restaurant_address_three }}"
+								placeholder="{{ restaurants.restaurant_address_three }}"
+							/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s4 m4 l4 xl4">
+							<label
+								class="default-text-styling"
+								for="edit_address_four"
+							>
+								Fourth Line of Address
+							</label>
+						</div>
+						<div class="col s8 m8 l8 xl8 default-text-styling">
+							<input
+								type="text"
+								class="collapse-input"
+								name="edit_address_four"
+								id="edit_address_four"
+								value="{{ restaurants.restaurant_address_four }}"
+								placeholder="{{ restaurants.restaurant_address_four }}"
+							/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s4 m4 l4 xl4">
+							<label
+								class="default-text-styling"
+								for="edit_postcode"
+							>
+								Postcode
+							</label>
+						</div>
+						<div class="col s8 m8 l8 xl8 default-text-styling">
+							<input
+								type="text"
+								class="collapse-input"
+								name="edit_postcode"
+								id="edit_postcode"
+								value="{{ restaurants.restaurant_address_postcode }}"
+								placeholder="{{ restaurants.restaurant_address_postcode }}"
+							/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s4 m4 l4 xl4">
+							<label
+								class="default-text-styling"
+								for="edit_thumbnail"
+							>
+								Thumbnail URL
+							</label>
+						</div>
+						<div class="col s8 m8 l8 xl8 default-text-styling">
+							<input
+								type="text"
+								class="collapse-input"
+								name="edit_thumbnail"
+								id="edit_thumbnail"
+								value="{{ restaurants.restaurant_image_url }}"
+								placeholder="{{ restaurants.restaurant_image_url }}"
+							/>
+						</div>
+					</div>
+					<div class="row">
+						<button type="submit" class="card-panel grey lighten-5">
+							Edit Restaurant
+						</button>
+					</div>
+				</div>
+			</form>
+			{% endfor %}
+		</div>
+	</div>
 </div>
-{% endif %}
-{% endblock %}
+{% endif %} {% endblock %}

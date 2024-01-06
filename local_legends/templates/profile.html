@@ -8,172 +8,171 @@
                     <h1 class="title-font">Profile</h1>
                 </div>
             </div>
-            
             <!--Change Password section-->
             <section class="change_password">
                 <form action="{{ url_for('change_password') }}" method="POST">
-                <div class=" align-center card-panel grey lighten-5 register-container ">
-
-                    <div class="row ">
-                        <div class="col s12 m12 l12 xl6   leave-review-label-div ">
-                            <label for="current_password" class="default-text-styling ">
-                                Current Password
-                            </label>
+                    <div class=" align-center card-panel grey lighten-5 register-container ">
+                        <div class="row ">
+                            <div class="col s12 m12 l12 xl6   leave-review-label-div ">
+                                <label for="current_password" class="default-text-styling ">
+                                    Current Password
+                                </label>
+                            </div>
+                            <div class="col s12 m12 l12 xl6  leave-review-select-div ">
+                                <input type="password" class="sign-up" name="current_password" id="current_password"
+                                    required>
+                            </div>
                         </div>
-                        <div class="col s12 m12 l12 xl6  leave-review-select-div ">
-                            <input type="password" class="sign-up" name="current_password" id="current_password" required>
+                        <div class="row ">
+                            <div class="col s12 m12 l12 xl6   leave-review-label-div ">
+                                <label for="password_change" class="default-text-styling ">
+                                    New Password
+                                </label>
+                            </div>
+                            <div class="col s12 m12 l12 xl6  leave-review-select-div ">
+                                <input type="password" class="sign-up" name="password_change" id="password_change"
+                                    required>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row ">
-                        <div class="col s12 m12 l12 xl6   leave-review-label-div ">
-                            <label for="password_change" class="default-text-styling ">
-                                New Password
-                            </label>
+                        <div class="row ">
+                            <div class="col s12 m12 l12 xl6   leave-review-label-div ">
+                                <label for="confirm_password_change" class="default-text-styling ">
+                                    Confirm New Password
+                                </label>
+                            </div>
+                            <div class="col s12 m12 l12 xl6  leave-review-select-div ">
+                                <input type="password" class="sign-up" name="confirm_password_change"
+                                    id="confirm_password_change" required>
+                            </div>
                         </div>
-                        <div class="col s12 m12 l12 xl6  leave-review-select-div ">
-                            <input type="password" class="sign-up" name="password_change" id="password_change" required>
+                        <div class="row">
+                            <div class="col s12 center-align">
+                                <button type="submit" class="card-panel grey lighten-5">Change Password</button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row ">
-                        <div class="col s12 m12 l12 xl6   leave-review-label-div ">
-                            <label for="confirm_password_change" class="default-text-styling ">
-                               Confirm New Password
-                            </label>
-                        </div>
-                        <div class="col s12 m12 l12 xl6  leave-review-select-div ">
-                            <input type="password" class="sign-up" name="confirm_password_change" id="confirm_password_change" required>
-                        </div>
-                    </div>                    
-                    <div class="row">
-                        <div class="col s12 center-align">
-                            <button type="submit" class="card-panel grey lighten-5">Change Password</button>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s12 center-align italic">
-                            Your password must be at least 10 characters long. We reccomend using a strong password with a mixture of lower/uppercase letters, numbers and symbols
-                        </div>
-                    </div>
-            </form>
-        </section>
-        <div class="container lg-padding"></div>
-
-        <!--Change Username section-->
-        <section class="change_username">
-            <form action="{{ url_for('change_username') }}" method="POST">
-                <div class=" align-center card-panel grey lighten-5 register-container ">
-        
-                    <div class="row ">
-                        <div class="col s12 m12 l12 xl6   leave-review-label-div ">
-                            <label for="change_username" class="default-text-styling ">
-                                Change Username
-                            </label>
-                        </div>
-                        <div class="col s12 m12 l12 xl6  leave-review-select-div ">
-                            <input type="text" class="sign-up" name="change_username" id="change_username" placeholdeer="Enter a new username" required>
-                        </div>
-                    </div>                   
-                    <div class="row">
-                        <div class="col s12 center-align">
-                            <button type="submit" class="card-panel grey lighten-5">Change Username</button>
+                        <div class="row">
+                            <div class="col s12 center-align italic">
+                                Your password must be at least 10 characters long. We reccomend using a strong password
+                                with a mixture of lower/uppercase letters, numbers and symbols
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col s12 center-align italic">
-                            Your username must be at least 3 characters long. You cannot change your username to one that already exists
+                </form>
+            </section>
+            <div class="container lg-padding"></div>
+            <!--Change Username section-->
+            <section class="change_username">
+                <form action="{{ url_for('change_username') }}" method="POST">
+                    <div class=" align-center card-panel grey lighten-5 register-container ">
+                        <div class="row ">
+                            <div class="col s12 m12 l12 xl6   leave-review-label-div ">
+                                <label for="change_username" class="default-text-styling ">
+                                    Change Username
+                                </label>
+                            </div>
+                            <div class="col s12 m12 l12 xl6  leave-review-select-div ">
+                                <input type="text" class="sign-up" name="change_username" id="change_username"
+                                    placeholdeer="Enter a new username" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 center-align">
+                                <button type="submit" class="card-panel grey lighten-5">Change Username</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 center-align italic">
+                                Your username must be at least 3 characters long. You cannot change your username to one
+                                that already exists
+                            </div>
                         </div>
                     </div>
-            </form>
-        </section>
-        <div class="container lg-padding"></div>
-
-        <!--Change email address section-->
-        <section class="change_email">
-            <form action="{{ url_for('change_email') }}" method="POST">
-                <div class=" align-center card-panel grey lighten-5 register-container ">
-        
-                    <div class="row ">
-                        <div class="col s12 m12 l12 xl6   leave-review-label-div ">
-                            <label for="email_login" class="default-text-styling ">
-                                Change Email Address
-                            </label>
+                </form>
+            </section>
+            <div class="container lg-padding"></div>
+            <!--Change email address section-->
+            <section class="change_email">
+                <form action="{{ url_for('change_email') }}" method="POST">
+                    <div class=" align-center card-panel grey lighten-5 register-container ">
+                        <div class="row ">
+                            <div class="col s12 m12 l12 xl6   leave-review-label-div ">
+                                <label for="email_login" class="default-text-styling ">
+                                    Change Email Address
+                                </label>
+                            </div>
+                            <div class="col s12 m12 l12 xl6  leave-review-select-div ">
+                                <input type="email" class="sign-up" name="change_email" id="change_email"
+                                    placeholdeer="Enter a new email address" required>
+                            </div>
                         </div>
-                        <div class="col s12 m12 l12 xl6  leave-review-select-div ">
-                            <input type="email" class="sign-up" name="change_email" id="change_email"
-                                placeholdeer="Enter a new email address" required>
+                        <div class="row">
+                            <div class="col s12 center-align">
+                                <button type="submit" class="card-panel grey lighten-5">Change Email Address</button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s12 center-align">
-                            <button type="submit" class="card-panel grey lighten-5">Change Email Address</button>
+                        <div class="row">
+                            <div class="col s12 center-align bold italic">
+                                Warning: You must enter a valid email address. If you enter an incorrect email address
+                                you may lose access to your account.
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s12 center-align bold italic">
-                            Warning: You must enter a valid email address. If you enter an incorrect email address you may lose access to your account.
+                </form>
+            </section>
+            <div class="container lg-padding"></div>
+            <!--Delete account section-->
+            <section class="delete_user">
+                <form action="{{ url_for('delete_user') }}" method="POST">
+                    <div class=" align-center card-panel grey lighten-5 register-container ">
+                        <div class="row ">
+                            <div class="col s12 m12 l12 xl6   leave-review-label-div ">
+                                <label for="password_delete" class="default-text-styling ">
+                                    Enter your password
+                                </label>
+                            </div>
+                            <div class="col s12 m12 l12 xl6  leave-review-select-div ">
+                                <input type="email" class="sign-up" name="password_delete" id="password_delete"
+                                    required>
+                            </div>
                         </div>
-                    </div>
-            </form>
-        </section>
-        <div class="container lg-padding"></div>
-
-        <!--Delete account section-->
-        <section class="delete_user">
-            <form action="{{ url_for('delete_user') }}" method="POST">
-                <div class=" align-center card-panel grey lighten-5 register-container ">
-        
-                    <div class="row ">
-                        <div class="col s12 m12 l12 xl6   leave-review-label-div ">
-                            <label for="password_delete" class="default-text-styling ">
-                                Enter your password
-                            </label>
+                        <div class="row">
+                            <div class="col s12 center-align">
+                                <button type="submit" class="card-panel grey lighten-5">Delete your account</button>
+                            </div>
                         </div>
-                        <div class="col s12 m12 l12 xl6  leave-review-select-div ">
-                            <input type="email" class="sign-up" name="password_delete" id="password_delete"  required>
+                        <div class="row">
+                            <div class="col s12 align-center bold italic">
+                                Warning: Deleting your account is permanent. It cannot be undone. While your personal
+                                information will be deleted at your request, your reviews, (which contain no
+                                identifyable information), will not be deleted.
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s12 center-align">
-                            <button type="submit" class="card-panel grey lighten-5">Delete your account</button>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s12 align-center bold italic">
-                            Warning: Deleting your account is permanent. It cannot be undone. While your personal information will be deleted at your request, your reviews, (which contain no identifyable information), will not be deleted. 
-                        </div>
-                    </div>
-            </form>
-        </section>
-
-        {% for user in users %}
-        {% if user.is_admin %}
-        {% if not session.is_admin %}
-        <div class="container lg-padding"></div>
-
-        <!--If user is admin, show this section-->
-        <section class="admin-section">           
+                </form>
+            </section>
+            {% for user in users %}
+            {% if user.is_admin %}
+            {% if not session.is_admin %}
+            <div class="container lg-padding"></div>
+            <!--If user is admin, show this section-->
+            <section class="admin-section">
                 <div class=" align-center card-panel grey lighten-5 register-container ">
                     <form action="{{ url_for('check_admin_status') }}" method="POST">
-                    <div class="row">
-                        <div class="col s12 center-align">
-                            <button type="submit" class="card-panel grey lighten-5">Login as Admin</button>
+                        <div class="row">
+                            <div class="col s12 center-align">
+                                <button type="submit" class="card-panel grey lighten-5">Login as Admin</button>
+                            </div>
                         </div>
-                    </div>
                     </form>
-                    
                     <form action="{{ url_for('hash') }}" method="POST">
-                    <div class="row">
-                        <div class="col s12 center-align">
-                            <button type="submit" class="card-panel grey lighten-5">Hash Admin Password</button>
+                        <div class="row">
+                            <div class="col s12 center-align">
+                                <button type="submit" class="card-panel grey lighten-5">Hash Admin Password</button>
+                            </div>
                         </div>
-                    </div>
                     </form>
-            </form>
-        </section>
-        {% endif %}
-        {% endif %}
-        {% endfor %}
-
+            </section>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
         </div>
     </div>
 </div>

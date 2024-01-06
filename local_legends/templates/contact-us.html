@@ -12,7 +12,6 @@
 					<h1 class="title-font">Contact Us</h1>
 				</div>
 			</div>
-
 			<!--Become a Legend where restaurant requests to be displayed on site-->
 			<form action="{{ url_for('become_legend') }}" method="POST">
 				<button type="button" class="collapsible bold">
@@ -377,9 +376,8 @@
 					</div>
 				</div>
 			</form>
-            <!--End of Become a Legend section-->
-            
-            <!--Report Problems section-->
+			<!--End of Become a Legend section-->
+			<!--Report Problems section-->
 			<form action="{{ url_for('handle_contact_us') }}" method="POST">
 				<button type="button" class="collapsible bold">
 					Having problems?
@@ -519,5 +517,4 @@
 		</div>
 	</div>
 </div>
-
 {% endblock %}

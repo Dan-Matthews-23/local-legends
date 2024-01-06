@@ -2,18 +2,16 @@
 
 /*---------- ROOT VARIABLES ----------*/
 :root {
-  /*---Welcome Banner Height---*/
-  --height-preset: 35px;
-  --brown-darken-1: #6d4c41;
+	/*---Welcome Banner Height---*/
+	--height-preset: 35px;
+	--brown-darken-1: #6d4c41;
 }
 
 a,
 .block-link {
-color: var(--brown-darken-1);
-font-weight: bold;
+	color: var(--brown-darken-1);
+	font-weight: bold;
 }
-
-
 
 /*<!-----------------------HEADER------------------------------------>*/
 /*<!-----------------------END OF HEADER------------------------------------>*/
@@ -21,60 +19,60 @@ font-weight: bold;
 /*<!-----------------------NAV BAR------------------------------------>*/
 
 #title {
-  font-size: 24px;
-  font-weight: bold;
-  color: var(--brown-darken-1);
-  letter-spacing: 3px;
+	font-size: 24px;
+	font-weight: bold;
+	color: var(--brown-darken-1);
+	letter-spacing: 3px;
 }
 
 .top-nav-wrapper {
-  border-bottom: 1px solid black;
-  width: 100%;
-  margin: auto;
-  padding-left: 5px;
-  padding-right: 5px;
+	border-bottom: 1px solid black;
+	width: 100%;
+	margin: auto;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 /*<!-----------------------END OF NAV BAR------------------------------------>*/
 
 /*<!-----------------------WELCOME BANNER------------------------------------>*/
 #welcome-banner {
-  padding: 10px 0px 10px 0px;
-  margin: auto;
-  vertical-align: middle;
-  width:100%;
+	padding: 10px 0px 10px 0px;
+	margin: auto;
+	vertical-align: middle;
+	width: 100%;
 }
 
 #welcome-banner-central-div {
-  padding-top: 5px;
-  padding-bottom: 5px;
-  height: var(--height-preset);
-  width: 80%;
-  background-color: #efebe9;
-  margin: auto;
-  vertical-align: middle;
-  font-size: 16px;
-  font-weight: bold;
-  color: var(--brown-darken-1);
-  letter-spacing: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	height: var(--height-preset);
+	width: 80%;
+	background-color: #efebe9;
+	margin: auto;
+	vertical-align: middle;
+	font-size: 16px;
+	font-weight: bold;
+	color: var(--brown-darken-1);
+	letter-spacing: 5px;
 }
 
 #welcome-banner-left-div {
-  border-radius: 80% 0% 0% 80%;
-  height: var(--height-preset);
-  width: 10%;
-  background-color: #efebe9;
-  margin: auto;
-  vertical-align: middle;
+	border-radius: 80% 0% 0% 80%;
+	height: var(--height-preset);
+	width: 10%;
+	background-color: #efebe9;
+	margin: auto;
+	vertical-align: middle;
 }
 
 #welcome-banner-right-div {
-  border-radius: 0% 80% 80% 0%;
-  height: var(--height-preset);
-  width: 10%;
-  background-color: #efebe9;
-  margin: auto;
-  vertical-align: middle;
+	border-radius: 0% 80% 80% 0%;
+	height: var(--height-preset);
+	width: 10%;
+	background-color: #efebe9;
+	margin: auto;
+	vertical-align: middle;
 }
 
 /*<!-----------------------END OF WELCOME BANNER------------------------------------>*/
@@ -82,163 +80,163 @@ font-weight: bold;
 /*<!-----------------------Error Bar------------------------------------>*/
 
 #error-bar-container {
-  height: 100px;
+	height: 100px;
 }
 #error-bar-main-div {
-  color: red;
-  margin: auto;
-  vertical-align: middle;
-  font-size: 16px;
-  font-weight: bold;
-  letter-spacing: 3px;
+	color: red;
+	margin: auto;
+	vertical-align: middle;
+	font-size: 16px;
+	font-weight: bold;
+	letter-spacing: 3px;
 }
 
 #error_exit {
-  color: red;
+	color: red;
 }
 
 #error-bar-exit {
-  padding-top: 5px;
-  padding-bottom: 5px;
-  height: var(--height-preset);
+	padding-top: 5px;
+	padding-bottom: 5px;
+	height: var(--height-preset);
 
-  background-color: #efebe9;
-  margin: auto;
-  vertical-align: middle;
-  font-size: 14px;
-  font-weight: bold;
-  color: var(--brown-darken-1);
-  letter-spacing: 3px;
+	background-color: #efebe9;
+	margin: auto;
+	vertical-align: middle;
+	font-size: 14px;
+	font-weight: bold;
+	color: var(--brown-darken-1);
+	letter-spacing: 3px;
 }
 
 /*<!-----------------------END OF Error Bar------------------------------------>*/
 /*---------- TITLE ----------*/
 .title-font {
-  font-size: 36px;
-  color: black;
-  font-weight: bold;
-  letter-spacing: 2px;
+	font-size: 36px;
+	color: black;
+	font-weight: bold;
+	letter-spacing: 2px;
 }
 
 .title-container {
-  max-height: fit-content;
-  width: 100%;
-  text-align: center;
-  vertical-align: middle;
-  padding: 0;
+	max-height: fit-content;
+	width: 100%;
+	text-align: center;
+	vertical-align: middle;
+	padding: 0;
 }
 
 .intro-container {
-  height: 100%;
-  width: 100%;
-  text-align: center;
-  vertical-align: middle;
-  padding: 0;
+	height: 100%;
+	width: 100%;
+	text-align: center;
+	vertical-align: middle;
+	padding: 0;
 }
 
 .title-col {
-  text-align: center;
-  vertical-align: middle;
+	text-align: center;
+	vertical-align: middle;
 }
 
 .title-row {
-  padding: 0;
+	padding: 0;
 }
 
 .title-section {
-  padding-bottom: 5px;
+	padding-bottom: 5px;
 }
 /*---------- END OF TITLE ----------*/
 
 .italic {
-  font-style: italic;
+	font-style: italic;
 }
 
 /*-
 /*---------- CONTACT US ----------*/
 
 .contact-us-container {
-  width: 70%;
+	width: 70%;
 }
 
 #contact-us-container {
-  width: 70%;
+	width: 70%;
 }
 
 .contact-us-input {
-  color: grey;
-  font-style: italic;
+	color: grey;
+	font-style: italic;
 }
 
 .contact-us {
-  font-size: 14px;
+	font-size: 14px;
 }
 
 .line-break {
-  display: hidden;
+	display: hidden;
 }
 /*---------- END OF CONTACT US ----------*/
 
 /*---------- REVIEWS ----------*/
 .reviews-container {
-  width: 100%;
-  height: 100%;
-  padding-bottom: 10px;
+	width: 100%;
+	height: 100%;
+	padding-bottom: 10px;
 }
 
 .reviews-collapse {
-  width: 100%;
-  margin: auto;
+	width: 100%;
+	margin: auto;
 }
 /*---------- END OF REVIEWS ----------*/
 
 /*<!-----------------------REGISTER/LOGIN PAGE------------------------------------>*/
 .register-container {
-  width: 60%;
+	width: 60%;
 }
 
 .login-container {
-  margin: auto;
-  border-style: solid;
-  border-color: black;
+	margin: auto;
+	border-style: solid;
+	border-color: black;
 }
 
 .sign-up-row-header,
 .sign-up-row {
-  width: 90%;
-  letter-spacing: 2px;
-  font-size: inherit;
-  font-weight: bold;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 0px;
-  padding-right: 0px;
-  margin: auto;
-  text-align: center;
+	width: 90%;
+	letter-spacing: 2px;
+	font-size: inherit;
+	font-weight: bold;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 0px;
+	padding-right: 0px;
+	margin: auto;
+	text-align: center;
 }
 
 .col-sign-up {
-  width: 50%;
-  font-weight: bold;
-  padding: 4px;
-  margin: auto;
-  text-align: center;
+	width: 50%;
+	font-weight: bold;
+	padding: 4px;
+	margin: auto;
+	text-align: center;
 }
 
 .sign-up-over-one {
-  width: 100%;
-  font-weight: inherit;
-  padding: inherit;
-  text-align: center;
+	width: 100%;
+	font-weight: inherit;
+	padding: inherit;
+	text-align: center;
 }
 
 .text-area {
-  max-width: 100%;
+	max-width: 100%;
 }
 
 .submit-btn {
-  margin: auto;
-  text-align: center;
+	margin: auto;
+	text-align: center;
 }
 
 /*<!-----------------------END OF REGISTER.LOGIN PAGE------------------------------------>*/
@@ -246,63 +244,63 @@ font-weight: bold;
 /* RESTAURANTS PAGE */
 
 #thumb-col-heading-font {
-  font-weight: bold;
-  font-size: 20px;
+	font-weight: bold;
+	font-size: 20px;
 }
 
-#thumb-col-heading {
-  padding: 0;
+.thumb-col-heading {
+	padding: 0;
 }
 
-#thumb-col-stars,
-#thumb-col-keyword,
-#thumb-col-delivery,
-#thumb-col-restaurant-week {
-  padding-top: 5px;
-  padding-bottom: 5px;
+.thumb-col-stars,
+.thumb-col-keyword,
+.thumb-col-delivery,
+.thumb-col-restaurant-week {
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 .bold {
-  font-weight: bold;
+	font-weight: bold;
 }
 
 .justify {
-  text-align: justify;
+	text-align: justify;
 }
 
 .larger-than-default-text {
-  font-size: 24px;
+	font-size: 24px;
 }
 
 .leave-review-container {
-  width: 50%;
+	width: 50%;
 }
 
 .input-text {
-  width: 100%;
+	width: 100%;
 }
 
 .thumbnail {
-  border: 1px solid #ddd;
-  /* Gray border */
-  border-radius: 4px;
-  /* Rounded border */
-  padding: 5px;
-  /* Some padding */
-  width: 10%;
-  width: 10%;
-  /* Set a small width */
+	border: 1px solid #ddd;
+	/* Gray border */
+	border-radius: 4px;
+	/* Rounded border */
+	padding: 5px;
+	/* Some padding */
+	width: 10%;
+	width: 10%;
+	/* Set a small width */
 }
 .restaurant-details-container,
 .leave-review-container {
-  width: 100%;
-  height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
 .restaurant-details-left-hero-image {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 /*.hero-image-div {
@@ -312,117 +310,116 @@ font-weight: bold;
 
 .hero-image-thumb,
 .hero-image {
-  width: 100%;
-  height: 100%; 
-  max-width: 300px;
-  max-height: 300px;  
-  vertical-align: middle;
+	width: 100%;
+	height: 100%;
+	max-width: 300px;
+	max-height: 300px;
+	vertical-align: middle;
 }
 
 .restaurant-information,
 .leave-review-information {
-  font-size: 12px;
+	font-size: 12px;
 }
 
 .info-div {
-  width: 50%;
-  padding-top: 10px;
-  padding-right: 30px;
-  padding-bottom: 10px;
-  padding-left: 30px;
-  margin: auto;
-  float: right;
+	width: 50%;
+	padding-top: 10px;
+	padding-right: 30px;
+	padding-bottom: 10px;
+	padding-left: 30px;
+	margin: auto;
+	float: right;
 }
 
 .left-panel-container-thumb {
-  width: 60%;
+	width: 60%;
 }
 
 .show-on-small {
-  display: hidden;
+	display: hidden;
 }
 
 #see-more-container {
-  border-bottom: black;
-  border-style: dashed;
-  border-width: thick;
-  padding-bottom: 20px;
+	border-bottom: black;
+	border-style: dashed;
+	border-width: thick;
+	padding-bottom: 20px;
 }
 /* END OF RESTAURANTS PAGE */
 
 /* REVIEWS*/
 .review-heading {
-  font-size: 16px;
+	font-size: 16px;
 }
 
 span {
-  display: inline-block;
-  vertical-align: middle;
-  line-height: normal;
-  padding: 5px;
+	display: inline-block;
+	vertical-align: middle;
+	line-height: normal;
+	padding: 5px;
 }
 
 .review-stars-row,
 .review-stars-div {
-  height: 50px;
-  line-height: 50px;
-  text-align: center;
-  border: 2px dashed #f69c55;
-  margin: auto;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	border: 2px dashed #f69c55;
+	margin: auto;
 }
 
 .leave-review-select-div,
 .leave-review-label-div {
-  height: 40px;
-  vertical-align: text-top;
+	height: 40px;
+	vertical-align: text-top;
 }
 
 .input-text,
 .leave-review-select {
-  height: 25px;
-  vertical-align: text-top;
+	height: 25px;
+	vertical-align: text-top;
 }
 
 .text-area {
-  height: 200px;
-  width: 100%;
- 
+	height: 200px;
+	width: 100%;
 }
 
 .review-container {
-  width: 100%;
+	width: 100%;
 }
 
 #leave-review-btn-div,
 #edit-review-btn-div {
-  height: 70px;
+	height: 70px;
 }
 
 .rating {
-  display: flex;
+	display: flex;
 }
 
 .rating input {
-  position: absolute;
-  left: -100vw;
+	position: absolute;
+	left: -100vw;
 }
 
 .review-title-text {
-  font-size: 24px;
-  letter-spacing: 2px;
-  font-weight: bold;
-  text-align: center;
+	font-size: 24px;
+	letter-spacing: 2px;
+	font-weight: bold;
+	text-align: center;
 }
 
 .review-body-text {
-  font-size: 16px;
-  text-align: justify;
+	font-size: 16px;
+	text-align: justify;
 }
 
 .review-display {
-  border-bottom: black;
-  border-bottom-style: solid;
-  border-bottom-width: 0.5px;
+	border-bottom: black;
+	border-bottom-style: solid;
+	border-bottom-width: 0.5px;
 }
 
 /* END OF REVIEWS*/
@@ -430,457 +427,450 @@ span {
 /*---------- BUTTONS ----------*/
 .collapsible,
 .see-reviews {
-  color: black;
-  cursor: pointer;
-  padding: 18px;
-  width: 50%;
-  border: none;
-  text-align: center;
-  float: center;
-  outline: none;
-  font-size: 15px;
+	color: black;
+	cursor: pointer;
+	padding: 18px;
+	width: 50%;
+	border: none;
+	text-align: center;
+	float: center;
+	outline: none;
+	font-size: 15px;
 }
 
 #collapsible-intro-content {
-  background-color: white;
+	background-color: white;
 }
 
 .show-more-para-styling {
-  padding: 10px;
+	padding: 10px;
 }
 
 .button-container {
-  max-height: fit-content;
-  width: 100%;
-  text-align: center;
-  vertical-align: middle;
-  padding-bottom: 100px;
+	max-height: fit-content;
+	width: 100%;
+	text-align: center;
+	vertical-align: middle;
+	padding-bottom: 100px;
 }
 
 .active,
 .collapsible:hover,
 .see-reviews {
-  background-color: #555;
+	background-color: #555;
 }
 
 .collapsible:after {
-  content: "\002B";
-  color: black;
-  font-weight: bold;
-  float: right;
-  margin-left: 5px;
+	content: "\002B";
+	color: black;
+	font-weight: bold;
+	float: right;
+	margin-left: 5px;
 }
 
 .active:after {
-  content: "\2212";
+	content: "\2212";
 }
 
 .content {
-  padding: 0 18px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-  background-color: #f1f1f1;
+	padding: 0 18px;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.2s ease-out;
+	background-color: #f1f1f1;
 }
 
 .btn-container {
-  width: 100%;
-  text-align: center;
-  vertical-align: middle;
+	width: 100%;
+	text-align: center;
+	vertical-align: middle;
 }
 
 .btn-row {
-  width: 100%;
-  text-align: center;
-  vertical-align: middle;
+	width: 100%;
+	text-align: center;
+	vertical-align: middle;
 }
 
 .btn-col {
-  text-align: center;
-  vertical-align: middle;
+	text-align: center;
+	vertical-align: middle;
 }
 /*---------- END OF BUTTONS ----------*/
 
 /* DEFAULTS*/
 .default-text-size {
-  font-size: 16px;
+	font-size: 16px;
 }
 
 .default-text-styling {
-  font-size: 16px;
-  color: black;
+	font-size: 16px;
+	color: black;
 }
 
 .intro-text-styling {
-  font-size: 16px;
-  color: black;
-  text-align: justify;
+	font-size: 16px;
+	color: black;
+	text-align: justify;
 }
 
 .lg-padding {
-  padding: 100px;
+	padding: 100px;
 }
 
 .md-padding-top {
-padding-top: 10px;
+	padding-top: 10px;
 }
 
 .md-padding-bottom {
-    padding-bottom: 10px;
+	padding-bottom: 10px;
 }
 
 .md-padding {
-  padding: 10px;
+	padding: 10px;
 }
 
 .sm-padding {
-  padding: 5px;
+	padding: 5px;
 }
 
 .align-center {
-  text-align: center;
-  margin: auto;
+	text-align: center;
+	margin: auto;
+}
+
+.align-center-on-small-vw{
+    text-align: inherit;
+    margin: auto;
 }
 
 .align-right {
-  text-align: right;
-  margin: auto;
+	text-align: right;
+	margin: auto;
 }
 
 .align-left {
-  text-align: left;
-  margin: auto;
+	text-align: left;
+	margin: auto;
 }
 
 .with-borders {
-  border-style: solid;
-  border-color: black;
+	border-style: solid;
+	border-color: black;
 }
 
 h4 {
-  font-size: 16px;
+	font-size: 16px;
 }
 
 .input-container {
-  width: 100%;
-  margin: auto;
+	width: 100%;
+	margin: auto;
 }
 
 .input-row {
-  width: 50%;
-  padding: 2px;
-  margin: auto;
+	width: 50%;
+	padding: 2px;
+	margin: auto;
 }
 
 .label-col {
-  width: 40%;
-  padding: 2px;
-  margin: auto;
+	width: 40%;
+	padding: 2px;
+	margin: auto;
 }
 
 .input-col {
-  width: 60%;
-  padding: 2px;
-  margin: auto;
+	width: 60%;
+	padding: 2px;
+	margin: auto;
 }
 
 .lg-padding {
-  padding: 20px;
+	padding: 20px;
 }
 /* END OF DEFAULTS*/
 
 .ad-card {
-  height: 500px;
+	height: 500px;
 }
 
 /*<!-----------------------FOOTER------------------------------------>*/
 .footer-head {
-  font-weight: bold;
-  padding: 5px;
-  letter-spacing: 2px;
-  color: var(--brown-darken-1);
+	font-weight: bold;
+	padding: 5px;
+	letter-spacing: 2px;
+	color: var(--brown-darken-1);
 }
 
 .footer-container {
-  background-color: #efebe9;
-  text-align: center;
-  margin: auto;
-  color: var(--brown-darken-1);
-  border-top: 1px solid black;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
+	background-color: #efebe9;
+	text-align: center;
+	margin: auto;
+	color: var(--brown-darken-1);
+	border-top: 1px solid black;
+	position: fixed;
+	width: 100%;
+	bottom: 0;
 }
 
 .footer-links li {
-  display: inline-block;
-  text-align: center;
-  padding: 10px;
-  color: var(--brown-darken-1);
+	display: inline-block;
+	text-align: center;
+	padding: 10px;
+	color: var(--brown-darken-1);
 }
 
 .footer-links i {
-  font-size: 180%;
-  color: var(--brown-darken-1);
+	font-size: 180%;
+	color: var(--brown-darken-1);
 }
 
 .header-links {
-  color: var(--brown-darken-1);
+	color: var(--brown-darken-1);
 }
 
 /*<!-----------------------Media Queries------------------------------------>*/
 
 @media screen and (max-width: 1335px) {
-  .register-container {
-    width: 65%;
-  }
-  .register-col {
-    text-align: center;
-  }
+	.register-container {
+		width: 65%;
+	}
+	.register-col {
+		text-align: center;
+	}
 }
 
 @media screen and (max-width: 1200px) {
-  .register-container {
-    width: 50%;
-  }
-  .register-col {
-    text-align: center;
-  }
+	.register-container {
+		width: 50%;
+	}
+	.register-col {
+		text-align: center;
+	}
 }
 
 @media screen and (max-width: 675px) {
-  .register-container {
-    width: 60%;
-  }
+	.register-container {
+		width: 60%;
+	}
 
-  .register-col {
-    text-align: center;
-  }
+	.register-col {
+		text-align: center;
+	}
 }
 
 @media screen and (max-width: 750px) {
-  .register-container {
-    width: 70%;
-  }
+	.register-container {
+		width: 70%;
+	}
 
-  .register-col {
-    text-align: center;
-  }
+	.register-col {
+		text-align: center;
+	}
 }
 
 @media screen and (max-width: 600px) {
-  .register-container {
-    width: 80%;
-  }
+	.register-container {
+		width: 80%;
+	}
 
-  .register-col {
-    text-align: center;
-  }
+	.register-col {
+		text-align: center;
+	}
 }
 
 @media screen and (max-width: 500px) {
-  .register-container {
-    width: 90%;
-  }
+	.register-container {
+		width: 90%;
+	}
 
-  .register-col {
-    text-align: center;
-  }
+	.register-col {
+		text-align: center;
+	}
 }
 
 @media screen and (max-width: 370px) {
-  .register-container {
-    width: 100%;
-  }
+	.register-container {
+		width: 100%;
+	}
 
-  .register-col {
-    text-align: center;
-  }
+	.register-col {
+		text-align: center;
+	}
 }
 
 @media screen and (max-width: 320px) {
-  #main-register-container {
-    width: 100%;
-  }
+	#main-register-container {
+		width: 100%;
+	}
 }
 
 @media screen and (max-width: 365px) {
-  .intro-container {
-    height: 200px;
-  }
+	.intro-container {
+		height: 200px;
+	}
 }
 
 @media screen and (max-width: 319px) {
-  .intro-container {
-    height: 250px;
-  }
+	.intro-container {
+		height: 250px;
+	}
 }
 
 @media screen and (max-width: 1200px) {
-  .restaurant-details-container {
-    padding-bottom: 75px;
-  }
+	.restaurant-details-container {
+		padding-bottom: 75px;
+	}
 }
 
 @media screen and (max-width: 800px) {
-  #welcome-banner-central-div {
-    letter-spacing: 2px;
-    padding: 4px;
-  }
+	#welcome-banner-central-div {
+		letter-spacing: 2px;
+		padding: 4px;
+	}
 }
 
 @media screen and (max-width: 822px) {
-  .title-font {
-    font-size: 30px;
-  }
+	.title-font {
+		font-size: 30px;
+	}
 }
 
 @media screen and (max-width: 710px) {
-  .title-font {
-    font-size: 25px;
-  }
+	.title-font {
+		font-size: 25px;
+	}
 }
 
 @media screen and (max-width: 610px) {
-  .title-font {
-    font-size: 20px;
-  }
+	.title-font {
+		font-size: 20px;
+	}
 }
 
 @media screen and (max-width: 700px) {
-  #welcome-banner-central-div {
-    letter-spacing: 1px;
-    padding: 2px;
-  }
+	#welcome-banner-central-div {
+		letter-spacing: 1px;
+		padding: 2px;
+	}
 }
 
 @media screen and (max-width: 600px) {
-  #welcome-banner-central-div {
-    letter-spacing: none;
-    padding: 2px;
-  }
+	#welcome-banner-central-div {
+		letter-spacing: none;
+		padding: 2px;
+	}
+    .align-center-on-small-vw {
+    text-align: center;
+    margin: auto;
+    }
 }
 
 @media screen and (max-width: 500px) {
-  #welcome-banner-central-div {
-    letter-spacing: none;
-    margin: auto;
-    padding: 2px;
-    width: 100%;
-  }
-  #welcome-banner-left-div,
-  #welcome-banner-right-div {
-    display: none;
-  }
+	#welcome-banner-central-div {
+		letter-spacing: none;
+		margin: auto;
+		padding: 2px;
+		width: 100%;
+	}
+	#welcome-banner-left-div,
+	#welcome-banner-right-div {
+		display: none;
+	}
 }
 
 @media screen and (max-width: 992px) {
-  .hero-image-thumb {
-    width: 100%;
-    height: 100%;
-    max-width: 550px;
-    max-height: 350px;
-  }
-  .left-panel-container-thumb {
-    width: 100%;
-    float: center;
-    text-align: center;
-  }
+	/*.hero-image-thumb {
+		width: 100%;
+		height: 100%;
+		max-width: 550px;
+		max-height: 350px;
+	}*/
+	.left-panel-container-thumb {
+		width: 100%;
+		float: center;
+		text-align: center;
+	}
 
-  .show-on-small {
-    display: block;
-  }
+	.show-on-small {
+		display: block;
+	}
 }
-
 
 @media screen and (max-width: 1375px) {
-
-    #contact-us-container
-     {
-        width: 80%;
-    }
+	#contact-us-container {
+		width: 80%;
+	}
 }
 
 @media screen and (max-width: 1220px) {
-
-    #contact-us-container {
-        width: 90%;
-    }
+	#contact-us-container {
+		width: 90%;
+	}
 }
 
 @media screen and (max-width: 1220px) {
-
-    #contact-us-container {
-        width: 100%;
-    }
+	#contact-us-container {
+		width: 100%;
+	}
 }
-
-
 
 @media screen and (max-width: 996px) {
-  
-  #profile-container,
-  #register-container,
-  #report-problems,
-  #sign-in-container
-  {
-    width: 80%;
-  }
+	#profile-container,
+	#register-container,
+	#report-problems,
+	#sign-in-container {
+		width: 80%;
+	}
 }
 
 @media screen and (max-width: 950px) {
-  
-  #profile-container,
-  #report-problems,
-  #register-container,
-  #sign-in-container {
-    width: 90%;
-  }
+	#profile-container,
+	#report-problems,
+	#register-container,
+	#sign-in-container {
+		width: 90%;
+	}
 }
 
 @media screen and (max-width: 900px) {
-  #contact-us-container,
-  #profile-container,
-  #report-problems,
-  #register-container,
-  #sign-in-container {
-    width: 100%;
-  }
-  .default-text-styling {
-      font-size: 14px;
-  }
+	#contact-us-container,
+	#profile-container,
+	#report-problems,
+	#register-container,
+	#sign-in-container {
+		width: 100%;
+	}
+	.default-text-styling {
+		font-size: 14px;
+	}
 }
 
 @media screen and (max-width: 850px) {
-  #contact-us-container,
-  #profile-container,
-  #report-problems,
-  #register-container,
-  #sign-in-container {
-    width: 100%;
-  }
-  
+	#contact-us-container,
+	#profile-container,
+	#report-problems,
+	#register-container,
+	#sign-in-container {
+		width: 100%;
+	}
 }
 
 @media screen and (max-width: 530px) {
-  #contact-us-main-container,
-  #profile-container,
-  #report-problems,
-  #register-container,
-  #sign-in-container {
-    width: 100%;
-  }
+	#contact-us-main-container,
+	#profile-container,
+	#report-problems,
+	#register-container,
+	#sign-in-container {
+		width: 100%;
+	}
 
-  .default-text-styling {
-    font-size: 14px;
-  }
+	.default-text-styling {
+		font-size: 14px;
+	}
 
-  .line-break {
-    display: block;
-  }
+	.line-break {
+		display: block;
+	}
 }
-
-
-
-
-

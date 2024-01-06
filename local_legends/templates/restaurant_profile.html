@@ -1,485 +1,348 @@
 {% extends "base.html" %} {% block content %}
-
 <!--Introduction section with collapsible content-->
-<form
-	action="{{ url_for('handle_leave_review', restaurant_id=restaurant.restaurant_id) }}"
-	method="POST"
->
-	<input
-		type="hidden"
-		name="restaurant_id"
-		id="restaurant_id"
-		value="{{restaurant.restaurant_id }}"
-	/>
-
-	<div class="container align-center">
-		<div class="row">
-			<div class="col align-center s12 m12 l12 xl12">
-				<h3 class="larger-than-default-text bold">
-					How would you rate your experience?
-				</h3>
-			</div>
-		</div>
-		<div class="row">
-			<button type="button" class="collapsible bold">
-				How does it work?
-			</button>
-			<div class="content" id="collapsible-intro-content">
-				<div class="align-center intro-container">
-					<div class="row">
-						<div class="col s12 m12 l12 xl12">
-							<p
-								class="show-more-para-styling intro-text-styling"
-							>
-								When you leave a review for a restaurant, you
-								don't just leave a review - you leave an
-								experience. Sharing your experiences with others
-								is at the heart of what we do here at Local
-								Legends.
-							</p>
-							<p
-								class="show-more-para-styling intro-text-styling"
-							>
-								Leaving an experience is simple. Simply choose
-								the restaurant you want from the Restaurants
-								list. You can access this in the navigation
-								banner at the top of the screen.
-							</p>
-							<p
-								class="show-more-para-styling intro-text-styling"
-							>
-								For details on the restaurant, click 'Show
-								More'. At the bottom of the restaurant details,
-								you can select 'Leave a Review'.
-							</p>
-							<p
-								class="show-more-para-styling intro-text-styling"
-							>
-								The first thing we will ask when you share an
-								experience is to summarize your experience in a
-								few words. Then you can rate your experience.
-							</p>
-							<p
-								class="show-more-para-styling intro-text-styling"
-							>
-								We have broken down each experience to make it
-								easy for you. These are:
-							</p>
-
-							<p
-								class="show-more-para-styling intro-text-styling"
-							>
-								- Taste of your food (in general)
-							</p>
-							<p
-								class="show-more-para-styling intro-text-styling"
-							>
-								- Presentation of your dish (how it looked)
-							</p>
-							<p
-								class="show-more-para-styling intro-text-styling"
-							>
-								- Friendliness of the staff (how you were
-								treated or valued)
-							</p>
-							<p
-								class="show-more-para-styling intro-text-styling"
-							>
-								- Ambience of the restaurant (the atmosphere,
-								lighting, music, general feel for the
-								restaurant)
-							</p>
-							<p
-								class="show-more-para-styling intro-text-styling"
-							>
-								- Price of your meal (was it expensive, cheap,
-								worth the money)
-							</p>
-							<p
-								class="show-more-para-styling intro-text-styling"
-							>
-								Each part of the experience is rated from 1
-								(being poor) to 5 (being excellent).
-							</p>
-							<p
-								class="show-more-para-styling intro-text-styling"
-							>
-								Finally, we ask you to tell us a little more
-								about your experience.
-							</p>
-							<p
-								class="show-more-para-styling intro-text-styling"
-							>
-								Once you've submitted your experience, we
-								calculate your overall experience of the Taste,
-								Presentation, Friendliness, Ambience, and Price,
-								and give an overall rating.
-							</p>
-							<p
-								class="show-more-para-styling intro-text-styling"
-							>
-								Lastly, the restaurant's ratings are then
-								recalculated to factor in your own experience
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!--If user is not logged in, show this section-->
-	{% if not session.is_logged_in %}
-	<div class="container align-center card-panel grey lighten-5">
-		<div class="row">
-			<div class="col align-center s12 m12 l12 xl12">
-				<h4 class="larger-than-default-text bold">
-					You must sign in before you can leave a review.
-					<a href="{{ url_for('login') }}">Click here to sign in</a>
-				</h4>
-			</div>
-		</div>
-	</div>
-
-	{% else %}
-	<!--If user is logged in, show this section-->
-	<div class="container align-center card-panel grey lighten-5">
-		<div class="row">
-			<div class="col s12 m6 l6 xl6 leave-review-select-div">
-				<label class="default-text-styling" for="written_review_title">
-					In a few words, how was your experience?
-				</label>
-			</div>
-			<div class="col s12 m6 l6 xl6 leave-review-select-div">
-				<input
-					class="input-text s12 m12 l12 xl12"
-					type="text"
-					id="written_review_title"
-					name="written_review_title"
-				/>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col s12 m6 l6 xl6 leave-review-select-div">
-				<label class="default-text-styling" for="select_taste">
-					How would you rate the taste?
-				</label>
-			</div>
-			<div class="col s12 m6 l6 xl6 leave-review-select-div">
-				<select
-					name="select_taste"
-					id="select_taste"
-					class="leave-review-select"
-				>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>
-				</select>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col s12 m6 l6 xl6 leave-review-select-div">
-				<label class="default-text-styling" for="select_presentation">
-					How would you rate the presentation?
-				</label>
-			</div>
-			<div class="col s12 m6 l6 xl6 leave-review-select-div">
-				<select
-					name="select_presentation"
-					id="select_presentation"
-					class="leave-review-select"
-				>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>
-				</select>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col s12 m6 l6 xl6 leave-review-select-div">
-				<label class="default-text-styling" for="select_friendliness">
-					How would you rate the friendliness?
-				</label>
-			</div>
-			<div class="col s12 m6 l6 xl6 leave-review-select-div">
-				<select
-					name="select_friendliness"
-					id="select_friendliness"
-					class="leave-review-select"
-				>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>
-				</select>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col s12 m6 l6 xl6 leave-review-select-div">
-				<label class="default-text-styling" for="select_ambience">
-					How would you rate the ambience?
-				</label>
-			</div>
-			<div class="col s12 m6 l6 xl6 leave-review-select-div">
-				<select
-					name="select_ambience"
-					id="select_ambience"
-					class="leave-review-select"
-				>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>
-				</select>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col s12 m6 l6 xl6 leave-review-select-div">
-				<label class="default-text-styling" for="select_price">
-					How would you rate the price
-				</label>
-			</div>
-			<div class="col s12 m6 l6 xl6 leave-review-select-div">
-				<select
-					name="select_price"
-					id="select_price"
-					class="leave-review-select"
-				>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>
-				</select>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col s12 m12 l12 xl12 leave-review-select-div">
-				<label class="default-text-styling" for="written_review">
-					Please tell us more about your visit
-				</label>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col s12 m12 l12 xl12 align-center">
-				<textarea
-					class="text-area"
-					name="written_review"
-					id="written_review"
-				></textarea>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col s12 m12 l12 xl12" id="leave-review-btn-div">
-				<button
-					type="submit"
-					class="see-reviews card-panel grey lighten-5"
-				>
-					Submit Review
-				</button>
-			</div>
-		</div>
-	</div>
-	{% endif %}
+<form action="{{ url_for('handle_leave_review', restaurant_id=restaurant.restaurant_id) }}" method="POST">
+    <input type="hidden" name="restaurant_id" id="restaurant_id" value="{{restaurant.restaurant_id }}" />
+    <div class="container align-center">
+        <div class="row">
+            <div class="col align-center s12 m12 l12 xl12">
+                <h3 class="larger-than-default-text bold">
+                    How would you rate your experience?
+                </h3>
+            </div>
+        </div>
+        <div class="row">
+            <button type="button" class="collapsible bold">
+                How does it work?
+            </button>
+            <div class="content" id="collapsible-intro-content">
+                <div class="align-center intro-container">
+                    <div class="row">
+                        <div class="col s12 m12 l12 xl12">
+                            <p class="show-more-para-styling intro-text-styling">
+                                When you leave a review for a restaurant, you
+                                don't just leave a review - you leave an
+                                experience. Sharing your experiences with others
+                                is at the heart of what we do here at Local
+                                Legends.
+                            </p>
+                            <p class="show-more-para-styling intro-text-styling">
+                                Leaving an experience is simple. Simply choose
+                                the restaurant you want from the Restaurants
+                                list. You can access this in the navigation
+                                banner at the top of the screen.
+                            </p>
+                            <p class="show-more-para-styling intro-text-styling">
+                                For details on the restaurant, click 'Show
+                                More'. At the bottom of the restaurant details,
+                                you can select 'Leave a Review'.
+                            </p>
+                            <p class="show-more-para-styling intro-text-styling">
+                                The first thing we will ask when you share an
+                                experience is to summarize your experience in a
+                                few words. Then you can rate your experience.
+                            </p>
+                            <p class="show-more-para-styling intro-text-styling">
+                                We have broken down each experience to make it
+                                easy for you. These are:
+                            </p>
+                            <p class="show-more-para-styling intro-text-styling">
+                                - Taste of your food (in general)
+                            </p>
+                            <p class="show-more-para-styling intro-text-styling">
+                                - Presentation of your dish (how it looked)
+                            </p>
+                            <p class="show-more-para-styling intro-text-styling">
+                                - Friendliness of the staff (how you were
+                                treated or valued)
+                            </p>
+                            <p class="show-more-para-styling intro-text-styling">
+                                - Ambience of the restaurant (the atmosphere,
+                                lighting, music, general feel for the
+                                restaurant)
+                            </p>
+                            <p class="show-more-para-styling intro-text-styling">
+                                - Price of your meal (was it expensive, cheap,
+                                worth the money)
+                            </p>
+                            <p class="show-more-para-styling intro-text-styling">
+                                Each part of the experience is rated from 1
+                                (being poor) to 5 (being excellent).
+                            </p>
+                            <p class="show-more-para-styling intro-text-styling">
+                                Finally, we ask you to tell us a little more
+                                about your experience.
+                            </p>
+                            <p class="show-more-para-styling intro-text-styling">
+                                Once you've submitted your experience, we
+                                calculate your overall experience of the Taste,
+                                Presentation, Friendliness, Ambience, and Price,
+                                and give an overall rating.
+                            </p>
+                            <p class="show-more-para-styling intro-text-styling">
+                                Lastly, the restaurant's ratings are then
+                                recalculated to factor in your own experience
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--If user is not logged in, show this section-->
+    {% if not session.is_logged_in %}
+    <div class="container align-center card-panel grey lighten-5">
+        <div class="row">
+            <div class="col align-center s12 m12 l12 xl12">
+                <h4 class="larger-than-default-text bold">
+                    You must sign in before you can leave a review.
+                    <a href="{{ url_for('login') }}">Click here to sign in</a>
+                </h4>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <!--If user is logged in, show this section-->
+    <div class="container align-center card-panel grey lighten-5">
+        <div class="row">
+            <div class="col s12 m6 l6 xl6 leave-review-select-div">
+                <label class="default-text-styling" for="written_review_title">
+                    In a few words, how was your experience?
+                </label>
+            </div>
+            <div class="col s12 m6 l6 xl6 leave-review-select-div">
+                <input class="input-text s12 m12 l12 xl12" type="text" id="written_review_title"
+                    name="written_review_title" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6 l6 xl6 leave-review-select-div">
+                <label class="default-text-styling" for="select_taste">
+                    How would you rate the taste?
+                </label>
+            </div>
+            <div class="col s12 m6 l6 xl6 leave-review-select-div">
+                <select name="select_taste" id="select_taste" class="leave-review-select">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6 l6 xl6 leave-review-select-div">
+                <label class="default-text-styling" for="select_presentation">
+                    How would you rate the presentation?
+                </label>
+            </div>
+            <div class="col s12 m6 l6 xl6 leave-review-select-div">
+                <select name="select_presentation" id="select_presentation" class="leave-review-select">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6 l6 xl6 leave-review-select-div">
+                <label class="default-text-styling" for="select_friendliness">
+                    How would you rate the friendliness?
+                </label>
+            </div>
+            <div class="col s12 m6 l6 xl6 leave-review-select-div">
+                <select name="select_friendliness" id="select_friendliness" class="leave-review-select">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6 l6 xl6 leave-review-select-div">
+                <label class="default-text-styling" for="select_ambience">
+                    How would you rate the ambience?
+                </label>
+            </div>
+            <div class="col s12 m6 l6 xl6 leave-review-select-div">
+                <select name="select_ambience" id="select_ambience" class="leave-review-select">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6 l6 xl6 leave-review-select-div">
+                <label class="default-text-styling" for="select_price">
+                    How would you rate the price
+                </label>
+            </div>
+            <div class="col s12 m6 l6 xl6 leave-review-select-div">
+                <select name="select_price" id="select_price" class="leave-review-select">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m12 l12 xl12 leave-review-select-div">
+                <label class="default-text-styling" for="written_review">
+                    Please tell us more about your visit
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m12 l12 xl12 align-center">
+                <textarea class="text-area" name="written_review" id="written_review"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m12 l12 xl12" id="leave-review-btn-div">
+                <button type="submit" class="see-reviews card-panel grey lighten-5">
+                    Submit Review
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
 </form>
-
 <div class="container lg-padding">
-	<div class="row">
-		<div class="col"></div>
-	</div>
+    <div class="row">
+        <div class="col"></div>
+    </div>
 </div>
-
 <!--View other reviews-->
 <div class="container align-center">
-	<div class="row">
-		<div class="col align-center s12 m12 l12 xl12">
-			<h3 class="larger-than-default-text bold">See what others think</h3>
-		</div>
-	</div>
+    <div class="row">
+        <div class="col align-center s12 m12 l12 xl12">
+            <h3 class="larger-than-default-text bold">See what others think</h3>
+        </div>
+    </div>
 </div>
-
 <div class="container align-center card-panel grey lighten-5">
-	<div class="row">
-		<div class="col align-center s12 m12 l12 xl12">
-			{% for reviews in reviews %}
-
-			<button type="button" class="collapsible bold">
-				"{{ reviews.written_review_title }}" - {{ reviews.overall_stars
-				}} / 5 stars
-			</button>
-			<div class="content">
-				<div class="restaurant-details-container lg-padding">
-					<div class="row">
-						<div
-							class="col lg-padding restaurant-details-container"
-						>
-							<div
-								class="col s12 m12 l12 xl6 left-panel-container"
-							>
-								<div class="col s2 m2 l2 xl2"></div>
-								<div
-									class="col s8 m8 l8 xl8 stars-div card-panel"
-								>
-									<div class="row">
-										<div
-											class="col s6 m6 l6 xl6 restaurant-stars-display-col"
-										>
-											Overall
-										</div>
-										<div
-											class="col s6 m6 l6 xl6 restaurant-stars-display-col"
-										>
-											{{ reviews.overall_stars }}
-										</div>
-									</div>
-									<div class="row">
-										<div
-											class="col s6 m6 l6 xl6 restaurant-stars-display-col"
-										>
-											Taste
-										</div>
-										<div
-											class="col s6 m6 l6 xl6 restaurant-stars-display-col"
-										>
-											{{ reviews.taste_stars }}
-										</div>
-									</div>
-									<div
-										class="row row display-table-row-border"
-									>
-										<div
-											class="col s6 m6 l6 xl6 restaurant-stars-display-col"
-										>
-											Presentation
-										</div>
-										<div
-											class="col s6 m6 l6 xl6 restaurant-stars-display-col"
-										>
-											{{ reviews.presentation_stars }}
-										</div>
-									</div>
-									<div class="row">
-										<div
-											class="col s6 m6 l6 xl6 restaurant-stars-display-col"
-										>
-											Friendliness
-										</div>
-										<div
-											class="col s6 m6 l6 xl6 restaurant-stars-display-col"
-										>
-											{{ reviews.friendliness_stars }}
-										</div>
-									</div>
-									<div class="row">
-										<div
-											class="col s6 m6 l6 xl6 restaurant-stars-display-col"
-										>
-											Price
-										</div>
-										<div
-											class="col s6 m6 l6 xl6 restaurant-stars-display-col"
-										>
-											{{ reviews.price_stars }}
-										</div>
-									</div>
-									<div class="row">
-										<div
-											class="col s6 m6 l6 xl6 restaurant-stars-display-col"
-										>
-											Ambience
-										</div>
-										<div
-											class="col s6 m6 l6 xl6 restaurant-stars-display-col"
-										>
-											{{ reviews.ambience_stars }}
-										</div>
-									</div>
-								</div>
-								<div class="col s2 m2 l2 xl2"></div>
-							</div>
-							<!--THIS IS THE START OF THE SECOND HALF OF THE CONTAINER-->
-							<div
-								class="col s12 m12 l12 xl6 left-panel-container"
-							>
-								<div class="col align-center s12">
-									Review Details
-								</div>
-								<div class="col s1 m1 l1 xl1"></div>
-								<div
-									class="col s10 m10 l10 xl10 stars-div card-panel"
-								>
-									<div
-										class="row restaurant-stars-display-row"
-									>
-										<!--<div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Name</div>-->
-										<div
-											class="col s12 m12 l12 xl12 review-display review-title-text"
-										>
-											"{{ reviews.written_review_title }}"
-										</div>
-									</div>
-									<div
-										class="row row display-table-row-border"
-									>
-										<!--<div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Name</div>-->
-										<div
-											class="col s12 m12 l12 xl12 review-body-text"
-										>
-											{{reviews.written_review }}
-										</div>
-									</div>
-									<div class="row">
-										<!--<div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Name</div>-->
-										<div
-											class="col s12 m12 l12 xl12 review-display review-body-text"
-										>
-											{%if reviews.edited == True %}
-											Edited {% else %} Posted {% endif %}
-											on {{reviews.review_date }} by {{
-											reviews.username }}
-										</div>
-									</div>
-								</div>
-								<div class="col s1 m1 l1 xl1"></div>
-							</div>
-						</div>
-					</div>
-				</div>
-				{% if session.user_id == reviews.user_id %}
-				<div class="row s12 m12 l12 xl12 align-center">
-					<div class="col s12 m12 l12 xl12 align-center">
-						<form
-							action="{{ url_for('edit_review', review_id=reviews.review_id) }}"
-							method="POST"
-						>
-							<button
-								type="submit"
-								class="card-panel grey lighten-5"
-							>
-								Edit Review
-							</button>
-						</form>
-					</div>
-				</div>
-				{% endif %}
-			</div>
-
-			{% endfor %}
-		</div>
-	</div>
+    <div class="row">
+        <div class="col align-center s12 m12 l12 xl12">
+            {% for reviews in reviews %}
+            <button type="button" class="collapsible bold">
+                "{{ reviews.written_review_title }}" - {{ reviews.overall_stars
+                }} / 5 stars
+            </button>
+            <div class="content">
+                <div class="restaurant-details-container lg-padding">
+                    <div class="row">
+                        <div class="col lg-padding restaurant-details-container">
+                            <div class="col s12 m12 l12 xl6 left-panel-container">
+                                <div class="col s2 m2 l2 xl2"></div>
+                                <div class="col s8 m8 l8 xl8 stars-div card-panel">
+                                    <div class="row">
+                                        <div class="col s6 m6 l6 xl6 restaurant-stars-display-col">
+                                            Overall
+                                        </div>
+                                        <div class="col s6 m6 l6 xl6 restaurant-stars-display-col">
+                                            {{ reviews.overall_stars }}
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s6 m6 l6 xl6 restaurant-stars-display-col">
+                                            Taste
+                                        </div>
+                                        <div class="col s6 m6 l6 xl6 restaurant-stars-display-col">
+                                            {{ reviews.taste_stars }}
+                                        </div>
+                                    </div>
+                                    <div class="row row display-table-row-border">
+                                        <div class="col s6 m6 l6 xl6 restaurant-stars-display-col">
+                                            Presentation
+                                        </div>
+                                        <div class="col s6 m6 l6 xl6 restaurant-stars-display-col">
+                                            {{ reviews.presentation_stars }}
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s6 m6 l6 xl6 restaurant-stars-display-col">
+                                            Friendliness
+                                        </div>
+                                        <div class="col s6 m6 l6 xl6 restaurant-stars-display-col">
+                                            {{ reviews.friendliness_stars }}
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s6 m6 l6 xl6 restaurant-stars-display-col">
+                                            Price
+                                        </div>
+                                        <div class="col s6 m6 l6 xl6 restaurant-stars-display-col">
+                                            {{ reviews.price_stars }}
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s6 m6 l6 xl6 restaurant-stars-display-col">
+                                            Ambience
+                                        </div>
+                                        <div class="col s6 m6 l6 xl6 restaurant-stars-display-col">
+                                            {{ reviews.ambience_stars }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col s2 m2 l2 xl2"></div>
+                            </div>
+                            <!--THIS IS THE START OF THE SECOND HALF OF THE CONTAINER-->
+                            <div class="col s12 m12 l12 xl6 left-panel-container">
+                                <div class="col align-center s12">
+                                    Review Details
+                                </div>
+                                <div class="col s1 m1 l1 xl1"></div>
+                                <div class="col s10 m10 l10 xl10 stars-div card-panel">
+                                    <div class="row restaurant-stars-display-row">
+                                        <!--<div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Name</div>-->
+                                        <div class="col s12 m12 l12 xl12 review-display review-title-text">
+                                            "{{ reviews.written_review_title }}"
+                                        </div>
+                                    </div>
+                                    <div class="row row display-table-row-border">
+                                        <!--<div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Name</div>-->
+                                        <div class="col s12 m12 l12 xl12 review-body-text">
+                                            {{reviews.written_review }}
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <!--<div class="col s6 m6 l6 xl6 restaurant-stars-display-col ">Name</div>-->
+                                        <div class="col s12 m12 l12 xl12 review-display review-body-text">
+                                            {%if reviews.edited == True %}
+                                            Edited {% else %} Posted {% endif %}
+                                            on {{reviews.review_date }} by {{
+                                            reviews.username }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col s1 m1 l1 xl1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% if session.user_id == reviews.user_id %}
+                <div class="row s12 m12 l12 xl12 align-center">
+                    <div class="col s12 m12 l12 xl12 align-center">
+                        <form action="{{ url_for('edit_review', review_id=reviews.review_id) }}" method="POST">
+                            <button type="submit" class="card-panel grey lighten-5">
+                                Edit Review
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 </div>
-
 {% endblock %}

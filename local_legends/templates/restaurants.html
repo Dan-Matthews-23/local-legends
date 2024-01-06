@@ -1,5 +1,4 @@
 {% extends "base.html" %} {% block content %}
-
 <!--This page displays all approved restaurants-->
 <section class="title-section">
 	<div class="container title-container">
@@ -13,9 +12,7 @@
 		</div>
 	</div>
 </section>
-
 {% for restaurants in restaurants %}
-
 <!--Restaurant Details-->
 <div class="container s12 m12 l12 xl6 left-panel-container-thumb">
 	<div class="row">
@@ -27,19 +24,19 @@
 			/>
 		</div>
 		<div
-			id="thumb-col-heading"
-			class="col align-center s12 m12 l6 xl6 bold larger-than-default-text"
+			class="thumb-col-headingcol align-center s12 m12 l6 xl6 bold larger-than-default-text"
 		>
 			{{ restaurants.restaurant_name }}
 		</div>
-
 		<input
 			type="hidden"
 			name="restaurant_id"
 			id="restaurant_id"
 			value="{{restaurants.restaurant_id }}"
 		/>
-		<div id="thumb-col-stars" class="col s12 m12 l6 xl6 default-text-size">
+		<div
+			class="thumb-col-stars col s12 m12 l6 xl6 default-text-size align-center-on-small-vw"
+		>
 			{% if restaurants.restaurant_average_overall_stars %} Average {{
 			restaurants.restaurant_average_overall_stars }} stars out of 5 (<a
 				href="{{ url_for('restaurant_profile', restaurant_id=restaurants.restaurant_id) }}"
@@ -47,23 +44,22 @@
 			>) {% else %} This restaurant has no reviews {% endif %}
 		</div>
 		<div
-			id="thumb-col-keyword"
-			class="col s12 m12 l6 xl6 default-text-size"
+			
+			class="col s12 m12 l6 xl6 default-text-size align-center-on-small-vw thumb-col-keyword"
 		>
 			{{ restaurants.restaurant_cuisine_one }} - {{
 			restaurants.restaurant_cuisine_two }} - {{
 			restaurants.restaurant_cuisine_three }}
 		</div>
 		<div
-			id="thumb-col-delivery"
-			class="col s12 m12 l6 xl6 default-text-size"
+			
+			class="col s12 m12 l6 xl6 default-text-size align-center-on-small-vw thumb-col-delivery"
 		>
 			{% if restaurants.restaurant_delivery == True %} Delivery Available
 			{% else %} Delivery Not Available {% endif %}
 		</div>
-		<div
-			id="thumb-col-restaurant-week"
-			class="col s12 m12 l6 xl6 default-text-size"
+		<div			
+			class="col s12 m12 l6 xl6 default-text-size align-center-on-small-vw thumb-col-restaurant-week"
 		>
 			<a
 				target="_blank"
@@ -76,7 +72,6 @@
 		</div>
 	</div>
 </div>
-
 <!--More restaurant details-->
 <div class="container button-container">
 	<div class="row">
@@ -109,12 +104,12 @@
 										class="row restaurant-stars-display-row"
 									>
 										<div
-											class="col bold s12 m12 l6 xl6 restaurant-stars-display-col default-text-size"
+											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
 										>
 											Overall
 										</div>
 										<div
-											class="col s12 m12 l6 xl6 restaurant-stars-display-col default-text-size"
+											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
 										>
 											{{
 											restaurants.restaurant_average_overall_stars
@@ -123,12 +118,12 @@
 									</div>
 									<div class="row">
 										<div
-											class="col bold s12 m12 l6 xl6restaurant-stars-display-col default-text-size"
+											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
 										>
 											Taste
 										</div>
 										<div
-											class="col s12 m12 l6 xl6 restaurant-stars-display-col default-text-size"
+											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
 										>
 											{{
 											restaurants.restaurant_average_taste_stars
@@ -139,12 +134,12 @@
 										class="row row display-table-row-border"
 									>
 										<div
-											class="col bold s12 m12 l6 xl6 restaurant-stars-display-col default-text-size"
+											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
 										>
 											Presentation
 										</div>
 										<div
-											class="col s12 m12 l6 xl6 restaurant-stars-display-col default-text-size"
+											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
 										>
 											{{
 											restaurants.restaurant_average_presentation_stars
@@ -153,12 +148,12 @@
 									</div>
 									<div class="row">
 										<div
-											class="col bold s12 m12 l6 xl6 restaurant-stars-display-col default-text-size"
+											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
 										>
 											Friendliness
 										</div>
 										<div
-											class="col s12 m12 l6 xl6 restaurant-stars-display-col default-text-size"
+											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
 										>
 											{{
 											restaurants.restaurant_average_friendliness_stars
@@ -167,12 +162,12 @@
 									</div>
 									<div class="row">
 										<div
-											class="col bold s12 m12 l6 xl6 restaurant-stars-display-col default-text-size"
+											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
 										>
 											Price
 										</div>
 										<div
-											class="col s12 m12 l6 xl6 restaurant-stars-display-col default-text-size"
+											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
 										>
 											{{
 											restaurants.restaurant_average_price_stars
@@ -181,12 +176,12 @@
 									</div>
 									<div class="row">
 										<div
-											class="col bold s12 m12 l6 xl6 restaurant-stars-display-col default-text-size"
+											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
 										>
 											Ambience
 										</div>
 										<div
-											class="col ss12 m12 l6 xl6 restaurant-stars-display-col default-text-size"
+											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
 										>
 											{{
 											restaurants.restaurant_average_ambience_stars
@@ -196,7 +191,6 @@
 								</div>
 								<div class="col s2 m2 l2 xl2"></div>
 							</div>
-
 							<div
 								class="col s12 m12 l12 xl6 left-panel-container align-left"
 							>
@@ -205,7 +199,7 @@
 										Restaurant Details
 									</h2>
 								</div>
-								<div class="col s1 m1 l1 xl1"></div>
+
 								<div
 									class="col s10 m10 l10 xl10 stars-div card-panel"
 								>
@@ -213,12 +207,12 @@
 										class="row restaurant-stars-display-row"
 									>
 										<div
-											class="col bold s12 m12 l6 xl6 restaurant-stars-display-col default-text-size"
+											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
 										>
 											Name
 										</div>
 										<div
-											class="col s12 m12 l6 xl6 restaurant-stars-display-col default-text-size"
+											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
 										>
 											{{ restaurants.restaurant_name }}
 										</div>
@@ -227,12 +221,12 @@
 										class="row row display-table-row-border"
 									>
 										<div
-											class="col bold s12 m12 l6 xl6 restaurant-stars-display-col default-text-size"
+											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
 										>
 											First line of address
 										</div>
 										<div
-											class="col s12 m12 l6 xl6 restaurant-stars-display-col default-text-size"
+											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
 										>
 											{{
 											restaurants.restaurant_address_one
@@ -241,12 +235,12 @@
 									</div>
 									<div class="row">
 										<div
-											class="col bold s12 m12 l6 xl6 restaurant-stars-display-col default-text-size"
+											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
 										>
 											Second line of address
 										</div>
 										<div
-											class="col s12 m12 l6 xl6 restaurant-stars-display-col default-text-size"
+											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
 										>
 											{{
 											restaurants.restaurant_address_two
@@ -255,12 +249,12 @@
 									</div>
 									<div class="row">
 										<div
-											class="col bold s12 m12 l6 xl6 restaurant-stars-display-col default-text-size"
+											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
 										>
 											Third line of address
 										</div>
 										<div
-											class="col s12 m12 l6 xl6 restaurant-stars-display-col default-text-size"
+											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
 										>
 											{% if
 											restaurants.restaurant_address_three
@@ -271,12 +265,12 @@
 									</div>
 									<div class="row">
 										<div
-											class="col bold s12 m12 l6 xl6 restaurant-stars-display-col default-text-size"
+											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
 										>
 											Fourth line of address
 										</div>
 										<div
-											class="col s12 m12 l6 xl6 restaurant-stars-display-col default-text-size"
+											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
 										>
 											{% if
 											restaurants.restaurant_address_four
@@ -287,12 +281,12 @@
 									</div>
 									<div class="row">
 										<div
-											class="col bold s12 m12 l6 xl6 restaurant-stars-display-col default-text-size"
+											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
 										>
 											Postcode
 										</div>
 										<div
-											class="col s12 m12 l6 xl6 restaurant-stars-display-col default-text-size"
+											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
 										>
 											{{
 											restaurants.restaurant_address_postcode
@@ -301,12 +295,12 @@
 									</div>
 									<div class="row">
 										<div
-											class="col bold s12 m12 l6 xl6 restaurant-stars-display-col default-text-size"
+											class="col bold s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
 										>
 											Date Registered
 										</div>
 										<div
-											class="col s12 m12 l6 xl6 restaurant-stars-display-col default-text-size"
+											class="col s12 s12 m6 l6 xl6 restaurant-stars-display-col default-text-size align-center-on-small-vw"
 										>
 											{{
 											restaurants.restaurant_date_registered
@@ -314,7 +308,6 @@
 										</div>
 									</div>
 								</div>
-								<div class="col s1 m1 l1 xl1"></div>
 							</div>
 						</div>
 					</div>
@@ -346,6 +339,5 @@
 			</div>
 		</div>
 	</div>
-
 	{% endfor %} {% endblock %}
 </div>
