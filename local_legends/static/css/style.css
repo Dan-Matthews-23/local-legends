@@ -312,8 +312,10 @@ font-weight: bold;
 
 .hero-image-thumb,
 .hero-image {
-   
-    
+  height: 100%;
+  width: 100%;  
+  max-width: 300px;
+  max-height: 300px;  
   vertical-align: middle;
 }
 
