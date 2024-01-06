@@ -105,6 +105,7 @@
   - [Code Used](#code-used)
     - [Hamburger Bar](#hamburger-bar)
     - [Email Validator](#email-validator)
+    - [Checking for numeric values only](#checking-for-numeric-values-only)
 - [Acknowledgments](#acknowledgments)
 
 ## Local Legends
@@ -1167,6 +1168,10 @@ I have used Materialize's hamburger bar as a template to create my own. It can b
 I have used a piece of code in def change_email that validates the email input. The original code is available on their [website](https://www.geeksforgeeks.org/check-if-email-address-valid-or-not-in-python/)
 
 ![Geeks for geeks email validation](/local_legends/static/images/design-stages/used-code.png)
+
+#### Checking for numeric values only
+
+I have used [Geek for Geeks](https://www.geeksforgeeks.org/python-check-whether-string-contains-only-numbers-or-not/) suggestions as a template to check for the values in  Handle Leave Review when checking for the value of the textarea written review
 
 ***
 

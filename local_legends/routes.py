@@ -1,40 +1,66 @@
+# Import mathematics tools
 import statistics
 from statistics import mean
 import math
+
+# Import Regular Expressions
 import re
+
+# Import Flask login tools
 from flask_login import login_user, current_user
+
+# Import security measures (password encryption and decryption)
 from werkzeug.security import generate_password_hash, check_password_hash
+
+# Import further security measures (password encryption)
 from passlib.hash import sha256_crypt
+
+# Import datetime tool
 import datetime
-from flask import session
-from flask import render_template, flash, request, redirect, url_for
+
+# Import built-in Flask tools
+from flask import render_template, flash, request, redirect, url_for, session
+
+# Import app and database
 from local_legends import app, db
+
+# Import tables
 from local_legends.models import (Users, Reviews, Restaurants, Admins,
                                   Approvals, Problems)
 
-# --- CRUD FUNCTIONALITY --- #
-# -- CREATE -- #
-
+# --- CRUD FUNCTIONALITY [CREATE] --- #
 
 @app.route("/contact-us", methods=["GET", "POST"])
-def contact_us():
-    if not session.get('is_logged_in'):
-        session['user_email'] = ""
-    else:
-        user_id = session.get('user_id')
-        query = Users.query.filter(Users.user_id == user_id).first()
-        session['user_email'] = query.email
-    return render_template("contact-us.html")
+def contact_us(): 
+  # Check if the user is logged in
+  if not session.get('is_logged_in'):
+
+    # User is not logged in, set their email to blank in the session
+    session['user_email'] = ""
+  else:
+    # User is logged in, retrieve their email from the database
+    user_id = session.get('user_id')  # Get the user's ID from the session
+
+    # Query the database for the user's details
+    query = Users.query.filter(Users.user_id == user_id).first()  
+    session['user_email'] = query.email  # Store the retrieved email in the session
+
+  # Render the "contact-us.html" template
+  return render_template("contact-us.html")
+
 
 
 @app.route("/become_legend", methods=["GET", "POST"])
 def become_legend():
+    # Checks to see if error session is active and deactivates it
     if session.get('err'):
         session.pop('err')
-
+    
+    # Checks to see if the form has been submitted
     if request.method == "POST":
-
         posted_email = request.form.get("email_restaurant")
+
+        # If the email field is blank or has no value, return error
         if (posted_email == "" or not posted_email):
             session['err'] = "You must enter an email address"
             redirect_url = request.referrer or url_for(home)
@@ -42,6 +68,8 @@ def become_legend():
         else:
             email = posted_email
         posted_restaurant_name = request.form.get("restaurant_name")
+        
+        # If the restaurant name field is blank or has no value, return error
         if (posted_restaurant_name == ""
                 or posted_restaurant_name == "e.g. The Burger Bar"):
             session['err'] = "The name of your restaurant must be completed"
@@ -50,6 +78,8 @@ def become_legend():
         else:
             restaurant_name = posted_restaurant_name
         posted_restaurant_add_one = request.form.get("first_address")
+
+        # If an address field is blank or has no value, return error
         if (posted_restaurant_add_one == ""
                 or posted_restaurant_add_one == "e.g. 123 Sunderland Road"):
             session['err'] = """
@@ -92,6 +122,9 @@ def become_legend():
             restaurant_postcode = posted_restaurant_postcode
 
         posted_restaurant_thumbnail = request.form.get("thumbnail")
+
+        # If the image URL field is blank or has no value, submit
+        # a default imaage in place of it
         if not posted_restaurant_thumbnail:
             restaurant_thumbnail = """
             https://images.pexels.com/photos/269257/pexels-photo-269257.
@@ -99,6 +132,8 @@ def become_legend():
             """
         else:
             restaurant_thumbnail = posted_restaurant_thumbnail
+        
+        # Set today's date
         todays_date = datetime.datetime.now()
         date_only = todays_date.date()
 
@@ -131,6 +166,8 @@ def become_legend():
             restaurant_week = True
         else:
             restaurant_week = False
+        
+        # Insert data into the Approvals table
         new_restaurant = Approvals(
             restaurant_name=restaurant_name,
             restaurant_address_one=restaurant_add_one,
@@ -146,40 +183,58 @@ def become_legend():
             restaurant_delivery=restaurant_delivery,
             restaurant_week=restaurant_week,
             email=email)
+        
+        # Mark changes as a new change to commit 
         db.session.add(new_restaurant)
+
+        # Commit the changes to the database
         db.session.commit()
 
+        # Display confirmation to user
         session['err'] = """
         Your request has been sent to an administrator for approval.
         Please allow 3-5 working days
         """
+        # Return to previous page or to index if an error occurs
         redirect_url = request.referrer or url_for(home)
         return redirect(redirect_url)
+    
+    # If page is not posted, render the html page
     return render_template("contact-us.html")
 
 
 @app.route("/contact-us/problem", methods=["GET", "POST"])
 def handle_contact_us():
+    # Checks to see if error session is active and deactivates it
     if session.get('err'):
         session.pop('err')
+
+    # Checks to see if the form has been submitted
     if request.method == "POST":
         posted_user_type = request.form.get("user_type")
         if (posted_user_type == "user"):
             user_id = session.get('user_id')
         elif (posted_user_type == "guest") or (posted_user_type == "business"):
             user_id = 0
+        
         posted_email = request.form.get("email")
         posted_problem_type = request.form.get("problem_type")
         posted_more_info = request.form.get("more_info")
         todays_date = datetime.datetime.now()
         date_only = todays_date.date()
+        
+        # Insert posted data into Problems table
         new_problem = Problems(user_type=posted_user_type,
                                problem_type=posted_problem_type,
                                user_id=user_id, email=posted_email,
                                detail=posted_more_info,
                                date=date_only)
+        # Mark changes as a new change to commit 
         db.session.add(new_problem)
+
+        # Commit the changes to the database
         db.session.commit()
+
         if new_problem:
             session.pop('user_email')
             session['err'] = """
@@ -201,8 +256,11 @@ def handle_contact_us():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    # Checks to see if error session is active and deactivates it
     if session.get('err'):
         session.pop('err')
+
+    # Checks to see if the form has been submitted
     if request.method == "POST":
         username = request.form.get("username_register")        
         email = request.form.get("email_register")
@@ -226,6 +284,7 @@ def register():
             post_password = (len(request.form.get("password_register")))
             post_username = (len(request.form.get("username_register")))
 
+            # Form validation
             if (post_password < 10):
                 session['err'] = """
                 Your password must be at least 10 characters long
@@ -235,7 +294,7 @@ def register():
                 Your username must be between 3 and 20 characters
                 """
             else:
-
+                # Encrypt the posted password and assign to variable
                 new_password = generate_password_hash(
                     (request.form.get("password_register")))
 
@@ -247,8 +306,12 @@ def register():
                     password_hash=new_password,
                     user_date_registered=todays_date)
 
+                # Mark changes as a new change to commit 
                 db.session.add(new_user)
+
+                # Commit the changes to the database
                 db.session.commit()
+
                 session['err'] = "Registration successful!"
                 return redirect(url_for("login"))
     return render_template("register.html")
@@ -267,6 +330,9 @@ def handle_leave_review(restaurant_id):
         written_review = request.form.get("written_review")
         date_calc = datetime.datetime.now()
         todays_date = (date_calc.strftime("%Y-%m-%d"))
+        
+        # This section of code was adapted from Geeks to Geeks
+        # --
         if (re.match(r'^\d+$', review_title) or (re.match(r'^\d+$', (
              written_review)))):
             session['err'] = """
@@ -274,6 +340,10 @@ def handle_leave_review(restaurant_id):
             """
             redirect_url = request.referrer or url_for(home)
             return redirect(redirect_url)
+        # --
+        # End of code section
+
+        # If 
         if review_title == "" or written_review == "":
             session['err'] = """
             Error: The summary and written review must not be blank
@@ -382,10 +452,17 @@ def handle_leave_review(restaurant_id):
             restaurant.restaurant_average_overall_stars = (
                 calculated_overall_stars_for_restaurant)
             restaurant.restaurant_review_count = review_count_by_restaurant_id
+            
+            # Commit the changes to the database
             db.session.commit()
+
         try:
+            # Mark changes as a new change to commit 
             db.session.add(new_review)
+            
+            # Commit the changes to the database
             db.session.commit()
+
             session['err'] = "Review created successfully"
             redirect_url = request.referrer or url_for(home)
             return redirect(redirect_url)
@@ -401,6 +478,8 @@ def handle_leave_review(restaurant_id):
 def create_restaurant():
 
     if session.get('is_logged_in', False):
+        
+        # Checks to see if the form has been submitted
         if request.method == "POST":
             approval_restaurant_id = request.form.get("restaurant_id")
             approval = (Approvals.query.filter_by
@@ -474,12 +553,19 @@ def create_restaurant():
                 restaurant_delivery=restaurant_delivery,
                 restaurant_week=restaurant_week))
 
+            # Mark changes as a new change to commit 
             db.session.add(new_restaurant)
+            
+            # Commit the changes to the database
             db.session.commit()
+            
             delete_approval = (Approvals.query.filter_by
                                (approval_id=approval_restaurant_id).first())
             db.session.delete(delete_approval)
+            
+            # Commit the changes to the database
             db.session.commit()
+
             session['err'] = "Review approved"
             redirect_url = request.referrer or url_for(home)
             return redirect(redirect_url)
@@ -514,8 +600,12 @@ def restaurant_profile(restaurant_id):
     restaurant = Restaurants.query.get_or_404(restaurant_id)
     reviews = Reviews.query.filter_by(restaurant_id=restaurant_id).order_by(Reviews.review_id.desc()).all()
     
+    # Checks to see if the form has been submitted
     if request.method == "POST":
+        
+        # Commit the changes to the database
         db.session.commit()
+
         return redirect(url_for("restaurant_profile",
                         restaurant_id=restaurant.restaurant_id))
     return render_template("restaurant_profile.html",
@@ -527,13 +617,17 @@ def profile():
     if session.get('is_logged_in', False):
         user_id = session.get('user_id')
         users = Users.query.filter_by(user_id=user_id)
+        
+        # Checks to see if the form has been submitted
         if request.method == "POST":
             new_pass = request.form.get("password_change")
             confirm_new_pass = request.form.get("confirm_password_change")
             update_user_password = Users(password=password)
             db.session.update(update_user_password)
+            
+            # Commit the changes to the database
             db.session.commit()
-            flash("Password Updated!")
+            
             return redirect(url_for("profile"))
         return render_template("profile.html", users=users)
     else:
@@ -546,6 +640,7 @@ def profile():
 
 @app.route("/profile/change_password", methods=["GET", "POST"])
 def change_password():
+    # Checks to see if error session is active and deactivates it
     if session.get('err'):
         session.pop('err')
     if not session.get('is_logged_in'):
@@ -582,9 +677,13 @@ def change_password():
                 hashed_password = (generate_password_hash(request.form.get
                                    ("confirm_password_change")))
                 update_query.password_hash = hashed_password
+                # Mark changes as a new change to commit 
                 db.session.add(update_query)
             try:
+                
+                # Commit the changes to the database
                 db.session.commit()
+
                 session['err'] = "Password edited successfully"
                 return redirect(url_for('profile'))
             except Exception as e:
@@ -595,6 +694,7 @@ def change_password():
 
 @app.route("/profile/change_email", methods=["GET", "POST"])
 def change_email():
+    # Checks to see if error session is active and deactivates it
     if session.get('err'):
         session.pop('err')
     if not session.get('is_logged_in'):
@@ -630,9 +730,13 @@ def change_email():
                     return redirect(url_for('profile'))
                 else:
                     update_query.email = checked_email
+                    # Mark changes as a new change to commit 
                     db.session.add(update_query)
                 try:
+                    
+                    # Commit the changes to the database
                     db.session.commit()
+
                     session['err'] = "Email address edited successfully"
                     return redirect(url_for('profile'))
                 except Exception as e:
@@ -643,6 +747,7 @@ def change_email():
 
 @app.route("/profile/change_username", methods=["GET", "POST"])
 def change_username():
+    # Checks to see if error session is active and deactivates it
     if session.get('err'):
         session.pop('err')
     if not session.get('is_logged_in'):
@@ -669,9 +774,13 @@ def change_username():
                     return redirect(url_for('profile'))
                 else:
                     update_query.username = username
+                    # Mark changes as a new change to commit 
                     db.session.add(update_query)
                 try:
+                    
+                    # Commit the changes to the database
                     db.session.commit()
+
                     session['err'] = "Username edited successfully"
                     refresh_username_session = Users.query.filter
                     (Users.user_id == user_id).first()
@@ -689,9 +798,14 @@ def edit_review(review_id):
         review = Reviews.query.get_or_404(review_id)
         reviews = (Reviews.query.filter_by(review_id=review_id).
                    order_by(Reviews.review_id).all())
+        
+        # Commit the changes to the database
         db.session.commit()
+
         user_id = session.get('user_id')
         if review.user_id == user_id:
+            
+            # Checks to see if the form has been submitted
             if request.method == "POST":
                 return redirect(url_for("edit_review",
                                 review_id=review.review_id))
@@ -766,8 +880,12 @@ def handle_edit_review(review_id):
                              friendliness_stars + ambience_stars +
                              price_stars) / 5
             update_review.overall_stars = overall_stars
+            # Mark changes as a new change to commit 
             db.session.add(update_review)
+            
+            # Commit the changes to the database
             db.session.commit()
+            
             existing_reviews = Reviews.query.filter(Reviews.restaurant_id == restaurant_id).all()
 
             if existing_reviews:
@@ -867,10 +985,16 @@ def handle_edit_review(review_id):
                 restaurant.restaurant_review_count = (
                     review_count_by_restaurant_id)
 
+                # Mark changes as a new change to commit 
                 db.session.add(restaurant)
+                
+                # Commit the changes to the database
                 db.session.commit()
+
         try:
+            # Commit the changes to the database
             db.session.commit()
+
             session['err'] = "Review edited successfully"
             redirect_url = request.referrer or url_for(home)
             return redirect(redirect_url)
@@ -911,7 +1035,9 @@ def edit_restaurant():
     restaurant.restaurant_date_registered = (
         restaurant.restaurant_date_registered)
     try:
+        # Commit the changes to the database
         db.session.commit()
+
         session['err'] = "Restaurant edited successfully"
         return render_template('admin_login.html')
     except Exception as e:
@@ -926,17 +1052,22 @@ def edit_restaurant():
 
 @app.route("/profile//delete_user", methods=["GET", "POST"])
 def delete_user():
+    # Checks to see if error session is active and deactivates it
     if session.get('err'):
         session.pop('err')
     user_id = session.get('user_id')
     password = request.form.get("password_delete")
 
+    # Checks to see if the form has been submitted
     if request.method == "POST":
         existing_user = Users.query.filter(Users.user_id == user_id).first()
         if existing_user:
             if check_password_hash(existing_user.password_hash, password):
                 db.session.delete(existing_user)
+                
+                # Commit the changes to the database
                 db.session.commit()
+
                 session.clear()
                 session['err'] = "Your account was deleted"
                 return redirect(url_for('home'))
@@ -951,16 +1082,22 @@ def delete_user():
 
 @app.route("/admin_portal/problems", methods=["GET", "POST"])
 def archive_problem():
+    # Checks to see if error session is active and deactivates it
     if session.get('err'):
         session.pop('err')
     problem_id = request.form.get("problem_id")
+    # Checks to see if the form has been submitted
     if request.method == "POST":
         get_problem = Problems.query.filter
         (Problems.problem_id == problem_id).first()
         if get_problem:
             get_problem.solved = True
+            # Mark changes as a new change to commit 
             db.session.add(get_problem)
+            
+            # Commit the changes to the database
             db.session.commit()
+
             redirect_url = request.referrer or url_for(home)
             return redirect(redirect_url)
         else:
@@ -970,6 +1107,7 @@ def archive_problem():
 
 @app.route("/edit_review/<int:review_id>/delete", methods=["GET", "POST"])
 def delete_review(review_id):
+    # Checks to see if error session is active and deactivates it
     if session.get('err'):
         session.pop('err')
 
@@ -999,8 +1137,9 @@ def delete_review(review_id):
             return redirect(url_for('restaurants'))
         else:            
             db.session.delete(delete_review)
-            db.session.commit()
             
+            # Commit the changes to the database
+            db.session.commit()            
 
             existing_reviews = Reviews.query.filter\
             (Reviews.restaurant_id == restaurant_id).all()
@@ -1074,10 +1213,12 @@ def delete_review(review_id):
                 restaurant.restaurant_average_price_stars = average_price_stars
                 restaurant.restaurant_average_ambience_stars = average_ambience_stars
                 restaurant.restaurant_average_overall_stars = calculated_overall_stars_for_restaurant
-                restaurant.restaurant_review_count = review_count_by_restaurant_id
-                db.session.commit()
+                restaurant.restaurant_review_count = review_count_by_restaurant_id                
+               
         try:
+            # Commit the changes to the database
             db.session.commit()
+
             session['err'] = "Review deleted successfully"
             redirect_url = url_for("restaurants") or url_for(home)
             return redirect(redirect_url)
@@ -1108,6 +1249,7 @@ def clear_error():
 
 @app.route("/signin", methods=["GET", "POST"])
 def login():
+    # Checks to see if the form has been submitted
     if request.method == "POST":
         password = request.form.get("password_login")
         posted_email = request.form.get("email_login")
@@ -1119,6 +1261,7 @@ def login():
                 session['user_id'] = user_id
                 session['username'] = existing_user.username
                 session['is_logged_in'] = True
+                # Checks to see if error session is active and deactivates it
                 if session.get('err'):
                     session.pop('err')
                 return redirect(url_for("profile", user_id=user_id))
@@ -1137,6 +1280,7 @@ def login():
 # Third line of defense is checking for admin status before the
 # admin login to make sure they have admin status
 def check_admin_status():
+    # Checks to see if error session is active and deactivates it
     if session.get('err'):
         session.pop('err')
 
@@ -1186,6 +1330,7 @@ def admin_portal():
 
 @app.route("/admin_login", methods=["GET", "POST"])
 def admin_login():
+    # Checks to see if error session is active and deactivates it
     if session.get('err'):
         session.pop('err')
     # Fourth line of defense - checking user is logged in
@@ -1248,13 +1393,17 @@ def hash():
 @app.route("/temp_admin_access", methods=["GET", "POST"])
 def handle_hash():
     user_id = user_id = session.get('user_id')
+    # Checks to see if the form has been submitted
     if request.method == "POST":
         query = Admins.query.filter(Admins.user_id == user_id).first()
         if query:
             new_password = generate_password_hash(
                 request.form.get("password_register"))
             query.admin_password_hash = new_password
+            
+            # Commit the changes to the database
             db.session.commit()
+
             session['err'] = "Password hashed!"
             return redirect(url_for("home"))
         else:
