@@ -535,46 +535,54 @@ def create_restaurant():
             date_only = todays_date.date()
             
             if not approval:
-                session['err'] = f"Error - the approval is {approval}"
+                session['err'] = """
+                This restaurant has already been approved.
+                """
                 redirect_url = request.referrer or url_for(home)
                 return redirect(redirect_url)
             
             if not restaurant_name:
-                session['err'] = f"Error - the name is {restaurant_name}"
+                session['err'] = """
+                There was a problem with the restaurant name. Please try again
+                """
                 redirect_url = request.referrer or url_for(home)
                 return redirect(redirect_url)
             
             if not restaurant_add_one:
-                session['err'] = f"Error - the add_one is {restaurant_add_one}"
+                session['err'] = """
+                There was a problem with the address. Please try again
+                """
                 redirect_url = request.referrer or url_for(home)
                 return redirect(redirect_url)
             
             if not restaurant_add_two:
-                session['err'] = f"Error - the add_two is {restaurant_add_one}"
+                session['err'] = """
+                There was a problem with the address. Please try again
+                """
                 redirect_url = request.referrer or url_for(home)
                 return redirect(redirect_url)
             
             if not restaurant_postcode:
                 session['err'] = """
-                Error - the restaurant_postcode is
+                There was a problem with the postcode. Please try again
                 """
                 redirect_url = request.referrer or url_for(home)
                 return redirect(redirect_url)
             if not restaurant_thumbnail:
                 session['err'] = """
-                Error - the restaurant_thumbnail is
+                There was a problem with the image URL. Please try again
                 """
                 redirect_url = request.referrer or url_for(home)
                 return redirect(redirect_url)
             if not restaurant_cuisine_one:
                 session['err'] = """
-                Error - the restaurant_cuisine_one is {restaurant_cuisine_one}
+                There was a problem with the cuisine type. Please try again. 
                 """
                 redirect_url = request.referrer or url_for(home)
                 return redirect(redirect_url)
             if not date_only:
                 session['err'] = """
-                Error - the date_only is
+                There was a problem with the date. Please try again
                 """
                 redirect_url = request.referrer or url_for(home)
                 return redirect(redirect_url)
@@ -609,10 +617,12 @@ def create_restaurant():
             session['err'] = "Review approved"
             redirect_url = request.referrer or url_for(home)
             return redirect(redirect_url)
+            
+            # Referesh restaurant list
             restaurants = (Restaurants.query.order_by
                            (Restaurants.restaurant_id).all())
-            return render_template("admin_portal.html",
-                                   restaurants=restaurants)
+            return render_template("admin_portal.html", restaurants=restaurants)
+    # Redirect if not logged in
     return redirect("login")
 
 # ---END OF CREATE--- ##
@@ -622,8 +632,12 @@ def create_restaurant():
 
 @app.route("/")
 def home():
+    
+    # Pull a small selection of restaurants from the table for home screen
     restaurants_snippet = (list(Restaurants.query.order_by(
         Restaurants.restaurant_name).limit(4)))
+    
+    # Render remplate with restaurants
     return render_template("index.html",
                            restaurants_snippet=restaurants_snippet)
 
@@ -654,22 +668,10 @@ def restaurant_profile(restaurant_id):
 
 @app.route("/profile", methods=["GET", "POST"])
 def profile():
-    if session.get('is_logged_in', False):
-        user_id = session.get('user_id')
-        users = Users.query.filter_by(user_id=user_id)
-        
-        # Checks to see if the form has been submitted
-        if request.method == "POST":
-            new_pass = request.form.get("password_change")
-            confirm_new_pass = request.form.get("confirm_password_change")
-            update_user_password = Users(password=password)
-            db.session.update(update_user_password)
-            
-            # Commit the changes to the database
-            db.session.commit()
-            
-            return redirect(url_for("profile"))
-        return render_template("profile.html", users=users)
+    
+    # If user is not logged in, redirect to login or render template
+    if session.get('is_logged_in', False):        
+        return render_template("profile.html")
     else:
         return redirect(url_for('login'))
 
@@ -683,49 +685,73 @@ def change_password():
     # Checks to see if error session is active and deactivates it
     if session.get('err'):
         session.pop('err')
+    
+    # Checks if user is logged in and redirects to login page if not
     if not session.get('is_logged_in'):
         session['err'] = "You are not logged in"
-        return redirect(url_for('login'))
+        redirect_url = request.referrer or url_for(home)
+        return redirect(redirect_url)
     else:
         user_id = session.get('user_id')
+        
+        # Pull user data from table using session user_id
         update_query = Users.query.filter(Users.user_id == user_id).first()
+        
+        # Redirect to login if error in pulling data
         if update_query is None:
-            session['err'] = "Review could not be found"
-            return redirect(url_for('restaurants'))
+            session['err'] = "There was an error retriving your details."
+            redirect_url = request.referrer or url_for(home)
+            return redirect(redirect_url)
         else:
-            if (len(request.form.get("current_password"))) < 11:
+            # Password validation
+            
+            # Check if the user has entered their current password
+            cur_password_check = request.form.get("current_password")
+            if not check_password_hash(update_query.password_hash, cur_password_check):
                 session['err'] = "You must enter your current password"
-                return redirect(url_for('profile'))
+                redirect_url = request.referrer or url_for(home)
+                return redirect(redirect_url)                
 
+            # Check if the user's new password is valid
             elif (len(request.form.get("password_change"))) < 11:
                 session['err'] = """
                 Your new password must be at least 10 characters
                 """
-                return redirect(url_for('profile'))
+                redirect_url = request.referrer or url_for(home)
+                return redirect(redirect_url)
+            
+            # Check if the user's confirmed new password is valid
             elif (len(request.form.get("confirm_password_change"))) < 11:
                 session['err'] = """
                 Your new password must be at least 10 characters
                 """
-                return redirect(url_for('profile'))
+                redirect_url = request.referrer or url_for(home)
+                return redirect(redirect_url)
+            
+            # Check if the user's new and confirmed passwords match
             elif (request.form.get("password_change") !=
                   request.form.get("confirm_password_change")):
                 session['err'] = """
                 Your new password and confirm new password did not match
                 """
-                return redirect(url_for('profile'))
+                redirect_url = request.referrer or url_for(home)
+                return redirect(redirect_url)
+            
+            # If all validation passes, hash the password and update 
             else:
                 hashed_password = (generate_password_hash(request.form.get
                                    ("confirm_password_change")))
                 update_query.password_hash = hashed_password
+                
                 # Mark changes as a new change to commit 
                 db.session.add(update_query)
             try:
                 
                 # Commit the changes to the database
                 db.session.commit()
-
                 session['err'] = "Password edited successfully"
-                return redirect(url_for('profile'))
+                redirect_url = request.referrer or url_for(home)
+                return redirect(redirect_url)
             except Exception as e:
                 print(e)
                 session['err'] = str(e)
@@ -737,15 +763,18 @@ def change_email():
     # Checks to see if error session is active and deactivates it
     if session.get('err'):
         session.pop('err')
+    
     if not session.get('is_logged_in'):
         session['err'] = "You are not logged in"
         return redirect(url_for('login'))
     else:
         user_id = session.get('user_id')
         update_query = Users.query.filter(Users.user_id == user_id).first()
+        
         if update_query is None:
-            session['err'] = "Review could not be found"
-            return redirect(url_for('restaurants'))
+            session['err'] = "Your details could not be found. Please try again"
+            redirect_url = request.referrer or url_for(home)
+            return redirect(redirect_url)
         else:
             # ---
             # This Email Validator was adapted from Geeks for Geeks
@@ -759,17 +788,25 @@ def change_email():
                 checked_email = ""
                 # End of adapted code
             # ---
+            
+            # If the email field is blank, display error
             if checked_email == "":
-                session['err'] = "You must enter a correct email address"
-                return redirect(url_for('profile'))
+                session['err'] = "You must enter a valid email address"
+                redirect_url = request.referrer or url_for(home)
+                return redirect(redirect_url)
             else:
                 check_email_exists = Users.query.filter
                 (Users.email == email).all()
+                
+                # If email address is already taken, display error
                 if check_email_exists:
-                    session['err'] = "That email address is already taken"
-                    return redirect(url_for('profile'))
+                    session['err'] = "That email address is already registered"
+                    redirect_url = request.referrer or url_for(home)
+                    return redirect(redirect_url)
                 else:
+                   # If all validation passes, commit changes to database
                     update_query.email = checked_email
+                    
                     # Mark changes as a new change to commit 
                     db.session.add(update_query)
                 try:
@@ -778,7 +815,8 @@ def change_email():
                     db.session.commit()
 
                     session['err'] = "Email address edited successfully"
-                    return redirect(url_for('profile'))
+                    redirect_url = request.referrer or url_for(home)
+                    return redirect(redirect_url)
                 except Exception as e:
                     print(e)
                     session['err'] = str(e)
@@ -796,22 +834,40 @@ def change_username():
     else:
         user_id = session.get('user_id')
         update_query = Users.query.filter(Users.user_id == user_id).first()
+        
+        # If user details could not be found, redirect to login screen.
+        # Should only ever need to happen if user is not logged in and somehow
+        # bypasses the user_id session
         if update_query is None:
-            session['err'] = "Review could not be found"
-            return redirect(url_for('restaurants'))
+            session['err'] = "Your details could not be found. Please try again"            
+            return redirect(url_for('login'))
         else:
+            
+            # Check to ensure username is at least 3 characters long
             if (len(request.form.get("change_username"))) < 3:
                 session['err'] = """
                 You must choose a username with at least 4 characters
                 """
-                return redirect(url_for('profile'))
+                redirect_url = request.referrer or url_for(home)
+                return redirect(redirect_url)
+            
+            # Checks to ensure username is no more than 64 charcters long
+            elif (len(request.form.get("change_username"))) > 64:
+                session['err'] = """
+                You must choose a username with no more than 64 characters
+                """
+                redirect_url = request.referrer or url_for(home)
+                return redirect(redirect_url)
+            
+            # If all validation passes, check to see if username exists
             else:
                 username = request.form.get("change_username")
                 check_username_exists = Users.query.filter
                 (Users.username == username).all()
                 if check_username_exists:
                     session['err'] = "That username address is already taken"
-                    return redirect(url_for('profile'))
+                    redirect_url = request.referrer or url_for(home)
+                    return redirect(redirect_url)
                 else:
                     update_query.username = username
                     # Mark changes as a new change to commit 
@@ -825,7 +881,9 @@ def change_username():
                     refresh_username_session = Users.query.filter
                     (Users.user_id == user_id).first()
                     session['username'] = refresh_username_session.username
-                    return redirect(url_for('profile'))
+                    redirect_url = request.referrer or url_for(home)
+                    return redirect(redirect_url)
+
                 except Exception as e:
                     print(e)
                     session['err'] = str(e)
@@ -835,6 +893,8 @@ def change_username():
 @app.route("/edit_review/<int:review_id>", methods=["GET", "POST"])
 def edit_review(review_id):
     if session.get('is_logged_in', False):
+        
+        # Get list of all reviews
         review = Reviews.query.get_or_404(review_id)
         reviews = (Reviews.query.filter_by(review_id=review_id).
                    order_by(Reviews.review_id).all())
@@ -860,6 +920,8 @@ def handle_edit_review(review_id):
         session['err'] = "You are not logged in"
         return redirect(url_for('login'))
     else:
+        
+        # Gather edited details
         review_id = review_id
         user_id = session.get('user_id')
         username = session.get('username')
@@ -869,6 +931,7 @@ def handle_edit_review(review_id):
         date_calc = datetime.datetime.now()
         todays_date = (date_calc.strftime("%Y-%m-%d"))
 
+        # Adapted from earlier referenced code (Geeks for Geeks)
         if (re.match(r'^\d+$',
                      review_title) or
                 re.match(r'^\d+$', written_review)):
@@ -928,6 +991,7 @@ def handle_edit_review(review_id):
             
             existing_reviews = Reviews.query.filter(Reviews.restaurant_id == restaurant_id).all()
 
+            # Calculate the new restaurant ratings
             if existing_reviews:
                 average_taste_stars = []
                 for review in existing_reviews:
@@ -1053,11 +1117,16 @@ def edit_restaurant():
     if not session.get('is_logged_in'):
         session['err'] = "You are not logged in"
         return redirect(url_for('login'))
+    
     restaurant_id = request.args.get('restaurant_id')
     restaurant = Restaurants.query.get_or_404(restaurant_id)
+    
     if not restaurant:
-        session['err'] = f"Restaurant not found - the ID is {restaurant_id}"
-        return render_template('admin_login.html')
+        session['err'] = "Restaurant not found"
+        redirect_url = request.referrer or url_for(home)
+        return redirect(redirect_url)
+    
+    # Gather form data
     edit_restaurant_name = request.form.get("edit_restaurant_name")
     edit_address_one = request.form.get("edit_address_one")
     edit_address_two = request.form.get("edit_address_two")
@@ -1079,10 +1148,11 @@ def edit_restaurant():
         db.session.commit()
 
         session['err'] = "Restaurant edited successfully"
-        return render_template('admin_login.html')
+        redirect_url = request.referrer or url_for(home)
+        return redirect(redirect_url)
     except Exception as e:
         print(e)
-        session['err'] = f"An error occurred while editing the restaurant"
+        session['err'] = "An error occurred while editing the restaurant"
         return render_template('admin_login.html')
 
 # ---END OF UPDATE---##
@@ -1101,22 +1171,28 @@ def delete_user():
     # Checks to see if the form has been submitted
     if request.method == "POST":
         existing_user = Users.query.filter(Users.user_id == user_id).first()
+        
+        # If user is authenticated
         if existing_user:
+            # If password is correct
             if check_password_hash(existing_user.password_hash, password):
-                db.session.delete(existing_user)
-                
+                # Delete the user
+                db.session.delete(existing_user)                
                 # Commit the changes to the database
                 db.session.commit()
 
+                # Clear all sessions
                 session.clear()
                 session['err'] = "Your account was deleted"
                 return redirect(url_for('home'))
             else:
                 session['err'] = "That password was incorrect"
-                return redirect(url_for("profile"))
+                redirect_url = request.referrer or url_for(home)
+                return redirect(redirect_url)
         else:
             session['err'] = "Those details were incorect"
-            return redirect(url_for("profile"))
+            redirect_url = request.referrer or url_for(home)
+            return redirect(redirect_url)
     return render_template("profile.html")
 
 
@@ -1125,19 +1201,26 @@ def archive_problem():
     # Checks to see if error session is active and deactivates it
     if session.get('err'):
         session.pop('err')
+    
+    # Get problem ID from hidden field
     problem_id = request.form.get("problem_id")
+    
     # Checks to see if the form has been submitted
     if request.method == "POST":
         get_problem = Problems.query.filter
         (Problems.problem_id == problem_id).first()
         if get_problem:
+            
+            # If problem id is matched, change status in the table
             get_problem.solved = True
+            
             # Mark changes as a new change to commit 
             db.session.add(get_problem)
             
             # Commit the changes to the database
             db.session.commit()
 
+            session['err'] = "Problem solved!"
             redirect_url = request.referrer or url_for(home)
             return redirect(redirect_url)
         else:
