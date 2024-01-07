@@ -1211,7 +1211,7 @@ def delete_review(review_id):
             else:
                 average_taste_stars = []
                 for review in existing_reviews:
-                    average_taste_stars.append(Reviews.taste_stars)
+                    average_taste_stars.append(Review.taste_stars)
                 before_round_average_taste_stars = mean(average_taste_stars)
                 average_taste_stars = round(
                     before_round_average_taste_stars, 1)
