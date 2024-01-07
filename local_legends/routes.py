@@ -1211,14 +1211,14 @@ def delete_review(review_id):
             else:
                 average_taste_stars = []
                 for review in existing_reviews:
-                    average_taste_stars.append(Review.taste_stars)
+                    average_taste_stars.append(review.taste_stars)
                 before_round_average_taste_stars = mean(average_taste_stars)
                 average_taste_stars = round(
                     before_round_average_taste_stars, 1)
                 average_presentation_stars = []
                 for review in existing_reviews:
                     average_presentation_stars.append(
-                        Reviews.presentation_stars)
+                        review.presentation_stars)
                 before_round_average_presentation_stars = mean(
                     average_presentation_stars)
                 average_presentation_stars = round(
@@ -1226,7 +1226,7 @@ def delete_review(review_id):
                 average_friendliness_stars = []
                 for review in existing_reviews:
                     average_friendliness_stars.append(
-                        Reviews.friendliness_stars)
+                        review.friendliness_stars)
                 before_round_average_friendliness_stars = mean(
                     average_friendliness_stars)
                 average_friendliness_stars = round(
@@ -1234,7 +1234,7 @@ def delete_review(review_id):
                 average_ambience_stars = []
                 for review in existing_reviews:
                     average_ambience_stars.append(
-                        Reviews.ambience_stars)
+                        review.ambience_stars)
                 before_round_average_ambience_stars = mean(
                     average_ambience_stars)
                 average_ambience_stars = round(
@@ -1242,7 +1242,7 @@ def delete_review(review_id):
                 average_price_stars = []
                 for review in existing_reviews:
                     average_price_stars.append(
-                        Reviews.price_stars)
+                        review.price_stars)
                 before_round_average_price_stars = mean(
                     average_price_stars)
                 average_price_stars = round(
@@ -1250,7 +1250,7 @@ def delete_review(review_id):
                 average_overall_stars = []
                 for review in existing_reviews:
                     average_overall_stars.append(
-                        Reviews.overall_stars)
+                        review.overall_stars)
                 before_round_average_overall_stars = mean(
                     average_overall_stars)
                 average_overall_stars = round(
