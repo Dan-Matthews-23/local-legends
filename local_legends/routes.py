@@ -590,7 +590,7 @@ def create_restaurant():
             # Commit the changes to the database
             db.session.commit()
 
-            session['err'] = "Review approved"
+            session['err'] = "Restaurant approved"
             redirect_url = request.referrer or url_for(home)
             return redirect(redirect_url)
             # Referesh restaurant list
