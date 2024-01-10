@@ -813,6 +813,7 @@ h4 {
 @media screen and (max-width: 1200px) {
 	#contact-us-container {
 		width: 100%;
+		height: 5000px;
 	}
 }
 
