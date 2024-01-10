@@ -331,6 +331,22 @@ I've used [Formatter.com](https://www.freeformatter.com/html-formatter.html) to 
 
 | The User | User Stories | Has this been achieved? | How? |
 | -------- | ------------ | ----------------------- | ---- |
+| New User | I want to be able to read a review | Yes | The details on the Index and Restaurants pages are read-only. Login is not required. |
+| New User | I want to be able to create an account | Yes | The Register page allows guests to create accounts. There is no eligibility criteria |
+| Existing User | I want to be able to read a review | Yes | The details on the Index and Restaurants pages are read-only. Login is not required. |
+| Existing User | I want to be able to create an account | Yes | The Register page allows guests to create accounts. There is no eligibility criteria |
+| Existing User | I want to be able to create, read, edit and delete reviews | Yes | Once registered and logged in, the user is able to read other reviews, create a review, edit that review and delete it |
+| Existing User | I want to be able to delete my account | Yes | Once registered and logged in, the user is able to delete their account |
+| First Time Visitor | I want to learn more about Local Legends | Yes | On the home and restaurants pages there is an optional button that displays more info for the use. The home page contains a description of the site aims |
+| First Time Visitor | I want to be able to create an account | Yes | The Register page allows guests to create accounts. There is no eligibility criteria |
+| Returning Visitor | I want to be able to read a review | Yes | The details on the Index and Restaurants pages are read-only. Login is not required. |
+| Returning Visitor | I want to be able to create an account | Yes | The Register page allows guests to create accounts. There is no eligibility criteria |
+| Returning Visitor | I want to be able to create, read, edit and delete reviews | Yes | Once registered and logged in, the user is able to read other reviews, create a review, edit that review and delete it |
+| Returning Visitor | I want to be able to delete my account | Yes | Once registered and logged in, the user is able to delete their account |
+| Frequent Visitor | I want to be able to read a review | Yes | The details on the Index and Restaurants pages are read-only. Login is not required. |
+| Frequent Visitor | I want to be able to create an account | Yes | The Register page allows guests to create accounts. There is no eligibility criteria |
+| Frequent Visitor | I want to be able to create, read, edit and delete reviews | Yes | Once registered and logged in, the user is able to read other reviews, create a review, edit that review and delete it |
+| Frequent Visitor | I want to be able to delete my account | Yes | Once registered and logged in, the user is able to delete their account |
 
 ---
 

@@ -165,7 +165,6 @@ The new customer / visitor:
 - To be able to Read reviews.
 - To be able to register an account and log in
 - To be able to create, read, edit and delete reviews
-- To be able to delete my account
 
 The existing user and previous diner:
 
@@ -176,9 +175,10 @@ The existing user and previous diner:
 
 ### First Time Visitor Goals
 
+- To learn more about Local Legends 
 - To be able to read reviews that other users have left
 - To be able to create an account then log in
-- To be able to Create, Read, Update and Delete reviews and an account
+
 
 ### Returning Visitor Goals
 
