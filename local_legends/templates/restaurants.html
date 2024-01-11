@@ -20,7 +20,7 @@
 			<img
 				alt="An image unique to this {{ restaurants.restaurant_name }}"
 				class="hero-image-thumb"
-				src="{{ restaurants.restaurant_image_url }}" />
+				src="{{ restaurants.restaurant_image_url }}">
 		</div>
 		<div
 			class="thumb-col-headingcol align-center s12 m12 l6 xl6 bold larger-than-default-text">
@@ -30,7 +30,7 @@
 			type="hidden"
 			name="restaurant_id"
 			id="restaurant_id"
-			value="{{restaurants.restaurant_id }}" />
+			value="{{restaurants.restaurant_id }}">
 		<div
 			class="thumb-col-stars col s12 m12 l6 xl6 default-text-size align-center-on-small-vw">
 			{% if restaurants.restaurant_average_overall_stars %} Average {{
@@ -80,7 +80,7 @@
 									<img
 										alt="An image unique to this {{ restaurants.restaurant_name }}"
 										class="hero-image"
-										src="{{ restaurants.restaurant_image_url }}" />
+										src="{{ restaurants.restaurant_image_url }}">
 								</div>
 								<div class="col s2 m2 l2 xl2"></div>
 								<div
@@ -275,7 +275,7 @@
 									type="hidden"
 									name="restaurant_id"
 									id="restaurant_id"
-									value="{{restaurants.restaurant_id }}" />
+									value="{{restaurants.restaurant_id }}">
 								<button type="submit" class="card-panel">
 									Leave a review for {{
 									restaurants.restaurant_name }}

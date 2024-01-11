@@ -308,6 +308,8 @@ There were several errors with this page relating to unmatching labels/div_ids.
 
 There were several errors here with nesting <h4> elements within a label which is not allowed.
 
+After all errors were corrected there was still one error showing: Error: Duplicate ID (restaurant_id). This is an error I cannot fix. This is because restaurant_id is pass through the functions on a for loop, so it does look as though ID is being called more than once. But in reality the value is only ever being passed through once at one time. I have not taken actions to address this as the only way I could mitigate this would be if all functions on routes.py called for different IDs each occasion. This is not practical or efficient. 
+
 #### JavaScript
 
 For my JavaScript validation, I used JsHint.

@@ -643,7 +643,7 @@ def profile():
     # If user is not logged in, redirect to login or render template
     if session.get('is_logged_in', False):
         user_id = session.get('user_id')
-        users = Users.query.filter_by(user_id=user_id)        
+        users = Users.query.filter_by(user_id=user_id)
         return render_template("profile.html", users=users)
     else:
         return redirect(url_for('login'))

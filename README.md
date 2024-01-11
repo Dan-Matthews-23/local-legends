@@ -1090,7 +1090,7 @@ I have worked closely with my peers on testing this product rigorously for any e
 I have taken the following actions in response to feedback:
 
 - Used multiple media queries to adjust the parent container so that the input boxes are never out of the container.
-- Applied a 'position: fixed' style t the main footer container
+- Applied a 'position: fixed' style to the main footer container
 
 ### Feedback from previous projects
 
@@ -1142,16 +1142,45 @@ There are several features in this project that I learned from W3 schools. My ad
 
 This project uses several images from Pexels as templates for the restaurants I have created. In time these will be replaced by the images of the restaurants in question.
 
-[Photo by Jorge Zapata from Pexels](https://www.pexels.com/photo/person-making-pasta-tagliatelle-1398688/)
-[Photo by Engin Akyurt from Pexels](https://www.pexels.com/photo/closes-up-photo-of-macaroni-1437267/)
-[Photo by ROMAN ODINTSOV from Pexels](https://www.pexels.com/photo/a-person-holding-tortilla-wraps-with-lettuce-and-beef-5837108/)
-[Photo by Valeria Boltneva from Pexels](https://www.pexels.com/photo/ham-burger-with-vegetables-1639557/)
-[Photo by Vincent Rivaud from Pexels](https://www.pexels.com/photo/top-view-photo-of-baked-pizza-2147491/)
-[Photo by Engin Akyurt from Pexels](https://www.pexels.com/photo/stir-fry-noodles-in-bowl-2347311/)
+[Photo by Horizon Content from Pexels:](https://www.pexels.com/photo/person-holding-a-vegetable-pizza-3762069/)
+
+[Photo by Narda Yescas from Pexels](https://www.pexels.com/photo/shallow-focus-photography-of-several-pizzas-1566837/)
+
+[Photo by Peyman Hamsayeh from Pexels](https://www.pexels.com/photo/close-up-of-a-kebab-11286814/)
+
 [Photo by Chan Walrus from Pexels](https://www.pexels.com/photo/white-and-brown-cooked-dish-on-white-ceramic-bowls-958545/)
-[Photo by Marvin Ozz from Pexels](https://www.pexels.com/photo/bread-with-soup-2474661/)
-[Photo by Malidate Van from Pexels](https://www.pexels.com/photo/person-making-dough-784633/)
+
+[Photo by Life Of Pix from Pexels](https://www.pexels.com/photo/clear-wine-glass-on-table-67468/)
+
 [Photo by Pixabay from Pexels](https://www.pexels.com/photo/person-holding-pastry-dishes-on-white-ceramic-plates-262978/)
+
+[Photo by Eneida Nieves from Pexels](https://www.pexels.com/photo/baked-pizza-on-pizza-peel-in-oven-905847/)
+
+[Photo by Jane Doan from Pexels](https://www.pexels.com/photo/pasta-with-vegetable-dish-on-gray-plate-beside-tomato-fruit-on-white-table-769969/)
+
+[Photo by Johnny Rizk from Pexels](https://www.pexels.com/photo/tray-of-burger-sandwiches-and-fries-2987564/)
+
+[Photo by Engin Akyurt from Pexels](https://www.pexels.com/photo/cheeseburger-and-fries-2725744/)
+
+[Photo by Dana Tentis from Pexels](https://www.pexels.com/photo/cooked-foods-750073/)
+
+[Photo by Jens Mahnke from Pexels](https://www.pexels.com/photo/shallow-focus-photo-of-patties-on-grill-776314/)
+
+[Photo by Pixabay from Pexels] https://www.pexels.com/photo/empty-bar-filled-with-lights-260922/
+
+[Photo by ROMAN ODINTSOV from Pexels] https://www.pexels.com/photo/a-person-holding-tortilla-wraps-with-lettuce-and-beef-5837108/
+
+[Photo by Engin Akyurt from Pexels] https://www.pexels.com/photo/pasta-on-white-plate-on-focus-photo-1527603/
+
+[Photo by Chan Walrus from Pexels] https://www.pexels.com/photo/wine-glasses-on-table-tops-941861/
+
+[Photo by Robin Stickel from Pexels] https://www.pexels.com/photo/fries-and-burger-on-plate-70497/
+
+[Photo by Jorge Zapata from Pexels] https://www.pexels.com/photo/person-making-pasta-tagliatelle-1398688/
+
+[Photo by Pixabay from Pexels] https://www.pexels.com/photo/grilled-meat-dish-served-on-white-plate-361184/
+
+[Photo by Los Muertos Crew from Pexels] https://www.pexels.com/photo/meat-on-a-griller-8477355/
 
 ### Content
 
