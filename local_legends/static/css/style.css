@@ -82,6 +82,7 @@ a,
 #error-bar-container {
 	height: 100px;
 }
+
 #error-bar-main-div {
 	color: red;
 	margin: auto;
@@ -146,6 +147,7 @@ a,
 .title-section {
 	padding-bottom: 5px;
 }
+
 /*---------- END OF TITLE ----------*/
 
 .italic {
@@ -173,8 +175,9 @@ a,
 }
 
 .line-break {
-	display: hidden;
+	display: none;
 }
+
 /*---------- END OF CONTACT US ----------*/
 
 /*---------- REVIEWS ----------*/
@@ -188,6 +191,7 @@ a,
 	width: 100%;
 	margin: auto;
 }
+
 /*---------- END OF REVIEWS ----------*/
 
 /*<!-----------------------REGISTER/LOGIN PAGE------------------------------------>*/
@@ -291,6 +295,7 @@ a,
 	width: 10%;
 	/* Set a small width */
 }
+
 .restaurant-details-container,
 .leave-review-container {
 	width: 100%;
@@ -302,11 +307,6 @@ a,
 	align-items: center;
 	justify-content: center;
 }
-
-/*.hero-image-div {
-  width: 300px;
-  height: 300px;
-}*/
 
 .hero-image-thumb,
 .hero-image {
@@ -337,7 +337,7 @@ a,
 }
 
 .show-on-small {
-	display: hidden;
+	display: none;
 }
 
 #see-more-container {
@@ -346,6 +346,7 @@ a,
 	border-width: thick;
 	padding-bottom: 20px;
 }
+
 /* END OF RESTAURANTS PAGE */
 
 /* REVIEWS*/
@@ -432,8 +433,7 @@ span {
 	padding: 18px;
 	width: 50%;
 	border: none;
-	text-align: center;
-	float: center;
+	text-align: center;	
 	outline: none;
 	font-size: 15px;
 }
@@ -496,6 +496,7 @@ span {
 	text-align: center;
 	vertical-align: middle;
 }
+
 /*---------- END OF BUTTONS ----------*/
 
 /* DEFAULTS*/
@@ -539,9 +540,9 @@ span {
 	margin: auto;
 }
 
-.align-center-on-small-vw{
-    text-align: inherit;
-    margin: auto;
+.align-center-on-small-vw {
+	text-align: inherit;
+	margin: auto;
 }
 
 .align-right {
@@ -589,6 +590,7 @@ h4 {
 .lg-padding {
 	padding: 20px;
 }
+
 /* END OF DEFAULTS*/
 
 .ad-card {
@@ -636,6 +638,7 @@ h4 {
 	.register-container {
 		width: 65%;
 	}
+
 	.register-col {
 		text-align: center;
 	}
@@ -645,6 +648,7 @@ h4 {
 	.register-container {
 		width: 50%;
 	}
+
 	.register-col {
 		text-align: center;
 	}
@@ -758,22 +762,24 @@ h4 {
 
 @media screen and (max-width: 600px) {
 	#welcome-banner-central-div {
-		letter-spacing: none;
+		letter-spacing: 0;
 		padding: 2px;
 	}
-    .align-center-on-small-vw {
-    text-align: center;
-    margin: auto;
-    }
+
+	.align-center-on-small-vw {
+		text-align: center;
+		margin: auto;
+	}
 }
 
 @media screen and (max-width: 500px) {
 	#welcome-banner-central-div {
-		letter-spacing: none;
+		letter-spacing: 0;
 		margin: auto;
 		padding: 2px;
 		width: 100%;
 	}
+
 	#welcome-banner-left-div,
 	#welcome-banner-right-div {
 		display: none;
@@ -781,15 +787,9 @@ h4 {
 }
 
 @media screen and (max-width: 992px) {
-	/*.hero-image-thumb {
-		width: 100%;
-		height: 100%;
-		max-width: 550px;
-		max-height: 350px;
-	}*/
+	
 	.left-panel-container-thumb {
-		width: 100%;
-		float: center;
+		width: 100%;		
 		text-align: center;
 	}
 
@@ -813,11 +813,12 @@ h4 {
 @media screen and (max-width: 1200px) {
 	#contact-us-container {
 		width: 100%;
-		height:max-content;
+		height: max-content;
 	}
 }
 
 @media screen and (max-width: 996px) {
+
 	#profile-container,
 	#register-container,
 	#report-problems,
@@ -827,6 +828,7 @@ h4 {
 }
 
 @media screen and (max-width: 950px) {
+
 	#profile-container,
 	#report-problems,
 	#register-container,
@@ -836,6 +838,7 @@ h4 {
 }
 
 @media screen and (max-width: 900px) {
+
 	#contact-us-container,
 	#profile-container,
 	#report-problems,
@@ -843,12 +846,14 @@ h4 {
 	#sign-in-container {
 		width: 100%;
 	}
+
 	.default-text-styling {
 		font-size: 14px;
 	}
 }
 
 @media screen and (max-width: 850px) {
+
 	#contact-us-container,
 	#profile-container,
 	#report-problems,
@@ -859,6 +864,7 @@ h4 {
 }
 
 @media screen and (max-width: 530px) {
+
 	#contact-us-main-container,
 	#profile-container,
 	#report-problems,
